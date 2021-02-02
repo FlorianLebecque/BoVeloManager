@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -21,6 +20,9 @@ namespace BoVeloManager {
     public partial class Dashboard : Window {
         public Dashboard() {
             InitializeComponent();
+
+            sidebar.Background = SystemParameters.WindowGlassBrush;
+
         }
 
         /*

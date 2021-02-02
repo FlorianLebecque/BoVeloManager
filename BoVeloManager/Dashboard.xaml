@@ -8,7 +8,7 @@
         Title="Dashboard" Height="450" Width="800">
     <DockPanel>
         <Grid>
-            <StackPanel Background="#FF3E3E3E">
+            <StackPanel x:Name="sidebar">
                 <Button Tag="Catalog"  x:Name="BTCatalog" Width="60" Height="50" Click="BTPage_Click">Catalog</Button>
                 <Button Width="60" Height="50">Stock</Button>
                 <Button Width="60" Height="50">Command</Button>
@@ -19,5 +19,6 @@
         <Frame x:Name="frame" NavigationUIVisibility="Hidden">
             
         </Frame>
+         
     </DockPanel>
 </Window>
