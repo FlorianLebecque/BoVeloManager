@@ -21,5 +21,19 @@ namespace BoVeloManager {
         public MainWindow() {
             InitializeComponent();
         }
+
+            //check login data and change windows if correct
+        private void BTLogin_Click(object sender, RoutedEventArgs e) {
+
+            Dashboard dashboardWindows = new Dashboard();
+
+
+
+
+
+
+            dashboardWindows.Show();
+            this.Close();
+        }
     }
 }

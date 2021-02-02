@@ -35,7 +35,7 @@
                 </Grid>
 
             </StackPanel>
-            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Bottom" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold"/>
+            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Bottom" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click"/>
 
         </DockPanel>
     </Border>

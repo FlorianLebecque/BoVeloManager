@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
         Title="Dashboard" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Grid>
+            <StackPanel Background="#FF3E3E3E">
+                <Button x:Name="BTCatalog" Width="60" Height="50" Click="BTCatalog_Click">Catalog</Button>
+                <Button Width="60" Height="50">Stock</Button>
+                <Button Width="60" Height="50">Command</Button>
+                <Button Width="60" Height="50">Planning</Button>
+                <Button Width="60" Height="50">Managment</Button>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="frame">
+            
+        </Frame>
+    </DockPanel>
 </Window>

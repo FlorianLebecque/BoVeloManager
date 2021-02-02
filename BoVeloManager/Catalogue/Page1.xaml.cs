@@ -10,22 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-
-namespace BoVeloManager {
+namespace BoVeloManager.Catalogue {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Dashboard : Window {
-        public Dashboard() {
+    public partial class Page1 : Page {
+        public Page1() {
             InitializeComponent();
         }
 
-            //show catalog
-        private void BTCatalog_Click(object sender, RoutedEventArgs e) {
-            frame.Content = new BoVeloManager.Catalogue.Page1();
+        private void test(object sender, RoutedEventArgs e) {
+
         }
     }
 }
