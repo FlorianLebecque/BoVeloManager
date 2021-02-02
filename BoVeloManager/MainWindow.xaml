@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="LogIn" Height="382" Width="349" WindowStyle="ToolWindow">
+
+    <Border Padding="0 0 0 0">
+
+        <DockPanel>
+            <!-- Title -->
+            <TextBlock Margin="0 0 0 10" Text="Bo Vélo Manager" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+
+            <!--Log In-->
+            <StackPanel DockPanel.Dock="Top" VerticalAlignment="Center">
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0">Username :</Label>
+                    <TextBox Padding="2" Grid.Column="1"></TextBox>
+                </Grid>
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0">Password :</Label>
+                    <PasswordBox Padding="2" Grid.Column="1"></PasswordBox>
+                </Grid>
+
+            </StackPanel>
+            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Bottom" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold"/>
+
+        </DockPanel>
+    </Border>
 </Window>

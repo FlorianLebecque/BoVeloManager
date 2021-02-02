@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:BoVeloManager"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF444444"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#FF444444"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FF444444"></Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
