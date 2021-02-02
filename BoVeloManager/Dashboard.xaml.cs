@@ -23,9 +23,26 @@ namespace BoVeloManager {
             InitializeComponent();
         }
 
-            //show catalog
-        private void BTCatalog_Click(object sender, RoutedEventArgs e) {
-            frame.Content = new BoVeloManager.Catalogue.Page1();
+        /*
+         * Function added to every button on the side bar
+         *      Their goal is to set the page into the frame (center object of the window)
+        */
+        private void BTPage_Click(object sender, RoutedEventArgs e) {
+            Button senderButton = (Button)sender;   //get the button that trigger the event
+
+            String btnTag = senderButton.Tag.ToString();
+
+                //clear the content
+            frame.Content = null;
+            frame.NavigationService.RemoveBackEntry();
+
+            switch (btnTag) {
+                case "Catalog":
+                    frame.Content = new Catalogue.Catalog();
+                    break;
+            }
+
+
         }
     }
 }

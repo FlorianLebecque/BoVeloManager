@@ -17,13 +17,10 @@ namespace BoVeloManager.Catalogue {
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page {
-        public Page1() {
+    public partial class Catalog : Page {
+        public Catalog() {
             InitializeComponent();
         }
 
-        private void test(object sender, RoutedEventArgs e) {
-
-        }
     }
 }

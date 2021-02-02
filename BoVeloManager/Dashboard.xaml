@@ -9,14 +9,14 @@
     <DockPanel>
         <Grid>
             <StackPanel Background="#FF3E3E3E">
-                <Button x:Name="BTCatalog" Width="60" Height="50" Click="BTCatalog_Click">Catalog</Button>
+                <Button Tag="Catalog"  x:Name="BTCatalog" Width="60" Height="50" Click="BTPage_Click">Catalog</Button>
                 <Button Width="60" Height="50">Stock</Button>
                 <Button Width="60" Height="50">Command</Button>
                 <Button Width="60" Height="50">Planning</Button>
                 <Button Width="60" Height="50">Managment</Button>
             </StackPanel>
         </Grid>
-        <Frame x:Name="frame">
+        <Frame x:Name="frame" NavigationUIVisibility="Hidden">
             
         </Frame>
     </DockPanel>
