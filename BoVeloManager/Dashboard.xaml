@@ -5,20 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800">
-    <DockPanel>
-        <Grid>
-            <StackPanel Width="100" x:Name="sidebar">
-                <Button Tag="Catalog"  x:Name="BTCatalog" Height="25" Click="BTPage_Click">Catalog</Button>
-                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Stock</Button>
-                <Button Tag="Command" Height="25" Click="BTPage_Click">Command</Button>
-                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Planning</Button>
-                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Managment</Button>
-            </StackPanel>
-        </Grid>
-        <Frame x:Name="frame" NavigationUIVisibility="Hidden">
+        Title="Dashboard" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <Border BorderThickness="0 0 1 0" BorderBrush="#FF404040">
+                <Grid>
+                    <StackPanel Width="100" x:Name="sidebar">
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Catalog"  x:Name="BTCatalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Catalog</Button>
+                        </Border>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Stock</Button>
+                        </Border>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Command" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Command</Button>
+                        </Border>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" BorderBrush="{x:Null}" Background="{x:Null}">Planning</Button>
+                        </Border>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Managment</Button>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Frame x:Name="frame" NavigationUIVisibility="Hidden">
+
+            </Frame>
+
+        </DockPanel>
+        
+        <StatusBar Grid.Row="1" >
+            <TextBlock Name="mi_user" Text="Log as " Width="105"/>
             
-        </Frame>
-         
-    </DockPanel>
+        </StatusBar>
+    </Grid>
 </Window>
