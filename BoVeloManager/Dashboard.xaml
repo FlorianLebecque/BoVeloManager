@@ -8,12 +8,12 @@
         Title="Dashboard" Height="450" Width="800">
     <DockPanel>
         <Grid>
-            <StackPanel x:Name="sidebar">
-                <Button Tag="Catalog"  x:Name="BTCatalog" Width="60" Height="50" Click="BTPage_Click">Catalog</Button>
-                <Button Width="60" Height="50">Stock</Button>
-                <Button Width="60" Height="50">Command</Button>
-                <Button Width="60" Height="50">Planning</Button>
-                <Button Width="60" Height="50">Managment</Button>
+            <StackPanel Width="100" x:Name="sidebar">
+                <Button Tag="Catalog"  x:Name="BTCatalog" Height="25" Click="BTPage_Click">Catalog</Button>
+                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Stock</Button>
+                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Command</Button>
+                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Planning</Button>
+                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Managment</Button>
             </StackPanel>
         </Grid>
         <Frame x:Name="frame" NavigationUIVisibility="Hidden">

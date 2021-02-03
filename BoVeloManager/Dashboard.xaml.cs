@@ -18,11 +18,14 @@ namespace BoVeloManager {
     /// Interaction logic for Dashboard.xaml
     /// </summary>
     public partial class Dashboard : Window {
+
+        private Button selectedButton;
+        private Brushes defaultColor;
+
         public Dashboard() {
             InitializeComponent();
 
-            sidebar.Background = SystemParameters.WindowGlassBrush;
-
+            //sidebar.Background = SystemParameters.WindowGlassBrush;   
         }
 
         /*
@@ -31,6 +34,18 @@ namespace BoVeloManager {
         */
         private void BTPage_Click(object sender, RoutedEventArgs e) {
             Button senderButton = (Button)sender;   //get the button that trigger the event
+
+            /*
+            if (selectedButton != null) {
+                selectedButton.Background = Brushes.Transparent;
+            } else {
+                selectedButton = senderButton;
+            }
+            
+            senderButton.Background = Brushes.White;
+
+            selectedButton = senderButton;
+            */
 
             String btnTag = senderButton.Tag.ToString();
 

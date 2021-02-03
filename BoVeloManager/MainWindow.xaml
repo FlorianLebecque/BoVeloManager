@@ -22,7 +22,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0">Username :</Label>
-                    <TextBox Padding="2" Grid.Column="1"></TextBox>
+                    <TextBox x:Name="tb_userName" Padding="2" Grid.Column="1"></TextBox>
                 </Grid>
 
                 <Grid  Margin="5 10 5 0">
@@ -30,8 +30,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0">Password :</Label>
-                    <PasswordBox Padding="2" Grid.Column="1"></PasswordBox>
+                    <Label x:Name="lb_pass" Grid.Column="0">Password :</Label>
+                    <PasswordBox x:Name="tb_password" Padding="2" Grid.Column="1"></PasswordBox>
                 </Grid>
 
             </StackPanel>
