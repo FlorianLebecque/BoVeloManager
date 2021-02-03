@@ -8,23 +8,33 @@ using MySql.Data.MySqlClient;
 
 
 namespace BoVeloManager.tools {
-    class database {
+    class Database {
 
         private static MySqlConnection MSCon;
 
-        private static object formatData(MySqlDataReader data){
+        private static List<object[]> formatData(MySqlDataReader data) {
+
+            List<object[]> resultat = new List<object[]>();
 
             while (data.Read()) {
-                return data[0].ToString();
+
+                object[] row = new object[data.FieldCount];
+
+                for (int i = 0; i < data.FieldCount; i++) {
+                    row[i] = data[i];
+                }
+
+                resultat.Add(row);
             }
 
+            data.Close();
 
-            return "";
+            return resultat;
         }
 
-        public static object getData(string query) {
+        public static List<object[]> getData(string query) {
 
-            if((MSCon == null)||(MSCon.State == System.Data.ConnectionState.Closed)){
+            if ((MSCon == null) || (MSCon.State == System.Data.ConnectionState.Closed)) {
                 connectToDB();
             }
 
@@ -34,8 +44,6 @@ namespace BoVeloManager.tools {
 
             MySqlDataReader MSres = cmd.ExecuteReader();
 
-
-            
 
             return formatData(MSres);
         }
@@ -55,4 +63,16 @@ namespace BoVeloManager.tools {
         }
 
     }
+
+    class DatabaseQuery {
+        public static string getUserPass(string user) {
+            return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
+        }
+
+        public static string getUserGrade(string user) {
+            return "SELECT `grade` FROM `bv_user` WHERE `user` = '" + user + "'";
+        }
+    }
+
+
 }
