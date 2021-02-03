@@ -22,6 +22,7 @@ namespace BoVeloManager {
         public Dashboard() {
             InitializeComponent();
 
+                //status bar log
             mi_user.Text = "Log as "+tools.user.getUserName();
 
             //sidebar.Background = SystemParameters.WindowGlassBrush;   
