@@ -13,14 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BoVeloManager.Catalogue {
+namespace BoVeloManager.Commande
+{
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Logique d'interaction pour commande.xaml
     /// </summary>
-    public partial class Catalog : Page {
-        public Catalog() {
+    public partial class commande : Page
+    {
+        public commande()
+        {
             InitializeComponent();
         }
-
     }
 }

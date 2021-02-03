@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Commande\commande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +124,9 @@
     </Compile>
     <Compile Include="Catalogue\catalog.xaml.cs">
       <DependentUpon>catalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commande\commande.xaml.cs">
+      <DependentUpon>commande.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
