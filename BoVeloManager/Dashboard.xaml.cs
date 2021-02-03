@@ -57,6 +57,9 @@ namespace BoVeloManager {
                 case "Catalog":
                     frame.Content = new Catalogue.Catalog();
                     break;
+                case "Command":
+                    frame.Content = new Commande.commande();
+                    break;
             }
 
 

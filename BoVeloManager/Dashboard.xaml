@@ -11,7 +11,7 @@
             <StackPanel Width="100" x:Name="sidebar">
                 <Button Tag="Catalog"  x:Name="BTCatalog" Height="25" Click="BTPage_Click">Catalog</Button>
                 <Button Tag="Catalog" Height="25" Click="BTPage_Click">Stock</Button>
-                <Button Tag="Catalog" Height="25" Click="BTPage_Click">Command</Button>
+                <Button Tag="Command" Height="25" Click="BTPage_Click">Command</Button>
                 <Button Tag="Catalog" Height="25" Click="BTPage_Click">Planning</Button>
                 <Button Tag="Catalog" Height="25" Click="BTPage_Click">Managment</Button>
             </StackPanel>
