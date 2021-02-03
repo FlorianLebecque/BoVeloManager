@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
-        Title="LogIn" Height="382" Width="349" WindowStyle="ToolWindow">
+        ResizeMode="NoResize"
+        Title="LogIn" Height="200" Width="349" WindowStyle="ToolWindow">
 
     <Border Padding="0 0 0 0">
 
@@ -35,7 +36,7 @@
                 </Grid>
 
             </StackPanel>
-            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Bottom" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click"/>
+            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
         </DockPanel>
     </Border>
 </Window>
