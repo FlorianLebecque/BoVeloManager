@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,7 @@ namespace BoVeloManager.tools {
             return resultat;
         }
 
-        public static List<object[]> getData(string query) {
-
+        public static MySqlDataReader getRawData(string query) {
             if ((MSCon == null) || (MSCon.State == System.Data.ConnectionState.Closed)) {
                 connectToDB();
             }
@@ -42,10 +42,26 @@ namespace BoVeloManager.tools {
 
             cmd.CommandText = query;
 
-            MySqlDataReader MSres = cmd.ExecuteReader();
+            return cmd.ExecuteReader();
+        }
 
+        public static List<object[]> getData(string query) {
+            MySqlDataReader MSres = getRawData(query);
 
             return formatData(MSres);
+        }
+
+        public static DataTable getDataTable(string query) {
+            DataTable dt = new DataTable();
+
+            MySqlCommand cmd = MSCon.CreateCommand();
+            cmd.CommandText = query;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            da.Fill(dt);
+
+            return dt;
         }
 
         public static void connectToDB() {
@@ -71,6 +87,10 @@ namespace BoVeloManager.tools {
 
         public static string getUserGrade(string user) {
             return "SELECT `grade` FROM `bv_user` WHERE `user` = '" + user + "'";
+        }
+
+        public static string getUsers() {
+            return "SELECT * FROM `bv_user`";
         }
     }
 
