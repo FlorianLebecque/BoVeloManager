@@ -24,7 +24,7 @@ namespace BoVeloManager.stock {
 
             string q = tools.DatabaseQuery.getUsers();
 
-            DataTable dt = tools.Database.getDataTable(q);
+            DataTable dt = tools.Database.getData(q);
 
             
 

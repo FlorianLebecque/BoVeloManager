@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace BoVeloManager {
     /// <summary>
@@ -34,12 +35,12 @@ namespace BoVeloManager {
 
                 //fist get the user password
             string query = tools.DatabaseQuery.getUserPass(in_user);
-            List<Object[]> result = tools.Database.getData(query);
+            DataTable dt = tools.Database.getData(query);
 
                 //check if we get any result
             string pass = "";
-            if (result.Count > 0) {
-                pass = (string)result[0][0];
+            if (dt.Rows.Count > 0) {
+                pass = (string)dt.Rows[0]["psw"];
             }
 
             //check if password are equal
@@ -47,10 +48,10 @@ namespace BoVeloManager {
 
                     //know get the user data
                 query = tools.DatabaseQuery.getUserGrade(in_user);
-                List<object[]> res = tools.Database.getData(query);
+                DataTable res = tools.Database.getData(query);
                 
                     //set the data into user class
-                tools.user.setGrade(Convert.ToInt32(res[0][0]));
+                tools.user.setGrade(Convert.ToInt32(res.Rows[0]["grade"]));
                 tools.user.setUserName(in_user);
 
                     //hide the login windows

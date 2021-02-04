@@ -6,52 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-
-
 namespace BoVeloManager.tools {
     class Database {
 
         private static MySqlConnection MSCon;
 
-        private static List<object[]> formatData(MySqlDataReader data) {
 
-            List<object[]> resultat = new List<object[]>();
+        public static DataTable getData(string query) {
 
-            while (data.Read()) {
-
-                object[] row = new object[data.FieldCount];
-
-                for (int i = 0; i < data.FieldCount; i++) {
-                    row[i] = data[i];
-                }
-
-                resultat.Add(row);
-            }
-
-            data.Close();
-
-            return resultat;
-        }
-
-        public static MySqlDataReader getRawData(string query) {
-            if ((MSCon == null) || (MSCon.State == System.Data.ConnectionState.Closed)) {
+            if((MSCon == null)||(MSCon.State == ConnectionState.Closed)||(MSCon.State == ConnectionState.Broken)) {
                 connectToDB();
             }
 
-            MySqlCommand cmd = MSCon.CreateCommand();
-
-            cmd.CommandText = query;
-
-            return cmd.ExecuteReader();
-        }
-
-        public static List<object[]> getData(string query) {
-            MySqlDataReader MSres = getRawData(query);
-
-            return formatData(MSres);
-        }
-
-        public static DataTable getDataTable(string query) {
             DataTable dt = new DataTable();
 
             MySqlCommand cmd = MSCon.CreateCommand();
@@ -64,7 +30,7 @@ namespace BoVeloManager.tools {
             return dt;
         }
 
-        public static void connectToDB() {
+        private static void connectToDB() {
             MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
                 { "Database", "sql2390507" },
                 { "Data Source", "sql2.freemysqlhosting.net" },
