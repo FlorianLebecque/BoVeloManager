@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,10 +17,10 @@
                 <Grid>
                     <StackPanel Width="100" x:Name="sidebar">
                         <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Catalog"  x:Name="BTCatalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Catalog</Button>
+                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Catalog</Button>
                         </Border>
                         <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Stock</Button>
+                            <Button Tag="Stock" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Stock</Button>
                         </Border>
                         <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
                             <Button Tag="Command" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Command</Button>
