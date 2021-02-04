@@ -12,7 +12,7 @@
 
         <DockPanel>
             <!-- Title -->
-            <TextBlock Margin="0 0 0 10" Text="Bo Vélo Manager" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            <TextBlock Margin="0 0 0 10" Text="BoVélo Manager" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
             <!--Log In-->
             <StackPanel DockPanel.Dock="Top" VerticalAlignment="Center">
@@ -36,7 +36,14 @@
                 </Grid>
 
             </StackPanel>
-            <Button x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
-        </DockPanel>
+            <Grid Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB20000" Visibility="Hidden" >Hello</TextBlock>
+                <Button Grid.Column="1" x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
+            </Grid>
+            </DockPanel>
     </Border>
 </Window>

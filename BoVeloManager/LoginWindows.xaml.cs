@@ -29,14 +29,20 @@ namespace BoVeloManager {
             string in_user = tb_userName.Text;
             string in_pass = tb_password.Password;
 
-
+                //compute a MD5 hash of the input password
             string hash_pass = tools.md5.CreateMD5(in_pass);
 
-            //fist get the user password
+                //fist get the user password
             string query = tools.DatabaseQuery.getUserPass(in_user);
-            string pass = (string)tools.Database.getData(query)[0][0];
+            List<Object[]> result = tools.Database.getData(query);
 
-            //quick check if password are equal
+                //check if we get any result
+            string pass = "";
+            if (result.Count > 0) {
+                pass = (string)result[0][0];
+            }
+
+            //check if password are equal
             if ((pass.ToUpper() == hash_pass.ToUpper()) && (pass != "")) {
 
                     //know get the user data
@@ -50,29 +56,27 @@ namespace BoVeloManager {
                     //hide the login windows
                 this.Hide();
                 tb_password.Clear();
-                    
+                lb_error.Visibility = Visibility.Hidden;
+
                     //create and show the dashboard windows
                 Dashboard dashboardWindows = new Dashboard();
                 dashboardWindows.ShowDialog();
 
                     //wait until we close the dashboard then show the login windows
                 this.Show();
+            } else {
+                lb_error.Visibility = Visibility.Visible;
+                lb_error.Text = "User or password incorrect";
             }
+
         }
 
+        //event when click on the login button
         private void BTLogin_Click(object sender, RoutedEventArgs e) {
-
             login();
-            
-            /*
-                    TO DO
-                - create error handling
-             */
-
         }
 
-        
-
+        //event when enter key is pressed while the password textbox is focus
         private void tb_password_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
                 login();

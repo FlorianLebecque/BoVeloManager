@@ -101,6 +101,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="stock\stock.xaml.cs">
+      <DependentUpon>stock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Compile Include="tools\user.cs" />
@@ -137,6 +140,10 @@
       <DependentUpon>LoginWindows.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="stock\stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
