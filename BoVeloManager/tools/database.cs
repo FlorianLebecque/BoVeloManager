@@ -65,12 +65,12 @@ namespace BoVeloManager.tools {
         }
 
         public static void connectToDB() {
-            MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder();
-
-            connBuilder.Add("Database", "sql2390507");
-            connBuilder.Add("Data Source", "sql2.freemysqlhosting.net");
-            connBuilder.Add("User Id", "sql2390507");
-            connBuilder.Add("Password", "zG2%rD3!");
+            MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
+                { "Database", "sql2390507" },
+                { "Data Source", "sql2.freemysqlhosting.net" },
+                { "User Id", "sql2390507" },
+                { "Password", "zG2%rD3!" }
+            };
 
             MSCon = new MySqlConnection(connBuilder.ConnectionString);
 
