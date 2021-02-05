@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace BoVeloManager {
     /// <summary>
@@ -29,50 +30,54 @@ namespace BoVeloManager {
             string in_user = tb_userName.Text;
             string in_pass = tb_password.Password;
 
-
+                //compute a MD5 hash of the input password
             string hash_pass = tools.md5.CreateMD5(in_pass);
 
-            //fist get the user password
+                //fist get the user password
             string query = tools.DatabaseQuery.getUserPass(in_user);
-            string pass = (string)tools.Database.getData(query)[0][0];
+            DataTable dt = tools.Database.getData(query);
 
-            //quick check if password are equal
+                //check if we get any result
+            string pass = "";
+            if (dt.Rows.Count > 0) {
+                pass = (string)dt.Rows[0]["psw"];
+            }
+
+            //check if password are equal
             if ((pass.ToUpper() == hash_pass.ToUpper()) && (pass != "")) {
 
                     //know get the user data
                 query = tools.DatabaseQuery.getUserGrade(in_user);
-                List<object[]> res = tools.Database.getData(query);
+                DataTable res = tools.Database.getData(query);
                 
                     //set the data into user class
-                tools.user.setGrade(Convert.ToInt32(res[0][0]));
+                tools.user.setGrade(Convert.ToInt32(res.Rows[0]["grade"]));
                 tools.user.setUserName(in_user);
 
                     //hide the login windows
                 this.Hide();
                 tb_password.Clear();
-                    
+                lb_error.Visibility = Visibility.Hidden;
+
                     //create and show the dashboard windows
                 Dashboard dashboardWindows = new Dashboard();
                 dashboardWindows.ShowDialog();
 
                     //wait until we close the dashboard then show the login windows
                 this.Show();
+            } else {
+                lb_error.Visibility = Visibility.Visible;
+                lb_error.Text = "User or password incorrect";
             }
+
         }
 
+        //event when click on the login button
         private void BTLogin_Click(object sender, RoutedEventArgs e) {
-
             login();
-            
-            /*
-                    TO DO
-                - create error handling
-             */
-
         }
 
-        
-
+        //event when enter key is pressed while the password textbox is focus
         private void tb_password_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
                 login();

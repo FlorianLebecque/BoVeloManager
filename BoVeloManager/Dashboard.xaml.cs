@@ -22,9 +22,8 @@ namespace BoVeloManager {
         public Dashboard() {
             InitializeComponent();
 
-            mi_user.Text = "Log as "+tools.user.getUserName();
-
-            //sidebar.Background = SystemParameters.WindowGlassBrush;   
+                //status bar log
+            mi_user.Text = "Log as "+tools.user.getUserName(); 
         }
 
 
@@ -59,6 +58,12 @@ namespace BoVeloManager {
                     break;
                 case "Command":
                     frame.Content = new Commande.commande();
+                    break;
+                case "Stock":
+                    frame.Content = new stock.stock();
+                    break;
+                case "Management":
+                    frame.Content = new Management.Management();
                     break;
             }
 

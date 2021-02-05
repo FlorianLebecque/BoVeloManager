@@ -1,0 +1,72 @@
+﻿<Window x:Class="BoVeloManager.Management.AddUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoVeloManager.Management"
+        mc:Ignorable="d"
+        Title="LogIn" Height="266" Width="349" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+
+    <Border Padding="0 0 0 0">
+
+        <DockPanel>
+            <!-- Title -->
+            <TextBlock Margin="0 0 0 10" Text="New user" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+
+            <!--Log In-->
+            <StackPanel DockPanel.Dock="Top">
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0">Username :</Label>
+                    <TextBox x:Name="tb_userName" Padding="2" Grid.Column="1"></TextBox>
+                </Grid>
+
+                <Grid  Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lb_pass" Grid.Column="0">Password :</Label>
+                    <PasswordBox x:Name="tb_password1" Padding="2" Grid.Column="1"/>
+                </Grid>
+
+                <Grid  Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lb_passs" Grid.Column="0">Retype password :</Label>
+                    <PasswordBox x:Name="tb_password2" Padding="2" Grid.Column="1"/>
+                </Grid>
+
+                <Grid  Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="b" Grid.Column="0">Grade :</Label>
+                    <ComboBox x:Name="cb_grade" Padding="2" Grid.ColumnSpan="2" Margin="57,0,26,0">
+                        <ComboBoxItem >Monteur</ComboBoxItem>
+                        <ComboBoxItem >Vendeur</ComboBoxItem>
+                        <ComboBoxItem >Manager</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+
+            </StackPanel>
+            <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click"/>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>

@@ -1,60 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-
-
 
 namespace BoVeloManager.tools {
     class Database {
 
         private static MySqlConnection MSCon;
 
-        private static List<object[]> formatData(MySqlDataReader data) {
 
-            List<object[]> resultat = new List<object[]>();
+        public static DataTable getData(string query) {
 
-            while (data.Read()) {
-
-                object[] row = new object[data.FieldCount];
-
-                for (int i = 0; i < data.FieldCount; i++) {
-                    row[i] = data[i];
-                }
-
-                resultat.Add(row);
-            }
-
-            data.Close();
-
-            return resultat;
-        }
-
-        public static List<object[]> getData(string query) {
-
-            if ((MSCon == null) || (MSCon.State == System.Data.ConnectionState.Closed)) {
+            if((MSCon == null)||(MSCon.State == ConnectionState.Closed)||(MSCon.State == ConnectionState.Broken)) {
                 connectToDB();
             }
 
-            MySqlCommand cmd = MSCon.CreateCommand();
+            DataTable dt = new DataTable();
 
+            MySqlCommand cmd = MSCon.CreateCommand();
             cmd.CommandText = query;
 
-            MySqlDataReader MSres = cmd.ExecuteReader();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
+            da.Fill(dt);
 
-            return formatData(MSres);
+            return dt;
         }
 
-        public static void connectToDB() {
-            MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder();
+        public static int setData(string query) {
 
-            connBuilder.Add("Database", "sql2390507");
-            connBuilder.Add("Data Source", "sql2.freemysqlhosting.net");
-            connBuilder.Add("User Id", "sql2390507");
-            connBuilder.Add("Password", "zG2%rD3!");
+            MySqlCommand cmd = MSCon.CreateCommand();
+            cmd.CommandText = query;
+
+            return cmd.ExecuteNonQuery();
+        }
+
+        private static void connectToDB() {
+            MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
+                { "Database", "sql2390507" },
+                { "Data Source", "sql2.freemysqlhosting.net" },
+                { "User Id", "sql2390507" },
+                { "Password", "zG2%rD3!" }
+            };
 
             MSCon = new MySqlConnection(connBuilder.ConnectionString);
 
@@ -72,6 +62,15 @@ namespace BoVeloManager.tools {
         public static string getUserGrade(string user) {
             return "SELECT `grade` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
+
+        public static string getUsers() {
+            return "SELECT `user`, `grade` FROM `bv_user`";
+        }
+
+        public static string addUser(string name,string pass,int grade) {
+            return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('"+name+"','"+pass+"',"+grade.ToString()+")";
+        }
+
     }
 
 
