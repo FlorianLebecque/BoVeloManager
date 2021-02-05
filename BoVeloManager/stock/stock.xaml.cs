@@ -22,13 +22,7 @@ namespace BoVeloManager.stock {
         public stock() {
             InitializeComponent();
 
-            string q = tools.DatabaseQuery.getUsers();
-
-            DataTable dt = tools.Database.getData(q);
-
             
-
-            dg_grid.ItemsSource = dt.DefaultView;
 
 
         }
