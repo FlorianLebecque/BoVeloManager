@@ -29,15 +29,18 @@ namespace BoVeloManager.Management {
             string q = tools.DatabaseQuery.getUsers();
             DataTable dt = tools.Database.getData(q);
 
+
+            //convertion de la columns grade en poste
+
             DataColumn newCol = new DataColumn();
             newCol.ColumnName = "Poste";
             newCol.DataType = typeof(string);
-            
+
             dt.Columns.Add(newCol);
 
-            foreach(DataRow r in dt.Rows) {
-                int g = Convert.ToInt32(r["grade"]);
+            foreach (DataRow r in dt.Rows) {
 
+                int g = Convert.ToInt32(r["grade"]);
                 switch (g) {
                     case 0:
                         r["Poste"] = "Monteur";
@@ -51,8 +54,9 @@ namespace BoVeloManager.Management {
                 }
 
             }
+            dt.Columns.Remove(dt.Columns["grade"]);
 
-            dt.Columns.Remove(dt.Columns[1]);
+
 
             dg_userList.ItemsSource = dt.DefaultView;
         }
@@ -62,5 +66,28 @@ namespace BoVeloManager.Management {
             AUW.ShowDialog();
             update_dg_userList();
         }
+
+        private void bt_editUser_Click(object sender, RoutedEventArgs e) {
+
+            try {
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int userID = Convert.ToInt32(dataRowView["id"]);
+
+                user.modUserWindow MUW = new user.modUserWindow(userID);
+
+                MUW.ShowDialog();
+                update_dg_userList();
+
+            } catch (Exception ex) {
+                System.Windows.MessageBox.Show(ex.Message.ToString());
+            }
+        }
+    
+
+        private void bt_delUser_Click(object sender, RoutedEventArgs e) {
+
+
+        }
+
     }
 }
