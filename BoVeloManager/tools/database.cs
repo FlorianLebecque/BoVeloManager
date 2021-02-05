@@ -30,6 +30,14 @@ namespace BoVeloManager.tools {
             return dt;
         }
 
+        public static int setData(string query) {
+
+            MySqlCommand cmd = MSCon.CreateCommand();
+            cmd.CommandText = query;
+
+            return cmd.ExecuteNonQuery();
+        }
+
         private static void connectToDB() {
             MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
                 { "Database", "sql2390507" },
@@ -56,8 +64,13 @@ namespace BoVeloManager.tools {
         }
 
         public static string getUsers() {
-            return "SELECT * FROM `bv_user`";
+            return "SELECT `user`, `grade` FROM `bv_user`";
         }
+
+        public static string addUser(string name,string pass,int grade) {
+            return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('"+name+"','"+pass+"',"+grade.ToString()+")";
+        }
+
     }
 
 
