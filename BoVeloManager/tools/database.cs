@@ -64,11 +64,18 @@ namespace BoVeloManager.tools {
         }
 
         public static string getUsers() {
-            return "SELECT `user`, `grade` FROM `bv_user`";
+            return "SELECT `id`,`user`, `grade` FROM `bv_user`";
+        }
+        public static string getUser_by_id(int id) {
+            return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = "+id.ToString();
         }
 
         public static string addUser(string name,string pass,int grade) {
             return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('"+name+"','"+pass+"',"+grade.ToString()+")";
+        }
+
+        public static string setUserGrade(int id,int grade) {
+            return "UPDATE `bv_user` SET `grade`= "+grade.ToString()+" WHERE `id` = " + id.ToString();
         }
 
     }

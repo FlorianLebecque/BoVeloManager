@@ -65,6 +65,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -77,6 +78,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,15 +103,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Management\AddUserWindow.xaml.cs">
+    <Compile Include="Management\user\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\Management.xaml.cs">
       <DependentUpon>Management.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\user\modUserWindow.xaml.cs">
+      <DependentUpon>modUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tools\colorPicker.cs" />
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Compile Include="tools\user.cs" />
@@ -146,11 +152,15 @@
       <DependentUpon>LoginWindows.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Management\AddUserWindow.xaml">
+    <Page Include="Management\user\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\Management.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\user\modUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
