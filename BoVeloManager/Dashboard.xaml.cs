@@ -62,6 +62,9 @@ namespace BoVeloManager {
                 case "Stock":
                     frame.Content = new stock.stock();
                     break;
+                case "Management":
+                    frame.Content = new Management.Management();
+                    break;
             }
 
 

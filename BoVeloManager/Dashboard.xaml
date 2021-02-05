@@ -29,7 +29,7 @@
                             <Button Tag="Catalog" Height="25" Click="BTPage_Click" BorderBrush="{x:Null}" Background="{x:Null}">Planning</Button>
                         </Border>
                         <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Managment</Button>
+                            <Button Tag="Management" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Managment</Button>
                         </Border>
                     </StackPanel>
                 </Grid>
