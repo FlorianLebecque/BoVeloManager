@@ -83,9 +83,19 @@ namespace BoVeloManager.Management {
             }
         }
     
-
         private void bt_delUser_Click(object sender, RoutedEventArgs e) {
 
+                //User delete test
+            if(MessageBox.Show("Are you sure ?", "title",MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int userID = Convert.ToInt32(dataRowView["id"]);
+
+                string q = tools.DatabaseQuery.delUser(userID);
+                tools.Database.setData(q);
+
+                MessageBox.Show("User deleted");
+                update_dg_userList();
+            }
 
         }
 
