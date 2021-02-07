@@ -27,7 +27,7 @@
 
                 <Grid Grid.Column="0">
                     <StackPanel>
-                        <!-- Characteristics-->
+                        <!-- Characteristics Collumn -->
                         <TextBlock Text="Caracteristics" FontWeight="Bold" Margin="0 0 0 10"/>
 
                         <TextBlock Text="Bike types" Margin=" 0 0 0 10"/>
@@ -40,13 +40,16 @@
                 <Grid Grid.Column="1">
                     <StackPanel>
                         
-                        <!-- Characteristics-->
+                        <!-- Selection Collumn-->
                         <TextBlock Text="Selection" FontWeight="Bold" Margin="0 0 0 10"/>
 
                         <TextBlock Text="Bike types" Margin="0 0 0 10" />
-
+                        
+                        
+                        <!-- Color picker -->
+                        
                         <Grid Name="MyGrid">
-                            <ComboBox Name="MyComboBox" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Width="230" Height="35">
+                            <ComboBox Name="MyComboBox" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Width="200" Height="25">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -55,17 +58,17 @@
                                                     <SolidColorBrush Color="{Binding colors}"></SolidColorBrush>
                                                 </Rectangle.Fill>
                                             </Rectangle>
-                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                         </Grid>
-
-
                     </StackPanel>
                 </Grid>
-
+                
+                <!-- Resume collumn-->
+                
                 <Grid Grid.Column="2">
                     <TextBlock Text="Resume" />
                 </Grid>

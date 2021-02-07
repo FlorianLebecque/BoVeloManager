@@ -42,7 +42,7 @@ namespace BoVeloManager.Commande
         void MyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             test test = (test)MyComboBox.SelectedItem;
-            MyGrid.Background = new SolidColorBrush(test.colors);
+            // MyGrid.Background = new SolidColorBrush(test.colors);
         }
     }
 }
