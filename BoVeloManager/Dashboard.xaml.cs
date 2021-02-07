@@ -19,14 +19,13 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
-        private Button selectedButton;
-        private Brushes defaultColor;
-
         public Dashboard() {
             InitializeComponent();
 
-            //sidebar.Background = SystemParameters.WindowGlassBrush;   
+                //status bar log
+            mi_user.Text = "Log as "+tools.user.getUserName(); 
         }
+
 
         /*
          * Function added to every button on the side bar
@@ -59,6 +58,12 @@ namespace BoVeloManager {
                     break;
                 case "Command":
                     frame.Content = new Commande.Commande();
+                    break;
+                case "Stock":
+                    frame.Content = new stock.stock();
+                    break;
+                case "Management":
+                    frame.Content = new Management.Management();
                     break;
             }
 
