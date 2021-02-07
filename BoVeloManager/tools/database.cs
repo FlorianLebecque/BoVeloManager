@@ -78,6 +78,10 @@ namespace BoVeloManager.tools {
             return "UPDATE `bv_user` SET `grade`= "+grade.ToString()+" WHERE `id` = " + id.ToString();
         }
 
+        public static string delUser(int id) {
+            return "DELETE FROM `bv_user` WHERE `id` = " + id.ToString();
+        }
+
     }
 
 
