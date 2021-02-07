@@ -55,6 +55,8 @@ namespace BoVeloManager.tools {
     }
 
     class DatabaseQuery {
+
+        // Management Querry
         public static string getUserPass(string user) {
             return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
@@ -76,6 +78,21 @@ namespace BoVeloManager.tools {
 
         public static string setUserGrade(int id,int grade) {
             return "UPDATE `bv_user` SET `grade`= "+grade.ToString()+" WHERE `id` = " + id.ToString();
+        }
+
+        // Sales Querry
+        public static string getSales()
+        {
+            return "SELECT `id`,`id_client`, `date` FROM `bv_sale`";
+        }
+        public static string getSales_by_id(int id)
+        {
+            return "SELECT `id`,`id_client`, `date` FROM `bv_sale` WHERE `id` = " + id.ToString();
+        }
+
+        public static string getClient_by_id(int id)
+        {
+            return "SELECT `id`,`first_name`,`last_name`,`enterprise_name`, `date` FROM `bv_client` WHERE `id` = " + id.ToString();
         }
 
     }
