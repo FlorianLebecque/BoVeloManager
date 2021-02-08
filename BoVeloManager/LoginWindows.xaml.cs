@@ -30,24 +30,12 @@ namespace BoVeloManager {
             string in_user = tb_userName.Text;
             string in_pass = tb_password.Password;
 
-                //compute a MD5 hash of the input password
-            string hash_pass = tools.md5.CreateMD5(in_pass);
-
-                //fist get the user password
-            string query = tools.DatabaseQuery.getUserPass(in_user);
-            DataTable dt = tools.Database.getData(query);
-
-                //check if we get any result
-            string pass = "";
-            if (dt.Rows.Count > 0) {
-                pass = (string)dt.Rows[0]["psw"];
-            }
 
             //check if password are equal
-            if ((pass.ToUpper() == hash_pass.ToUpper()) && (pass != "")) {
+            if (tools.user.checkUserPass(in_user,in_pass)) {
 
                     //know get the user data
-                query = tools.DatabaseQuery.getUserGrade(in_user);
+                string query = tools.DatabaseQuery.getUserGrade(in_user);
                 DataTable res = tools.Database.getData(query);
                 
                     //set the data into user class
