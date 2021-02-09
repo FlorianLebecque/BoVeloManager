@@ -99,5 +99,13 @@ namespace BoVeloManager.Management {
 
         }
 
+        private void bt_addClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void bt_editClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 }
