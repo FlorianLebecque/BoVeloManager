@@ -23,6 +23,7 @@ namespace BoVeloManager.Management {
             InitializeComponent();
 
             update_dg_userList();
+            update_dg_kitList();
         }
 
         /*
@@ -137,5 +138,55 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+
+        #region Kit
+
+        private void update_dg_kitList() {
+            //get the data from the db
+            string q = tools.DatabaseQuery.getKits();
+            DataTable dt = tools.Database.getData(q);
+
+
+            //convertion de la columns grade en poste
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "cat";
+            newCol.DataType = typeof(string);
+            dt.Columns.Add(newCol);
+            foreach (DataRow r in dt.Rows) {
+
+                int g = Convert.ToInt32(r["category"]);
+                switch (g) {
+                    case 0:
+                        r["cat"] = "Frame";
+                        break;
+                    case 1:
+                        r["cat"] = "Wheels";
+                        break;
+                    case 2:
+                        r["cat"] = "Brake";
+                        break;
+                    case 3:
+                        r["cat"] = "Saddle";
+                        break;
+                    case 4:
+                        r["cat"] = "Handlebar";
+                        break;
+                    case 5:
+                        r["cat"] = "Addons";
+                        break;
+                }
+
+            }
+            //we can now remove the old columns
+            dt.Columns.Remove(dt.Columns["category"]);
+
+            
+
+            //set the datatable as the items sources for the user datagrid
+            dg_tKitList.ItemsSource = dt.DefaultView;
+        }
+
+        #endregion
+
     }
 }
