@@ -46,6 +46,37 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Kits">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addTKit" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Edit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Content="Edit"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </Grid>
+            </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>

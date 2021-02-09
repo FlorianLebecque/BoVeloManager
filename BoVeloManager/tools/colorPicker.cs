@@ -8,7 +8,6 @@ using System.Drawing;
 
 namespace BoVeloManager.tools {
     class colorPicker {
-
         public static string getColor() {
             ColorDialog CD = new ColorDialog();
 
