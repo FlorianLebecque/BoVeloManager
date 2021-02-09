@@ -20,7 +20,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                     <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Client" Binding="{Binding Path='client'}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
                     <DataGridTemplateColumn Header="Details">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
