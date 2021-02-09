@@ -99,5 +99,26 @@ namespace BoVeloManager.Management {
 
         }
 
+
+
+        private void update_itemList()
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
+        }
+        private void bt_addItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
+
+        private void bt_editItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
+
+        private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
     }
 }
