@@ -57,13 +57,13 @@
                         <Button x:Name="bt_addClient" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Click="bt_addClient_Click">Add</Button>
                     </StackPanel>
 
-                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
                         <DataGrid.Columns>
                             <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="First Name" Binding="{Binding Path='first_name'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Last Name" Binding="{Binding Path='last_name'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Entreprise name" Binding="{Binding Path='entreprise_name'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Entreprise adress" Binding="{Binding Path='entreprise_adress'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise name" Binding="{Binding Path='enterprise_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise adress" Binding="{Binding Path='enterprise_adress'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />

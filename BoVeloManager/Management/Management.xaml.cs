@@ -23,6 +23,7 @@ namespace BoVeloManager.Management {
             InitializeComponent();
 
             update_dg_userList();
+            update_dg_clientList();
         }
 
         private void update_dg_userList() {
@@ -97,6 +98,13 @@ namespace BoVeloManager.Management {
                 update_dg_userList();
             }
 
+        }
+
+        private void update_dg_clientList()
+        {
+            string q = tools.DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(q);
+            dg_clientList.ItemsSource = dt.DefaultView;
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
