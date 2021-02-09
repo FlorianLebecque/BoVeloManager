@@ -92,11 +92,6 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_client`(`first_name`, `last_name`, `entreprise_name`, entreprise_adress`, `email`, `phone_num` , `date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "'," + date.ToString() + ")";
         }
 
-        public static string delClient(int id)
-        {
-            return "DELETE FROM `bv_client` WHERE `id` = " + id.ToString();
-        }
-
 
     }
 
