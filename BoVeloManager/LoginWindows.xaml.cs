@@ -35,11 +35,13 @@ namespace BoVeloManager {
             if (tools.user.checkUserPass(in_user,in_pass)) {
 
                     //know get the user data
-                string query = tools.DatabaseQuery.getUserGrade(in_user);
+                string query = tools.DatabaseQuery.getUserData_byName(in_user);
                 DataTable res = tools.Database.getData(query);
                 
                     //set the data into user class
                 tools.user.setGrade(Convert.ToInt32(res.Rows[0]["grade"]));
+                tools.user.setId(Convert.ToInt32(res.Rows[0]["id"]));
+               
                 tools.user.setUserName(in_user);
 
                     //hide the login windows

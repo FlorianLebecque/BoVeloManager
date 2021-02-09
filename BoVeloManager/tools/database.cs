@@ -59,8 +59,8 @@ namespace BoVeloManager.tools {
             return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
-        public static string getUserGrade(string user) {
-            return "SELECT `grade` FROM `bv_user` WHERE `user` = '" + user + "'";
+        public static string getUserData_byName(string user) {
+            return "SELECT `id`,`grade` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
         public static string getUsers() {
