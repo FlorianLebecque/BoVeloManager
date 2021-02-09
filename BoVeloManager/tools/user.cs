@@ -9,6 +9,7 @@ namespace BoVeloManager.tools {
     class user {
         static private string userName = "";
         static private int grade = 10;
+        static private int id = 0;
 
         public static string getUserName() {
             return userName;
