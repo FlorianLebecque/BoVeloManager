@@ -37,7 +37,11 @@ namespace BoVeloManager.Sales
         }
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
         {
-            
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int saleID = Convert.ToInt32(dataRowView["id"]);
+
+            description.Description DW = new description.Description(saleID);
+            DW.Show();
         }
     }
 }

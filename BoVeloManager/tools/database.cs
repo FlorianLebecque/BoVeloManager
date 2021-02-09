@@ -83,11 +83,11 @@ namespace BoVeloManager.tools {
         // Sales Querry
         public static string getSales()
         {
-            return "SELECT `id`,`id_client`, `date` FROM `bv_sale`";
+            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id ";
         }
-        public static string getSales_by_id(int id)
+        public static string getSale_by_id(int id)
         {
-            return "SELECT `id`,`id_client`, `date` FROM `bv_sale` WHERE `id` = " + id.ToString();
+            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_seller` AS SE ON S.id_seller = SE.id WHERE S.id = " + id.ToString();
         }
 
         public static string getClient_by_id(int id)
