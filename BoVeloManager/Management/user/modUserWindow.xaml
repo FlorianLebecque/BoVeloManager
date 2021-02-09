@@ -24,7 +24,7 @@
                     <TextBlock x:Name="tb_userName" Padding="2" Grid.Column="1" Text="USER_NAME"></TextBlock>
                 </Grid>
 
-                <CheckBox x:Name="ch_pass" Margin="5 5 5 0" Content="Update password"></CheckBox>
+                <CheckBox x:Name="ch_pass" Margin="5 5 5 0" Content="Update password" Click="ch_pass_Click"></CheckBox>
 
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
