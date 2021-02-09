@@ -46,6 +46,7 @@
 
                 </Grid>
             </TabItem>
+          
             <TabItem Header="Kits">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -77,6 +78,9 @@
 
                 </Grid>
             </TabItem>
+
+            
+      
             <TabItem Header="TabItem">
 
                 <Grid>
@@ -89,7 +93,7 @@
 
                      
 
-                        <ComboBox Margin="10,10,0,13" x:Name="selectType_ComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="30">
+                        <ComboBox Margin="10,10,0,13" x:Name="ComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="30">
                             <ComboBoxItem Content="Show All" IsSelected="True"/>
                             <ComboBoxItem Content="Type 1"/>
                             <ComboBoxItem Content="Type 2"/>
@@ -98,16 +102,14 @@
 
 
                         </ComboBox>
-                        
                         <Button x:Name="bt_addItem" Width="65" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_addItem_Click" Content="Add Item"/>
                     </StackPanel>
 
                     <DataGrid Name="dg_itemList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='itemId'}" IsReadOnly="True" />
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='idItem'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Item" Binding="{Binding Path='item'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Type" Binding="{Binding Path='itemType'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Stock" Binding="{Binding Path='itemStock'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Stock" Binding="{Binding Path='stockItem'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -127,8 +129,6 @@
 
 
                 </Grid>
-
-
                 <!--
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -154,6 +154,7 @@
                 </Grid>
                 -->
             </TabItem>
+
         </TabControl>
 
     </Grid>
