@@ -5,52 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
         mc:Ignorable="d"
-        Title="Description" Height="400" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
-    
+        Title="Sale Description" Height="425" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+
     <Border Padding="0 0 0 0">
 
         <DockPanel>
             <!-- Title -->
-            <TextBlock Margin="0 0 0 10" Text="Description" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            <TextBlock Margin="0 0 0 10" Text="Sale Description" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
             <!--Description -->
             <StackPanel DockPanel.Dock="Top">
+                <!-- Seller info -->
+                <Grid  Margin="5 0 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Seller :</Label>
+                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
+                </Grid>
 
+                <!-- Client info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label  Grid.Column="0" HorizontalAlignment="Center" >Seller :</Label>
-                    <TextBlock Name="seller" Padding="2" Grid.Column="1"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Client :</Label>
+                    <TextBlock Name="client" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
                 </Grid>
 
+                <!-- Date info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Center" >Client :</Label>
-                    <TextBlock Name="client" Padding="2" Grid.Column="1"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Date :</Label>
+                    <TextBlock Name="sale_date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-
+                
+                <!-- Enterprise info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Center" >Date :</Label>
-                    <TextBlock Name="date" Padding="2" Grid.Column="1"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Enterprise :</Label>
+                    <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-                <Border Margin="5" BorderThickness="1" Background="LightGray">
-                    <StackPanel Height="112">
-                        <Label Grid.Column="0"  HorizontalAlignment="Left" >1x Bike ... ...</Label>
-                    </StackPanel>
-                </Border>
+                
+                <ListBox Background="LightGray" HorizontalContentAlignment="Stretch" Margin="5" x:Name="bikesList" MaxHeight="206" Height="206">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0 5 0 5">
+                                <Grid Width="Auto"  HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
+                                    <TextBlock Text="{Binding number_name}" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding price}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
+                                </Grid>
+                                <TextBlock Text="{Binding kit}"  HorizontalAlignment="Left" TextAlignment="Left" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
+                <!-- Facture info -->
 
             </StackPanel>
+
+            <Grid  Margin="5 0 5 0" Height="30" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="0 0 0 10" Text="Total :" FontSize="15" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+                <TextBlock Name="total" Grid.Column="1" Margin="0 0 10 10" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+
+            </Grid>
+
         </DockPanel>
     </Border>
 </Window>
