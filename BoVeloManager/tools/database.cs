@@ -61,23 +61,35 @@ namespace BoVeloManager.tools {
             return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
-        public static string getUserGrade(string user) {
-            return "SELECT `grade` FROM `bv_user` WHERE `user` = '" + user + "'";
+        public static string getUserData_byName(string user) {
+            return "SELECT `id`,`grade` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
         public static string getUsers() {
             return "SELECT `id`,`user`, `grade` FROM `bv_user`";
         }
         public static string getUser_by_id(int id) {
-            return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = "+id.ToString();
+            return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
         }
 
-        public static string addUser(string name,string pass,int grade) {
-            return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('"+name+"','"+pass+"',"+grade.ToString()+")";
+        public static string addUser(string name, string pass, int grade) {
+            return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('" + name + "','" + pass + "'," + grade.ToString() + ")";
         }
 
-        public static string setUserGrade(int id,int grade) {
-            return "UPDATE `bv_user` SET `grade`= "+grade.ToString()+" WHERE `id` = " + id.ToString();
+        public static string setUserGrade(int id, int grade) {
+            return "UPDATE `bv_user` SET `grade`= " + grade.ToString() + " WHERE `id` = " + id.ToString();
+        }
+
+        public static string setUserPass(int id, string pass) {
+            return "UPDATE `bv_user` SET `psw`='" + pass + "'  WHERE `id` =" + id.ToString();
+        }
+
+        public static string delUser(int id) {
+            return "DELETE FROM `bv_user` WHERE `id` = " + id.ToString();
+        }
+
+        public static string getKits(){
+            return "SELECT * FROM `bv_type_kit`";
         }
 
         // Sales Querry
