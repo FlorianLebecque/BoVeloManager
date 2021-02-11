@@ -115,12 +115,19 @@
     <Compile Include="Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sales\description\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\sales.xaml.cs">
+      <DependentUpon>sales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="tools\colorPicker.cs" />
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
+    <Compile Include="tools\Sales.cs" />
     <Compile Include="tools\user.cs" />
     <Page Include="Catalogue\catalog.xaml">
       <SubType>Designer</SubType>
@@ -171,6 +178,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sales\description\Description.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="stock\stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +221,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
+=======
   <ItemGroup>
     <Folder Include="Management\kit\" />
   </ItemGroup>

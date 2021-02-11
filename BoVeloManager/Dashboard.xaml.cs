@@ -57,7 +57,7 @@ namespace BoVeloManager {
                     frame.Content = new Catalogue.Catalog();
                     break;
                 case "Command":
-                    frame.Content = new Commande.commande();
+                    frame.Content = new Commande.Commande();
                     break;
                 case "Stock":
                     frame.Content = new stock.stock();
@@ -65,6 +65,10 @@ namespace BoVeloManager {
                 case "Management":
                     frame.Content = new Management.Management();
                     break;
+                case "Sales":
+                    frame.Content = new Sales.Sales();
+                    break;
+
             }
 
 
