@@ -81,13 +81,31 @@ namespace BoVeloManager.tools {
         }
 
         // Sales Querry
+
+        //returns all sales from the shop
         public static string getSales()
         {
             return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id ";
         }
+        // Returns the sale_id the Client fullname the sale date
         public static string getSale_by_id(int id)
         {
-            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_seller` AS SE ON S.id_seller = SE.id WHERE S.id = " + id.ToString();
+            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`)  AS Client, C.enterprise_name, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id  WHERE S.id = " + id.ToString(); //INNER JOIN `bv_seller` AS SE ON S.id_seller = SE.id
+        }
+        //Returns all types of bikes from one sale
+        public static string gettBikes_by_sale(int id_sale)
+        {
+            return "SELECT id_tBike , qnt FROM `bv_sale_bike`  WHERE id_sale = " + id_sale.ToString();
+        }
+        // Returns id name price from a type of bike
+        public static string gettBike(int id_Bike)
+        {
+            return "SELECT id , name, price FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
+        }
+        // get all kit info
+        public static string gettKit(int id_tBike)
+        {
+            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
         }
 
         public static string getClient_by_id(int id)
