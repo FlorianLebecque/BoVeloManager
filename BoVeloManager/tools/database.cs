@@ -90,7 +90,36 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_type_kit`";
         }
 
+
+
+        public static string getItem()
+        {
+            return "SELECT * FROM `bv_catalog`";
+        }
+        public static string getItem_by_id(int id)
+        {
+            return "SELECT `id`,`name` FROM `bv_catalog` WHERE `id` = " + id.ToString();
+        }
+        public static string addItem(string name)
+        {
+            return "INSERT INTO `bv_catalog` (`name`) VALUES ('" + name + "')";
+        }
+
+        public static string setItemName(int id, string newName)
+        {
+            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' WHERE `id` = " + id.ToString();
+        }
+
+        public static string delItem(int id)
+        {
+            return "DELETE FROM `bv_catalog` WHERE `id` = " + id.ToString();
+        }
+
     }
+
+
+
+ 
 
 
 }

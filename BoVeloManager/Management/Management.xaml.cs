@@ -24,6 +24,7 @@ namespace BoVeloManager.Management {
 
             update_dg_userList();
             update_dg_kitList();
+            update_dg_itemList();
         }
 
         /*
@@ -68,11 +69,11 @@ namespace BoVeloManager.Management {
                 }
 
             }
-                //we can now remove the old columns
+            //we can now remove the old columns
             dt.Columns.Remove(dt.Columns["grade"]);
 
 
-                //set the datatable as the items sources for the user datagrid
+            //set the datatable as the items sources for the user datagrid
             dg_userList.ItemsSource = dt.DefaultView;
         }
 
@@ -111,7 +112,7 @@ namespace BoVeloManager.Management {
             update_dg_userList();
 
         }
-    
+
         /*
             Function trigger when the delete btn is click
                 - Get wich user we clicked for
@@ -120,8 +121,8 @@ namespace BoVeloManager.Management {
          */
         private void bt_delUser_Click(object sender, RoutedEventArgs e) {
 
-                //User delete test
-            if(MessageBox.Show("Are you sure ?", "User deletion",MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+            //User delete test
+            if (MessageBox.Show("Are you sure ?", "User deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int userID = Convert.ToInt32(dataRowView["id"]);
@@ -181,7 +182,7 @@ namespace BoVeloManager.Management {
             //we can now remove the old columns
             dt.Columns.Remove(dt.Columns["category"]);
 
-            
+
 
             //set the datatable as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
@@ -202,23 +203,60 @@ namespace BoVeloManager.Management {
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
-        }
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int itemID = Convert.ToInt32(dataRowView["id"]);
 
+            //open the dialog passing the user ID
+            item.modItemWindow MUW = new item.modItemWindow(itemID);
+            MUW.ShowDialog();
 
-        private void bt_addItem_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
-        }
+            //update the user datagrid
+            update_dg_userList();
 
-        private void bt_editItem_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
         }
+    
+
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
         }
 
+        private void bt_editKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
+
+
+        /*
+            Function witch loads the items into the TabItem datagrid
+                - get items data from database
+                
+                - put the users data into the datagrid
+         */
+        private void update_dg_itemList()
+        {
+            //get the data from the db
+            string q = tools.DatabaseQuery.getItem();
+            DataTable dt = tools.Database.getData(q);
+
+
+            //convertion de la columns grade en poste
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "Name";
+            newCol.DataType = typeof(string);
+
+            dt.Columns.Add(newCol);
+
+        
+
+            //set the datatable as the items sources for the user datagrid
+            dg_itemList.ItemsSource = dt.DefaultView;
+        }
+
+
     }
 }
+#endregion
+
