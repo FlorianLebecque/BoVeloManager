@@ -188,7 +188,15 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+        private void bt_addKit_Click(object sender, RoutedEventArgs e)
+        {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
 
+            //update the user datagrid
+            update_dg_kitList();
+        }
         private void update_itemList()
         {
             MessageBox.Show("BUILDING PROGRAM ...");
