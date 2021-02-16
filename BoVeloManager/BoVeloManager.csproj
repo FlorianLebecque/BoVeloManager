@@ -222,7 +222,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup />
-=======
   <ItemGroup>
     <Folder Include="Management\kit\" />
   </ItemGroup>
