@@ -55,7 +55,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addTKit" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
