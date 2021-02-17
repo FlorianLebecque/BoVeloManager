@@ -30,7 +30,7 @@ namespace BoVeloManager.Sales.description
             DataTable dt = tools.Database.getData(sale_data);
 
             // Description Infos 
-            seller.Text = (string)dt.Rows[0]["Client"];
+            seller.Text = (string)dt.Rows[0]["user"];
             client.Text = (string)dt.Rows[0]["Client"];
             enterprise.Text = (string)dt.Rows[0]["enterprise_name"];
             sale_date.Text = dt.Rows[0]["date"].ToString();

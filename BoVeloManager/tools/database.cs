@@ -102,7 +102,7 @@ namespace BoVeloManager.tools {
         // Returns the sale_id the Client fullname the sale date
         public static string getSale_by_id(int id)
         {
-            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`)  AS Client, C.enterprise_name, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id  WHERE S.id = " + id.ToString(); //INNER JOIN `bv_seller` AS SE ON S.id_seller = SE.id
+            return "SELECT S.id ,CONCAT(`first_name` , ' ', `last_name`)  AS Client, U.user , C.enterprise_name, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_user` AS U ON U.id = S.id_seller  WHERE S.id = " + id.ToString(); //INNER JOIN `bv_seller` AS SE ON S.id_seller = SE.id
         }
         //Returns all types of bikes from one sale
         public static string gettBikes_by_sale(int id_sale)
