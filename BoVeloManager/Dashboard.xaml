@@ -31,6 +31,9 @@
                         <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
                             <Button Tag="Management" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Managment</Button>
                         </Border>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
+                            <Button Tag="Sales" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Sales</Button>
+                        </Border>
                     </StackPanel>
                 </Grid>
             </Border>

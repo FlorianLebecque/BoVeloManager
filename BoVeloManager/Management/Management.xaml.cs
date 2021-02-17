@@ -188,17 +188,19 @@ namespace BoVeloManager.Management {
             dg_tKitList.ItemsSource = dt.DefaultView;
         }
 
+        #endregion
+        private void bt_addKit_Click(object sender, RoutedEventArgs e)
+        {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
 
-
+            //update the user datagrid
+            update_dg_kitList();
+        }
         private void update_itemList()
         {
             MessageBox.Show("BUILDING PROGRAM ...");
-
-        }
-        private void bt_addItem_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
-        }
 
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
@@ -219,6 +221,7 @@ namespace BoVeloManager.Management {
 
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
         }

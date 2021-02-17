@@ -106,8 +106,8 @@
     <Compile Include="Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\item\modItemWindow.xaml.cs">
-      <DependentUpon>modItemWindow.xaml</DependentUpon>
+    <Compile Include="Management\kit\AddKitWindow.xaml.cs">
+      <DependentUpon>AddKitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Management\user\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
@@ -118,12 +118,19 @@
     <Compile Include="Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sales\description\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\sales.xaml.cs">
+      <DependentUpon>sales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="tools\colorPicker.cs" />
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
+    <Compile Include="tools\Sales.cs" />
     <Compile Include="tools\user.cs" />
     <Page Include="Catalogue\catalog.xaml">
       <SubType>Designer</SubType>
@@ -162,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\item\modItemWindow.xaml">
+    <Page Include="Management\kit\AddKitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +182,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\user\modUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\description\Description.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\sales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,8 +228,10 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Management\kit\" />
+    <Content Include="sql2_freemysqlhosting_net.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
