@@ -57,6 +57,7 @@ namespace BoVeloManager.tools {
     class DatabaseQuery {
 
         // Management Querry
+        #region Users
         public static string getUserPass(string user) {
             return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
@@ -87,13 +88,11 @@ namespace BoVeloManager.tools {
         public static string delUser(int id) {
             return "DELETE FROM `bv_user` WHERE `id` = " + id.ToString();
         }
+        #endregion
 
-        public static string getKits(){
-            return "SELECT * FROM `bv_type_kit`";
-        }
+        
 
-
-
+        #region Item
         public static string getItem()
         {
             return "SELECT * FROM `bv_catalog`";
@@ -116,12 +115,12 @@ namespace BoVeloManager.tools {
         {
             return "DELETE FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-
-    }
-
+        #endregion
 
 
- 
+
+
+
         // Sales Querry
 
         //returns all sales from the shop
@@ -149,6 +148,11 @@ namespace BoVeloManager.tools {
         {
             return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
         }
+        public static string getKits()
+        {
+            return "SELECT * FROM `bv_type_kit`";
+        }
+
 
         public static string getClient_by_id(int id)
         {
