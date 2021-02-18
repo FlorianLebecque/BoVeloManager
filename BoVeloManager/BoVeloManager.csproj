@@ -121,7 +121,7 @@
     <Compile Include="Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\addSales.xaml.cs">
+    <Compile Include="Sales\addSale\addSales.xaml.cs">
       <DependentUpon>addSales.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sales\description\Description.xaml.cs">
@@ -195,7 +195,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\addSales.xaml">
+    <Page Include="Sales\addSale\addSales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,9 +242,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sales\addSale\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <ItemGroup>
     <Content Include="sql2_freemysqlhosting_net.sql" />

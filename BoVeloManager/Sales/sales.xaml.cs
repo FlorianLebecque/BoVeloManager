@@ -46,7 +46,8 @@ namespace BoVeloManager.Sales
 
         private void bt_addSale_Click(object sender, RoutedEventArgs e)
         {
-
+            addSales AS = new addSales();
+            AS.ShowDialog();
         }
     }
 }
