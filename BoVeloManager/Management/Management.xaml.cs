@@ -23,8 +23,12 @@ namespace BoVeloManager.Management {
             InitializeComponent();
 
             update_dg_userList();
+
             update_dg_kitList();
             update_dg_itemList();
+
+            update_dg_clientList();
+
         }
 
         /*
@@ -137,6 +141,7 @@ namespace BoVeloManager.Management {
             }
 
         }
+
 
 
         #endregion
@@ -281,6 +286,22 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+
+        private void update_dg_clientList()
+        {
+            string q = tools.DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(q);
+            dg_clientList.ItemsSource = dt.DefaultView;
+        }
+
+        private void bt_addClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void bt_editClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 }
 //#endregion
