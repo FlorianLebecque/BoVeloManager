@@ -43,5 +43,10 @@ namespace BoVeloManager.Sales
             description.Description DW = new description.Description(saleID);
             DW.Show();
         }
+
+        private void bt_addSale_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
