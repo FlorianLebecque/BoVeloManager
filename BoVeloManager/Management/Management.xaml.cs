@@ -148,7 +148,7 @@ namespace BoVeloManager.Management {
             kit.AddKitWindow AKW = new kit.AddKitWindow();
             AKW.ShowDialog();
 
-            //update the user datagrid
+            //update the kits datagrid
             update_dg_kitList();
         }
         private void bt_editKit_Click(object sender, RoutedEventArgs e)
@@ -213,14 +213,32 @@ namespace BoVeloManager.Management {
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
             int itemID = Convert.ToInt32(dataRowView["id"]);
 
-            //open the dialog passing the user ID
+            //open the dialog passing the item ID
             item.modItemWindow MUW = new item.modItemWindow(itemID);
             MUW.ShowDialog();
 
-            //update the user datagrid
-            update_dg_userList();
+            //update the item datagrid
+            update_dg_itemList();
 
         }
+
+        private void bt_showKits_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int itemID = Convert.ToInt32(dataRowView["id"]);
+
+            //open the dialog passing the item ID
+            item.showAssociatedKitsWithItemWindow SAKWIW = new item.showAssociatedKitsWithItemWindow(itemID);
+            SAKWIW.ShowDialog();
+
+
+            //update the item datagrid
+            update_dg_itemList();
+        }
+
 
 
 
@@ -251,7 +269,7 @@ namespace BoVeloManager.Management {
             update_dg_itemList();
             MessageBox.Show("BUILDING PROGRAM ...");
         }
-
+        
         
 
         /*
@@ -279,6 +297,10 @@ namespace BoVeloManager.Management {
             //set the datatable as the items sources for the user datagrid
             dg_itemList.ItemsSource = dt.DefaultView;
         }
+
+        
+
+        
 
         #endregion
     }

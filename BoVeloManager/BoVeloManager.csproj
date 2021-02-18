@@ -109,6 +109,9 @@
     <Compile Include="Management\item\modItemWindow.xaml.cs">
       <DependentUpon>modItemWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\item\showAssociatedKitsWithItemWindow.xaml.cs">
+      <DependentUpon>showAssociatedKitsWithItemWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\kit\AddKitWindow.xaml.cs">
       <DependentUpon>AddKitWindow.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
     <Page Include="Management\item\modItemWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Management\item\showAssociatedKitsWithItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Management\kit\AddKitWindow.xaml">
       <SubType>Designer</SubType>

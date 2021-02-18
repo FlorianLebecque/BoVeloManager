@@ -118,6 +118,19 @@ namespace BoVeloManager.tools {
         #endregion
 
 
+        #region associatedKits
+        public static string getKit_by_category(int cat)
+        {
+            return "SELECT `id`,`name` FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
+        }
+
+        //VOIR INNER JOIN POUR AFFICHER LES KITS
+        //https://sql.sh/cours/jointures/inner-join
+
+        #endregion
+
+
+
 
 
 

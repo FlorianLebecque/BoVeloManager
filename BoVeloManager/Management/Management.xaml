@@ -46,7 +46,7 @@
 
                 </Grid>
             </TabItem>
-          
+
             <TabItem Header="Kits">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -71,7 +71,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            
+
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -79,19 +79,23 @@
                 </Grid>
             </TabItem>
 
-            
-      
+
+
             <TabItem Header="TabItem">
 
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="362*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,0,0.334,0">
 
-                     
+
 
                         <ComboBox Margin="10,10,0,13" x:Name="ComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="30">
                             <ComboBoxItem Content="Show All" IsSelected="True"/>
@@ -105,17 +109,25 @@
                         <Button x:Name="bt_addItem" Width="65" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_addItem_Click" Content="Add Item"/>
                     </StackPanel>
 
-                    <DataGrid Name="dg_itemList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid Name="dg_itemList" Margin="0,0,0.334,0.333" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
-                            
-                   
-                            
+
+
+                            <DataGridTemplateColumn Header="Show">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnShowKits" Margin="1" Click="bt_showKits_Click" Content="Show kits"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" Click="bt_editItem_Click" Content="(Edit)"  />
+                                        <Button Name="btnView" Margin="1" Click="bt_editItem_Click" Content="Edit"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
