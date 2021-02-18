@@ -11,25 +11,37 @@
 
     <Border Padding="10">
         <StackPanel>
+            <Grid Height="429">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <!-- Title -->
-            <TextBlock Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
+                <!-- Title -->
+                <TextBlock Grid.Row="0" Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
 
-            <!-- Data Grid Sales  -->
-            <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
-                <DataGrid.Columns>
-                    <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
-                    <DataGridTemplateColumn Header="Details">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                <!-- Button -->
+                <StackPanel  Grid.Row="1" Orientation="Horizontal">
+                    <Button x:Name="bt_addUser" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Content="Add" Click="bt_addSale_Click"/>
+                </StackPanel>
+
+                <!-- Data Grid Sales  -->
+                <DataGrid x:Name="dg_salesList" Margin="0,0,0,0" Grid.Row="2" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding id}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Date" Binding="{Binding date}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Client" Binding="{Binding Client}" IsReadOnly="True" />
+                        <DataGridTemplateColumn Header="Details">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </StackPanel>
     </Border>
 </Page>
