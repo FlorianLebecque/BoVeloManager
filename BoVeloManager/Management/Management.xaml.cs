@@ -223,8 +223,6 @@ namespace BoVeloManager.Management {
             update_dg_userList();
 
         }
-    
-
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e) {
 

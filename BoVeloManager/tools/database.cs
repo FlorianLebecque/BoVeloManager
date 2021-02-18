@@ -11,7 +11,6 @@ namespace BoVeloManager.tools {
 
         private static MySqlConnection MSCon;
 
-
         public static DataTable getData(string query) {
 
             if((MSCon == null)||(MSCon.State == ConnectionState.Closed)||(MSCon.State == ConnectionState.Broken)) {
@@ -91,8 +90,6 @@ namespace BoVeloManager.tools {
         public static string getKits(){
             return "SELECT * FROM `bv_type_kit`";
         }
-
-
 
         public static string getItem()
         {
