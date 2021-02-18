@@ -226,7 +226,9 @@ namespace BoVeloManager.Management {
     
 
 
-        private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        private void bt_delItem_Click(object sender, RoutedEventArgs e) {
+
+        }
         private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");

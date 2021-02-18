@@ -116,11 +116,6 @@ namespace BoVeloManager.tools {
         {
             return "DELETE FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-
-    }
-
-
-
  
         // Sales Querry
 
