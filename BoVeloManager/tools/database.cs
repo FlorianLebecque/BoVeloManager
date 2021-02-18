@@ -97,7 +97,7 @@ namespace BoVeloManager.tools {
         //returns all sales from the shop
         public static string getSales()
         {
-            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id ";
+            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_user` AS U ON S.id_seller = U.id";
         }
         // Returns the sale_id the Client fullname the sale date
         public static string getSale_by_id(int id)
@@ -123,6 +123,13 @@ namespace BoVeloManager.tools {
         public static string getClient_by_id(int id)
         {
             return "SELECT `id`,`first_name`,`last_name`,`enterprise_name`, `date` FROM `bv_client` WHERE `id` = " + id.ToString();
+        }
+
+        // Add kit Querry
+
+        public static string addKit(string name, string prop, string cat)
+        {
+            return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
         }
 
     }
