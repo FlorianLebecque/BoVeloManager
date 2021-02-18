@@ -282,7 +282,7 @@ namespace BoVeloManager.Management {
         
 
             //set the datatable as the items sources for the user datagrid
-            dg_itemList.ItemsSource = dt.DefaultView;
+            //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
         #endregion
@@ -291,7 +291,7 @@ namespace BoVeloManager.Management {
         {
             string q = tools.DatabaseQuery.getClients();
             DataTable dt = tools.Database.getData(q);
-            dg_clientList.ItemsSource = dt.DefaultView;
+           //g_clientList.ItemsSource = dt.DefaultView;
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)

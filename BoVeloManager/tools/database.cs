@@ -154,11 +154,6 @@ namespace BoVeloManager.tools {
         }
 
 
-        public static string getClient_by_id(int id)
-        {
-            return "SELECT `id`,`first_name`,`last_name`,`enterprise_name`, `date` FROM `bv_client` WHERE `id` = " + id.ToString();
-        }
-
         // Add kit Querry
 
         public static string addKit(string name, string prop, string cat)
