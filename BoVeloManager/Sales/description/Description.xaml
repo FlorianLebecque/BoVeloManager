@@ -18,12 +18,13 @@
                 <!-- Seller info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                        
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="54*"/>
+
                     </Grid.ColumnDefinitions>
-                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Seller :</Label>
-                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
+                    <Label  Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,0.2,-0.4" >Seller :</Label>
+                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="111,5,0,4.6"/>
                 </Grid>
 
                 <!-- Client info -->
@@ -45,7 +46,7 @@
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Date :</Label>
                     <TextBlock Name="sale_date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-                
+
                 <!-- Enterprise info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
@@ -55,7 +56,7 @@
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Enterprise :</Label>
                     <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-                
+
                 <ListBox Background="LightGray" HorizontalContentAlignment="Stretch" Margin="5" x:Name="bikesList" MaxHeight="206" Height="206">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

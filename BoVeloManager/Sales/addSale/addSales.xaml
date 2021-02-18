@@ -5,37 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales"
         mc:Ignorable="d"
-        Title="Add sale" Height="400" Width="400" ResizeMode="NoResize">
+        Title="Add sale" Height="400" Width="600" ResizeMode="NoResize">
     <Grid>
-        <Button Content="Add new sale" HorizontalAlignment="Left" Margin="282,326,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="-0.501,0.516"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="190,326,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="Frame :" HorizontalAlignment="Left" Margin="17,60,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Wheels :" HorizontalAlignment="Left" Margin="17,91,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Brakes :" HorizontalAlignment="Left" Margin="17,122,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Saddle  :" HorizontalAlignment="Left" Margin="17,153,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Handlebar :" HorizontalAlignment="Left" Margin="17,184,0,0" VerticalAlignment="Top" Width="82"/>
-        <ComboBox HorizontalAlignment="Left" Margin="104,63,0,0" VerticalAlignment="Top" Width="120" x:Name="frame">
-            <ComboBoxItem >cadre 1</ComboBoxItem>
-            <ComboBoxItem >cadre 2</ComboBoxItem>
-            <ComboBoxItem >cadre 3</ComboBoxItem>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="104,94,0,0" VerticalAlignment="Top" Width="120" x:Name="wheels">
-            <ComboBoxItem >26 ''</ComboBoxItem>
-            <ComboBoxItem >28 ''</ComboBoxItem>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="104,125,0,0" VerticalAlignment="Top" Width="120" x:Name="brakes">
-            <ComboBoxItem >Freins à jantes</ComboBoxItem>
-            <ComboBoxItem >Freins à disque</ComboBoxItem>
-            <ComboBoxItem >Rétropédalage</ComboBoxItem>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="104,156,0,0" VerticalAlignment="Top" Width="120" x:Name="saddle">
-            <ComboBoxItem >Cuir</ComboBoxItem>
-            <ComboBoxItem >Tissu</ComboBoxItem>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="104,187,0,0" VerticalAlignment="Top" Width="120" x:Name="handlebar">
-            <ComboBoxItem >Carbone</ComboBoxItem>
-            <ComboBoxItem >Métal</ComboBoxItem>
-        </ComboBox>
-        <Label Content="New Sale" HorizontalAlignment="Left" Margin="160,10,0,0" VerticalAlignment="Top" Width="64" FontWeight="Bold" RenderTransformOrigin="0.116,0.523"/>
+
+        <DockPanel>
+            <!-- Title -->           
+            <TextBlock Margin="0 0 0 10" Text="New Sale" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            
+            <!-- Sale --> 
+            <StackPanel>
+                <Grid>
+                    
+                </Grid>
+                
+            </StackPanel>
+            
+            <!-- Button -->
+            <Grid Margin="5 0 5 0" Height="30" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <Button Content="Add new sale" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top" Width="92" />
+                <Button Content="Cancel" HorizontalAlignment="Left" Margin="190,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
