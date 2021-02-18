@@ -147,21 +147,6 @@ namespace BoVeloManager.Management {
         #endregion
 
         #region Kit
-        private void bt_addKit_Click(object sender, RoutedEventArgs e)
-        {
-            //open the dialog
-            kit.AddKitWindow AKW = new kit.AddKitWindow();
-            AKW.ShowDialog();
-
-            //update the user datagrid
-            update_dg_kitList();
-        }
-        private void bt_editKit_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
-        }
-
-
 
         private void update_dg_kitList() {
             //get the data from the db
@@ -209,8 +194,19 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+        private void bt_addKit_Click(object sender, RoutedEventArgs e)
+        {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
 
-        #region Item
+            //update the user datagrid
+            update_dg_kitList();
+        }
+        private void update_itemList()
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
@@ -226,38 +222,20 @@ namespace BoVeloManager.Management {
             update_dg_userList();
 
         }
-
+    
 
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e)
-        {
-            //Item delete test
-            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                //retrieve the row we click
-                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-                int itemID = Convert.ToInt32(dataRowView["id"]);
-
-                //create and send the request to the db
-                string q = tools.DatabaseQuery.delItem(itemID);
-                tools.Database.setData(q);
-
-                //Update the list
-                MessageBox.Show("Item deleted");
-                update_dg_itemList();
-            }
-
-        }
         private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
-            item.AddItemWindow AIW = new item.AddItemWindow();
-            AIW.ShowDialog();
-
-            update_dg_itemList();
             MessageBox.Show("BUILDING PROGRAM ...");
         }
 
-        
+        private void bt_editKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
+
 
         /*
             Function witch loads the items into the TabItem datagrid
@@ -285,24 +263,8 @@ namespace BoVeloManager.Management {
             //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
-        #endregion
-
-        private void update_dg_clientList()
-        {
-            string q = tools.DatabaseQuery.getClients();
-            DataTable dt = tools.Database.getData(q);
-           //g_clientList.ItemsSource = dt.DefaultView;
-        }
-
-        private void bt_addClient_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void bt_editClient_Click(object sender, RoutedEventArgs e)
-        {
-        }
 
     }
 }
-//#endregion
+#endregion
 
