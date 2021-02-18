@@ -242,7 +242,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Sales\addSale\" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="sql2_freemysqlhosting_net.sql" />
