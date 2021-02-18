@@ -57,6 +57,7 @@ namespace BoVeloManager.tools {
     class DatabaseQuery {
 
         // Management Querry
+        #region Users
         public static string getUserPass(string user) {
             return "SELECT `psw` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
@@ -87,10 +88,38 @@ namespace BoVeloManager.tools {
         public static string delUser(int id) {
             return "DELETE FROM `bv_user` WHERE `id` = " + id.ToString();
         }
+        #endregion
 
-        public static string getKits(){
-            return "SELECT * FROM `bv_type_kit`";
+        
+
+        #region Item
+        public static string getItem()
+        {
+            return "SELECT * FROM `bv_catalog`";
         }
+        public static string getItem_by_id(int id)
+        {
+            return "SELECT `id`,`name` FROM `bv_catalog` WHERE `id` = " + id.ToString();
+        }
+        public static string addItem(string name)
+        {
+            return "INSERT INTO `bv_catalog` (`name`) VALUES ('" + name + "')";
+        }
+
+        public static string setItemName(int id, string newName)
+        {
+            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' WHERE `id` = " + id.ToString();
+        }
+
+        public static string delItem(int id)
+        {
+            return "DELETE FROM `bv_catalog` WHERE `id` = " + id.ToString();
+        }
+        #endregion
+
+
+
+
 
         // Sales Querry
 
@@ -119,6 +148,11 @@ namespace BoVeloManager.tools {
         {
             return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
         }
+        public static string getKits()
+        {
+            return "SELECT * FROM `bv_type_kit`";
+        }
+
 
         public static string getClient_by_id(int id)
         {
@@ -131,6 +165,22 @@ namespace BoVeloManager.tools {
         {
             return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
         }
+
+        public static string getClients()
+        {
+            return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client`";
+        }
+
+        public static string getClient_by_id(int id)
+        {
+            return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client` WHERE `id` = " + id.ToString();
+        }
+
+        public static string addClient(char first_name, char last_name, char entreprise_name, char entreprise_adress, char email, string phone_num, DateTime date)
+        {
+            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, enterprise_adress`, `email`, `phone_num` , `date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "'," + date.ToString() + ")";
+        }
+
 
     }
 

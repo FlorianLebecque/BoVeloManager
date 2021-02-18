@@ -48,6 +48,7 @@
             </TabItem>
           
             <TabItem Header="Kits">
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
@@ -55,6 +56,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
+
                         <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
                     </StackPanel>
 
@@ -67,21 +69,45 @@
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" Content="Edit"  />
+                                        <Button Name="btnView" Margin="1" Click="bt_editKit_Click" Content="Edit"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             
+
+                        <Button x:Name="bt_addClient" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Click="bt_addClient_Click">Add</Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path='first_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path='last_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise name" Binding="{Binding Path='enterprise_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise adress" Binding="{Binding Path='enterprise_adress'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Edit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editClient_Click" Content="Edit"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
 
 
                 </Grid>
+
+             
             </TabItem>
 
             
       
-            <TabItem Header="TabItem">
+            <TabItem Header="Client" Height="22" VerticalAlignment="Bottom">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -107,13 +133,15 @@
 
                     <DataGrid Name="dg_itemList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='idItem'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Item" Binding="{Binding Path='item'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Stock" Binding="{Binding Path='stockItem'}" IsReadOnly="True" />
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            
+                   
+                            
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" Click="bt_editItem_Click" Content="Edit"  />
+                                        <Button Name="btnView" Margin="1" Click="bt_editItem_Click" Content="(Edit)"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -153,6 +181,7 @@
                     <Button Content="Add" HorizontalAlignment="Left" Margin="5,25,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.227,-0.45" Background="{x:Null}" Grid.Column="1"/>
                 </Grid>
                 -->
+
             </TabItem>
 
         </TabControl>

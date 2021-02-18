@@ -23,7 +23,12 @@ namespace BoVeloManager.Management {
             InitializeComponent();
 
             update_dg_userList();
+
             update_dg_kitList();
+            update_dg_itemList();
+
+            update_dg_clientList();
+
         }
 
         /*
@@ -68,11 +73,11 @@ namespace BoVeloManager.Management {
                 }
 
             }
-                //we can now remove the old columns
+            //we can now remove the old columns
             dt.Columns.Remove(dt.Columns["grade"]);
 
 
-                //set the datatable as the items sources for the user datagrid
+            //set the datatable as the items sources for the user datagrid
             dg_userList.ItemsSource = dt.DefaultView;
         }
 
@@ -111,7 +116,7 @@ namespace BoVeloManager.Management {
             update_dg_userList();
 
         }
-    
+
         /*
             Function trigger when the delete btn is click
                 - Get wich user we clicked for
@@ -120,8 +125,8 @@ namespace BoVeloManager.Management {
          */
         private void bt_delUser_Click(object sender, RoutedEventArgs e) {
 
-                //User delete test
-            if(MessageBox.Show("Are you sure ?", "User deletion",MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+            //User delete test
+            if (MessageBox.Show("Are you sure ?", "User deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int userID = Convert.ToInt32(dataRowView["id"]);
@@ -138,9 +143,25 @@ namespace BoVeloManager.Management {
         }
 
 
+
         #endregion
 
         #region Kit
+        private void bt_addKit_Click(object sender, RoutedEventArgs e)
+        {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
+
+            //update the user datagrid
+            update_dg_kitList();
+        }
+        private void bt_editKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
+
+
 
         private void update_dg_kitList() {
             //get the data from the db
@@ -181,41 +202,107 @@ namespace BoVeloManager.Management {
             //we can now remove the old columns
             dt.Columns.Remove(dt.Columns["category"]);
 
-            
+
 
             //set the datatable as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
         }
 
         #endregion
-        private void bt_addKit_Click(object sender, RoutedEventArgs e)
-        {
-            //open the dialog
-            kit.AddKitWindow AKW = new kit.AddKitWindow();
-            AKW.ShowDialog();
 
-            //update the user datagrid
-            update_dg_kitList();
-        }
-        private void update_itemList()
+        #region Item
+        private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int itemID = Convert.ToInt32(dataRowView["id"]);
+
+            //open the dialog passing the user ID
+            item.modItemWindow MUW = new item.modItemWindow(itemID);
+            MUW.ShowDialog();
+
+            //update the user datagrid
+            update_dg_userList();
+
+        }
+
+
+
+        private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        {
+            //Item delete test
+            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //retrieve the row we click
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int itemID = Convert.ToInt32(dataRowView["id"]);
+
+                //create and send the request to the db
+                string q = tools.DatabaseQuery.delItem(itemID);
+                tools.Database.setData(q);
+
+                //Update the list
+                MessageBox.Show("Item deleted");
+                update_dg_itemList();
+            }
 
         }
         private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
+            item.AddItemWindow AIW = new item.AddItemWindow();
+            AIW.ShowDialog();
+
+            update_dg_itemList();
             MessageBox.Show("BUILDING PROGRAM ...");
         }
 
-        private void bt_editItem_Click(object sender, RoutedEventArgs e)
+        
+
+        /*
+            Function witch loads the items into the TabItem datagrid
+                - get items data from database
+                
+                - put the users data into the datagrid
+         */
+        private void update_dg_itemList()
         {
-            MessageBox.Show("BUILDING PROGRAM ...");
+            //get the data from the db
+            string q = tools.DatabaseQuery.getItem();
+            DataTable dt = tools.Database.getData(q);
+
+
+            //convertion de la columns grade en poste
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "Name";
+            newCol.DataType = typeof(string);
+
+            dt.Columns.Add(newCol);
+
+        
+
+            //set the datatable as the items sources for the user datagrid
+            dg_itemList.ItemsSource = dt.DefaultView;
         }
 
-        private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        #endregion
+
+        private void update_dg_clientList()
         {
-            MessageBox.Show("BUILDING PROGRAM ...");
+            string q = tools.DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(q);
+            dg_clientList.ItemsSource = dt.DefaultView;
+        }
+
+        private void bt_addClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void bt_editClient_Click(object sender, RoutedEventArgs e)
+        {
         }
 
     }
 }
+//#endregion
+
