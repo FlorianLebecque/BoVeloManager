@@ -27,7 +27,7 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
             update_dg_itemList();
 
-            update_dg_clientList();
+            //update_dg_clientList();
 
         }
 
@@ -192,10 +192,7 @@ namespace BoVeloManager.Management {
             //set the datatable as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
         }
-
-        #endregion
-        private void bt_addKit_Click(object sender, RoutedEventArgs e)
-        {
+        private void bt_addKit_Click(object sender, RoutedEventArgs e) {
             //open the dialog
             kit.AddKitWindow AKW = new kit.AddKitWindow();
             AKW.ShowDialog();
@@ -203,10 +200,14 @@ namespace BoVeloManager.Management {
             //update the user datagrid
             update_dg_kitList();
         }
-        private void update_itemList()
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
 
+#endregion
+
+        #region Items
+
+        private void update_itemList() {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
@@ -263,8 +264,8 @@ namespace BoVeloManager.Management {
             //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
-
+        #endregion
     }
 }
-#endregion
+        
 
