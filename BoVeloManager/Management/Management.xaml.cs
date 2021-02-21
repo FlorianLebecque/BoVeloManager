@@ -403,6 +403,10 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+
+        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            update_dg_kitList();
+        }
     }
 }
 

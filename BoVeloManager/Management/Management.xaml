@@ -69,7 +69,7 @@
                         </ComboBox>
                         -->
 
-                        <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28">
+                        <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28" SelectionChanged="cb_type3_SelectionChanged">
 
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
