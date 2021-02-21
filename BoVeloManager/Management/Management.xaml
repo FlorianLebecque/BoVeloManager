@@ -55,19 +55,33 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Label Grid.Column="0" Margin="0,10,0,0">Kit category:</Label>
-                        <TextBlock x:Name="tb_kitCategory" Padding="2" Grid.Column="1" Text="KIT_Catergory" Margin="0,12,0,0"></TextBlock>
-                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
-                        <ComboBox Margin="10,10,0,13" x:Name="cb_type2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="30">
+                        <Label Grid.Column="0" Margin="0,10,0,0">Select compatible item :</Label>
+
+                        <!--
+                        <ComboBox Margin="10,10,0,0" x:Name="cb_type2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28">
                             <ComboBoxItem Content="Show All" IsSelected="True"/>
                             <ComboBoxItem Content="Type 1"/>
                             <ComboBoxItem Content="Type 2"/>
                             <ComboBoxItem Content="Type 3"/>
                             <ComboBoxItem Content="Type 4"/>
-
+                        
 
                         </ComboBox>
-                        <Button x:Name="bt_Refresh" Width="105" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_Refresh_Click" Content="Refresh"/>
+                        -->
+
+                        <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28">
+
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="10 0 0 0" Text="{Binding Path=name}" ></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        
+
+                        <Button x:Name="bt_Refresh" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_Refresh_Click" Content="Refresh"/>
+                        <Label Grid.Column="0" Margin="0,10,0,0" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left"></Label>
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12">Add new kit</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">

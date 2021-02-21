@@ -69,6 +69,10 @@ namespace BoVeloManager.tools {
         public static string getUsers() {
             return "SELECT `id`,`user`, `grade` FROM `bv_user`";
         }
+        public static string getUserGrade_by_id(int id)
+        {
+            return "SELECT `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
+        }
         public static string getUser_by_id(int id) {
             return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
         }
@@ -123,6 +127,14 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
         }
+        public static string getKit_by_item(int itemID)
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `type_cat` = " + itemID.ToString();
+
+        }
+
+
+
         public static string getKit_by_id(int id)
         {
             return "SELECT `id`,`name`,`properties`,`category` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
@@ -166,37 +178,7 @@ namespace BoVeloManager.tools {
         #endregion
 
 
-        #region associatedKits
-        public static string getAssociatedKit_by_category(int cat)
-        {
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
-        }
-
-        public static string getAssociatedKit_by_id(int id)
-        {
-            return "SELECT `id`,`name`,`properties` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
-        }
-
-
-        public static string delAssociatedKit(int id)
-        {
-            return "DELETE FROM `bv_type_kit` WHERE `id` = " + id.ToString();
-        }
-
-        public static string setAssociatedKitName(int id, string name)
-        {
-            return "UPDATE `bv_type_kit` SET `name` = '" + name + "' WHERE `id` = " + id.ToString();
-        }
-
-        public static string setAssociatedKitProperties(int id, string newProperties)
-        {
-            return "UPDATE `bv_type_kit` SET `properties` = '" + newProperties + "' WHERE `id` = " + id.ToString();
-        }
-
-        //VOIR INNER JOIN POUR AFFICHER LES KITS
-        //https://sql.sh/cours/jointures/inner-join
-
-        #endregion
+        
 
 
 
