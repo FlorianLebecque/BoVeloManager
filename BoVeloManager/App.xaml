@@ -4,17 +4,13 @@
              xmlns:local="clr-namespace:BoVeloManager"
              StartupUri="LoginWindows.xaml">
     <Application.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#FF444444"></Setter>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Foreground" Value="#FF444444"></Setter>
-        </Style>
-
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="#FF444444"></Setter>
-        </Style>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.BlueGrey.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Orange.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

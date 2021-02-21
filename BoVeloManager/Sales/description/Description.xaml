@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
         mc:Ignorable="d"
-        Title="Sale Description" Height="425" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Sale Description" Height="425" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 

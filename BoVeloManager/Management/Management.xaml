@@ -18,7 +18,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addUser" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Click="bt_addUser_Click">Add</Button>
+                        <Button x:Name="bt_addUser" Width="72" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_addUser_Click">Add</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
@@ -56,7 +56,7 @@
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
 
-                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="72" Height="25" HorizontalAlignment="Left" Margin="5,12">Add</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
@@ -76,9 +76,9 @@
                     </DataGrid>
                 </Grid>
 
-        
 
-           
+
+
                 <!--
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
