@@ -12,29 +12,32 @@ namespace BoVeloManager.tools {
         private static MySqlConnection MSCon;
 
         public static DataTable getData(string query) {
-
-            if((MSCon == null)||(MSCon.State == ConnectionState.Closed)||(MSCon.State == ConnectionState.Broken)) {
-                connectToDB();
-            }
+            checkConnection();
 
             DataTable dt = new DataTable();
 
             MySqlCommand cmd = MSCon.CreateCommand();
             cmd.CommandText = query;
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-            da.Fill(dt);
+            MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
+            DataRow.Fill(dt);
 
             return dt;
         }
 
         public static int setData(string query) {
+            checkConnection();
 
             MySqlCommand cmd = MSCon.CreateCommand();
             cmd.CommandText = query;
 
             return cmd.ExecuteNonQuery();
+        }
+
+        private static void checkConnection() {
+            if ((MSCon == null) || (MSCon.State == ConnectionState.Closed) || (MSCon.State == ConnectionState.Broken)) {
+                connectToDB();
+            }
         }
 
         private static void connectToDB() {
@@ -48,7 +51,6 @@ namespace BoVeloManager.tools {
             MSCon = new MySqlConnection(connBuilder.ConnectionString);
 
             MSCon.Open();
-
         }
 
     }
