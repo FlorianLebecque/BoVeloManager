@@ -23,12 +23,15 @@ namespace BoVeloManager {
         public LoginWindows() {
             InitializeComponent();
 
+            lb_error.Visibility = Visibility.Hidden;
+
             tools.user.RESET();
 
             cb_keep.IsChecked = Properties.Settings.Default.keeplogged;
 
             if (Properties.Settings.Default.keeplogged) {
                 tb_password.Password = Properties.Settings.Default.magicWord;
+                tb_password.IsEnabled = false;
                 tb_userName.Text = Properties.Settings.Default.magicWord2;
             }
 
@@ -84,11 +87,12 @@ namespace BoVeloManager {
 
             if (Properties.Settings.Default.keeplogged) {
                 Properties.Settings.Default.magicWord = pass;
-                Properties.Settings.Default.magicWord2 = user;
             } else {
                 Properties.Settings.Default.magicWord = "";
             }
 
+
+            Properties.Settings.Default.magicWord2 = user;
             Properties.Settings.Default.Save();
 
             return Properties.Settings.Default.keeplogged;
@@ -96,10 +100,11 @@ namespace BoVeloManager {
 
         private void log() {
             string user = tb_userName.Text;
-            string pass;
+            string pass = "";
+
             if (Properties.Settings.Default.keeplogged) {
                 pass = Properties.Settings.Default.magicWord;
-            } else {
+            } else if (tb_password.IsEnabled == true){
                 pass = tools.md5.CreateMD5(tb_password.Password);
             }
 
@@ -117,6 +122,16 @@ namespace BoVeloManager {
         private void tb_password_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
                 log();
+            }
+        }
+
+        private void cb_keep_Click(object sender, RoutedEventArgs e) {
+            if(cb_keep.IsChecked == false) {
+                Properties.Settings.Default.keeplogged = false;
+                tb_password.Clear();
+                tb_password.IsEnabled = true;
+            } else {
+                tb_password.IsEnabled = true;
             }
         }
     }

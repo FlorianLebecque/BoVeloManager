@@ -41,8 +41,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB20000" Visibility="Hidden" >Hello</TextBlock>
-                <CheckBox x:Name="cb_keep" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center">Save my password</CheckBox>
+                <StackPanel Margin="10 10 0 0">
+                    <TextBlock x:Name="lb_error" Margin="5 0 0 0"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB20000" >LB_PASS_ERROR</TextBlock>
+                    <CheckBox x:Name="cb_keep" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="cb_keep_Click">Save my password</CheckBox>
+                </StackPanel>
                 <Button Grid.Column="1" x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
             </Grid>
             </DockPanel>
