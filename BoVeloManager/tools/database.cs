@@ -118,10 +118,79 @@ namespace BoVeloManager.tools {
         #endregion
 
 
-        #region associatedKits
+        #region Kit
         public static string getKit_by_category(int cat)
         {
-            return "SELECT `id`,`name` FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
+        }
+        public static string getKit_by_id(int id)
+        {
+            return "SELECT `id`,`name`,`properties`,`category` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+
+        public static string delKit(int id)
+        {
+            return "DELETE FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+        public static string setKitName(int id, string name)
+        {
+            return "UPDATE `bv_type_kit` SET `name` = '" + name + "' WHERE `id` = " + id.ToString();
+        }
+
+        public static string setKitProperties(int id, string newProperties)
+        {
+            return "UPDATE `bv_type_kit` SET `properties` = '" + newProperties + "' WHERE `id` = " + id.ToString();
+        }
+
+        // get all kit info
+        public static string gettKit(int id_tBike)
+        {
+            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
+        }
+        public static string getKits()
+        {
+            return "SELECT * FROM `bv_type_kit`";
+        }
+
+        // Add kit Querry
+
+        public static string addKit(string name, string prop, string cat)
+        {
+            return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
+        }
+
+        //VOIR INNER JOIN POUR AFFICHER LES KITS
+        //https://sql.sh/cours/jointures/inner-join
+        #endregion
+
+
+        #region associatedKits
+        public static string getAssociatedKit_by_category(int cat)
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
+        }
+
+        public static string getAssociatedKit_by_id(int id)
+        {
+            return "SELECT `id`,`name`,`properties` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+
+        public static string delAssociatedKit(int id)
+        {
+            return "DELETE FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+        public static string setAssociatedKitName(int id, string name)
+        {
+            return "UPDATE `bv_type_kit` SET `name` = '" + name + "' WHERE `id` = " + id.ToString();
+        }
+
+        public static string setAssociatedKitProperties(int id, string newProperties)
+        {
+            return "UPDATE `bv_type_kit` SET `properties` = '" + newProperties + "' WHERE `id` = " + id.ToString();
         }
 
         //VOIR INNER JOIN POUR AFFICHER LES KITS
@@ -156,27 +225,12 @@ namespace BoVeloManager.tools {
         {
             return "SELECT id , name, price FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
         }
-        // get all kit info
-        public static string gettKit(int id_tBike)
-        {
-            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
-        }
-        public static string getKits()
-        {
-            return "SELECT * FROM `bv_type_kit`";
-        }
+        
 
 
         public static string getClient_by_id(int id)
         {
             return "SELECT `id`,`first_name`,`last_name`,`enterprise_name`, `date` FROM `bv_client` WHERE `id` = " + id.ToString();
-        }
-
-        // Add kit Querry
-
-        public static string addKit(string name, string prop, string cat)
-        {
-            return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
         }
 
     }

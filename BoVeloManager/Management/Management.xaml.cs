@@ -25,6 +25,7 @@ namespace BoVeloManager.Management {
             update_dg_userList();
             update_dg_kitList();
             update_dg_itemList();
+            update_dg_associatedKitsList();
         }
 
         /*
@@ -154,8 +155,185 @@ namespace BoVeloManager.Management {
         private void bt_editKit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
+            
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int id = Convert.ToInt32(dataRowView["id"]);
+
+            kit.modKitWindow MKW = new kit.modKitWindow(id);
+            MKW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_kitList();
         }
 
+        private void btn_delKit_Click(object sender, RoutedEventArgs e)
+        {
+            //Kit delete test
+            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //retrieve the row we click
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int kitID = Convert.ToInt32(dataRowView["id"]);
+
+                //create and send the request to the db
+                string q = tools.DatabaseQuery.delKit(kitID);
+                tools.Database.setData(q);
+
+                //Update the list
+                MessageBox.Show("Kit deleted");
+                update_dg_kitList();
+            }
+        }
+
+        private void bt_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            int cat = cb_type2.SelectedIndex;
+            string q;
+            if (cat == 0)
+            {
+                q = tools.DatabaseQuery.getKits();
+            }
+            else
+            {
+                q = tools.DatabaseQuery.getAssociatedKit_by_category(cat);
+            }
+            DataTable dt = tools.Database.getData(q);
+
+            //convertion de la columns grade en poste
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "cat";
+            newCol.DataType = typeof(string);
+            dt.Columns.Add(newCol);
+            foreach (DataRow r in dt.Rows)
+            {
+
+                int g = Convert.ToInt32(r["category"]);
+                switch (g)
+                {
+                    case 0:
+                        r["cat"] = "Frame";
+                        break;
+                    case 1:
+                        r["cat"] = "Wheels";
+                        break;
+                    case 2:
+                        r["cat"] = "Brake";
+                        break;
+                    case 3:
+                        r["cat"] = "Saddle";
+                        break;
+                    case 4:
+                        r["cat"] = "Handlebar";
+                        break;
+                    case 5:
+                        r["cat"] = "Addons";
+                        break;
+                }
+
+            }
+            //we can now remove the old columns
+            dt.Columns.Remove(dt.Columns["category"]);
+
+
+
+            //set the datatable as the items sources for the user datagrid
+            dg_tKitList.ItemsSource = dt.DefaultView;
+
+
+            /*
+            //get the data from the db
+            if (cat == 0)
+            {
+                
+                string q = tools.DatabaseQuery.getKits();
+                DataTable dt = tools.Database.getData(q);
+
+                //convertion de la columns grade en poste
+                DataColumn newCol = new DataColumn();
+                newCol.ColumnName = "cat";
+                newCol.DataType = typeof(string);
+                dt.Columns.Add(newCol);
+                foreach (DataRow r in dt.Rows)
+                {
+
+                    int g = Convert.ToInt32(r["category"]);
+                    switch (g)
+                    {
+                        case 0:
+                            r["cat"] = "Frame";
+                            break;
+                        case 1:
+                            r["cat"] = "Wheels";
+                            break;
+                        case 2:
+                            r["cat"] = "Brake";
+                            break;
+                        case 3:
+                            r["cat"] = "Saddle";
+                            break;
+                        case 4:
+                            r["cat"] = "Handlebar";
+                            break;
+                        case 5:
+                            r["cat"] = "Addons";
+                            break;
+                    }
+
+                }
+                //we can now remove the old columns
+                dt.Columns.Remove(dt.Columns["category"]);
+
+
+
+                //set the datatable as the items sources for the user datagrid
+                dg_tKitList.ItemsSource = dt.DefaultView;
+            }
+            else
+            {
+                string q = tools.DatabaseQuery.getAssociatedKit_by_category(cat);
+                DataTable dt = tools.Database.getData(q);
+
+                //convertion de la columns grade en poste
+                DataColumn newCol = new DataColumn();
+                newCol.ColumnName = "cat";
+                newCol.DataType = typeof(string);
+                dt.Columns.Add(newCol);
+                foreach (DataRow r in dt.Rows)
+                {
+
+                    int g = Convert.ToInt32(r["category"]);
+                    switch (g)
+                    {
+                        case 0:
+                            r["cat"] = "Frame";
+                            break;
+                        case 1:
+                            r["cat"] = "Wheels";
+                            break;
+                        case 2:
+                            r["cat"] = "Brake";
+                            break;
+                        case 3:
+                            r["cat"] = "Saddle";
+                            break;
+                        case 4:
+                            r["cat"] = "Handlebar";
+                            break;
+                        case 5:
+                            r["cat"] = "Addons";
+                            break;
+                    }
+
+                }
+                //we can now remove the old columns
+                dt.Columns.Remove(dt.Columns["category"]);
+                //set the datatable as the items sources for the user datagrid
+                dg_tKitList.ItemsSource = dt.DefaultView;
+            }
+            */
+        }
 
 
         private void update_dg_kitList() {
@@ -222,22 +400,7 @@ namespace BoVeloManager.Management {
 
         }
 
-        private void bt_showKits_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
-
-            //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int itemID = Convert.ToInt32(dataRowView["id"]);
-
-            //open the dialog passing the item ID
-            item.showAssociatedKitsWithItemWindow SAKWIW = new item.showAssociatedKitsWithItemWindow(itemID);
-            SAKWIW.ShowDialog();
-
-
-            //update the item datagrid
-            update_dg_itemList();
-        }
+        
 
 
 
@@ -298,12 +461,76 @@ namespace BoVeloManager.Management {
             dg_itemList.ItemsSource = dt.DefaultView;
         }
 
-        
 
-        
+
+
 
         #endregion
+
+        #region Kits_BIS
+
+
+        
+
+        private void update_dg_associatedKitsList()
+        {
+            //get the data from the db
+            string q = tools.DatabaseQuery.getKits();
+            //string q = tools.DatabaseQuery.getKit_by_category(0);
+            DataTable dt = tools.Database.getData(q);
+
+            //convertion de la columns -------
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "Name";
+            newCol.DataType = typeof(string);
+
+            dt.Columns.Add(newCol);
+
+
+
+            //set the datatable as the items sources for the user datagrid
+            //dg_associatedKitsList.ItemsSource = dt.DefaultView;
+        }
+
+
+        private void bt_addAssociatedKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_associatedKitsList();
+
+        }
+
+        
+        private void btnDeleteAssociatedKit_Click(object sender, RoutedEventArgs e)
+        {
+            //Kit delete test
+            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //retrieve the row we click
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int kitID = Convert.ToInt32(dataRowView["id"]);
+
+                //create and send the request to the db
+                string q = tools.DatabaseQuery.delAssociatedKit(kitID);
+                tools.Database.setData(q);
+
+                //Update the list
+                MessageBox.Show("Kit deleted");
+                update_dg_associatedKitsList();
+            }
+
+
+        }
+
+       
     }
+    #endregion
 }
 //#endregion
 

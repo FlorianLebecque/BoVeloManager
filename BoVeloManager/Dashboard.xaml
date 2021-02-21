@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
-        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+        Title="Dashboard" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
