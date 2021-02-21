@@ -39,10 +39,10 @@ namespace BoVeloManager.tools {
 
         private static void connectToDB() {
             MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
-                { "Database", "sql2390507" },
-                { "Data Source", "sql2.freemysqlhosting.net" },
-                { "User Id", "sql2390507" },
-                { "Password", "zG2%rD3!" }
+                { "Database", Properties.Settings.Default.DBBase },
+                { "Data Source", Properties.Settings.Default.DBHost },
+                { "User Id", Properties.Settings.Default.DBUser },
+                { "Password", Properties.Settings.Default.DBPass }
             };
 
             MSCon = new MySqlConnection(connBuilder.ConnectionString);

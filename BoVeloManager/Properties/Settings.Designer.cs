@@ -58,5 +58,41 @@ namespace BoVeloManager.Properties {
                 this["magicWord2"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("remotemysql.com")]
+        public string DBHost {
+            get {
+                return ((string)(this["DBHost"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5gTtIpnDHk")]
+        public string DBBase {
+            get {
+                return ((string)(this["DBBase"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ebKqX3joO8")]
+        public string DBPass {
+            get {
+                return ((string)(this["DBPass"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5gTtIpnDHk")]
+        public string DBUser {
+            get {
+                return ((string)(this["DBUser"]));
+            }
+        }
     }
 }
