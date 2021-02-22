@@ -12,24 +12,21 @@ namespace BoVeloManager.tools {
         private static MySqlConnection MSCon;
 
         public static DataTable getData(string query) {
-
-            if((MSCon == null)||(MSCon.State == ConnectionState.Closed)||(MSCon.State == ConnectionState.Broken)) {
-                connectToDB();
-            }
+            checkConnection();
 
             DataTable dt = new DataTable();
 
             MySqlCommand cmd = MSCon.CreateCommand();
             cmd.CommandText = query;
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-            da.Fill(dt);
+            MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
+            DataRow.Fill(dt);
 
             return dt;
         }
 
         public static int setData(string query) {
+            checkConnection();
 
             MySqlCommand cmd = MSCon.CreateCommand();
             cmd.CommandText = query;
@@ -37,18 +34,23 @@ namespace BoVeloManager.tools {
             return cmd.ExecuteNonQuery();
         }
 
+        private static void checkConnection() {
+            if ((MSCon == null) || (MSCon.State == ConnectionState.Closed) || (MSCon.State == ConnectionState.Broken)) {
+                connectToDB();
+            }
+        }
+
         private static void connectToDB() {
             MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
-                { "Database", "sql2390507" },
-                { "Data Source", "sql2.freemysqlhosting.net" },
-                { "User Id", "sql2390507" },
-                { "Password", "zG2%rD3!" }
+                { "Database", Properties.Settings.Default.DBBase },
+                { "Data Source", Properties.Settings.Default.DBHost },
+                { "User Id", Properties.Settings.Default.DBUser },
+                { "Password", Properties.Settings.Default.DBPass }
             };
 
             MSCon = new MySqlConnection(connBuilder.ConnectionString);
 
             MSCon.Open();
-
         }
 
     }

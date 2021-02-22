@@ -3,40 +3,44 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
       xmlns:local="clr-namespace:BoVeloManager.Management"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Management">
 
     <Grid Background="White">
-        <TabControl Margin="10">
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectionChanged="TabablzControl_SelectionChanged" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
             <TabItem Header="Users">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addUser" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Click="bt_addUser_Click">Add</Button>
+                        <Button x:Name="bt_addUser" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addUser_Click">Add</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" />
-                            <DataGridTemplateColumn Header="Edit">
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Name="btnView" Margin="1" Click="bt_editUser_Click" Content="Edit"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Delete">
+                            <DataGridTemplateColumn Header="Delete" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" Content="Delete"  />
+                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" IsEnabled="False" Content="Delete"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -50,13 +54,13 @@
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
 
-                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0">Add</Button>
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="72" Height="30" HorizontalAlignment="Left" Margin="5,12">Add</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
@@ -76,9 +80,9 @@
                     </DataGrid>
                 </Grid>
 
-        
 
-           
+
+
                 <!--
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -106,7 +110,7 @@
 
             </TabItem>
 
-        </TabControl>
+        </dragablz:TabablzControl>
 
     </Grid>
 </Page>

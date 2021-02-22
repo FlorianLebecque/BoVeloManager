@@ -3,49 +3,107 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BoVeloManager"
+        xmlns:local="clr-namespace:BoVeloManager" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="25"/>
-        </Grid.RowDefinitions>
+        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen" Icon="Untitled.ico">
 
-        <DockPanel Grid.Row="0">
-            <Border BorderThickness="0 0 1 0" BorderBrush="#FF404040">
-                <Grid>
-                    <StackPanel Width="100" x:Name="sidebar">
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Catalog</Button>
-                        </Border>
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Stock" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Stock</Button>
-                        </Border>
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Command" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Command</Button>
-                        </Border>
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Catalog" Height="25" Click="BTPage_Click" BorderBrush="{x:Null}" Background="{x:Null}">Planning</Button>
-                        </Border>
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Management" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Managment</Button>
-                        </Border>
-                        <Border BorderThickness="0 0 0 1" BorderBrush="#FF404040">
-                            <Button Tag="Sales" Height="25" Click="BTPage_Click" Background="{x:Null}" BorderBrush="{x:Null}">Sales</Button>
-                        </Border>
-                    </StackPanel>
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+
+    </Window.Triggers>
+
+    <Grid Background="White">
+        <Grid x:Name="GridMain" Background="White" Margin="70,0,0,0" >
+            <Frame x:Name="frame" NavigationUIVisibility="Hidden" BorderBrush="{x:Null}" />
+        </Grid>
+        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#607D8B">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
+            </Grid.Effect>
+            <StackPanel>
+                <Grid Height="40" Background="White" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+
+                    <TextBlock x:Name="lb_user" Margin="0 0 10 0"  Foreground="#607D8B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"> USER_NAME</TextBlock>
+                    <Button x:Name="ButtonOpenMenu" Height="30" Width="60" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#607D8B" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="30" Width="60" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#607D8B" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
                 </Grid>
-            </Border>
-            <Frame x:Name="frame" NavigationUIVisibility="Hidden">
-
-            </Frame>
-
-        </DockPanel>
-        
-        <StatusBar Grid.Row="1" >
-            <TextBlock Name="mi_user" Text="Log as " Width="105"/>
-            
-        </StatusBar>
+                <ListView x:Name="ListViewMenu" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
+                    <ListViewItem Tag="Catalog" x:Name="ItemHome" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Marketplace" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Catalog" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Tag="Sales" x:Name="ItemCreate" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Sale" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Sales" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Tag="Stock" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Archive" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Stock" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Tag="Stock" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Calendar" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Planning" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Tag="Command" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Truck" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Commande" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Tag="Management" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Management" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

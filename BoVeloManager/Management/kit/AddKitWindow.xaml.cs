@@ -28,7 +28,7 @@ namespace BoVeloManager.Management.kit
             //get the form data
             string kitName = kit_name.Text;
             string kitProp = kit_prop.Text;
-            string kitCat = kit_cat.SelectedItem.ToString();
+            string kitCat = kit_cat.SelectedIndex.ToString();
 
 
             addKit(kitName, kitProp, kitCat);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.user"
         mc:Ignorable="d"
-        Title="Edit user" Height="320" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Edit user" Height="320" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
 
         <DockPanel>
@@ -74,8 +74,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="4.667,16,5,5" Grid.Column="2" x:Name="BT_update" Content="Update"  FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BT_update_Click"/>
-                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+                <Button Margin="5 0 5 5" Grid.Column="2" x:Name="BT_update" Content="Update"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Height="32" VerticalAlignment="Bottom" />
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
             </Grid>
         </DockPanel>
     </Border>

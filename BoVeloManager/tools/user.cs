@@ -57,10 +57,25 @@ namespace BoVeloManager.tools {
             }
         }
 
+        public static void RESET() {
+            SETGRADE = false;
+            SETID = false;
+            SETUSER = false;
+        }
+
         public static bool checkUserPass(string username,string in_pass) {
 
             string hash_pass = tools.md5.CreateMD5(in_pass);
+            
+            return checkPass(username, hash_pass);
+        }
 
+        public static bool checkUserPassMD5(string username, string hash_pass) {
+
+            return checkPass(username,hash_pass);
+        }
+
+        private static bool checkPass(string username, string hash_pass) {
             //fist get the user password
             string query = tools.DatabaseQuery.getUserPass(username);
             DataTable dt = tools.Database.getData(query);
@@ -70,10 +85,9 @@ namespace BoVeloManager.tools {
             if (dt.Rows.Count > 0) {
                 pass = (string)dt.Rows[0]["psw"];
             }
-            
+
             return (pass.ToUpper() == hash_pass.ToUpper()) && (pass != "");
         }
-
 
     }
 }

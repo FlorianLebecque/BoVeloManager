@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
         mc:Ignorable="d"
-        Title="Sale Description" Height="425" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Sale Description" Height="425" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
@@ -67,10 +67,10 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="{Binding number_name}" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding number_name}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding price}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
                                 </Grid>
-                                <TextBlock Text="{Binding kit}"  HorizontalAlignment="Left" TextAlignment="Left" />
+                                <TextBlock Margin="15 0 0 0" Text="{Binding kit}"  HorizontalAlignment="Left" TextAlignment="Left" />
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

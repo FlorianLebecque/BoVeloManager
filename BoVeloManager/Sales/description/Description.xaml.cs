@@ -91,8 +91,13 @@ namespace BoVeloManager.Sales.description
             {
                 string kit_name = tKit["name"].ToString();
                 string kit_prop = tKit["properties"].ToString();
-                all_kits = all_kits + "● " + kit_name + " [" + kit_prop + "] \n";
 
+                if (kit_prop.Length == 0) {
+                    all_kits = all_kits + "● " + kit_name +"\n";
+                }
+                else {
+                    all_kits = all_kits + "● " + kit_name + " [" + kit_prop + "] \n";
+                } 
             }
             return all_kits;
         }
