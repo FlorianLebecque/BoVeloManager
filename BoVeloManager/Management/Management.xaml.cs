@@ -265,6 +265,10 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }
         

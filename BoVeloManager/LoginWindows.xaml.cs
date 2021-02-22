@@ -63,8 +63,12 @@ namespace BoVeloManager {
                 lb_error.Visibility = Visibility.Hidden;
 
                     //create and show the dashboard windows
+                
                 Dashboard dashboardWindows = new Dashboard();
-                dashboardWindows.ShowDialog();
+                try {
+                    dashboardWindows.ShowDialog();
+                } catch {}
+                
 
                     //wait until we close the dashboard then show the login windows
                 this.Show();

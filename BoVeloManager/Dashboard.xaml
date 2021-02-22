@@ -13,19 +13,11 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1517"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1387"/>
-            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="70"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMain">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1387"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1517"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -38,9 +30,9 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Grid Background="#FFDEDEDE">
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="869" Width="1517" Background="White">
-            <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
+    <Grid Background="White">
+        <Grid x:Name="GridMain" Background="White" Margin="70,0,0,0" >
+            <Frame x:Name="frame" NavigationUIVisibility="Hidden" BorderBrush="{x:Null}" />
         </Grid>
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#607D8B">
             <Grid.Effect>
