@@ -26,6 +26,7 @@ namespace BoVeloManager.Sales
             InitializeComponent();
 
             update_dg_salesList();
+            update_dg_clientList();
         }
 
         private void update_dg_salesList()
@@ -35,6 +36,7 @@ namespace BoVeloManager.Sales
 
             dg_salesList.ItemsSource = dt.DefaultView;
         }
+        
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
@@ -44,14 +46,25 @@ namespace BoVeloManager.Sales
             DW.Show();
         }
 
-        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void update_dg_clientList()
         {
-
+            string q = tools.DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(q);
+            dg_clientList.ItemsSource = dt.DefaultView;
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
         {
-            
+            addClientWindow AUW = new addClientWindow();
+            AUW.ShowDialog();
+
+            update_dg_clientList();
         }
+
+        private void bt_editClient_Click(object sender, RoutedEventArgs e){
+        
+        }
+
+
     }
 }
