@@ -22,17 +22,30 @@ namespace BoVeloManager {
     public partial class LoginWindows : Window {
         public LoginWindows() {
             InitializeComponent();
+
+            lb_error.Visibility = Visibility.Hidden;
+
+            tools.user.RESET();
+
+            cb_keep.IsChecked = Properties.Settings.Default.keeplogged;
+
+            if (Properties.Settings.Default.keeplogged) {
+                tb_password.Password = Properties.Settings.Default.magicWord;
+                tb_password.IsEnabled = false;
+                tb_userName.Text = Properties.Settings.Default.magicWord2;
+            }
+
         }
 
         //check login data and change windows if correct
-        private void login() {
+        private void login(string user,string passMD5) {
 
-            string in_user = tb_userName.Text;
-            string in_pass = tb_password.Password;
+            string in_user = user;
+            string in_pass = passMD5;
 
 
             //check if password are equal
-            if (tools.user.checkUserPass(in_user,in_pass)) {
+            if (tools.user.checkUserPassMD5(in_user,in_pass)) {
 
                     //know get the user data
                 string query = tools.DatabaseQuery.getUserData_byName(in_user);
@@ -50,11 +63,21 @@ namespace BoVeloManager {
                 lb_error.Visibility = Visibility.Hidden;
 
                     //create and show the dashboard windows
+                
                 Dashboard dashboardWindows = new Dashboard();
-                dashboardWindows.ShowDialog();
+                try {
+                    dashboardWindows.ShowDialog();
+                } catch {}
+                
 
                     //wait until we close the dashboard then show the login windows
                 this.Show();
+
+                LoginWindows LW = new LoginWindows();
+                LW.Show();
+
+                this.Close();
+
             } else {
                 lb_error.Visibility = Visibility.Visible;
                 lb_error.Text = "User or password incorrect";
@@ -62,15 +85,57 @@ namespace BoVeloManager {
 
         }
 
+        private bool check(string user,string pass) {
+
+            Properties.Settings.Default.keeplogged = (bool)cb_keep.IsChecked;
+
+            if (Properties.Settings.Default.keeplogged) {
+                Properties.Settings.Default.magicWord = pass;
+            } else {
+                Properties.Settings.Default.magicWord = "";
+            }
+
+
+            Properties.Settings.Default.magicWord2 = user;
+            Properties.Settings.Default.Save();
+
+            return Properties.Settings.Default.keeplogged;
+        }
+
+        private void log() {
+            string user = tb_userName.Text;
+            string pass = "";
+
+            if (Properties.Settings.Default.keeplogged) {
+                pass = Properties.Settings.Default.magicWord;
+            } else if (tb_password.IsEnabled == true){
+                pass = tools.md5.CreateMD5(tb_password.Password);
+            }
+
+            check(user, pass);
+            login(user, pass);
+        }
+
         //event when click on the login button
         private void BTLogin_Click(object sender, RoutedEventArgs e) {
-            login();
+
+            log();
         }
 
         //event when enter key is pressed while the password textbox is focus
         private void tb_password_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                login();
+                log();
+            }
+        }
+
+        private void cb_keep_Click(object sender, RoutedEventArgs e) {
+            if(cb_keep.IsChecked == false) {
+                Properties.Settings.Default.keeplogged = false;
+                tb_password.Clear();
+                tb_password.IsEnabled = true;
+            } else {
+                tb_password.IsEnabled = true;
             }
         }
     }

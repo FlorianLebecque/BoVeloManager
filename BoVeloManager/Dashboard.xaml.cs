@@ -19,40 +19,57 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
+
+        bool isOpen = false;
+
         public Dashboard() {
             InitializeComponent();
 
-                //status bar log
-            mi_user.Text = "Log as "+tools.user.getUserName(); 
+            frame.Content = new Catalogue.Catalog();
+
+            //status bar log
+            lb_user.Text = tools.user.getUserName(); 
         }
 
+
+        
+
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
+            isOpen = true;
+
+            ButtonOpenMenu.Visibility = Visibility.Hidden;
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            lb_user.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e) {
+            isOpen = false;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Hidden;
+            lb_user.Visibility = Visibility.Hidden;
+        }
 
         /*
          * Function added to every button on the side bar
          *      Their goal is to set the page into the frame (center object of the window)
         */
-        private void BTPage_Click(object sender, RoutedEventArgs e) {
-            Button senderButton = (Button)sender;   //get the button that trigger the event
-
-            /*
-            if (selectedButton != null) {
-                selectedButton.Background = Brushes.Transparent;
-            } else {
-                selectedButton = senderButton;
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (isOpen) {
+                var sb = this.Resources["CloseMenu"] as System.Windows.Media.Animation.Storyboard;
+                sb.Begin();
             }
-            
-            senderButton.Background = Brushes.White;
 
-            selectedButton = senderButton;
-            */
+            isOpen = false;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Hidden;
+            lb_user.Visibility = Visibility.Hidden;
 
-            String btnTag = senderButton.Tag.ToString();
-
-                //clear the content
+            //clear the content
             frame.Content = null;
             frame.NavigationService.RemoveBackEntry();
 
-            switch (btnTag) {
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Tag.ToString()) {
                 case "Catalog":
                     frame.Content = new Catalogue.Catalog();
                     break;
@@ -70,8 +87,6 @@ namespace BoVeloManager {
                     break;
 
             }
-
-
         }
     }
 }

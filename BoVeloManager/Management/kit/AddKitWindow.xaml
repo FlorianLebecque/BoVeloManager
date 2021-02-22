@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="AddKitWindow" Height="200" Width="349" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="AddKitWindow" Height="215" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
@@ -36,27 +36,28 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Category: :</Label>
-                    <ComboBox Grid.Column="1" Margin="2" Width="50" HorizontalAlignment="Left" Name="kit_cat" SelectedIndex="0">
-                        <ComboBoxItem Name="kit_ca0" Content="0"/>
-                        <ComboBoxItem Name="kit_ca1" Content="1"/>
-                        <ComboBoxItem Name="kit_ca2" Content="2"/>
-                        <ComboBoxItem Name="kit_ca3" Content="3"/>
-                        <ComboBoxItem Name="kit_ca4" Content="4" />
+                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Category :</Label>
+                    <ComboBox Grid.Column="1" Margin="2,2,0,2" Width="73" HorizontalAlignment="Left" Name="kit_cat" SelectedIndex="0">
+                        <ComboBoxItem Name="kit_ca0" Content="Frame"/>
+                        <ComboBoxItem Name="kit_ca1" Content="Wheels"/>
+                        <ComboBoxItem Name="kit_ca2" Content="Brakes"/>
+                        <ComboBoxItem Name="kit_ca3" Content="Saddle"/>
+                        <ComboBoxItem Name="kit_ca4" Content="Handlebar" />
+                        <ComboBoxItem Name="kit_ca5" Content="Addons" />
                     </ComboBox>
                 </Grid>
             </StackPanel>
-                <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                    <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
-                </Grid>
-            
+            <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click"/>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+            </Grid>
+
         </DockPanel>
     </Border>
 </Window>

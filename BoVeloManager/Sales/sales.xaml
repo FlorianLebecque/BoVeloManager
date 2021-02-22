@@ -4,32 +4,85 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BoVeloManager.Sales"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="sales" Background="White">
 
+    <Grid>
 
-    <Border Padding="10">
-        <StackPanel>
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
+ 
+            <TabItem Header="Vente">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-            <!-- Title -->
-            <TextBlock Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addUser" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12">Add</Button>
+                    </StackPanel>
 
-            <!-- Data Grid Sales  -->
-            <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
-                <DataGrid.Columns>
-                    <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
-                    <DataGridTemplateColumn Header="Details">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
-    </Border>
+                    
+                    <!-- Data Grid Sales  -->
+                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Details">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+          
+            <TabItem Header="Client">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addClient" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addClient_Click">Add</Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path='first_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path='last_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise name" Binding="{Binding Path='enterprise_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Entreprise adress" Binding="{Binding Path='enterprise_adress'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Edit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editClient_Click" Content="Edit"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </dragablz:TabablzControl>
+        
+    </Grid>
+    
+        
 </Page>

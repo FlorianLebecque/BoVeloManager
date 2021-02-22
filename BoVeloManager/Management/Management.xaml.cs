@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,15 +20,23 @@ namespace BoVeloManager.Management {
     /// Interaction logic for Management.xaml
     /// </summary>
     public partial class Management : Page {
+
+        bool init = false;
+
         public Management() {
             InitializeComponent();
+            init = true;
 
             update_dg_userList();
             update_dg_itemList();
-
+       
             set_cbtype3_content();
             cb_type3.SelectedIndex = 0;
             update_dg_kitList();
+
+
+
+
 
         }
 
@@ -46,7 +55,7 @@ namespace BoVeloManager.Management {
          */
         private void update_dg_userList() {
             //get the data from the db
-            string q = tools.DatabaseQuery.getUsers();
+            string q = tools.DatabaseQuery.getUsers(cb_sortUser.SelectedIndex);
             DataTable dt = tools.Database.getData(q);
 
 
@@ -62,10 +71,10 @@ namespace BoVeloManager.Management {
                 int g = Convert.ToInt32(r["grade"]);
                 switch (g) {
                     case 0:
-                        r["Poste"] = "Monteur";
+                        r["Poste"] = "Worker";
                         break;
                     case 1:
-                        r["Poste"] = "Vendeur";
+                        r["Poste"] = "Seller";
                         break;
                     case 2:
                         r["Poste"] = "Manager";
@@ -114,7 +123,7 @@ namespace BoVeloManager.Management {
 
             //update the user datagrid
             update_dg_userList();
-
+            
         }
 
         /*
@@ -140,6 +149,13 @@ namespace BoVeloManager.Management {
                 update_dg_userList();
             }
 
+        }
+
+        private void cb_sortUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            //ICollectionView cv = CollectionViewSource.GetDefaultView(dg_userList.ItemsSource);
+            if (init) {
+                update_dg_userList();
+            }
         }
 
 
@@ -214,6 +230,9 @@ namespace BoVeloManager.Management {
         /*
         private void update_dg_kitList_bis() {
 
+        }
+
+
             int cat = cb_type2.SelectedIndex;
             string q;
             //get the data from the db
@@ -278,6 +297,8 @@ namespace BoVeloManager.Management {
             cb_t.Rows.InsertAt(newRow, 0);
             cb_t.Rows[0]["name"] = "Show all";
         }
+      
+
         private void update_dg_kitList()
         {   
             int item = cb_type3.SelectedIndex;
@@ -378,9 +399,25 @@ namespace BoVeloManager.Management {
             //set the datatable dt as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
         }
-        #endregion
 
-        #region Item
+
+        private void bt_addKit_Click(object sender, RoutedEventArgs e) {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
+
+            //update the user datagrid
+            update_dg_kitList();
+        }
+
+				#endregion
+
+
+        #region Items
+
+        private void update_itemList() {
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
             //get witch row we clicked on
@@ -394,6 +431,7 @@ namespace BoVeloManager.Management {
             //update the item datagrid
             update_dg_itemList();
         }
+
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e)
         {
@@ -413,16 +451,23 @@ namespace BoVeloManager.Management {
                 update_dg_itemList();
             }
 
+        private void bt_delItem_Click(object sender, RoutedEventArgs e) {
+
         }
+					
         private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
-            item.AddItemWindow AIW = new item.AddItemWindow();
-            AIW.ShowDialog();
+            MessageBox.Show("BUILDING PROGRAM ...");
+        }
 
+
+
+        private void bt_editKit_Click(object sender, RoutedEventArgs e)
+        {
             update_dg_itemList();
         }
-        
-        
+
+
 
         /*
             Function witch loads the items into the TabItem datagrid
@@ -447,13 +492,13 @@ namespace BoVeloManager.Management {
         
 
             //set the datatable as the items sources for the user datagrid
-            dg_itemList.ItemsSource = dt.DefaultView;
+            //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
 
         #endregion
 
-       
+        
     }
 }
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="LogIn" Height="200" Width="349" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="LogIn" Height="220" Width="349" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
@@ -41,8 +41,11 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFB20000" Visibility="Hidden" >Hello</TextBlock>
-                <Button Grid.Column="1" x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
+                <StackPanel Margin="10 10 0 0">
+                    <TextBlock x:Name="lb_error" Margin="5 0 0 0"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFB20000" >LB_PASS_ERROR</TextBlock>
+                    <CheckBox x:Name="cb_keep" Margin="5 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="cb_keep_Click" Content="Save my password"/>
+                </StackPanel>
+                <Button Grid.Column="1" x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
             </Grid>
             </DockPanel>
     </Border>

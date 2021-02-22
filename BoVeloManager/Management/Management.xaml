@@ -3,58 +3,69 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
       xmlns:local="clr-namespace:BoVeloManager.Management"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Management">
 
     <Grid Background="White">
-        <TabControl Margin="10">
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
             <TabItem Header="Users">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addUser" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Click="bt_addUser_Click">Add</Button>
+                        <Button x:Name="bt_addUser" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addUser_Click">Add</Button>
+                        <ComboBox x:Name="cb_sortUser" SelectedIndex="0" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" SelectionChanged="cb_sortUser_SelectionChanged" >
+                            <ComboBoxItem>All</ComboBoxItem>
+                            <ComboBoxItem>Manager</ComboBoxItem>
+                            <ComboBoxItem>Seller</ComboBoxItem>
+                            <ComboBoxItem>Worker</ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
 
                     <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" />
-                            <DataGridTemplateColumn Header="Edit">
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Name="btnView" Margin="1" Click="bt_editUser_Click" Content="Edit"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Delete">
+                            <DataGridTemplateColumn Header="Delete" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" Content="Delete"  />
+                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" IsEnabled="False" Content="Delete"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
-
                 </Grid>
             </TabItem>
 
             <TabItem Header="Kits">
+
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                      
                         <Label Grid.Column="0" Margin="0,10,0,0">Select compatible item :</Label>
 
                         <!--
@@ -80,6 +91,8 @@
                         
                         <Label Grid.Column="0" Margin="0,10,0,0" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left"></Label>
                         <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12">Add new kit</Button>
+
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="72" Height="30" HorizontalAlignment="Left" Margin="5,12">Add</Button>>>>>>>> master
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
@@ -95,6 +108,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+
                             
                             <DataGridTemplateColumn Header="Edit_CompatibleKit">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -102,18 +116,11 @@
                                         <Button Name="btnView" Margin="1" Click="bt_editCompatibleKit_Click" Content="Edit compatibles kits"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            
-                            
-
+                            </DataGridTemplateColumn>       
                         </DataGrid.Columns>
                     </DataGrid>
-
-
                 </Grid>
-            </TabItem>
-
-
+              </TabItem>
 
             <TabItem Header="TabItem">
 
@@ -156,7 +163,32 @@
 
                 </Grid>
             </TabItem>
-        </TabControl>
+
+                <!--
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="769*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="tabItemGrid" AutoGenerateColumns="True" Margin="0,50,0,0" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Item" Binding="{Binding Item}" />
+                            <DataGridTextColumn Header="Stock" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Edit" Binding="{Binding Id}" />
+                            <DataGridTextColumn Header="Delete" Binding="{Binding Id}" />
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Details}" Margin="10" />
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                    <Canvas HorizontalAlignment="Left" Height="402" VerticalAlignment="Top" Width="774" Grid.ColumnSpan="2"/>
+                    <Button Content="Add" HorizontalAlignment="Left" Margin="5,25,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.227,-0.45" Background="{x:Null}" Grid.Column="1"/>
+                </Grid>
+                -->
+        </dragablz:TabablzControl>
 
     </Grid>
 </Page>
