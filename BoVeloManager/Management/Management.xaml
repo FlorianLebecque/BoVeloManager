@@ -10,7 +10,7 @@
       Title="Management">
 
     <Grid Background="White">
-        <dragablz:TabablzControl Background="White" FixedHeaderCount="2" SelectionChanged="TabablzControl_SelectionChanged" SelectedIndex="0">
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectionChanged="TabablzControl_SelectionChanged" SelectedIndex="0">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
