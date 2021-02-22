@@ -227,7 +227,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\addClientWindow.xaml">
+    <Page Include="Sales\Client\addClientWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Sales\addSales.xaml">

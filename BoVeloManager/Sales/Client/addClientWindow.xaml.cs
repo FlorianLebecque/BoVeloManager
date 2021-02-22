@@ -54,33 +54,34 @@ namespace BoVeloManager.Sales.Client
                                 }
                                 else
                                 {
-                                    err = 1;
+                                    err = 6;
                                 }
                             }
                             else
                             {
-                                err = 2;
+                                err = 5;
                             }
                         }
                         else
                         {
-                            err = 3;
+                            err = 4;
                         }
                     }
                     else
                     {
-                        err = 4;
+                        err = 3;
                     }
                 }
                 else
                 {
-                    err = 5;
+                    err = 2;
                 }
             }
             else
             {
-                err = 6;
+                err = 1;
             }
+
             lb_error.Visibility = Visibility.Visible;
             switch (err)
             {
