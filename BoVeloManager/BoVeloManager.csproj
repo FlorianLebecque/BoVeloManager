@@ -150,7 +150,7 @@
     <Compile Include="Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\addClientWindow.xaml.cs">
+    <Compile Include="Sales\Client\addClientWindow.xaml.cs">
       <DependentUpon>addClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sales\addSales.xaml.cs">
@@ -227,7 +227,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\addClientWindow.xaml">
+    <Page Include="Sales\Client\addClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

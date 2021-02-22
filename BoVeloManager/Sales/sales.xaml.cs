@@ -63,11 +63,5 @@ namespace BoVeloManager.Sales
         private void bt_editClient_Click(object sender, RoutedEventArgs e)
         {
         }
-
-
-        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
