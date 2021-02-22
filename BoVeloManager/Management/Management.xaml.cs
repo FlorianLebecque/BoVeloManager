@@ -26,7 +26,6 @@ namespace BoVeloManager.Management {
             update_dg_itemList();
 
             set_cbtype3_content();
-            //cb_type2.SelectedIndex = 0;
             cb_type3.SelectedIndex = 0;
             update_dg_kitList();
 
@@ -191,7 +190,23 @@ namespace BoVeloManager.Management {
             }
         }
 
-        private void bt_Refresh_Click(object sender, RoutedEventArgs e)
+        private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int id = Convert.ToInt32(dataRowView["id"]);
+
+            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
+
+            MCKW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_kitList();
+        }
+        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             update_dg_kitList();
         }
@@ -268,27 +283,65 @@ namespace BoVeloManager.Management {
             int item = cb_type3.SelectedIndex;
             
             string q;
+            DataTable dt;
             //get the data from the db
             if (item <= 0)
             {
                 q = tools.DatabaseQuery.getKits();
+                dt = tools.Database.getData(q);
                 Console.WriteLine(q);
                 Console.WriteLine(item);
             }
             else
             {
+                //item selectionned
                 string q_cb = tools.DatabaseQuery.getItem();
                 DataTable cb_t = tools.Database.getData(q_cb);
-
                 item -= 1;
-                q = tools.DatabaseQuery.getKit_by_item(Convert.ToInt32(cb_t.Rows[item]["id"]));
+               
 
-                Console.WriteLine(q);
+                //dt2 = list of associated kit id with the selectionned item
+                string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(Convert.ToInt32(cb_t.Rows[item]["id"]));
+                DataTable dt2 = tools.Database.getData(req);
 
+                //dt created table from the associated id in dt2
+                dt = new DataTable();
+
+                DataColumn id_Col = new DataColumn();
+                id_Col.ColumnName = "id";
+                id_Col.DataType = typeof(int);
+                dt.Columns.Add(id_Col);
+
+                DataColumn name_Col = new DataColumn();
+                name_Col.ColumnName = "name";
+                name_Col.DataType = typeof(string);
+                dt.Columns.Add(name_Col);
+
+                DataColumn properties_Col = new DataColumn();
+                properties_Col.ColumnName = "properties";
+                properties_Col.DataType = typeof(string);
+                dt.Columns.Add(properties_Col);
+
+                DataColumn category_Col = new DataColumn();
+                category_Col.ColumnName = "category";
+                category_Col.DataType = typeof(string);
+                dt.Columns.Add(category_Col);
+
+                //add every compatible kit to dt
+                foreach (DataRow r in dt2.Rows)
+                {
+                    string q_k = tools.DatabaseQuery.getKit_by_id(Convert.ToInt32(r["id_tKit"]));
+                    DataTable n_q_k = tools.Database.getData(q_k);
+                    DataRow newRow = dt.NewRow();
+                    newRow["id"] = n_q_k.Rows[0]["id"];
+                    newRow["name"] = n_q_k.Rows[0]["name"];
+                    newRow["properties"] = n_q_k.Rows[0]["properties"];
+                    newRow["category"] = n_q_k.Rows[0]["category"];
+                    
+                    dt.Rows.InsertAt(newRow, 0);
+
+                }
             }
-            DataTable dt = tools.Database.getData(q);
-
-
 
             //convertion de la columns grade en poste
             DataColumn newCol = new DataColumn();
@@ -321,15 +374,10 @@ namespace BoVeloManager.Management {
                         break;
                 }
             }
-            //we can now remove the old columns
-            dt.Columns.Remove(dt.Columns["category"]);
 
             //set the datatable dt as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
-
-            
         }
-
         #endregion
 
         #region Item
@@ -402,11 +450,10 @@ namespace BoVeloManager.Management {
             dg_itemList.ItemsSource = dt.DefaultView;
         }
 
+
         #endregion
 
-        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            update_dg_kitList();
-        }
+       
     }
 }
 

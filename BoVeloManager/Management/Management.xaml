@@ -78,8 +78,6 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         
-
-                        <Button x:Name="bt_Refresh" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_Refresh_Click" Content="Refresh"/>
                         <Label Grid.Column="0" Margin="0,10,0,0" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left"></Label>
                         <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12">Add new kit</Button>
                     </StackPanel>
@@ -97,13 +95,16 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Delete">
+                            
+                            <DataGridTemplateColumn Header="Edit_CompatibleKit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnDeleteAssociatedKit" Click="btn_delKit_Click" Content="Delete"  />
+                                        <Button Name="btnView" Margin="1" Click="bt_editCompatibleKit_Click" Content="Edit compatibles kits"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            
+                            
 
                         </DataGrid.Columns>
                     </DataGrid>

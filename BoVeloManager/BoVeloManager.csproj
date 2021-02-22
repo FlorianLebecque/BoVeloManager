@@ -112,6 +112,9 @@
     <Compile Include="Management\kit\AddKitWindow.xaml.cs">
       <DependentUpon>AddKitWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Management\kit\modCompatibleKitWindow.xaml.cs">
+      <DependentUpon>modCompatibleKitWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Management\kit\modKitWindow.xaml.cs">
       <DependentUpon>modKitWindow.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Management\kit\AddKitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Management\kit\modCompatibleKitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

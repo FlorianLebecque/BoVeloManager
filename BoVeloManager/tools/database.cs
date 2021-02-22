@@ -94,8 +94,6 @@ namespace BoVeloManager.tools {
         }
         #endregion
 
-        
-
         #region Item
         public static string getItem()
         {
@@ -121,17 +119,24 @@ namespace BoVeloManager.tools {
         }
         #endregion
 
-
         #region Kit
         public static string getKit_by_category(int cat)
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
         }
-        public static string getKit_by_item(int itemID)
+        
+        public static string getCompatibleKitId_with_categoryId(int id_cat)
         {
-            return "SELECT * FROM `bv_type_kit` WHERE `type_cat` = " + itemID.ToString();
-
+            return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
         }
+
+        public static string getCompatibleCatId_with_KitId(int id_kit)
+        {
+            return "SELECT `id_cat` FROM `bv_cat_tKit` WHERE `id_tKit` = " + id_kit.ToString();
+        }
+
+
+
 
 
 
@@ -173,16 +178,22 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
         }
 
+        public static string addCompatibleKit(int id_cat, int id_tKit)
+        {
+            return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('"+ id_cat +"', '"+ id_tKit +"')";
+        }
+        ////////////////////////
+        public static string delCompatibleKit(int id_cat, int id_tKit)
+        {
+            ///REQUETE SQL A ECRIRE
+            //return "DELETE FROM `bv_cat_tKit` WHERE id_cat = " + id_cat.ToString() + "AND id_tKit = " + id_tKit.ToString();
+            return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = "+ id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " +id_tKit.ToString() ;
+        }
+        ///////////////////////
+
         //VOIR INNER JOIN POUR AFFICHER LES KITS
         //https://sql.sh/cours/jointures/inner-join
         #endregion
-
-
-        
-
-
-
-
 
 
         // Sales Querry
