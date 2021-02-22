@@ -114,7 +114,7 @@ namespace BoVeloManager.Management {
 
             //update the user datagrid
             update_dg_userList();
-
+            
         }
 
         /*
@@ -265,10 +265,6 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
-
-        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
-        }
     }
 }
         
