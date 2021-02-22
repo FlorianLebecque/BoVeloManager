@@ -163,7 +163,7 @@ namespace BoVeloManager.tools {
 
         public static string addClient(string first_name, string last_name, string enterprise_name, string enterprise_adress, string email, string phone_num, DateTime date)
         {
-            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, enterprise_adress`, `email`, `phone_num` , `date`) VALUES ('" + first_name + "','" + last_name + "','" + enterprise_name + "','" + enterprise_adress + "','" + email + "','" + phone_num + "'," + date.Date.ToString("dd-MM-yyyy HH:mm:ss") + ")";
+            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date`) VALUES ('" + first_name + "','" + last_name + "','" + enterprise_name + "','" + enterprise_adress + "','" + email + "','" + phone_num + "','" + date.Date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
         }
 
 
