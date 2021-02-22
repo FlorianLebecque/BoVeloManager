@@ -29,15 +29,10 @@ namespace BoVeloManager.Management {
 
             update_dg_userList();
             update_dg_itemList();
-       
+
             set_cbtype3_content();
             cb_type3.SelectedIndex = 0;
             update_dg_kitList();
-
-
-
-
-
         }
 
         /*
@@ -123,7 +118,7 @@ namespace BoVeloManager.Management {
 
             //update the user datagrid
             update_dg_userList();
-            
+
         }
 
         /*
@@ -162,8 +157,7 @@ namespace BoVeloManager.Management {
         #endregion
 
         #region Kit
-        private void bt_addKit_Click(object sender, RoutedEventArgs e)
-        {
+        private void bt_addKit_Click(object sender, RoutedEventArgs e) {
             //open the dialog
             kit.AddKitWindow AKW = new kit.AddKitWindow();
             AKW.ShowDialog();
@@ -171,11 +165,8 @@ namespace BoVeloManager.Management {
             //update the kits datagrid
             update_dg_kitList();
         }
-        private void bt_editKit_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
+        private void bt_editKit_Click(object sender, RoutedEventArgs e) {
             
-
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
             int id = Convert.ToInt32(dataRowView["id"]);
@@ -187,11 +178,9 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
 
-        private void btn_delKit_Click(object sender, RoutedEventArgs e)
-        {
+        private void btn_delKit_Click(object sender, RoutedEventArgs e) {
             //Kit delete test
-            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
+            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int kitID = Convert.ToInt32(dataRowView["id"]);
@@ -206,10 +195,7 @@ namespace BoVeloManager.Management {
             }
         }
 
-        private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("BUILDING PROGRAM ...");
-
+        private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e) {
 
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
@@ -222,8 +208,7 @@ namespace BoVeloManager.Management {
             //update the kits datagrid
             update_dg_kitList();
         }
-        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             update_dg_kitList();
         }
 
@@ -286,8 +271,7 @@ namespace BoVeloManager.Management {
         }
         */
 
-        private void set_cbtype3_content()
-        {
+        private void set_cbtype3_content() {
             //set the datatable cb_t as the item sources for the combobox content
             string q_cb = tools.DatabaseQuery.getItem();
             DataTable cb_t = tools.Database.getData(q_cb);
@@ -297,29 +281,25 @@ namespace BoVeloManager.Management {
             cb_t.Rows.InsertAt(newRow, 0);
             cb_t.Rows[0]["name"] = "Show all";
         }
-      
 
-        private void update_dg_kitList()
-        {   
+
+        private void update_dg_kitList() {
             int item = cb_type3.SelectedIndex;
-            
+
             string q;
             DataTable dt;
             //get the data from the db
-            if (item <= 0)
-            {
+            if (item <= 0) {
                 q = tools.DatabaseQuery.getKits();
                 dt = tools.Database.getData(q);
                 Console.WriteLine(q);
                 Console.WriteLine(item);
-            }
-            else
-            {
+            } else {
                 //item selectionned
                 string q_cb = tools.DatabaseQuery.getItem();
                 DataTable cb_t = tools.Database.getData(q_cb);
                 item -= 1;
-               
+
 
                 //dt2 = list of associated kit id with the selectionned item
                 string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(Convert.ToInt32(cb_t.Rows[item]["id"]));
@@ -349,8 +329,7 @@ namespace BoVeloManager.Management {
                 dt.Columns.Add(category_Col);
 
                 //add every compatible kit to dt
-                foreach (DataRow r in dt2.Rows)
-                {
+                foreach (DataRow r in dt2.Rows) {
                     string q_k = tools.DatabaseQuery.getKit_by_id(Convert.ToInt32(r["id_tKit"]));
                     DataTable n_q_k = tools.Database.getData(q_k);
                     DataRow newRow = dt.NewRow();
@@ -358,7 +337,7 @@ namespace BoVeloManager.Management {
                     newRow["name"] = n_q_k.Rows[0]["name"];
                     newRow["properties"] = n_q_k.Rows[0]["properties"];
                     newRow["category"] = n_q_k.Rows[0]["category"];
-                    
+
                     dt.Rows.InsertAt(newRow, 0);
 
                 }
@@ -369,12 +348,10 @@ namespace BoVeloManager.Management {
             newCol.ColumnName = "cat";
             newCol.DataType = typeof(string);
             dt.Columns.Add(newCol);
-            foreach (DataRow r in dt.Rows)
-            {
+            foreach (DataRow r in dt.Rows) {
 
                 int g = Convert.ToInt32(r["category"]);
-                switch (g)
-                {
+                switch (g) {
                     case 0:
                         r["cat"] = "Frame";
                         break;
@@ -401,16 +378,7 @@ namespace BoVeloManager.Management {
         }
 
 
-        private void bt_addKit_Click(object sender, RoutedEventArgs e) {
-            //open the dialog
-            kit.AddKitWindow AKW = new kit.AddKitWindow();
-            AKW.ShowDialog();
-
-            //update the user datagrid
-            update_dg_kitList();
-        }
-
-				#endregion
+        #endregion
 
 
         #region Items
@@ -418,8 +386,7 @@ namespace BoVeloManager.Management {
         private void update_itemList() {
             MessageBox.Show("BUILDING PROGRAM ...");
         }
-        private void bt_editItem_Click(object sender, RoutedEventArgs e)
-        {
+        private void bt_editItem_Click(object sender, RoutedEventArgs e) {
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
             int itemID = Convert.ToInt32(dataRowView["id"]);
@@ -433,11 +400,9 @@ namespace BoVeloManager.Management {
         }
 
 
-        private void bt_delItem_Click(object sender, RoutedEventArgs e)
-        {
+        private void bt_delItem_Click(object sender, RoutedEventArgs e) {
             //Item delete test
-            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
+            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int itemID = Convert.ToInt32(dataRowView["id"]);
@@ -450,33 +415,19 @@ namespace BoVeloManager.Management {
                 MessageBox.Show("Item deleted");
                 update_dg_itemList();
             }
-
-        private void bt_delItem_Click(object sender, RoutedEventArgs e) {
-
         }
-					
-        private void bt_addItem_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void bt_addItem_Click(object sender, RoutedEventArgs e) {
             MessageBox.Show("BUILDING PROGRAM ...");
         }
-
-
-
-        private void bt_editKit_Click(object sender, RoutedEventArgs e)
-        {
-            update_dg_itemList();
-        }
-
-
 
         /*
             Function witch loads the items into the TabItem datagrid
                 - get items data from database
-                
+
                 - put the users data into the datagrid
-         */
-        private void update_dg_itemList()
-        {
+            */
+        private void update_dg_itemList() {
             //get the data from the db
             string q = tools.DatabaseQuery.getItem();
             DataTable dt = tools.Database.getData(q);
@@ -489,17 +440,18 @@ namespace BoVeloManager.Management {
 
             dt.Columns.Add(newCol);
 
-        
+
 
             //set the datatable as the items sources for the user datagrid
             //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
 
-        #endregion
+            #endregion
 
-        
+
     }
-}
+} 
+
 
 
