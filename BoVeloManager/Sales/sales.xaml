@@ -23,7 +23,7 @@
 
                 <!-- Button -->
                 <StackPanel  Grid.Row="1" Orientation="Horizontal">
-                    <Button x:Name="bt_addUser" Width="50" Height="25" HorizontalAlignment="Left" Margin="5 0" Content="Add" Click="bt_addSale_Click"/>
+                    <Button x:Name="bt_addUser" Width="66" Height="25" HorizontalAlignment="Left" Margin="5,12,5,12.6" Content="Add" Click="bt_addSale_Click"/>
                 </StackPanel>
 
                 <!-- Data Grid Sales  -->

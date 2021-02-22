@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen" Icon="Untitled.ico">
+        Title="Dashboard" Height="600" Width="1066" WindowStartupLocation="CenterScreen" Icon="Untitled.ico">
 
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">

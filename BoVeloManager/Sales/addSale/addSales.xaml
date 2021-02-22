@@ -5,28 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales"
         mc:Ignorable="d"
-        Title="Add sale" Height="400" Width="300" ResizeMode="NoResize">
-    <Grid>        
-        <DockPanel>
+        Title="Add sale" Height="400" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>            
+        </Grid.ColumnDefinitions>
+        
+        <!-- Sale for one bike -->
+        <DockPanel Grid.Column="0">
             <!-- Title -->           
             <TextBlock Margin="0 0 0 10" Text="New Sale" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
             
-            <!-- Sale --> 
+            <!-- Sale -->
             <StackPanel DockPanel.Dock="Top">
-                
+
                 <!-- Frame -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>                     
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Frame :" Margin="10"/>
-                    <ComboBox x:Name="frame" Grid.Column="1" Margin="10">
-                        <ComboBoxItem >cadre 1</ComboBoxItem>
-                        <ComboBoxItem >cadre 2</ComboBoxItem>
-                        <ComboBoxItem >cadre 3</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="frame" Grid.Column="1" Margin="10" ItemsSource="{Binding Path=getClientList}"/>
                 </Grid>
 
                 <!-- Wheels -->
@@ -71,7 +73,7 @@
                         <ComboBoxItem >Tissu</ComboBoxItem>
                     </ComboBox>
                 </Grid>
-
+                
                 <!-- Handlebar -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -100,10 +102,23 @@
             </StackPanel>
             
             <!-- Button -->
-            <Grid Margin="5 0 5 0" Height="30" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-                <Button Content="Add new sale" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="92" Click="Button_Click_1" />
-                <Button Content="Cancel" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Grid Margin="5" Height="30" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <Button Content="Add new sale" HorizontalAlignment="Right"   Width="92" Click="Button_add_new" Margin="1"/>
+                <Button Content="Cancel"       HorizontalAlignment="Left"    Width="75" Click="Button_Cancel"             />
             </Grid>
+        </DockPanel>
+        
+        <!-- Resume -->
+        <DockPanel Grid.Column="1">
+            <!-- Title -->
+            <TextBlock Margin="0 0 0 10" Text="Resume" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            
+            <TextBlock DockPanel.Dock="Top" Name="resume"></TextBlock>
+
+            <!-- Button -->
+            <Grid Margin="5" Height="30" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <Button Content="Save sale" HorizontalAlignment="Right"   Width="92" Click="BT_Send_sale_to_db" Margin="0,1,0.8,-3" VerticalAlignment="Top"/>                
+            </Grid>            
         </DockPanel>
     </Grid>
 </Window>

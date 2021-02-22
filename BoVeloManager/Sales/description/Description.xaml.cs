@@ -32,11 +32,11 @@ namespace BoVeloManager.Sales.description
         }
 
         public void DisplayDescription(int _id_sale) {
-
+                                                                                                                                                        
             //Import all sale data
             string sale_data = tools.DatabaseQuery.getSale_by_id(_id_sale);
             DataTable dt = tools.Database.getData(sale_data);
-
+                                                                
             // Description Infos 
             seller.Text = (string)dt.Rows[0]["user"];
             client.Text = (string)dt.Rows[0]["Client"];
