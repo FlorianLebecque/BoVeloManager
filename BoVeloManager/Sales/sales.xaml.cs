@@ -43,5 +43,10 @@ namespace BoVeloManager.Sales
             description.Description DW = new description.Description(saleID);
             DW.Show();
         }
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
