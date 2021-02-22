@@ -28,11 +28,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Frame :" Margin="10"/>
-                    <ComboBox x:Name="frame" Grid.Column="1" Margin="10">
-                        <ComboBoxItem >cadre 1</ComboBoxItem>
-                        <ComboBoxItem >cadre 2</ComboBoxItem>
-                        <ComboBoxItem >cadre 3</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="frame" Grid.Column="1" Margin="10" Loaded="frame_Loaded"/>
                 </Grid>
 
                 <!-- Wheels -->
@@ -43,10 +39,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Wheels :" Margin="10"/>
-                    <ComboBox x:Name="wheels" Grid.Column="1" Margin="10" >
-                        <ComboBoxItem >26 ''</ComboBoxItem>
-                        <ComboBoxItem >28 ''</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="wheels" Grid.Column="1" Margin="10" Loaded="wheels_Loaded" />
                 </Grid>
 
                 <!-- Brakes -->
@@ -57,11 +50,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Brakes :" Margin="10"/>
-                    <ComboBox x:Name="brakes" Grid.Column="1" Margin="10" >
-                        <ComboBoxItem >Freins à jantes</ComboBoxItem>
-                        <ComboBoxItem >Freins à disque</ComboBoxItem>
-                        <ComboBoxItem >Rétropédalage</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="brakes" Grid.Column="1" Margin="10" Loaded="brakes_Loaded" />
                 </Grid>
 
                 <!-- Saddle -->
@@ -72,10 +61,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Saddle :" Margin="10"/>
-                    <ComboBox x:Name="saddle" Grid.Column="1" Margin="10" >
-                        <ComboBoxItem >Cuir</ComboBoxItem>
-                        <ComboBoxItem >Tissu</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="saddle" Grid.Column="1" Margin="10" Loaded="saddle_Loaded" />
                 </Grid>
                 
                 <!-- Handlebar -->
@@ -86,10 +72,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Handlebar :" Margin="10"/>
-                    <ComboBox x:Name="handlebar" Grid.Column="1" Margin="10" >
-                        <ComboBoxItem >Carbone</ComboBoxItem>
-                        <ComboBoxItem >Métal</ComboBoxItem>
-                    </ComboBox>
+                    <ComboBox x:Name="handlebar" Grid.Column="1" Margin="10" Loaded="handlebar_Loaded" />
                 </Grid>
                 
                 <!-- Client -->

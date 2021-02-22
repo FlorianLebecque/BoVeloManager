@@ -19,48 +19,27 @@ namespace BoVeloManager.Sales {
     /// </summary>
     public partial class addSales : Window {
 
+        List<string> FrameList = new List<string>();
+        List<string> WheelsList = new List<string>();
+        List<string> BrakesList = new List<string>();
+        List<string> SaddleList = new List<string>();
+        List<string> HandlebarList = new List<string>();
         List<string> ClientList = new List<string>();
 
         public addSales() {
 
             InitializeComponent();
-            getClients();
+            importData();
+
+
 
 
             DisplayResume();            
         }
-        
-        public List<string> getClientList { get { return ClientList; } }
-
-        // complete ClientList from database
-        public void getClients()
-        {
-            string clients_data = tools.DatabaseQuery.getClients();
-            DataTable clients_table = tools.Database.getData(clients_data);
-
-            // import data      
-            foreach (DataRow row in clients_table.Rows)
-            {
-                string client_fisrtname = row["first_name"].ToString();
-                string client_lastname = row["last_name"].ToString();
-
-                ClientList.Add(client_fisrtname + " " + client_lastname);
-            }
-        }
 
         private void DisplayResume()
         {
-            /*                                  TEST affichage des clients dans la partie resume
-            string resumeText = "";
-
-            for (int i = 0; i < ClientList.Count; i++)
-            {
-                resumeText += ClientList[i];
-                resumeText += "\n";
-            }
-
-            resume.Text = resumeText;
-            */
+            
         }
 
         // Close Button
@@ -106,11 +85,80 @@ namespace BoVeloManager.Sales {
             
         }
 
+        // complete ComboBox from database
+        public void importData()
+        {
+            getFrame();
+            getWheels();
+            getBrakes();
+            getSaddle();
+            getHandlebar();
+            getClients();
+        }
+        public void getClients()
+        {
+            string clients_data = tools.DatabaseQuery.getClients();
+            DataTable clients_table = tools.Database.getData(clients_data);
+
+            // import data      
+            foreach (DataRow row in clients_table.Rows)
+            {
+                string client_fisrtname = row["first_name"].ToString();
+                string client_lastname = row["last_name"].ToString();
+
+                ClientList.Add(client_fisrtname + " " + client_lastname);
+            }
+        }
+        public void getFrame()
+        {
+
+        }
+        public void getWheels()
+        {
+
+        }
+        public void getBrakes()
+        {
+
+        }
+        public void getSaddle()
+        {
+
+        }
+        public void getHandlebar()
+        {
+
+        }
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = ClientList;
             combo.SelectedIndex = 0;
+        }
+
+        private void frame_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void wheels_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void brakes_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void saddle_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void handlebar_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
