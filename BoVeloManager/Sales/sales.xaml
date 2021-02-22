@@ -14,18 +14,26 @@
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
+ 
             <TabItem Header="Vente">
-                <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                    <!-- Title -->
-                    <TextBlock Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addUser" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12">Add</Button>
+                    </StackPanel>
 
+                    
                     <!-- Data Grid Sales  -->
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -35,7 +43,8 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                </StackPanel>
+
+                </Grid>
             </TabItem>
             <TabItem Header="Client">
                 

@@ -121,7 +121,7 @@ namespace BoVeloManager.tools {
         //returns all sales from the shop
         public static string getSales()
         {
-            return "SELECT S.id, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_user` AS U ON S.id_seller = U.id";
+            return "SELECT S.id,S.state, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_user` AS U ON S.id_seller = U.id";
         }
         // Returns the sale_id the Client fullname the sale date
         public static string getSale_by_id(int id)
