@@ -13,6 +13,11 @@
 
 
     <Grid Background="#FFDEDEDE">
-       
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="Bike.png" Stretch="Fill">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Bike.png"/>
+            </Image.OpacityMask>
+        </Image>
+
     </Grid>
 </Page>
