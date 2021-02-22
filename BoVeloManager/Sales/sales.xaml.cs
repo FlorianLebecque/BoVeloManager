@@ -27,7 +27,7 @@ namespace BoVeloManager.Sales
 
             update_dg_salesList();
         }
-        
+
         private void update_dg_salesList()
         {
             string q = tools.DatabaseQuery.getSales();
@@ -42,6 +42,16 @@ namespace BoVeloManager.Sales
 
             description.Description DW = new description.Description(saleID);
             DW.Show();
+        }
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void bt_addClient_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

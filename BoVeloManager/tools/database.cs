@@ -161,9 +161,9 @@ namespace BoVeloManager.tools {
             return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client` WHERE `id` = " + id.ToString();
         }
 
-        public static string addClient(char first_name, char last_name, char entreprise_name, char entreprise_adress, char email, string phone_num, DateTime date)
+        public static string addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num)
         {
-            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, enterprise_adress`, `email`, `phone_num` , `date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "'," + date.ToString() + ")";
+            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, enterprise_adress`, `email`, `phone_num`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "'," +DateTime.Now.ToString("yyyy-MM-dd") + ")";
         }
 
 

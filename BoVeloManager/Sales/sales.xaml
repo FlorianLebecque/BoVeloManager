@@ -10,7 +10,7 @@
       Title="sales" Background="White">
 
     <Grid>
-        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectionChanged="TabablzControl_SelectionChanged" SelectedIndex="0">
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0" SelectionChanged="TabablzControl_SelectionChanged">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
@@ -38,7 +38,39 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Client">
-                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addClient" Width="140" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addClient_Click">Add Client</Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1"  Content="Edit"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Delete" CanUserReorder="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="1" Name="btnView"  IsEnabled="False" Content="Delete"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
             </TabItem>
         </dragablz:TabablzControl>
 
