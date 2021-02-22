@@ -20,7 +20,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*" />
-                        
+
                     </Grid.ColumnDefinitions>
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Seller :</Label>
                     <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -45,7 +45,7 @@
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Date :</Label>
                     <TextBlock Name="sale_date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-                
+
                 <!-- Enterprise info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
@@ -55,42 +55,43 @@
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Enterprise :</Label>
                     <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
+                <Border BorderThickness="0,2" BorderBrush="DarkGray">
+                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="bikesList" MaxHeight="240" Height="240">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0 5 0 5">
 
-                <ListBox Background="LightGray" HorizontalContentAlignment="Stretch" Margin="5" x:Name="bikesList" MaxHeight="240" Height="240">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0 5 0 5">
-                               
-                                <Grid Width="Auto"  HorizontalAlignment="Stretch">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                    <Grid Width="Auto"  HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="{Binding number_name}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding price}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
-                                </Grid>
-                                
-                                <TextBlock Margin="15 0 0 0" Text="{Binding kit}"  HorizontalAlignment="Left" TextAlignment="Left" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                                        <TextBlock Text="{Binding number_name}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding price}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
+                                    </Grid>
+
+                                    <TextBlock Margin="15 0 0 0" Text="{Binding kit}"  HorizontalAlignment="Left" TextAlignment="Left" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
 
                 <!-- Facture info -->
 
-            
 
-            <Grid  Margin="5 0 5 0" Height="30" VerticalAlignment="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Margin="0 0 0 10" Text="Total :" FontSize="15" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+
+                <Grid  Margin="5 0 5 0" Height="30" VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Margin="0 0 0 10" Text="Total :" FontSize="15" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
                     <TextBlock Name="total" Grid.Column="1" Margin="0 0 10 10" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
                 </Grid>
             </StackPanel>
-            
+
             <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -98,8 +99,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_Add_Click" />
-                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_export"  VerticalAlignment="Bottom" Content="Export"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_export_Click" />
+                <Button Margin="0 0 0 5" x:Name="BT_close"  VerticalAlignment="Bottom" Content="Close" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="BT_close_Click"/>
             </Grid>
         </DockPanel>
     </Border>

@@ -54,6 +54,7 @@ namespace BoVeloManager.Sales.description
 
             float total_price = 0;
 
+
             foreach (DataRow tBike in sale_bikes_table.Rows)
             {
 
@@ -61,6 +62,7 @@ namespace BoVeloManager.Sales.description
                 int qnt = Convert.ToInt32(tBike["qnt"]);
                 // id of the tBike
                 int id_tbike = Convert.ToInt32(tBike["id_tbike"]);
+                float price_mul = (float)Convert.ToDouble(tBike["PriceMul"]);
 
                 // Find the name of the tBike
                 string tBike_data = tools.DatabaseQuery.gettBike(id_tbike);
@@ -72,7 +74,8 @@ namespace BoVeloManager.Sales.description
                 // all tBike tKits
                 (string all_kits, float bike_price) = DisplayKits(id_tbike);
 
-                float bikes_price = bike_price * qnt/100 ;
+
+                float bikes_price = bike_price * ((float)qnt/100) * ((price_mul/100)+1);
                 total_price = total_price + bikes_price;
 
                 bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
@@ -111,9 +114,14 @@ namespace BoVeloManager.Sales.description
             public string price { get; set; }
         }
 
-        private void BT_Add_Click(object sender, RoutedEventArgs e)
+        private void BT_export_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        private void BT_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
