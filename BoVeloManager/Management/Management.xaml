@@ -27,20 +27,20 @@
 
                     <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" />
-                            <DataGridTemplateColumn Header="Edit">
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Name="btnView" Margin="1" Click="bt_editUser_Click" Content="Edit"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Delete">
+                            <DataGridTemplateColumn Header="Delete" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" Content="Delete"  />
+                                        <Button Margin="1" Name="btnView" Click="bt_delUser_Click" IsEnabled="False" Content="Delete"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

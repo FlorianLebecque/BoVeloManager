@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+        Title="Dashboard" Height="900" Width="1600" WindowStartupLocation="CenterScreen" Icon="Untitled.ico">
 
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
@@ -79,7 +79,7 @@
                     <ListViewItem Tag="Command" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Truck" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Messages" VerticalAlignment="Center"  Margin="20 10"/>
+                            <TextBlock Text="Commande" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Tag="Management" Height="60">

@@ -22,6 +22,8 @@ namespace BoVeloManager {
         public Dashboard() {
             InitializeComponent();
 
+            frame.Content = new Catalogue.Catalog();
+
             //status bar log
             lb_user.Text = tools.user.getUserName(); 
         }
