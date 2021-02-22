@@ -66,8 +66,25 @@ namespace BoVeloManager.tools {
             return "SELECT `id`,`grade` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
-        public static string getUsers() {
-            return "SELECT `id`,`user`, `grade` FROM `bv_user`";
+        public static string getUsers(int filter) {
+            string f = "";
+            switch (filter) {
+                case 0:
+                    break;
+                case 1:
+                    f = "WHERE `grade` = 2";
+                    break;
+                case 2:
+                    f = "WHERE `grade` = 1";
+                    break;
+                case 3:
+                    f = "WHERE `grade` = 0";
+                    break;
+
+            }
+
+
+            return "SELECT `id`,`user`, `grade` FROM `bv_user`" + f;
         }
         public static string getUser_by_id(int id) {
             return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
