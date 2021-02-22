@@ -26,6 +26,7 @@ namespace BoVeloManager.Sales
             InitializeComponent();
 
             update_dg_salesList();
+            update_dg_clientList();
         }
         
         private void update_dg_salesList()
@@ -43,5 +44,21 @@ namespace BoVeloManager.Sales
             description.Description DW = new description.Description(saleID);
             DW.Show();
         }
+
+        private void update_dg_clientList()
+        {
+            string q = tools.DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(q);
+            dg_clientList.ItemsSource = dt.DefaultView;
+        }
+
+        private void bt_addClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void bt_editClient_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
     }
 }
