@@ -4,32 +4,47 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BoVeloManager.Sales"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="sales" Background="White">
 
+    <Grid>
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectionChanged="TabablzControl_SelectionChanged" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="Vente">
+                <StackPanel>
 
-    <Border Padding="10">
-        <StackPanel>
+                    <!-- Title -->
+                    <TextBlock Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
 
-            <!-- Title -->
-            <TextBlock Text="Bike Sales" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
+                    <!-- Data Grid Sales  -->
+                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Details">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Client">
+                
+            </TabItem>
+        </dragablz:TabablzControl>
 
-            <!-- Data Grid Sales  -->
-            <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
-                <DataGrid.Columns>
-                    <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
-                    <DataGridTextColumn Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
-                    <DataGridTemplateColumn Header="Details">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Name="btnView" Margin="1" Click="bt_showDescription_Click" Content="Details"  />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
-    </Border>
+        
+        
+    </Grid>
+    
+        
 </Page>
