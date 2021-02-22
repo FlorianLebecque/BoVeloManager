@@ -12,38 +12,103 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BoVeloManager.Sales
+namespace BoVeloManager.Sales.Client
 {
     /// <summary>
-    /// Interaction logic for addSales.xaml
+    /// Logique d'interaction pour AddClientWindow.xaml
     /// </summary>
-    public partial class addClientWindow : Window
+    public partial class AddClientWindow : Window
     {
-        public addClientWindow()
+        public AddClientWindow()
         {
             InitializeComponent();
         }
 
-        private void BTLogin_Click(object sender, RoutedEventArgs e)
+        private void BT_Add_Click(object sender, RoutedEventArgs e)
         {
-            String firstName = tb_firstName.Text;
-            String lastName = tb_lastName.Text;
-            String enterpriseName = tb_enterpriseName.Text;
-            String enterpriseAdress = tb_enterpriseAdress.Text;
-            String email = tb_email.Text;
-            String phoneNumber = tb_phoneNumber.Text;
-            DateTime myDateTime = DateTime.Now;
+            string firstName = tb_first_name.Text;
+            string lastName = tb_last_name.Text;
+            string entrepriseName = tb_enterprise_name.Text;
+            string entrepriseAdress = tb_enterprise_adress.Text;
+            string email = tb_email.Text;
+            string phoneNumber = tb_phoneNum.Text;
 
-            addClient(firstName, lastName, enterpriseName, enterpriseAdress, email, phoneNumber, myDateTime);
-            this.Close();
+            int err = 0;
 
+            //test the data
+            if ((firstName.Length >= 4) && (firstName != ""))
+            {    //check if the userName is 4 caracters min, and not empty
+                if ((lastName.Length >= 4) && (lastName != ""))
+                {
+                    if ((entrepriseName.Length >= 4) && (entrepriseName != ""))
+                    {
+                        if ((entrepriseAdress.Length >= 4) && (entrepriseAdress != ""))
+                        {
+                            if ((email.Length >= 4) && (email != ""))
+                            {
+                                if ((phoneNumber.Length >= 4) && (phoneNumber != ""))
+                                {
+                                    addClient(firstName, lastName, entrepriseName, entrepriseAdress, email, phoneNumber);
+                                    this.Close();
+
+                                }
+                                else
+                                {
+                                    err = 1;
+                                }
+                            }
+                            else
+                            {
+                                err = 2;
+                            }
+                        }
+                        else
+                        {
+                            err = 3;
+                        }
+                    }
+                    else
+                    {
+                        err = 4;
+                    }
+                }
+                else
+                {
+                    err = 5;
+                }
+            }
+            else
+            {
+                err = 6;
+            }
+            lb_error.Visibility = Visibility.Visible;
+            switch (err)
+            {
+                case 1:
+                    lb_error.Text = "First name is invalid";
+                    break;
+                case 2:
+                    lb_error.Text = "Last name is invalid";
+                    break;
+                case 3:
+                    lb_error.Text = "Enterprise name is invalid";
+                    break;
+                case 4:
+                    lb_error.Text = "Enterprise adress is invalid";
+                    break;
+                case 5:
+                    lb_error.Text = "Email is invalid";
+                    break;
+                case 6:
+                    lb_error.Text = "Phone number is invalid";
+                    break;
+            }
         }
-            
-
-        private void addClient(string firstName, string lastName, string enterpriseName, string enterpriseAdress, string  email, string phoneNumber, DateTime date)
+                        
+        private void addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num)
         {
 
-            string q = tools.DatabaseQuery.addClient(firstName, lastName, enterpriseName, enterpriseAdress, email, phoneNumber, date);
+            string q = tools.DatabaseQuery.addClient(first_name, last_name, entreprise_name, entreprise_adress, email, phone_num);
 
             int res = tools.Database.setData(q);
 
@@ -53,7 +118,7 @@ namespace BoVeloManager.Sales
             }
             else if (res == 1)
             {
-                MessageBox.Show("Client added");
+                MessageBox.Show("User added");
             }
             else
             {
@@ -61,9 +126,9 @@ namespace BoVeloManager.Sales
             }
 
         }
-
-        private void BTCancel_Click(object sender, RoutedEventArgs e)
+        private void BT_cancel_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
     }

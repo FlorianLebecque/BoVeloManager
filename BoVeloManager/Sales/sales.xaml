@@ -10,6 +10,7 @@
       Title="sales" Background="White">
 
     <Grid>
+
         <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
@@ -46,8 +47,8 @@
 
                 </Grid>
             </TabItem>
+          
             <TabItem Header="Client">
-
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
@@ -55,8 +56,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addClient" Width="72" Height="30" HorizontalAlignment="Left" Margin="5 0" Click="bt_addClient_Click">Add</Button>
-                        <TextBox Width="120" ToolTip="Searh" Height="30" FontSize="16" VerticalAlignment="Center"/>
+                        <Button x:Name="bt_addClient" Width="140" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addClient_Click">Add Client</Button>
                     </StackPanel>
 
                     <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
@@ -78,14 +78,9 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-
-
                 </Grid>
-
             </TabItem>
         </dragablz:TabablzControl>
-
-        
         
     </Grid>
     
