@@ -54,6 +54,10 @@ namespace BoVeloManager.Sales
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
         {
+            addClientWindow AUW = new addClientWindow();
+            AUW.ShowDialog();
+
+            update_dg_clientList();
         }
 
         private void bt_editClient_Click(object sender, RoutedEventArgs e)
