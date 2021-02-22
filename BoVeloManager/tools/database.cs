@@ -66,8 +66,25 @@ namespace BoVeloManager.tools {
             return "SELECT `id`,`grade` FROM `bv_user` WHERE `user` = '" + user + "'";
         }
 
-        public static string getUsers() {
-            return "SELECT `id`,`user`, `grade` FROM `bv_user`";
+        public static string getUsers(int filter) {
+            string f = "";
+            switch (filter) {
+                case 0:
+                    break;
+                case 1:
+                    f = "WHERE `grade` = 2";
+                    break;
+                case 2:
+                    f = "WHERE `grade` = 1";
+                    break;
+                case 3:
+                    f = "WHERE `grade` = 0";
+                    break;
+
+            }
+
+
+            return "SELECT `id`,`user`, `grade` FROM `bv_user`" + f;
         }
         public static string getUser_by_id(int id) {
             return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
@@ -131,17 +148,17 @@ namespace BoVeloManager.tools {
         //Returns all types of bikes from one sale
         public static string gettBikes_by_sale(int id_sale)
         {
-            return "SELECT id_tBike , qnt FROM `bv_sale_bike`  WHERE id_sale = " + id_sale.ToString();
+            return "SELECT id_tBike , qnt , PriceMul FROM `bv_sale_bike` as SB INNER JOIN bv_type_bike AS TB ON TB.id = SB.`id_tBike` INNER JOIN bv_catalog AS C ON TB.id_cat = C.id WHERE id_sale = " + id_sale.ToString();
         }
         // Returns id name price from a type of bike
         public static string gettBike(int id_Bike)
         {
-            return "SELECT id , name, price FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
+            return "SELECT id , name FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
         }
         // get all kit info
         public static string gettKit(int id_tBike)
         {
-            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
+            return "SELECT K.name,K.category,K.properties,K.price FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike ="+ id_tBike.ToString();
         }
 
         // Add kit Querry

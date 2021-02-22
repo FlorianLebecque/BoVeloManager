@@ -64,5 +64,10 @@ namespace BoVeloManager.Sales
         {
         }
 
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace BoVeloManager.Sales.description
             seller.Text = (string)dt.Rows[0]["user"];
             client.Text = (string)dt.Rows[0]["Client"];
             enterprise.Text = (string)dt.Rows[0]["enterprise_name"];
-            sale_date.Text = dt.Rows[0]["date"].ToString();
+            sale_date.Text = ((DateTime)dt.Rows[0]["date"]).ToString("yyyy-MM-dd");
         }
         public void DisplayBikes(int _id_sale)
         {
@@ -52,43 +52,49 @@ namespace BoVeloManager.Sales.description
             //Create new bike list 
             List<BikeItem> bikes = new List<BikeItem>();
 
-            int total_price = 0;
+            float total_price = 0;
+
 
             foreach (DataRow tBike in sale_bikes_table.Rows)
             {
-                
+
                 //Quantity of the tBike
                 int qnt = Convert.ToInt32(tBike["qnt"]);
                 // id of the tBike
                 int id_tbike = Convert.ToInt32(tBike["id_tbike"]);
+                float price_mul = (float)Convert.ToDouble(tBike["PriceMul"]);
 
                 // Find the name of the tBike
                 string tBike_data = tools.DatabaseQuery.gettBike(id_tbike);
                 DataTable tBike_table = tools.Database.getData(tBike_data);
 
                 string bike_name = (string)tBike_table.Rows[0]["name"];
-                int bike_price = Convert.ToInt32(tBike_table.Rows[0]["price"]);
+
 
                 // all tBike tKits
-                string all_kits = DisplayKits(id_tbike);
+                (string all_kits, float bike_price) = DisplayKits(id_tbike);
 
-                int bikes_price = bike_price * qnt;
+
+                float bikes_price = bike_price * ((float)qnt/100) * ((price_mul/100)+1);
                 total_price = total_price + bikes_price;
 
-                bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price });
+                bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
 
                 bikesList.ItemsSource = bikes;
             }
-        
-            total.Text = total_price.ToString();
+
+            total.Text = total_price.ToString("c2");
         }
-        public string DisplayKits(int _id_tbike)
+        public (string , int) DisplayKits(int _id_tbike)
         {
+
+            int kits_price = 0;
             string all_kits = "";
             string tKit_data = tools.DatabaseQuery.gettKit(_id_tbike);
             DataTable tKit_table = tools.Database.getData(tKit_data);
             foreach (DataRow tKit in tKit_table.Rows)
             {
+                kits_price += Convert.ToInt32(tKit["price"]);
                 string kit_name = tKit["name"].ToString();
                 string kit_prop = tKit["properties"].ToString();
 
@@ -99,13 +105,23 @@ namespace BoVeloManager.Sales.description
                     all_kits = all_kits + "● " + kit_name + " [" + kit_prop + "] \n";
                 } 
             }
-            return all_kits;
+            return (all_kits, kits_price);
         }
         public class BikeItem
         {
             public string number_name { get; set; }
             public string kit { get; set; }
-            public int price { get; set; }
+            public string price { get; set; }
         }
+
+        private void BT_export_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void BT_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

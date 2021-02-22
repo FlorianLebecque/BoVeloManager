@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,12 @@ namespace BoVeloManager.Management {
     /// Interaction logic for Management.xaml
     /// </summary>
     public partial class Management : Page {
+
+        bool init = false;
+
         public Management() {
             InitializeComponent();
+            init = true;
 
             update_dg_userList();
 
@@ -46,7 +51,7 @@ namespace BoVeloManager.Management {
          */
         private void update_dg_userList() {
             //get the data from the db
-            string q = tools.DatabaseQuery.getUsers();
+            string q = tools.DatabaseQuery.getUsers(cb_sortUser.SelectedIndex);
             DataTable dt = tools.Database.getData(q);
 
 
@@ -62,10 +67,10 @@ namespace BoVeloManager.Management {
                 int g = Convert.ToInt32(r["grade"]);
                 switch (g) {
                     case 0:
-                        r["Poste"] = "Monteur";
+                        r["Poste"] = "Worker";
                         break;
                     case 1:
-                        r["Poste"] = "Vendeur";
+                        r["Poste"] = "Seller";
                         break;
                     case 2:
                         r["Poste"] = "Manager";
@@ -142,7 +147,14 @@ namespace BoVeloManager.Management {
 
         }
 
+        private void cb_sortUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            //ICollectionView cv = CollectionViewSource.GetDefaultView(dg_userList.ItemsSource);
+            if (init) {
+                update_dg_userList();
+            }
+            
 
+        }
 
         #endregion
 
@@ -265,6 +277,8 @@ namespace BoVeloManager.Management {
         }
 
         #endregion
+
+        
     }
 }
         

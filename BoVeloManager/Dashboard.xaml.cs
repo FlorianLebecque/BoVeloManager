@@ -19,6 +19,9 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
+
+        bool isOpen = false;
+
         public Dashboard() {
             InitializeComponent();
 
@@ -33,12 +36,15 @@ namespace BoVeloManager {
 
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
+            isOpen = true;
+
             ButtonOpenMenu.Visibility = Visibility.Hidden;
             ButtonCloseMenu.Visibility = Visibility.Visible;
             lb_user.Visibility = Visibility.Visible;
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e) {
+            isOpen = false;
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Hidden;
             lb_user.Visibility = Visibility.Hidden;
@@ -49,8 +55,17 @@ namespace BoVeloManager {
          *      Their goal is to set the page into the frame (center object of the window)
         */
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            
-                //clear the content
+            if (isOpen) {
+                var sb = this.Resources["CloseMenu"] as System.Windows.Media.Animation.Storyboard;
+                sb.Begin();
+            }
+
+            isOpen = false;
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Hidden;
+            lb_user.Visibility = Visibility.Hidden;
+
+            //clear the content
             frame.Content = null;
             frame.NavigationService.RemoveBackEntry();
 
