@@ -26,8 +26,6 @@ namespace BoVeloManager.Sales {
             InitializeComponent();
             getClients();
 
-            ClientList.Add("monsieur l'embrouille");
-            ClientList.Add("Monsieur bigboss");
 
             DisplayResume();            
         }
@@ -52,14 +50,17 @@ namespace BoVeloManager.Sales {
 
         private void DisplayResume()
         {
+            /*                                  TEST affichage des clients dans la partie resume
             string resumeText = "";
 
-            for (int i = 0 ; i < ClientList.Count ; i ++)
+            for (int i = 0; i < ClientList.Count; i++)
             {
                 resumeText += ClientList[i];
+                resumeText += "\n";
             }
 
             resume.Text = resumeText;
+            */
         }
 
         // Close Button
@@ -103,6 +104,13 @@ namespace BoVeloManager.Sales {
                 MessageBox.Show("An error has occured");
             }
             
+        }
+
+        private void client_Loaded(object sender, RoutedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            combo.ItemsSource = ClientList;
+            combo.SelectedIndex = 0;
         }
     }
 }
