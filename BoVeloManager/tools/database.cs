@@ -86,6 +86,10 @@ namespace BoVeloManager.tools {
 
             return "SELECT `id`,`user`, `grade` FROM `bv_user`" + f;
         }
+        public static string getUserGrade_by_id(int id)
+        {
+            return "SELECT `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
+        }
         public static string getUser_by_id(int id) {
             return "SELECT `id`,`user`, `grade` FROM `bv_user` WHERE `id` = " + id.ToString();
         }
@@ -105,6 +109,8 @@ namespace BoVeloManager.tools {
         public static string delUser(int id) {
             return "DELETE FROM `bv_user` WHERE `id` = " + id.ToString();
         }
+
+        #region Item
 
         public static string getKits(){
             return "SELECT * FROM `bv_type_kit`";
@@ -132,7 +138,80 @@ namespace BoVeloManager.tools {
         {
             return "DELETE FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
- 
+
+        #endregion
+
+        #region Kit
+        public static string getKit_by_category(int cat)
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
+        }
+        
+        public static string getCompatibleKitId_with_categoryId(int id_cat)
+        {
+            return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
+        }
+
+        public static string getCompatibleCatId_with_KitId(int id_kit)
+        {
+            return "SELECT `id_cat` FROM `bv_cat_tKit` WHERE `id_tKit` = " + id_kit.ToString();
+        }
+
+        public static string getKit_by_id(int id)
+        {
+            return "SELECT `id`,`name`,`properties`,`category` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+
+        public static string delKit(int id)
+        {
+            return "DELETE FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+        }
+
+        public static string setKitName(int id, string name)
+        {
+            return "UPDATE `bv_type_kit` SET `name` = '" + name + "' WHERE `id` = " + id.ToString();
+        }
+
+        public static string setKitProperties(int id, string newProperties)
+        {
+            return "UPDATE `bv_type_kit` SET `properties` = '" + newProperties + "' WHERE `id` = " + id.ToString();
+        }
+
+        // get all kit info
+        public static string gettKit(int id_tBike)
+        {
+            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
+        }
+        public static string getKits()
+        {
+            return "SELECT * FROM `bv_type_kit`";
+        }
+
+        // Add kit Querry
+
+        public static string addKit(string name, string prop, string cat)
+        {
+            return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
+        }
+
+        public static string addCompatibleKit(int id_cat, int id_tKit)
+        {
+            return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('"+ id_cat +"', '"+ id_tKit +"')";
+        }
+        ////////////////////////
+        public static string delCompatibleKit(int id_cat, int id_tKit)
+        {
+            ///REQUETE SQL A ECRIRE
+            //return "DELETE FROM `bv_cat_tKit` WHERE id_cat = " + id_cat.ToString() + "AND id_tKit = " + id_tKit.ToString();
+            return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = "+ id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " +id_tKit.ToString() ;
+        }
+        ///////////////////////
+
+        //VOIR INNER JOIN POUR AFFICHER LES KITS
+        //https://sql.sh/cours/jointures/inner-join
+        #endregion
+
         // Sales Querry
 
         //returns all sales from the shop
@@ -155,6 +234,7 @@ namespace BoVeloManager.tools {
         {
             return "SELECT id , name FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
         }
+
         // get all kit info
         public static string gettKit(int id_tBike)
         {
@@ -168,6 +248,7 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
         }
 
+
         public static string getClients()
         {
             return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client`";
@@ -178,11 +259,11 @@ namespace BoVeloManager.tools {
             return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client` WHERE `id` = " + id.ToString();
         }
 
+
         public static string addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num)
         {
             return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" +DateTime.Now.ToString("yyyy-MM-dd") + "')";
         }
-
 
     }
 

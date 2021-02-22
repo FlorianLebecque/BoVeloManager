@@ -41,10 +41,10 @@ namespace BoVeloManager.Management.item
             string newItemName = tb_newItemName.Text;
             if ((newItemName.Length >= 2) && (newItemName != ""))
             {
-                string q = tools.DatabaseQuery.setItemName(itemId, newItemName);
+                //string q = tools.DatabaseQuery.setItemName(itemId, newItemName);
 
-                tools.Database.setData(q);
-                updateItemName(itemId, Name);
+                //tools.Database.setData(q);
+                updateItemName(itemId, newItemName);
             }
             else
             {

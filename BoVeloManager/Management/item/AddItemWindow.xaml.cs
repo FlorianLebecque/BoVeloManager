@@ -35,11 +35,11 @@ namespace BoVeloManager.Management.item
 
             }
             else { err = 1; }
-            lb_error.Visibility = Visibility.Visible;
+            //lb_error.Visibility = Visibility.Visible;
             switch (err)
             {
                 case 1:
-                    lb_error.Text = "Item name invalid";
+                    //lb_error.Text = "Item name invalid";
                     break;
             }
         }

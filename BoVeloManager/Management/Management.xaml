@@ -65,8 +65,34 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                      
+                        <Label Grid.Column="0" Margin="0,10,0,0">Select compatible item :</Label>
 
-                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="72" Height="30" HorizontalAlignment="Left" Margin="5,12">Add</Button>
+                        <!--
+                        <ComboBox Margin="10,10,0,0" x:Name="cb_type2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28">
+                            <ComboBoxItem Content="Show All" IsSelected="True"/>
+                            <ComboBoxItem Content="Type 1"/>
+                            <ComboBoxItem Content="Type 2"/>
+                            <ComboBoxItem Content="Type 3"/>
+                            <ComboBoxItem Content="Type 4"/>
+                        
+
+                        </ComboBox>
+                        -->
+
+                        <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28" SelectionChanged="cb_type3_SelectionChanged">
+
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="10 0 0 0" Text="{Binding Path=name}" ></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        
+                        <Label Grid.Column="0" Margin="0,10,0,0" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left"></Label>
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="80" Height="25" HorizontalAlignment="Left" Margin="5,12">Add new kit</Button>
+
+                        <Button x:Name="bt_addTKit" Click="bt_addKit_Click" Width="72" Height="30" HorizontalAlignment="Left" Margin="5,12">Add</Button>>>>>>>> master
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
@@ -82,12 +108,61 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+
+                            
+                            <DataGridTemplateColumn Header="Edit_CompatibleKit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editCompatibleKit_Click" Content="Edit compatibles kits"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>       
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
+              </TabItem>
+
+            <TabItem Header="TabItem">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="312*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="3" Margin="0,0,0.334,0">
+                        <Button x:Name="bt_addItem" Width="65" Height="25" HorizontalAlignment="Left" Margin="5,12" Click="bt_addItem_Click" Content="Add Item"/>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_itemList" Margin="0,0,0.334,0.333" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" Grid.ColumnSpan="3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Edit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editItem_Click" Content="Edit"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Delete">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="1" Name="btnView" Click="bt_delItem_Click" Content="Delete"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
-
+                </Grid>
+            </TabItem>
 
                 <!--
                 <Grid Background="#FFE5E5E5">
@@ -113,9 +188,6 @@
                     <Button Content="Add" HorizontalAlignment="Left" Margin="5,25,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.227,-0.45" Background="{x:Null}" Grid.Column="1"/>
                 </Grid>
                 -->
-
-            </TabItem>
-
         </dragablz:TabablzControl>
 
     </Grid>

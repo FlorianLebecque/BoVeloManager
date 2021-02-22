@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.Management.item"
         mc:Ignorable="d"
         Title="Add item" Height="200" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
     <Border Padding="0 0 0 0">
 
         <DockPanel>
@@ -24,22 +25,8 @@
                     <TextBox x:Name="tb_itemName" Padding="2" Grid.Column="1"></TextBox>
                 </Grid>
 
-                <Grid  Margin="5 10 5 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="b" Grid.Column="0">Category:</Label>
-                    <ComboBox Grid.Column="2" x:Name="cb_cat" Padding="2" Grid.ColumnSpan="2">
-                        <ComboBoxItem >Type 1</ComboBoxItem>
-                        <ComboBoxItem >Type 2</ComboBoxItem>
-                        <ComboBoxItem >Type 3</ComboBoxItem>
-                        <ComboBoxItem >All type</ComboBoxItem>
-                    </ComboBox>
-                </Grid>
-
             </StackPanel>
-            <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
+            <Grid DockPanel.Dock="Bottom" Margin="0,5,-0.333,0" Height="38">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

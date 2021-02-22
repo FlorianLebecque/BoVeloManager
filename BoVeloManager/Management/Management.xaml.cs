@@ -28,11 +28,15 @@ namespace BoVeloManager.Management {
             init = true;
 
             update_dg_userList();
-
-            update_dg_kitList();
             update_dg_itemList();
+       
+            set_cbtype3_content();
+            cb_type3.SelectedIndex = 0;
+            update_dg_kitList();
 
-            //update_dg_clientList();
+
+
+
 
         }
 
@@ -152,19 +156,97 @@ namespace BoVeloManager.Management {
             if (init) {
                 update_dg_userList();
             }
-            
-
         }
+
 
         #endregion
 
         #region Kit
+        private void bt_addKit_Click(object sender, RoutedEventArgs e)
+        {
+            //open the dialog
+            kit.AddKitWindow AKW = new kit.AddKitWindow();
+            AKW.ShowDialog();
 
-        private void update_dg_kitList() {
+            //update the kits datagrid
+            update_dg_kitList();
+        }
+        private void bt_editKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+            
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int id = Convert.ToInt32(dataRowView["id"]);
+
+            kit.modKitWindow MKW = new kit.modKitWindow(id);
+            MKW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_kitList();
+        }
+
+        private void btn_delKit_Click(object sender, RoutedEventArgs e)
+        {
+            //Kit delete test
+            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //retrieve the row we click
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int kitID = Convert.ToInt32(dataRowView["id"]);
+
+                //create and send the request to the db
+                string q = tools.DatabaseQuery.delKit(kitID);
+                tools.Database.setData(q);
+
+                //Update the list
+                MessageBox.Show("Kit deleted");
+                update_dg_kitList();
+            }
+        }
+
+        private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BUILDING PROGRAM ...");
+
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int id = Convert.ToInt32(dataRowView["id"]);
+
+            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
+
+            MCKW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_kitList();
+        }
+        private void cb_type3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            update_dg_kitList();
+        }
+
+        /*
+        private void update_dg_kitList_bis() {
+
+        }
+
+
+            int cat = cb_type2.SelectedIndex;
+            string q;
             //get the data from the db
-            string q = tools.DatabaseQuery.getKits();
+            if (cat == 0)
+            {
+                q = tools.DatabaseQuery.getKits();
+            }
+            else
+            {
+                q = tools.DatabaseQuery.getKit_by_category(cat);
+            }
             DataTable dt = tools.Database.getData(q);
 
+            
 
             //convertion de la columns grade en poste
             DataColumn newCol = new DataColumn();
@@ -194,16 +276,131 @@ namespace BoVeloManager.Management {
                         r["cat"] = "Addons";
                         break;
                 }
-
             }
             //we can now remove the old columns
             dt.Columns.Remove(dt.Columns["category"]);
 
+            //set the datatable dt as the items sources for the user datagrid
+            dg_tKitList.ItemsSource = dt.DefaultView;
 
+        }
+        */
 
-            //set the datatable as the items sources for the user datagrid
+        private void set_cbtype3_content()
+        {
+            //set the datatable cb_t as the item sources for the combobox content
+            string q_cb = tools.DatabaseQuery.getItem();
+            DataTable cb_t = tools.Database.getData(q_cb);
+            cb_type3.ItemsSource = cb_t.DefaultView;
+            //Add 'show all' row to cb_t
+            DataRow newRow = cb_t.NewRow();
+            cb_t.Rows.InsertAt(newRow, 0);
+            cb_t.Rows[0]["name"] = "Show all";
+        }
+      
+
+        private void update_dg_kitList()
+        {   
+            int item = cb_type3.SelectedIndex;
+            
+            string q;
+            DataTable dt;
+            //get the data from the db
+            if (item <= 0)
+            {
+                q = tools.DatabaseQuery.getKits();
+                dt = tools.Database.getData(q);
+                Console.WriteLine(q);
+                Console.WriteLine(item);
+            }
+            else
+            {
+                //item selectionned
+                string q_cb = tools.DatabaseQuery.getItem();
+                DataTable cb_t = tools.Database.getData(q_cb);
+                item -= 1;
+               
+
+                //dt2 = list of associated kit id with the selectionned item
+                string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(Convert.ToInt32(cb_t.Rows[item]["id"]));
+                DataTable dt2 = tools.Database.getData(req);
+
+                //dt created table from the associated id in dt2
+                dt = new DataTable();
+
+                DataColumn id_Col = new DataColumn();
+                id_Col.ColumnName = "id";
+                id_Col.DataType = typeof(int);
+                dt.Columns.Add(id_Col);
+
+                DataColumn name_Col = new DataColumn();
+                name_Col.ColumnName = "name";
+                name_Col.DataType = typeof(string);
+                dt.Columns.Add(name_Col);
+
+                DataColumn properties_Col = new DataColumn();
+                properties_Col.ColumnName = "properties";
+                properties_Col.DataType = typeof(string);
+                dt.Columns.Add(properties_Col);
+
+                DataColumn category_Col = new DataColumn();
+                category_Col.ColumnName = "category";
+                category_Col.DataType = typeof(string);
+                dt.Columns.Add(category_Col);
+
+                //add every compatible kit to dt
+                foreach (DataRow r in dt2.Rows)
+                {
+                    string q_k = tools.DatabaseQuery.getKit_by_id(Convert.ToInt32(r["id_tKit"]));
+                    DataTable n_q_k = tools.Database.getData(q_k);
+                    DataRow newRow = dt.NewRow();
+                    newRow["id"] = n_q_k.Rows[0]["id"];
+                    newRow["name"] = n_q_k.Rows[0]["name"];
+                    newRow["properties"] = n_q_k.Rows[0]["properties"];
+                    newRow["category"] = n_q_k.Rows[0]["category"];
+                    
+                    dt.Rows.InsertAt(newRow, 0);
+
+                }
+            }
+
+            //convertion de la columns grade en poste
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "cat";
+            newCol.DataType = typeof(string);
+            dt.Columns.Add(newCol);
+            foreach (DataRow r in dt.Rows)
+            {
+
+                int g = Convert.ToInt32(r["category"]);
+                switch (g)
+                {
+                    case 0:
+                        r["cat"] = "Frame";
+                        break;
+                    case 1:
+                        r["cat"] = "Wheels";
+                        break;
+                    case 2:
+                        r["cat"] = "Brake";
+                        break;
+                    case 3:
+                        r["cat"] = "Saddle";
+                        break;
+                    case 4:
+                        r["cat"] = "Handlebar";
+                        break;
+                    case 5:
+                        r["cat"] = "Addons";
+                        break;
+                }
+            }
+
+            //set the datatable dt as the items sources for the user datagrid
             dg_tKitList.ItemsSource = dt.DefaultView;
         }
+
+
         private void bt_addKit_Click(object sender, RoutedEventArgs e) {
             //open the dialog
             kit.AddKitWindow AKW = new kit.AddKitWindow();
@@ -213,7 +410,8 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
 
-#endregion
+				#endregion
+
 
         #region Items
 
@@ -222,32 +420,53 @@ namespace BoVeloManager.Management {
         }
         private void bt_editItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("BUILDING PROGRAM ...");
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
             int itemID = Convert.ToInt32(dataRowView["id"]);
 
-            //open the dialog passing the user ID
+            //open the dialog passing the item ID
             item.modItemWindow MUW = new item.modItemWindow(itemID);
             MUW.ShowDialog();
 
-            //update the user datagrid
-            update_dg_userList();
-
+            //update the item datagrid
+            update_dg_itemList();
         }
+
+
+        private void bt_delItem_Click(object sender, RoutedEventArgs e)
+        {
+            //Item delete test
+            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //retrieve the row we click
+                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+                int itemID = Convert.ToInt32(dataRowView["id"]);
+
+                //create and send the request to the db
+                string q = tools.DatabaseQuery.delItem(itemID);
+                tools.Database.setData(q);
+
+                //Update the list
+                MessageBox.Show("Item deleted");
+                update_dg_itemList();
+            }
 
         private void bt_delItem_Click(object sender, RoutedEventArgs e) {
 
         }
+					
         private void bt_addItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("BUILDING PROGRAM ...");
         }
 
+
+
         private void bt_editKit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("BUILDING PROGRAM ...");
+            update_dg_itemList();
         }
+
 
 
         /*
@@ -276,10 +495,11 @@ namespace BoVeloManager.Management {
             //dg_itemList.ItemsSource = dt.DefaultView;
         }
 
+
         #endregion
 
         
     }
 }
-        
+
 
