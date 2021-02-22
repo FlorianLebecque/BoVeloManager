@@ -24,6 +24,7 @@ namespace BoVeloManager.Sales {
         public addSales() {
 
             InitializeComponent();
+            getClients();
 
             ClientList.Add("monsieur l'embrouille");
             ClientList.Add("Monsieur bigboss");
@@ -32,6 +33,22 @@ namespace BoVeloManager.Sales {
         }
         
         public List<string> getClientList { get { return ClientList; } }
+
+        // complete ClientList from database
+        public void getClients()
+        {
+            string clients_data = tools.DatabaseQuery.getClients();
+            DataTable clients_table = tools.Database.getData(clients_data);
+
+            // import data      
+            foreach (DataRow row in clients_table.Rows)
+            {
+                string client_fisrtname = row["first_name"].ToString();
+                string client_lastname = row["last_name"].ToString();
+
+                ClientList.Add(client_fisrtname + " " + client_lastname);
+            }
+        }
 
         private void DisplayResume()
         {
