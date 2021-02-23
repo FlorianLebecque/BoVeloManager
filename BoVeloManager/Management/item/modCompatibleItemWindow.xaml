@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.item"
         mc:Ignorable="d"
-        Title="modCompatibleItemWindow" Height="2450" Width="800">
+        Title="Select compatible kits" Height="2450" Width="800">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">
@@ -23,21 +23,21 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lb_kitName" Grid.Column="0">Item name:</Label>
+                    <Label x:Name="lb_kitName" Grid.Column="0">Bike name:</Label>
                     <TextBlock x:Name="tb_kitName" Padding="2" Grid.Column="1" Text="ITEM_NAME"></TextBlock>
                 </Grid>
 
                 <!-- <ScrollViewer x:Name="scrollBar" HorizontalScrollBarVisibility="Auto"> -->
-                
+
                 <Grid  Margin="5 10 5 0">
-                        
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
 
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible items :</Label>
+                    <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible kits :</Label>
                     <!--
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single"  AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
@@ -51,30 +51,30 @@
                     </DataGrid>
                     -->
 
-                    
+
                     <ListBox x:Name="lb_selectCompIt" Grid.Column="1">
 
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
-                                    
-                                </DataTemplate>
-                                
-                            </ListBox.ItemTemplate>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
+
+                            </DataTemplate>
+
+                        </ListBox.ItemTemplate>
 
                     </ListBox>
-                    
-                    
+
+
 
                     <ListBox x:Name="lb_properties" Grid.Column="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock x:Name="tb_properties" Text="{Binding Path=properties}"></TextBlock>
                             </DataTemplate>
-                                
+
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    
+
 
                 </Grid>
                 <!-- </ScrollViewer>  -->
@@ -106,14 +106,14 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
                 </Grid>
-                
+
 
             </StackPanel>
-            
-          
+
+
 
         </DockPanel>
     </Border>
