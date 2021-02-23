@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="Edit compatible items window" Height="350" Width="600">
+        Title="Edit compatible items window" Height="400" Width="600">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">

@@ -23,25 +23,30 @@ namespace BoVeloManager.Management.item
     public partial class modCompatibleItemWindow : Window
     {
 
-        private int kitId;
+        //private int kitId;
+        private int cat_id;
+
+
         DataTable dt_item;
-        public modCompatibleItemWindow(int kitId_)
+        public modCompatibleItemWindow(int catId_)
         {
             InitializeComponent();
 
             // initialise the windows
-            kitId = kitId_;
+            cat_id = catId_;
 
             //get the kit data
             //string q = tools.DatabaseQuery.getKit_by_id(kitId);
-            string q = tools.DatabaseQuery.getItem_by_id(kitId);
+            //string q = tools.DatabaseQuery.getItem_by_id(kitId);
+            string q = tools.DatabaseQuery.getItem_by_id(cat_id);
+
             DataTable res = tools.Database.getData(q);
 
             //display the kit data
             tb_kitName.Text = (string)res.Rows[0]["name"];
             tb_title.Text = "Edit compatible kits with " + (string)res.Rows[0]["name"] + "bike" ; 
 
-            set_lb_selectCompIt_content();
+            set_dg_selCompatibleKit_content();
 
 
         }
@@ -58,14 +63,16 @@ namespace BoVeloManager.Management.item
 
             //dt contient tous les id d'item pour lesquels dt_item["itemChecked"] valait true au depart
             //string q = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
-            string q = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+            //string q = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+            string q = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(cat_id);
+
 
             DataTable dt = tools.Database.getData(q);
 
 
             Console.WriteLine("@@@@@@@");
 
-            foreach (DataRowView lbi in lb_selectCompIt.Items)
+            foreach (DataRowView lbi in dg_selCompatibleKit.Items)
             {
                 Console.WriteLine(lbi.ToString());
                 Console.WriteLine(lbi["name"]);
@@ -75,7 +82,7 @@ namespace BoVeloManager.Management.item
 
             }
 
-            foreach (DataRowView dataR in lb_selectCompIt.Items)
+            foreach (DataRowView dataR in dg_selCompatibleKit.Items)
             {
                 if (String.Compare(Convert.ToString(dataR["itemChecked"]), "True") == 0)
                 {
@@ -104,8 +111,8 @@ namespace BoVeloManager.Management.item
 
 
                         //string request = tools.DatabaseQuery.addCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
-                        string request = tools.DatabaseQuery.addCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
-
+                        //string request = tools.DatabaseQuery.addCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
+                        string request = tools.DatabaseQuery.addCompatibleKit(cat_id, Convert.ToInt32(dataR["id"]));
 
                         //envoyer request
                         int res = tools.Database.setData(request);
@@ -149,8 +156,8 @@ namespace BoVeloManager.Management.item
 
                         //Retirer la ligne dans bv_cat_tKit avec kitId et dataR["id"]
                         //string request = tools.DatabaseQuery.delCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
-                        string request = tools.DatabaseQuery.delCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
-
+                        //string request = tools.DatabaseQuery.delCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
+                        string request = tools.DatabaseQuery.delCompatibleKit(cat_id, Convert.ToInt32(dataR["id"]));
 
 
                         //envoyer request
@@ -181,11 +188,12 @@ namespace BoVeloManager.Management.item
 
         }
 
-        private void set_lb_selectCompIt_content()
+        private void set_dg_selCompatibleKit_content()
         {
             //get item compatible id in dt2
             //string req = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
-            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+            //string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(cat_id);
 
             DataTable dt = tools.Database.getData(req);
 
@@ -231,16 +239,13 @@ namespace BoVeloManager.Management.item
 
 
             //dg_tKitList.ItemsSource = dt_item.DefaultView;
-            lb_selectCompIt.ItemsSource = dt_item.DefaultView;
+            dg_selCompatibleKit.ItemsSource = dt_item.DefaultView;
             //lb_properties.ItemsSource = dt_item.DefaultView;
             //dg_tKitList.ItemsSource = dt_item.DefaultView;
 
         }
 
-        private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
+        
 
         private bool linkExist_in_bv_cat_tKit(int cat_id, int kit_id)
         {
@@ -272,12 +277,16 @@ namespace BoVeloManager.Management.item
 
             Console.WriteLine(KITid);
             Console.WriteLine("Kit id : " + Convert.ToString(KITid));
-            Console.WriteLine("Cat id : " + Convert.ToString(kitId));
+            //Console.WriteLine("Cat id : " + Convert.ToString(kitId));
+            Console.WriteLine("Cat id : " + Convert.ToString(cat_id));
 
-            if (linkExist_in_bv_cat_tKit(kitId, KITid) == false)
+            //if (linkExist_in_bv_cat_tKit(kitId, KITid) == false)
+            if (linkExist_in_bv_cat_tKit(cat_id, KITid) == false)
             {
-                string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
-                                                                                      //envoyer request
+                //string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                //envoyer request
+                string request = tools.DatabaseQuery.addCompatibleKit(cat_id, KITid);
+
                 int res = tools.Database.setData(request);
 
                 if (res == -1)
@@ -305,13 +314,16 @@ namespace BoVeloManager.Management.item
             int KITid = Convert.ToInt32(dataRowView["id"]);
 
             Console.WriteLine("Kit id : " + Convert.ToString(KITid));
-            Console.WriteLine("Cat id : " + Convert.ToString(kitId));
+            //Console.WriteLine("Cat id : " + Convert.ToString(kitId));
+            Console.WriteLine("Cat id : " + Convert.ToString(cat_id));
 
-
-            if (linkExist_in_bv_cat_tKit(kitId, KITid) == true)
+            //if (linkExist_in_bv_cat_tKit(kitId, KITid) == true)
+            if (linkExist_in_bv_cat_tKit(cat_id, KITid) == true)
             {
-                string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                //string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
                                                                                       //envoyer request
+                string request = tools.DatabaseQuery.delCompatibleKit(cat_id, KITid);
+
                 int res = tools.Database.setData(request);
 
                 if (res == -1)

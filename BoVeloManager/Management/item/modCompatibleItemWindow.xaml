@@ -17,7 +17,6 @@
                 <!--Log In-->
                 <StackPanel>
 
-
                     <Grid  Margin="5 10 5 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -27,75 +26,23 @@
                         <TextBlock x:Name="tb_kitName" Padding="2" Grid.Column="1" Text="ITEM_NAME"></TextBlock>
                     </Grid>
 
-                    <!-- <ScrollViewer x:Name="scrollBar" HorizontalScrollBarVisibility="Auto"> -->
-
                     <Grid  Margin="5 10 5 0">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="2*"/>
-
                         </Grid.ColumnDefinitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60" />
                             <RowDefinition Height="40*" />
                         </Grid.RowDefinitions>
-                        <!--
-                        <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible items :</Label>
-                        -->
-
-
-                        <!--
-                        <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single"  AutoGenerateColumns="False" FrozenColumnCount="5">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                                <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
-                                <DataGridTextColumn Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
-                                <DataGridTextColumn Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
-                                <DataGridCheckBoxColumn x:Name="lb_selectCompIt" Binding="{Binding Path=name}"  Selector.IsSelected="True":></DataGridCheckBoxColumn> <!- IsChecked="{Binding Path=itemChecked}"/> ->
-                            
-                            </DataGrid.Columns>
-                        </DataGrid>
-            
-                        -->
-
-
-                        <!--
-
-                        <ListBox x:Name="lb_selectCompIt" Grid.Column="1">
-
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
-                                    
-                                    </DataTemplate>
-                                
-                                </ListBox.ItemTemplate>
-
-                        </ListBox>
-                    
-                    
-
-                        <ListBox x:Name="lb_properties" Grid.Column="2">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="tb_properties" Text="{Binding Path=properties}"></TextBlock>
-                                </DataTemplate>
-                                
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        -->
-
-
                     </Grid>
-
 
                 </StackPanel>
 
 
-                <DataGrid Name="lb_selectCompIt" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
-
+                <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                     <DataGrid.Columns>
 
                         <DataGridTemplateColumn Width="*" Header="Select kit">
@@ -106,7 +53,6 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-
                         <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                         <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
                         <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
@@ -115,30 +61,16 @@
 
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-                <!-- </ScrollViewer>  -->
+                
 
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-
-
                 </Grid>
-                <!--
-
-                    <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28" SelectionChanged="cb_type3_SelectionChanged">
-
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Margin="10 0 0 0" Text="{Binding Path=name}" ></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    -->
-
+                
+                
                 <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
