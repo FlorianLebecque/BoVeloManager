@@ -170,5 +170,30 @@ namespace BoVeloManager.tools {
         {
             return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
         }
+        // Get available Kits
+        public static string getFrameKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 0";
+        }
+        public static string getWheelsKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 1";
+        }
+        public static string getBrakesKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 2";
+        }
+        public static string getSaddleKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 3";
+        }
+        public static string getHandlebarKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 4";
+        }
+        public static string getAddonKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
+        }
     }
 }

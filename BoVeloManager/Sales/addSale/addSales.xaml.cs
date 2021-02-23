@@ -111,54 +111,99 @@ namespace BoVeloManager.Sales {
         }
         public void getFrame()
         {
+            string frame_data = tools.DatabaseQuery.getFrameKit();
+            DataTable frame_table = tools.Database.getData(frame_data);
 
+            foreach (DataRow row in frame_table.Rows)
+            {
+                
+            }
         }
         public void getWheels()
         {
+            string wheels_data = tools.DatabaseQuery.getFrameKit();
+            DataTable wheels_table = tools.Database.getData(wheels_data);
 
+            foreach (DataRow row in wheels_table.Rows)
+            {
+
+            }
         }
         public void getBrakes()
         {
+            string brakes_data = tools.DatabaseQuery.getFrameKit();
+            DataTable brakes_table = tools.Database.getData(brakes_data);
 
+            
         }
         public void getSaddle()
         {
+            string saddle_data = tools.DatabaseQuery.getFrameKit();
+            DataTable saddle_table = tools.Database.getData(saddle_data);
 
+            foreach (DataRow row in saddle_table.Rows)
+            {
+
+            }
         }
         public void getHandlebar()
         {
+            string handlebar_data = tools.DatabaseQuery.getFrameKit();
+            DataTable handlebar_table = tools.Database.getData(handlebar_data);
 
+            foreach (DataRow row in handlebar_table.Rows)
+            {
+
+            }
         }
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = ClientList;
-            combo.SelectedIndex = 0;
         }
 
         private void frame_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var combo = sender as ComboBox;
+            combo.ItemsSource = FrameList;
         }
 
         private void wheels_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var combo = sender as ComboBox;
+            combo.ItemsSource = WheelsList;
         }
 
         private void brakes_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var combo = sender as ComboBox;
+            combo.ItemsSource = BrakesList;
         }
 
         private void saddle_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var combo = sender as ComboBox;
+            combo.ItemsSource = SaddleList;
         }
 
         private void handlebar_Loaded(object sender, RoutedEventArgs e)
         {
-
+            var combo = sender as ComboBox;
+            combo.ItemsSource = HandlebarList;
+        }
+        private void addKitToList(List<string> List, DataTable table)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                if (row["properties"].ToString() != "")
+                {
+                    List.Add(row["name"].ToString() + " - " + row["properties"].ToString());
+                }
+                else
+                {
+                    List.Add(row["name"].ToString());
+                }
+            }            
         }
     }
 }
