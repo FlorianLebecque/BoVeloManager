@@ -19,95 +19,84 @@
 
             <!-- Sale -->
             <StackPanel DockPanel.Dock="Top">
+                <!-- Frame -->
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions> 
-                    <!-- Frame -->
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Frame :" Margin="10"/>
-                        <ComboBox x:Name="frame" Grid.Column="1" Margin="10" Loaded="frame_Loaded"/>
-                    </Grid>
+                    <Label Content="Frame :" Margin="10"/>
+                    <ComboBox x:Name="frame" Grid.Column="1" Margin="10" Loaded="frame_Loaded"/>
+                </Grid>
 
-                    <!-- Wheels -->
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Wheels -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Wheels :" Margin="10"/>
-                        <ComboBox x:Name="wheels" Grid.Column="1" Margin="10" Loaded="wheels_Loaded" />
-                    </Grid>
+                    <Label Content="Wheels :" Margin="10"/>
+                    <ComboBox x:Name="wheels" Grid.Column="1" Margin="10" Loaded="wheels_Loaded" />
+                </Grid>
 
-                    <!-- Brakes -->
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Brakes -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Brakes :" Margin="10"/>
-                        <ComboBox x:Name="brakes" Grid.Column="1" Margin="10" Loaded="brakes_Loaded" />
-                    </Grid>
+                    <Label Content="Brakes :" Margin="10"/>
+                    <ComboBox x:Name="brakes" Grid.Column="1" Margin="10" Loaded="brakes_Loaded" />
+                </Grid>
 
-                    <!-- Saddle -->
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Saddle -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Saddle :" Margin="10"/>
-                        <ComboBox x:Name="saddle" Grid.Column="1" Margin="10" Loaded="saddle_Loaded" />
-                    </Grid>
+                    <Label Content="Saddle :" Margin="10"/>
+                    <ComboBox x:Name="saddle" Grid.Column="1" Margin="10" Loaded="saddle_Loaded" />
+                </Grid>
 
-                    <!-- Handlebar -->
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Handlebar -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Handlebar :" Margin="10"/>
-                        <ComboBox x:Name="handlebar" Grid.Column="1" Margin="10" Loaded="handlebar_Loaded" />
-                    </Grid>
+                    <Label Content="Handlebar :" Margin="10"/>
+                    <ComboBox x:Name="handlebar" Grid.Column="1" Margin="10" Loaded="handlebar_Loaded" />
+                </Grid>
 
-                    <!-- Addons -->
-                    <Grid Grid.Row="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Addons -->
+                <Grid Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Addons :" Margin="10"/>
-                        <ListBox x:Name="addons" Grid.Column="1" Margin="10" Loaded="addons_Loaded"/>
-                    </Grid>
+                    <Label Content="Addons :" Margin="10"/>
+                    <ListBox x:Name="addon" Grid.Column="1" SelectionMode="Multiple" Opacity="0.1" />
+                </Grid>
 
-                    <!-- Quantity -->
-                    <Grid Grid.Row="6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
+                <!-- Quantity -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label Content="Quantity :" Margin="10"/>
-                        <TextBox Name="NumberTextBox" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox" />
-                        <StackPanel Grid.Column="2" />
-                    </Grid>
-                </Grid>                
+                    <Label Content="Quantity :" Margin="10"/>
+                    <TextBox Name="NumberTextBox" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox" />
+                    <StackPanel Grid.Column="2" />
+                </Grid>            
             </StackPanel>
 
 
