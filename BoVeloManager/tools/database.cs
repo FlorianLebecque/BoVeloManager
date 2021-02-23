@@ -131,9 +131,9 @@ namespace BoVeloManager.tools {
         {
             return "SELECT `id`,`name` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-        public static string addItem(string name)
+        public static string addItem(string name,int pm)
         {
-            return "INSERT INTO `bv_catalog` (`name`) VALUES ('" + name + "')";
+            return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
         }
 
         public static string setItemName(int id, string newName)
@@ -166,7 +166,7 @@ namespace BoVeloManager.tools {
 
         public static string getKit_by_id(int id)
         {
-            return "SELECT `id`,`name`,`properties`,`category` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
+            return "SELECT `id`,`name`,`properties`,`category`,`price` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
         }
 
 
@@ -188,7 +188,7 @@ namespace BoVeloManager.tools {
         // get all kit info
         public static string gettKit(int id_tBike)
         {
-            return "SELECT K.name,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
+            return "SELECT K.name,K.price,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
 

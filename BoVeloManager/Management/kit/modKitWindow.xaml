@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="Edit kit window" Height="220" Width="800">
+        Title="Edit kit window" Height="220" Width="394" ResizeMode="NoResize">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">
@@ -15,7 +15,7 @@
             <!--Log In-->
             <StackPanel>
 
-                
+
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -34,7 +34,7 @@
                     <Label x:Name="lb_editProperties" Grid.Column="0" Grid.ColumnSpan="2">Edit properties :</Label>
                     <TextBox x:Name="tb_editProperties" Padding="2"  Grid.Column="2"></TextBox>
                 </Grid>
-                    
+
 
                 <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
                     <Grid.ColumnDefinitions>
@@ -43,14 +43,14 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
                 </Grid>
 
             </StackPanel>
 
 
-            
+
 
 
         </DockPanel>

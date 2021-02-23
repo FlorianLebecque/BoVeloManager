@@ -35,9 +35,9 @@
 
                     <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
-                            <DataGridTextColumn Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
-                            <DataGridTextColumn Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Width="0.2*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Width="*" Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Width="*" Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
                             <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -72,8 +72,9 @@
 
                     <DataGrid Name="dg_itemList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="0.2*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Multiplicator" Binding="{Binding Path='PriceMul'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -95,7 +96,7 @@
                             <DataGridTemplateColumn Header="Delete">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnView" Click="bt_delItem_Click" Content="Delete"  />
+                                        <Button Margin="1" Name="btnView" Click="bt_delItem_Click" Content="Delete" IsEnabled="False"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -129,10 +130,11 @@
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

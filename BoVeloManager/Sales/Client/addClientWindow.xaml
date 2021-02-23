@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales.Client"
         mc:Ignorable="d"
-        Title="Add Client" Height="342" Width="504" ResizeMode="NoResize">
+        Title="Add Client" Height="342" Width="504" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
 
         <DockPanel>

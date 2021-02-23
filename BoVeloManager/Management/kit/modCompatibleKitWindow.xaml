@@ -29,14 +29,14 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
-                        
+
                     </Grid.ColumnDefinitions>
                     <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible items :</Label>
-                    
-                   
+
+
 
                     <ListBox x:Name="lb_selectCompIt" Grid.Column="1">
-                        
+
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
@@ -44,17 +44,17 @@
                         </ListBox.ItemTemplate>
 
                     </ListBox>
-                    
-                    
-                </Grid> 
+
+
+                </Grid>
 
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    
+
+
                 </Grid>
                 <!--
 
@@ -67,7 +67,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 -->
-                
+
                 <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -75,12 +75,12 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
                 </Grid>
 
             </StackPanel>
-                
+
 
 
         </DockPanel>
