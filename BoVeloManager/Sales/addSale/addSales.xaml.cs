@@ -114,47 +114,35 @@ namespace BoVeloManager.Sales {
             string frame_data = tools.DatabaseQuery.getFrameKit();
             DataTable frame_table = tools.Database.getData(frame_data);
 
-            foreach (DataRow row in frame_table.Rows)
-            {
-                
-            }
+            addKitToList(FrameList, frame_table);
         }
         public void getWheels()
         {
             string wheels_data = tools.DatabaseQuery.getFrameKit();
             DataTable wheels_table = tools.Database.getData(wheels_data);
 
-            foreach (DataRow row in wheels_table.Rows)
-            {
-
-            }
+            addKitToList(WheelsList, wheels_table);
         }
         public void getBrakes()
         {
             string brakes_data = tools.DatabaseQuery.getFrameKit();
             DataTable brakes_table = tools.Database.getData(brakes_data);
 
-            
+            addKitToList(BrakesList, brakes_table);
         }
         public void getSaddle()
         {
             string saddle_data = tools.DatabaseQuery.getFrameKit();
             DataTable saddle_table = tools.Database.getData(saddle_data);
 
-            foreach (DataRow row in saddle_table.Rows)
-            {
-
-            }
+            addKitToList(SaddleList, saddle_table);
         }
         public void getHandlebar()
         {
             string handlebar_data = tools.DatabaseQuery.getFrameKit();
             DataTable handlebar_table = tools.Database.getData(handlebar_data);
 
-            foreach (DataRow row in handlebar_table.Rows)
-            {
-
-            }
+            addKitToList(HandlebarList, handlebar_table);
         }
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
