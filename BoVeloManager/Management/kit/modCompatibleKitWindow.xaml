@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="Edit compatible items window" Height="400" Width="600">
+        Title="Edit compatible bikes window" Height="350" Width="414" ResizeMode="NoResize">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
-        <DockPanel Margin="0,0,0,0">
-            <!-- Title -->
-            <TextBlock Margin="0 0 0 10" Text="Edit compatible items" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+        <Grid Margin="0,0,0,0">
 
             <!--Log In-->
-            <StackPanel>
+            <StackPanel Margin="0,0,0,44">
+                <!-- Title -->
+                <TextBlock Margin="0 0 0 0" Text="Edit compatible Bikes" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" Foreground="#FF444444"/>
 
 
                 <Grid  Margin="5 10 5 0">
@@ -25,64 +25,31 @@
                     <TextBlock x:Name="tb_kitName" Padding="2" Grid.Column="1" Text="KIT_NAME"></TextBlock>
                 </Grid>
 
-                <Grid  Margin="5 10 5 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                <Label Margin="5 0 0 0" x:Name="lb_editCompItems">Compatible bikes :</Label>
 
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible items :</Label>
+                <ListBox  x:Name="lb_selectCompIt" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0" UseLayoutRounding="False" Height="188">
 
-
-
-                    <ListBox x:Name="lb_selectCompIt" Grid.Column="1">
-
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-
-                    </ListBox>
-
-
-                </Grid>
-
-                <Grid  Margin="5 10 5 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
-
-                </Grid>
-                <!--
-
-                <ComboBox x:Name="cb_type3" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="28" SelectionChanged="cb_type3_SelectionChanged">
-
-                    <ComboBox.ItemTemplate>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Margin="10 0 0 0" Text="{Binding Path=name}" ></TextBlock>
+                            <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
                         </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                -->
+                    </ListBox.ItemTemplate>
 
-                <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
-                </Grid>
+                </ListBox>
 
             </StackPanel>
 
+            <Grid  Margin="0 275 0 0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
+                <Button Margin="5,0,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+            </Grid>
 
-
-        </DockPanel>
+        </Grid>
     </Border>
 </Window>
