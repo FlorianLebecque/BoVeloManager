@@ -383,9 +383,23 @@ namespace BoVeloManager.Management {
 
         #region Items
 
-        private void update_itemList() {
-            MessageBox.Show("BUILDING PROGRAM ...");
+        private void bt_editCompKit_Click(object sender, RoutedEventArgs e)
+        {
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
+            int id = Convert.ToInt32(dataRowView["id"]);
+
+            //kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
+            item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(id);
+
+            MCIW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_itemList();
         }
+
+
+   
         private void bt_editItem_Click(object sender, RoutedEventArgs e) {
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
@@ -443,13 +457,19 @@ namespace BoVeloManager.Management {
 
 
             //set the datatable as the items sources for the user datagrid
-            //dg_itemList.ItemsSource = dt.DefaultView;
+            dg_itemList.ItemsSource = dt.DefaultView;
         }
 
 
-            #endregion
 
+        #endregion
 
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+       
     }
 } 
 

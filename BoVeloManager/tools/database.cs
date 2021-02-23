@@ -116,6 +116,13 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_type_kit`";
         }
 
+        public static string getKits_maxId(int maxId)
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `id` < "+ maxId.ToString();
+        }
+
+
+
         public static string getItem()
         {
             return "SELECT * FROM `bv_catalog`";
