@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.item"
         mc:Ignorable="d"
-        Title="Add item" Height="211" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Add bike" Height="211" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
         <DockPanel>
             <!-- Title -->
-            <TextBlock Margin="0 0 0 10" Text="New item" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            <TextBlock Margin="0 0 0 10" Text="New bike" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
             <!--Log In-->
             <StackPanel DockPanel.Dock="Top">

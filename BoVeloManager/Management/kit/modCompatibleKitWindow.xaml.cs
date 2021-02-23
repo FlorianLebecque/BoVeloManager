@@ -198,7 +198,6 @@ namespace BoVeloManager.Management.kit
 
             }
 
-
             lb_selectCompIt.ItemsSource = dt_item.DefaultView;
             
 

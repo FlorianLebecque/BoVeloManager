@@ -10,7 +10,7 @@
 
         <DockPanel>
             <!-- Title -->
-            <TextBlock Margin="0 0 0 10" Text="Edit item" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+            <TextBlock Margin="0 0 0 10" Text="Edit bike" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
             <!--Log In-->
             <StackPanel DockPanel.Dock="Top">
@@ -20,7 +20,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0">Item name:</Label>
+                    <Label Grid.Column="0">Bike name:</Label>
                     <TextBlock x:Name="tb_itemName" Padding="2" Grid.Column="1" Text="        ITEM_NAME"></TextBlock>
                 </Grid>
 
