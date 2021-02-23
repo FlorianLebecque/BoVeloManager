@@ -46,7 +46,7 @@ namespace BoVeloManager.Management.item
 
         private void addItem(string name)
         {
-            string q = tools.DatabaseQuery.addItem(name);
+            string q = tools.DatabaseQuery.addItem(name, (int)sl_pricemul.Value);
             int res = tools.Database.setData(q);
             if (res == -1)
             {
@@ -65,6 +65,10 @@ namespace BoVeloManager.Management.item
             private void BTCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            lb_pricemul.Content = "Price " + (sl_pricemul.Value/100).ToString("P");
         }
     }
 }

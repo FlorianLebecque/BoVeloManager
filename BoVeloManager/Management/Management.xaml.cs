@@ -307,7 +307,7 @@ namespace BoVeloManager.Management {
 
                 //dt created table from the associated id in dt2
                 dt = new DataTable();
-
+                
                 DataColumn id_Col = new DataColumn();
                 id_Col.ColumnName = "id";
                 id_Col.DataType = typeof(int);
@@ -327,7 +327,7 @@ namespace BoVeloManager.Management {
                 category_Col.ColumnName = "category";
                 category_Col.DataType = typeof(string);
                 dt.Columns.Add(category_Col);
-
+                
                 //add every compatible kit to dt
                 foreach (DataRow r in dt2.Rows) {
                     string q_k = tools.DatabaseQuery.getKit_by_id(Convert.ToInt32(r["id_tKit"]));
@@ -383,9 +383,6 @@ namespace BoVeloManager.Management {
 
         #region Items
 
-        private void update_itemList() {
-            MessageBox.Show("BUILDING PROGRAM ...");
-        }
         private void bt_editItem_Click(object sender, RoutedEventArgs e) {
             //get witch row we clicked on
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
@@ -418,7 +415,14 @@ namespace BoVeloManager.Management {
         }
 
         private void bt_addItem_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("BUILDING PROGRAM ...");
+ 
+            item.AddItemWindow AIW = new item.AddItemWindow();
+
+            AIW.ShowDialog();
+
+            //update the kits datagrid
+            update_dg_itemList();
+
         }
 
         /*
@@ -433,17 +437,10 @@ namespace BoVeloManager.Management {
             DataTable dt = tools.Database.getData(q);
 
 
-            //convertion de la columns grade en poste
-            DataColumn newCol = new DataColumn();
-            newCol.ColumnName = "Name";
-            newCol.DataType = typeof(string);
-
-            dt.Columns.Add(newCol);
-
-
+            
 
             //set the datatable as the items sources for the user datagrid
-            //dg_itemList.ItemsSource = dt.DefaultView;
+            dg_itemList.ItemsSource = dt.DefaultView;
         }
 
 

@@ -72,6 +72,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Multiplicator" Binding="{Binding Path='PriceMul'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -82,7 +83,7 @@
                             <DataGridTemplateColumn Header="Delete">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Margin="1" Name="btnView" Click="bt_delItem_Click" Content="Delete"  />
+                                        <Button Margin="1" Name="btnView" Click="bt_delItem_Click" Content="Delete" IsEnabled="False"  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -120,6 +121,7 @@
                             <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
