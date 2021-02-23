@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace BoVeloManager.Sales {
     /// <summary>
@@ -25,11 +26,13 @@ namespace BoVeloManager.Sales {
         List<string> SaddleList = new List<string>();
         List<string> HandlebarList = new List<string>();
         List<string> ClientList = new List<string>();
+        List<string> AddonsList = new List<string>();
 
         public addSales() {
 
             InitializeComponent();
             importData();
+            bindListBox();
 
 
 
@@ -118,66 +121,73 @@ namespace BoVeloManager.Sales {
         }
         public void getWheels()
         {
-            string wheels_data = tools.DatabaseQuery.getFrameKit();
+            string wheels_data = tools.DatabaseQuery.getWheelsKit();
             DataTable wheels_table = tools.Database.getData(wheels_data);
 
             addKitToList(WheelsList, wheels_table);
         }
         public void getBrakes()
         {
-            string brakes_data = tools.DatabaseQuery.getFrameKit();
+            string brakes_data = tools.DatabaseQuery.getBrakesKit();
             DataTable brakes_table = tools.Database.getData(brakes_data);
 
             addKitToList(BrakesList, brakes_table);
         }
         public void getSaddle()
         {
-            string saddle_data = tools.DatabaseQuery.getFrameKit();
+            string saddle_data = tools.DatabaseQuery.getSaddleKit();
             DataTable saddle_table = tools.Database.getData(saddle_data);
 
             addKitToList(SaddleList, saddle_table);
         }
         public void getHandlebar()
         {
-            string handlebar_data = tools.DatabaseQuery.getFrameKit();
+            string handlebar_data = tools.DatabaseQuery.getHandlebarKit();
             DataTable handlebar_table = tools.Database.getData(handlebar_data);
 
             addKitToList(HandlebarList, handlebar_table);
+        }
+        public void getAddons()
+        {
+            string addons_data = tools.DatabaseQuery.getHandlebarKit();
+            DataTable addons_table = tools.Database.getData(addons_data);
+
+            addKitToList(AddonsList, addons_table);
         }
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = ClientList;
         }
-
         private void frame_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = FrameList;
         }
-
         private void wheels_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = WheelsList;
         }
-
         private void brakes_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = BrakesList;
         }
-
         private void saddle_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = SaddleList;
         }
-
         private void handlebar_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
             combo.ItemsSource = HandlebarList;
+        }
+
+        private void bindListBox()
+        {
+            addons.ItemsSource = AddonsList;
         }
         private void addKitToList(List<string> List, DataTable table)
         {
@@ -193,5 +203,12 @@ namespace BoVeloManager.Sales {
                 }
             }            
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 }
