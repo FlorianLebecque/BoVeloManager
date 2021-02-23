@@ -149,19 +149,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            
-                           
 
-                            <DataGridTemplateColumn MaxWidth="45">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox x:Name="check_tutar"  VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsChecked="True" Checked="check_tutar_Checked"></CheckBox>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            
-                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

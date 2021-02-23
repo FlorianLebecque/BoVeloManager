@@ -39,6 +39,7 @@ namespace BoVeloManager.Management.item
 
             //display the kit data
             tb_kitName.Text = (string)res.Rows[0]["name"];
+            tb_title.Text = "Edit compatible kits with " + (string)res.Rows[0]["name"] + "bike" ; 
 
             set_lb_selectCompIt_content();
 
@@ -190,8 +191,8 @@ namespace BoVeloManager.Management.item
 
             //get all items to show them in select box
             //string req_it = tools.DatabaseQuery.getItem();
-            //string req_it = tools.DatabaseQuery.getKits();
-            string req_it = tools.DatabaseQuery.getKits_maxId(15);
+            string req_it = tools.DatabaseQuery.getKits();
+            //string req_it = tools.DatabaseQuery.getKits_maxId(15);
 
 
             dt_item = tools.Database.getData(req_it);
@@ -241,9 +242,28 @@ namespace BoVeloManager.Management.item
 
         }
 
+        private bool linkExist_in_bv_cat_tKit(int cat_id, int kit_id)
+        {
+            bool linkExist = false;
+            //dt has all kit id linked with the gived cat_id
+            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(cat_id);
+            DataTable dt = tools.Database.getData(req);
+
+            foreach (DataRow r in dt.Rows)
+            {
+                if (Convert.ToInt32(r["id_tKit"]) == Convert.ToInt32(kit_id))
+                {
+                    linkExist = true;
+                    break;
+                }
+            }
+
+            return linkExist;
+        }
       
         private void check_tutar_Checked(object sender, RoutedEventArgs e)
         {
+            
             Console.WriteLine(sender.ToString());
 
             //get witch row we clicked on
@@ -251,24 +271,30 @@ namespace BoVeloManager.Management.item
             int KITid = Convert.ToInt32(dataRowView["id"]);
 
             Console.WriteLine(KITid);
+            Console.WriteLine("Kit id : " + Convert.ToString(KITid));
+            Console.WriteLine("Cat id : " + Convert.ToString(kitId));
 
+            if (linkExist_in_bv_cat_tKit(kitId, KITid) == false)
+            {
+                string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                                                                                      //envoyer request
+                int res = tools.Database.setData(request);
 
-            string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
-            //envoyer request
-            int res = tools.Database.setData(request);
+                if (res == -1)
+                {
+                    MessageBox.Show("An error has occured");
+                }
+                else if (res == 1)
+                {
+                    Console.WriteLine("Kit added");
+                }
+                else
+                {
+                    MessageBox.Show("The database might be corrupted");
+                }
+            }
 
-            if (res == -1)
-            {
-                MessageBox.Show("An error has occured");
-            }
-            else if (res == 1)
-            {
-                Console.WriteLine("Kit added");
-            }
-            else
-            {
-                MessageBox.Show("The database might be corrupted");
-            }
+            
 
         }
 
@@ -278,22 +304,32 @@ namespace BoVeloManager.Management.item
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.CheckBox)e.Source).DataContext;
             int KITid = Convert.ToInt32(dataRowView["id"]);
 
-            string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
-            //envoyer request
-            int res = tools.Database.setData(request);
+            Console.WriteLine("Kit id : " + Convert.ToString(KITid));
+            Console.WriteLine("Cat id : " + Convert.ToString(kitId));
 
-            if (res == -1)
+
+            if (linkExist_in_bv_cat_tKit(kitId, KITid) == true)
             {
-                MessageBox.Show("An error has occured");
+                string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                                                                                      //envoyer request
+                int res = tools.Database.setData(request);
+
+                if (res == -1)
+                {
+                    MessageBox.Show("An error has occured");
+                }
+                else if (res == 1)
+                {
+                    Console.WriteLine("Kit removed");
+                }
+                else
+                {
+                    MessageBox.Show("The database might be corrupted");
+                }
             }
-            else if (res == 1)
-            {
-                Console.WriteLine("Kit removed");
-            }
-            else
-            {
-                MessageBox.Show("The database might be corrupted");
-            }
+
+
+           
 
         }
     }
