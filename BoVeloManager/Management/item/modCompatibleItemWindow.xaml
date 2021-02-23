@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.item"
         mc:Ignorable="d"
-        Title="modCompatibleItemWindow" Height="2450" Width="800">
+        Title="modCompatibleItemWindow" Height="450" Width="800">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">
@@ -13,7 +13,7 @@
             <TextBlock Margin="0 0 0 10" Text="Edit compatible kits" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
 
-            <ScrollBar ValueChanged="ScrollBar_ValueChanged"/>
+            
             <!--Log In-->
             <StackPanel>
 
@@ -28,16 +28,22 @@
                 </Grid>
 
                 <!-- <ScrollViewer x:Name="scrollBar" HorizontalScrollBarVisibility="Auto"> -->
-                
+
                 <Grid  Margin="5 10 5 0">
-                        
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
 
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40*" />
+                    </Grid.RowDefinitions>
                     <Label x:Name="lb_editCompItems" Grid.Column="0" Grid.ColumnSpan="2">Compatible items :</Label>
+
+
                     <!--
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single"  AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
@@ -45,13 +51,37 @@
                             <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
-                            <DataGridCheckBoxColumn x:Name="lb_selectCompIt" Binding="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
+                            <DataGridCheckBoxColumn x:Name="lb_selectCompIt" Binding="{Binding Path=name}"  Selector.IsSelected="True":></DataGridCheckBoxColumn> <!- IsChecked="{Binding Path=itemChecked}"/> ->
                             
                         </DataGrid.Columns>
                     </DataGrid>
+            
                     -->
 
-                    
+
+                    <DataGrid Name="lb_selectCompIt" Margin="0,0,0,-14.333" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" Grid.ColumnSpan="3">
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Width="*" Header="Select kit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox x:Name="check_tutar"  VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsChecked="{Binding Path='itemChecked'}"  Checked="check_tutar_Checked" Unchecked="check_tutar_Unchecked"></CheckBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--
+
                     <ListBox x:Name="lb_selectCompIt" Grid.Column="1">
 
                             <ListBox.ItemTemplate>
@@ -74,7 +104,8 @@
                                 
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    
+                    -->
+
 
                 </Grid>
                 <!-- </ScrollViewer>  -->
@@ -109,11 +140,11 @@
                     <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
                     <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="#FF444444" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
                 </Grid>
-                
+
 
             </StackPanel>
-            
-          
+
+
 
         </DockPanel>
     </Border>

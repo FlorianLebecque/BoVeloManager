@@ -191,7 +191,7 @@ namespace BoVeloManager.Management.item
             //get all items to show them in select box
             //string req_it = tools.DatabaseQuery.getItem();
             //string req_it = tools.DatabaseQuery.getKits();
-            string req_it = tools.DatabaseQuery.getKits_maxId(10);
+            string req_it = tools.DatabaseQuery.getKits_maxId(15);
 
 
             dt_item = tools.Database.getData(req_it);
@@ -229,15 +229,71 @@ namespace BoVeloManager.Management.item
             }
 
 
-
+            //dg_tKitList.ItemsSource = dt_item.DefaultView;
             lb_selectCompIt.ItemsSource = dt_item.DefaultView;
-            lb_properties.ItemsSource = dt_item.DefaultView;
+            //lb_properties.ItemsSource = dt_item.DefaultView;
             //dg_tKitList.ItemsSource = dt_item.DefaultView;
 
         }
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+
+        }
+
+      
+        private void check_tutar_Checked(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(sender.ToString());
+
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.CheckBox)e.Source).DataContext;
+            int KITid = Convert.ToInt32(dataRowView["id"]);
+
+            Console.WriteLine(KITid);
+
+
+            string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+            //envoyer request
+            int res = tools.Database.setData(request);
+
+            if (res == -1)
+            {
+                MessageBox.Show("An error has occured");
+            }
+            else if (res == 1)
+            {
+                Console.WriteLine("Kit added");
+            }
+            else
+            {
+                MessageBox.Show("The database might be corrupted");
+            }
+
+        }
+
+        private void check_tutar_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //get witch row we clicked on
+            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.CheckBox)e.Source).DataContext;
+            int KITid = Convert.ToInt32(dataRowView["id"]);
+
+            string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+            //envoyer request
+            int res = tools.Database.setData(request);
+
+            if (res == -1)
+            {
+                MessageBox.Show("An error has occured");
+            }
+            else if (res == 1)
+            {
+                Console.WriteLine("Kit removed");
+            }
+            else
+            {
+                MessageBox.Show("The database might be corrupted");
+            }
 
         }
     }

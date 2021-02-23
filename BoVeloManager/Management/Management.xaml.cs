@@ -476,7 +476,11 @@ namespace BoVeloManager.Management {
 
         }
 
-       
+        private void check_tutar_Checked(object sender, RoutedEventArgs e)
+        {
+          
+
+        }
     }
 } 
 
