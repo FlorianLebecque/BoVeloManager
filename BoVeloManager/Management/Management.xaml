@@ -10,10 +10,12 @@
       Title="Management">
 
     <Grid Background="White">
-        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+        
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0" SelectionChanged="TabablzControl_SelectionChanged">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
+        
             <TabItem Header="Users">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -80,6 +82,17 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Header="Compatible Kits">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editCompKit_Click" Content="Select Kits"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
                             <DataGridTemplateColumn Header="Delete">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

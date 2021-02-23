@@ -13,19 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BoVeloManager.Management.kit
+namespace BoVeloManager.Management.item
 {
     /// <summary>
-    /// Logique d'interaction pour modCompatibleKitWindow.xaml
+    /// Logique d'interaction pour modCompatibleItemWindow.xaml
     /// </summary>
-    public partial class modCompatibleKitWindow : Window
+    /// 
+
+    public partial class modCompatibleItemWindow : Window
     {
+
         private int kitId;
         DataTable dt_item;
-
-
-
-        public modCompatibleKitWindow(int kitId_)
+        public modCompatibleItemWindow(int kitId_)
         {
             InitializeComponent();
 
@@ -33,7 +33,8 @@ namespace BoVeloManager.Management.kit
             kitId = kitId_;
 
             //get the kit data
-            string q = tools.DatabaseQuery.getKit_by_id(kitId);
+            //string q = tools.DatabaseQuery.getKit_by_id(kitId);
+            string q = tools.DatabaseQuery.getItem_by_id(kitId);
             DataTable res = tools.Database.getData(q);
 
             //display the kit data
@@ -42,8 +43,8 @@ namespace BoVeloManager.Management.kit
             set_lb_selectCompIt_content();
 
 
-
         }
+
 
         private void BTCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -52,15 +53,17 @@ namespace BoVeloManager.Management.kit
 
         private void BT_update_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             //dt contient tous les id d'item pour lesquels dt_item["itemChecked"] valait true au depart
-            string q = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
+            //string q = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
+            string q = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+
             DataTable dt = tools.Database.getData(q);
 
 
             Console.WriteLine("@@@@@@@");
-          
+
             foreach (DataRowView lbi in lb_selectCompIt.Items)
             {
                 Console.WriteLine(lbi.ToString());
@@ -79,8 +82,15 @@ namespace BoVeloManager.Management.kit
                     //verifier qu'on a une ligne avec kitId et dataR["id"] dans bv_cat_tKit (on doit l'avoir, sinon l'ajouter)
                     foreach (DataRow row in dt.Rows)
                     {
-                        if (Convert.ToInt32(row["id_cat"]) == Convert.ToInt32(dataR["id"]))
+
+
+
+                        //if (Convert.ToInt32(row["id_cat"]) == Convert.ToInt32(dataR["id"]))
+                        if (Convert.ToInt32(row["id_tKit"]) == Convert.ToInt32(dataR["id"]))
                         {
+
+
+
                             tog = true;
                             Console.WriteLine("ID Trouvé");
                             break;
@@ -90,7 +100,12 @@ namespace BoVeloManager.Management.kit
                     if (tog.CompareTo(false) == 0)
                     {
                         //Ajouter une ligne dans bv_cat_tKit avec kitId et dataR["id"]
-                        string request = tools.DatabaseQuery.addCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
+
+
+                        //string request = tools.DatabaseQuery.addCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
+                        string request = tools.DatabaseQuery.addCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
+
+
                         //envoyer request
                         int res = tools.Database.setData(request);
                         if (res == -1)
@@ -113,8 +128,13 @@ namespace BoVeloManager.Management.kit
                     //vérifier qu'on a pas la ligne dans bv cat tkit (on doit pas l'avoir, la retirer si on l'a)
                     foreach (DataRow row in dt.Rows)
                     {
-                        if (Convert.ToInt32(row["id_cat"]) == Convert.ToInt32(dataR["id"]))
+
+
+                        //if (Convert.ToInt32(row["id_cat"]) == Convert.ToInt32(dataR["id"]))
+                        if (Convert.ToInt32(row["id_tKit"]) == Convert.ToInt32(dataR["id"]))
                         {
+
+
                             tog = true;
                             Console.WriteLine("ID Trouvé");
                             break;
@@ -123,8 +143,15 @@ namespace BoVeloManager.Management.kit
 
                     if (tog.CompareTo(true) == 0)
                     {
+
+
+
                         //Retirer la ligne dans bv_cat_tKit avec kitId et dataR["id"]
-                        string request = tools.DatabaseQuery.delCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
+                        //string request = tools.DatabaseQuery.delCompatibleKit(Convert.ToInt32(dataR["id"]), kitId);
+                        string request = tools.DatabaseQuery.delCompatibleKit(kitId, Convert.ToInt32(dataR["id"]));
+
+
+
                         //envoyer request
                         int res = tools.Database.setData(request);
                         if (res == -1)
@@ -144,7 +171,7 @@ namespace BoVeloManager.Management.kit
                 }
 
             }
-    
+
 
 
             this.Close();
@@ -156,11 +183,17 @@ namespace BoVeloManager.Management.kit
         private void set_lb_selectCompIt_content()
         {
             //get item compatible id in dt2
-            string req = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
+            //string req = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
+            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
+
             DataTable dt = tools.Database.getData(req);
 
             //get all items to show them in select box
-            string req_it = tools.DatabaseQuery.getItem();
+            //string req_it = tools.DatabaseQuery.getItem();
+            //string req_it = tools.DatabaseQuery.getKits();
+            string req_it = tools.DatabaseQuery.getKits_maxId(10);
+
+
             dt_item = tools.Database.getData(req_it);
 
             //ajouter a dt_item une row "itemChecked" true/false
@@ -175,11 +208,12 @@ namespace BoVeloManager.Management.kit
                 //regarder si r["id"] se trouve dans dt2
                 //si oui: r["itemChecked"] = True;
                 //si non: =False
-            
+
                 foreach (DataRow dr in dt.Rows)
                 {
-             
-                    if (Convert.ToInt32(r["id"]) == Convert.ToInt32(dr["id_cat"])) 
+
+                    //if (Convert.ToInt32(r["id"]) == Convert.ToInt32(dr["id_cat"]))
+                    if (Convert.ToInt32(r["id"]) == Convert.ToInt32(dr["id_tKit"]))
                     {
                         r["itemChecked"] = "True";
                         break;
@@ -190,12 +224,20 @@ namespace BoVeloManager.Management.kit
                 {
                     r["itemChecked"] = "False";
                 }
-                
+
 
             }
 
+
+
             lb_selectCompIt.ItemsSource = dt_item.DefaultView;
-            
+            lb_properties.ItemsSource = dt_item.DefaultView;
+            //dg_tKitList.ItemsSource = dt_item.DefaultView;
+
+        }
+
+        private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
 
         }
     }
