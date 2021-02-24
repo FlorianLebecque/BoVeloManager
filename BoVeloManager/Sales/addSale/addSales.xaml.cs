@@ -81,7 +81,7 @@ namespace BoVeloManager.Sales {
 
         private void DisplayResume()
         {
-            
+            resume.Text = "hello";
         }
 
         // Close Button
