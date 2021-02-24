@@ -195,5 +195,9 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
         }
+        public static string getType()
+        {
+            return "SELECT * FROM `bv_type_bike`";
+        }
     }
 }

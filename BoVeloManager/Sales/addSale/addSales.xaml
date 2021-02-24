@@ -19,6 +19,17 @@
 
             <!-- Sale -->
             <StackPanel DockPanel.Dock="Top">
+                <!-- Type -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Type :" Margin="10"/>
+                    <ComboBox x:Name="Type" Grid.Column="1" Margin="10" Loaded="Type_Loaded"/>
+                </Grid>
+                
                 <!-- Frame -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -82,7 +93,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Addons :" Margin="10"/>
-                    <ListBox x:Name="addon" Grid.Column="1" SelectionMode="Multiple" Opacity="0.1" />
+                    <ListBox x:Name="addons" Grid.Column="1" SelectionMode="Multiple" Opacity="0.1" />
                 </Grid>
 
                 <!-- Quantity -->

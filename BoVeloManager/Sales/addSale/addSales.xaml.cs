@@ -27,6 +27,7 @@ namespace BoVeloManager.Sales {
         List<string> HandlebarList = new List<string>();
         List<string> ClientList = new List<string>();
         List<string> AddonsList = new List<string>();
+        List<string> TypeList = new List<string>();
 
         public addSales() {
 
@@ -97,6 +98,7 @@ namespace BoVeloManager.Sales {
             getSaddle();
             getHandlebar();
             getClients();
+            getType();
         }
         public void getClients()
         {
@@ -110,6 +112,16 @@ namespace BoVeloManager.Sales {
                 string client_lastname = row["last_name"].ToString();
 
                 ClientList.Add(client_fisrtname + " " + client_lastname);
+            }
+        }
+        public void getType()
+        {
+            string type_data = tools.DatabaseQuery.getType();
+            DataTable type_table = tools.Database.getData(type_data);
+
+            foreach (DataRow row in type_table.Rows)
+            {
+                TypeList.Add(row["name"].ToString());
             }
         }
         public void getFrame()
@@ -184,6 +196,11 @@ namespace BoVeloManager.Sales {
             var combo = sender as ComboBox;
             combo.ItemsSource = HandlebarList;
         }
+        private void Type_Loaded(object sender, RoutedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            combo.ItemsSource = TypeList;
+        }
 
         private void bindListBox()
         {
@@ -209,6 +226,5 @@ namespace BoVeloManager.Sales {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
     }
 }
