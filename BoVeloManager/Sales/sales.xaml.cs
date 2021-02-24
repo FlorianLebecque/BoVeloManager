@@ -62,7 +62,7 @@ namespace BoVeloManager.Sales
         }
 
         private void bt_editClient_Click(object sender, RoutedEventArgs e){
-        
+            
         }
 
         private void bt_addSale_Click(object sender, RoutedEventArgs e)
