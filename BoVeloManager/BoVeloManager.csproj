@@ -162,7 +162,9 @@
     <Compile Include="Sales\addSale\addSales.xaml.cs">
       <DependentUpon>addSales.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\Client\addClientWindow.xaml.cs" />
+    <Compile Include="Sales\Client\AddClientWindow.xaml.cs">
+      <DependentUpon>AddClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sales\description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
@@ -247,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sales\addSale\addSales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\Client\AddClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

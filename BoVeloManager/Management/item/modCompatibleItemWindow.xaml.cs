@@ -300,6 +300,37 @@ namespace BoVeloManager.Management.item
 
             }
 
+            DataColumn newCol = new DataColumn();
+            newCol.ColumnName = "cat";
+            newCol.DataType = typeof(string);
+            dt_item.Columns.Add(newCol);
+            foreach (DataRow r in dt_item.Rows)
+            {
+
+                int g = Convert.ToInt32(r["category"]);
+                switch (g)
+                {
+                    case 0:
+                        r["cat"] = "Frame";
+                        break;
+                    case 1:
+                        r["cat"] = "Wheels";
+                        break;
+                    case 2:
+                        r["cat"] = "Brake";
+                        break;
+                    case 3:
+                        r["cat"] = "Saddle";
+                        break;
+                    case 4:
+                        r["cat"] = "Handlebar";
+                        break;
+                    case 5:
+                        r["cat"] = "Addons";
+                        break;
+                }
+            }
+
 
             //dg_tKitList.ItemsSource = dt_item.DefaultView;
             dg_selCompatibleKit.ItemsSource = dt_item.DefaultView;
