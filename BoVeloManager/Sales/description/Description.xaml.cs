@@ -92,6 +92,7 @@ namespace BoVeloManager.Sales.description
             string all_kits = "";
             string tKit_data = tools.DatabaseQuery.gettKit(_id_tbike);
             DataTable tKit_table = tools.Database.getData(tKit_data);
+
             foreach (DataRow tKit in tKit_table.Rows)
             {
                 kits_price += Convert.ToInt32(tKit["price"]);

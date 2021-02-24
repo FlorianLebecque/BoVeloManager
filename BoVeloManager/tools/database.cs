@@ -288,10 +288,6 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" +DateTime.Now.ToString("yyyy-MM-dd") + "')";
         }
 
-        public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
-        {
-            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
-        }
         // Get available Kits
         public static string getFrameKit()
         {
@@ -319,7 +315,7 @@ namespace BoVeloManager.tools {
         }
         public static string getType()
         {
-            return "SELECT * FROM `bv_type_bike`";
+            return "SELECT * FROM `bv_catalog`";
         }
     }
 }
