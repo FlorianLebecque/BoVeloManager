@@ -58,7 +58,6 @@ namespace BoVeloManager.tools {
 
         private static void checkConnection() {
 
-
             if ((MSCon == null) || (MSCon.State == ConnectionState.Closed) || (MSCon.State == ConnectionState.Broken)) {
                 int nbrTry = 0;
 
