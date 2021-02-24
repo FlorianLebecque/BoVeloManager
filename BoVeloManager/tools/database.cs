@@ -14,29 +14,63 @@ namespace BoVeloManager.tools {
         public static DataTable getData(string query) {
             checkConnection();
 
+            int nbrTry = 0;
+
             DataTable dt = new DataTable();
 
-            MySqlCommand cmd = MSCon.CreateCommand();
-            cmd.CommandText = query;
+            while (nbrTry < 5) {
+                try {
+                    MySqlCommand cmd = MSCon.CreateCommand();
+                    cmd.CommandText = query;
 
-            MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
-            DataRow.Fill(dt);
+                    MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
+                    DataRow.Fill(dt);
 
-            return dt;
+                    return dt;
+                } catch {
+                    nbrTry++;
+                }
+                
+            }
+
+            throw new Exception("Can't get data from database, code 1");
         }
 
         public static int setData(string query) {
             checkConnection();
 
-            MySqlCommand cmd = MSCon.CreateCommand();
-            cmd.CommandText = query;
+            int nbrTry = 0;
 
-            return cmd.ExecuteNonQuery();
+            while(nbrTry < 5) {
+                try {
+                    MySqlCommand cmd = MSCon.CreateCommand();
+                    cmd.CommandText = query;
+
+                    return cmd.ExecuteNonQuery();
+                } catch {
+                    nbrTry++;
+                }
+            }
+
+            throw new Exception("Can't set data to database, code 2");
+
         }
 
         private static void checkConnection() {
+
+
             if ((MSCon == null) || (MSCon.State == ConnectionState.Closed) || (MSCon.State == ConnectionState.Broken)) {
-                connectToDB();
+                int nbrTry = 0;
+
+                while (nbrTry < 5) {
+                    try {
+                        connectToDB();
+                        return;
+                    } catch {
+                        nbrTry++;
+                    }
+                }
+                throw new Exception("Could not connect to database, code 0");
             }
         }
 
