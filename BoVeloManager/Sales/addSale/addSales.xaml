@@ -19,15 +19,15 @@
 
             <!-- Sale -->
             <StackPanel DockPanel.Dock="Top">
-                <!-- Type -->
+                <!-- Model -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="Type :" Margin="10"/>
-                    <ComboBox x:Name="Type" Grid.Column="1" Margin="10" Loaded="Type_Loaded"/>
+                    <Label Content="Model (see catalog) :" Margin="10"/>
+                    <ComboBox x:Name="Model" Grid.Column="1" Margin="10" Loaded="Model_Loaded"/>
                 </Grid>
                 
                 <!-- Frame -->
@@ -86,14 +86,14 @@
                 </Grid>
 
                 <!-- Addons -->
-                <Grid Height="100">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Addons :" Margin="10"/>
-                    <ListBox x:Name="addons" Grid.Column="1" SelectionMode="Multiple" Opacity="0.1" />
+                    <ComboBox x:Name="addons" Grid.Column="1" Margin="10" Loaded="addons_Loaded" />
                 </Grid>
 
                 <!-- Quantity -->
@@ -105,7 +105,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Quantity :" Margin="10"/>
-                    <TextBox Name="NumberTextBox" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox" />
+                    <TextBox Name="quantity" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox" />
                     <StackPanel Grid.Column="2" />
                 </Grid>            
             </StackPanel>

@@ -20,25 +20,63 @@ namespace BoVeloManager.Sales {
     /// </summary>
     public partial class addSales : Window {
 
-        List<string> FrameList = new List<string>();
-        List<string> WheelsList = new List<string>();
-        List<string> BrakesList = new List<string>();
-        List<string> SaddleList = new List<string>();
-        List<string> HandlebarList = new List<string>();
-        List<string> ClientList = new List<string>();
-        List<string> AddonsList = new List<string>();
-        List<string> TypeList = new List<string>();
+        #region Dictionnary - List
+
+        Dictionary<int, string> ModelDic     = new Dictionary<int, string>();
+
+        Dictionary<int, string> FrameDic     = new Dictionary<int, string>();
+        Dictionary<int, string> WheelsDic    = new Dictionary<int, string>();
+        Dictionary<int, string> BrakesDic    = new Dictionary<int, string>();
+        Dictionary<int, string> SaddleDic    = new Dictionary<int, string>();
+        Dictionary<int, string> HandlebarDic = new Dictionary<int, string>();
+
+        Dictionary<int, string> AddonsDic    = new Dictionary<int, string>();
+
+        Dictionary<int, string> ClientDic    = new Dictionary<int, string>();
+
+
+        List<string> FrameList      = new List<string>();
+        List<string> WheelsList     = new List<string>();
+        List<string> BrakesList     = new List<string>();
+        List<string> SaddleList     = new List<string>();
+        List<string> HandlebarList  = new List<string>();
+        List<string> ClientList     = new List<string>();
+        List<string> AddonsList     = new List<string>();
+        List<string> ModelList       = new List<string>();
+
+        #endregion
+
+        tools.Sales sale = new tools.Sales();
 
         public addSales() {
 
             InitializeComponent();
             importData();
-            bindListBox();
+      
 
+            DisplayResume();
 
+            
+        }
 
+        // Add new sale Button
+        private void Button_add_new(object sender, RoutedEventArgs e)
+        {
+            tools.Article article = new tools.Article();
 
-            DisplayResume();            
+            article.model = (string)Model.SelectedItem;
+
+            article.id_kit_frame = FrameDic.FirstOrDefault(x => x.Value == (string)frame.SelectedItem).Key;
+            article.id_kit_wheels = WheelsDic.FirstOrDefault(x => x.Value == (string)wheels.SelectedItem).Key;
+            article.id_kit_brakes = BrakesDic.FirstOrDefault(x => x.Value == (string)brakes.SelectedItem).Key;
+            article.id_kit_saddle = SaddleDic.FirstOrDefault(x => x.Value == (string)saddle.SelectedItem).Key;
+            article.id_kit_handlebar = HandlebarDic.FirstOrDefault(x => x.Value == (string)handlebar.SelectedItem).Key;
+
+            article.id_kit_addons = AddonsDic.FirstOrDefault(x => x.Value == (string)addons.SelectedItem).Key;
+
+            article.quantity = int.Parse((string)quantity.Text);
+
+            sale.add_article_to_sale(article);
         }
 
         private void DisplayResume()
@@ -52,12 +90,7 @@ namespace BoVeloManager.Sales {
             this.Close();
         }
 
-        // Add new sale Button
-        private void Button_add_new(object sender, RoutedEventArgs e)
-        {
-            
-            
-        }
+        
 
         private void BT_Send_sale_to_db(object sender, RoutedEventArgs e)
         {
@@ -89,6 +122,8 @@ namespace BoVeloManager.Sales {
             
         }
 
+
+        #region Form
         // complete ComboBox from database
         public void importData()
         {
@@ -98,7 +133,7 @@ namespace BoVeloManager.Sales {
             getSaddle();
             getHandlebar();
             getClients();
-            getType();
+            getModel();
         }
         public void getClients()
         {
@@ -108,20 +143,24 @@ namespace BoVeloManager.Sales {
             // import data      
             foreach (DataRow row in clients_table.Rows)
             {
+                int id_client = Convert.ToInt32(row["id"]);
+
                 string client_fisrtname = row["first_name"].ToString();
                 string client_lastname = row["last_name"].ToString();
 
+                ClientDic.Add(id_client, client_fisrtname + " " + client_lastname);
                 ClientList.Add(client_fisrtname + " " + client_lastname);
             }
         }
-        public void getType()
+        public void getModel()
         {
-            string type_data = tools.DatabaseQuery.getType();
-            DataTable type_table = tools.Database.getData(type_data);
+            string model_data = tools.DatabaseQuery.getModel();
+            DataTable model_table = tools.Database.getData(model_data);
 
-            foreach (DataRow row in type_table.Rows)
+            foreach (DataRow row in model_table.Rows)
             {
-                TypeList.Add(row["name"].ToString());
+                ModelDic.Add(Convert.ToInt32(row["id"]), row["name"].ToString());
+                ModelList.Add(row["name"].ToString());
             }
         }
         public void getFrame()
@@ -129,42 +168,42 @@ namespace BoVeloManager.Sales {
             string frame_data = tools.DatabaseQuery.getFrameKit();
             DataTable frame_table = tools.Database.getData(frame_data);
 
-            addKitToList(FrameList, frame_table);
+            addKitToListAndDic(FrameList, FrameDic, frame_table);
         }
         public void getWheels()
         {
             string wheels_data = tools.DatabaseQuery.getWheelsKit();
             DataTable wheels_table = tools.Database.getData(wheels_data);
 
-            addKitToList(WheelsList, wheels_table);
+            addKitToListAndDic(WheelsList, WheelsDic, wheels_table);
         }
         public void getBrakes()
         {
             string brakes_data = tools.DatabaseQuery.getBrakesKit();
             DataTable brakes_table = tools.Database.getData(brakes_data);
 
-            addKitToList(BrakesList, brakes_table);
+            addKitToListAndDic(BrakesList, BrakesDic, brakes_table);
         }
         public void getSaddle()
         {
             string saddle_data = tools.DatabaseQuery.getSaddleKit();
             DataTable saddle_table = tools.Database.getData(saddle_data);
 
-            addKitToList(SaddleList, saddle_table);
+            addKitToListAndDic(SaddleList, SaddleDic, saddle_table);
         }
         public void getHandlebar()
         {
             string handlebar_data = tools.DatabaseQuery.getHandlebarKit();
             DataTable handlebar_table = tools.Database.getData(handlebar_data);
 
-            addKitToList(HandlebarList, handlebar_table);
+            addKitToListAndDic(HandlebarList, HandlebarDic, handlebar_table);
         }
         public void getAddons()
         {
             string addons_data = tools.DatabaseQuery.getHandlebarKit();
             DataTable addons_table = tools.Database.getData(addons_data);
 
-            addKitToList(AddonsList, addons_table);
+            addKitToListAndDic(AddonsList, AddonsDic, addons_table);
         }
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
@@ -196,26 +235,31 @@ namespace BoVeloManager.Sales {
             var combo = sender as ComboBox;
             combo.ItemsSource = HandlebarList;
         }
-        private void Type_Loaded(object sender, RoutedEventArgs e)
+        private void Model_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;
-            combo.ItemsSource = TypeList;
+            combo.ItemsSource = ModelList;
+        }
+        private void addons_Loaded(object sender, RoutedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            combo.ItemsSource = AddonsList;
         }
 
-        private void bindListBox()
-        {
-            addons.ItemsSource = AddonsList;
-        }
-        private void addKitToList(List<string> List, DataTable table)
+        private void addKitToListAndDic(List<string> List, Dictionary<int, string> Dictionary, DataTable table)
         {
             foreach (DataRow row in table.Rows)
             {
                 if (row["properties"].ToString() != "")
                 {
+                    string recap = row["name"].ToString() + " - " + row["properties"].ToString();
+
+                    Dictionary.Add(Convert.ToInt32(row["id"]), recap);
                     List.Add(row["name"].ToString() + " - " + row["properties"].ToString());
                 }
                 else
                 {
+                    Dictionary.Add(Convert.ToInt32(row["id"]), row["name"].ToString());
                     List.Add(row["name"].ToString());
                 }
             }            
@@ -226,5 +270,9 @@ namespace BoVeloManager.Sales {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        #endregion
+
+        
     }
 }

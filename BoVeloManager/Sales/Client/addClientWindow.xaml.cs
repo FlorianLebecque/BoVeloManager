@@ -22,6 +22,7 @@ namespace BoVeloManager.Sales.Client {
         }
 
         private void BT_Add_Click(object sender, RoutedEventArgs e) {
+
             string firstName = tb_first_name.Text;
             string lastName = tb_last_name.Text;
             string entrepriseName = tb_enterprise_name.Text;

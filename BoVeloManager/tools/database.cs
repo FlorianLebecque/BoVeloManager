@@ -313,9 +313,19 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
         }
-        public static string getType()
+        public static string getModel()
         {
             return "SELECT * FROM `bv_catalog`";
         }
+
+        #region Sale
+
+        public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
+        {
+            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
+        }
+
+
+        #endregion
     }
 }

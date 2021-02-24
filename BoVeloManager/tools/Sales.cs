@@ -17,6 +17,11 @@ namespace BoVeloManager.tools
             total_price = 0;
         }
 
+        public void add_article_to_sale(Article article)
+        {
+            Sale.Add(article);
+        }
+
         public float getTotalPrice()
         {
             foreach (Article art in Sale)
@@ -31,24 +36,26 @@ namespace BoVeloManager.tools
 
     class Article
     {
-        private string type;
+        public string model;
 
-        private string kit_frame;
-        private string kit_wheels;
-        private string kit_brakes;
-        private string kit_saddle;
-        private string kit_handlebar;
+        public int id_kit_frame;
+        public int id_kit_wheels;
+        public int id_kit_brakes;
+        public int id_kit_saddle;
+        public int id_kit_handlebar;
 
-        private List<string> kit_addons = new List<string>();
+        public int id_kit_addons;
 
-        private int quantity;
+        public int quantity;
 
-        private float price;
+        public float price;
 
         public Article()
         {
 
         }
+
+       
 
         public float get_price()
         {
