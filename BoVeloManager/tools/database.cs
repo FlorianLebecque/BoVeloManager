@@ -129,16 +129,16 @@ namespace BoVeloManager.tools {
         }
         public static string getItem_by_id(int id)
         {
-            return "SELECT `id`,`name` FROM `bv_catalog` WHERE `id` = " + id.ToString();
+            return "SELECT `id`,`name`,`PriceMul` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
         public static string addItem(string name,int pm)
         {
             return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
         }
 
-        public static string setItemName(int id, string newName)
+        public static string updateItem(int id, string newName,int priceMul)
         {
-            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' WHERE `id` = " + id.ToString();
+            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' , `PriceMul` = '" + priceMul.ToString() + "' WHERE `id` = " + id.ToString();
         }
 
         public static string delItem(int id)

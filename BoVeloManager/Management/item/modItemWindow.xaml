@@ -15,39 +15,24 @@
             <!--Log In-->
             <StackPanel DockPanel.Dock="Top">
 
+                
+                <Grid  Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lb_newItemName" Grid.Column="0">Bike name :</Label>
+                    <TextBox x:Name="tb_newItemName" Padding="2" Grid.Column="1"></TextBox>
+                </Grid>
+
+
                 <Grid Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0">Bike name:</Label>
-                    <TextBlock x:Name="tb_itemName" Padding="2" Grid.Column="1" Text="        ITEM_NAME"></TextBlock>
-                </Grid>
-
-
-
-                <Grid  Margin="5 10 5 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="lb_newItemName" Grid.Column="0">New item name:</Label>
-                    <TextBox x:Name="tb_newItemName" Padding="2" Grid.Column="1"></TextBox>
-                </Grid>
-
-
-                <Grid  Margin="5 10 5 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label x:Name="b" Grid.Column="0">Category:</Label>
-                    <ComboBox Grid.Column="2" x:Name="cb_cat" Padding="2" Grid.ColumnSpan="1">
-                        <ComboBoxItem >Type 1</ComboBoxItem>
-                        <ComboBoxItem >Type 2</ComboBoxItem>
-                        <ComboBoxItem >Type 3</ComboBoxItem>
-                        <ComboBoxItem >All type</ComboBoxItem>
-                    </ComboBox>
+                    <Label  x:Name="lb_pricemul" Grid.Column="0">Price 10%</Label>
+                    <Slider x:Name="sl_pricemul" Grid.Column="1" Maximum="100" ValueChanged="Slider_ValueChanged" SmallChange="1" Value="10" Minimum="1" />
                 </Grid>
 
             </StackPanel>
