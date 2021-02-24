@@ -162,6 +162,7 @@
     <Compile Include="Sales\addSale\addSales.xaml.cs">
       <DependentUpon>addSales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Client\addClientWindow.xaml.cs" />
     <Compile Include="Sales\description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
