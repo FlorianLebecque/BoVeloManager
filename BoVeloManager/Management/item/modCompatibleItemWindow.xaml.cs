@@ -26,6 +26,9 @@ namespace BoVeloManager.Management.item
         //private int kitId;
         private int cat_id;
 
+        private List<int> updateRequestList = new List<int>{} ;
+        private List<string> updateRequestList_add_or_del = new List<string> { };
+
 
         DataTable dt_item;
         public modCompatibleItemWindow(int catId_)
@@ -59,7 +62,7 @@ namespace BoVeloManager.Management.item
 
         private void BT_update_Click(object sender, RoutedEventArgs e)
         {
-
+            /*
 
             //dt contient tous les id d'item pour lesquels dt_item["itemChecked"] valait true au depart
             //string q = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
@@ -180,7 +183,67 @@ namespace BoVeloManager.Management.item
 
             }
 
+            */
 
+            for (int i=0; i<(updateRequestList.Count); i++)
+            {
+                int KITid = updateRequestList[i];
+
+                if (updateRequestList_add_or_del[i] == "add")
+                {
+                    
+
+                    //if (linkExist_in_bv_cat_tKit(kitId, KITid) == false)
+                    if (linkExist_in_bv_cat_tKit(cat_id, KITid) == false)
+                    {
+                        //string request = tools.DatabaseQuery.addCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                        //envoyer request
+                        string request = tools.DatabaseQuery.addCompatibleKit(cat_id, KITid);
+
+                        int res = tools.Database.setData(request);
+
+                        if (res == -1)
+                        {
+                            MessageBox.Show("An error has occured");
+                        }
+                        else if (res == 1)
+                        {
+                            Console.WriteLine("Kit added");
+                        }
+                        else
+                        {
+                            MessageBox.Show("The database might be corrupted");
+                        }
+                    }
+
+                }
+                else if (updateRequestList_add_or_del[i] == "del")
+                {
+                    //if (linkExist_in_bv_cat_tKit(kitId, KITid) == true)
+                    if (linkExist_in_bv_cat_tKit(cat_id, KITid) == true)
+                    {
+                        //string request = tools.DatabaseQuery.delCompatibleKit(kitId, KITid);  //kitId correspond a id_cat, modifier + tard
+                        //envoyer request
+                        string request = tools.DatabaseQuery.delCompatibleKit(cat_id, KITid);
+
+                        int res = tools.Database.setData(request);
+
+                        if (res == -1)
+                        {
+                            MessageBox.Show("An error has occured");
+                        }
+                        else if (res == 1)
+                        {
+                            Console.WriteLine("Kit removed");
+                        }
+                        else
+                        {
+                            MessageBox.Show("The database might be corrupted");
+                        }
+                    }
+
+                }           
+            }
 
             this.Close();
 
@@ -280,6 +343,12 @@ namespace BoVeloManager.Management.item
             //Console.WriteLine("Cat id : " + Convert.ToString(kitId));
             Console.WriteLine("Cat id : " + Convert.ToString(cat_id));
 
+            updateRequestList.Add(KITid);
+            updateRequestList_add_or_del.Add("add");
+
+            /*
+
+
             //if (linkExist_in_bv_cat_tKit(kitId, KITid) == false)
             if (linkExist_in_bv_cat_tKit(cat_id, KITid) == false)
             {
@@ -302,7 +371,7 @@ namespace BoVeloManager.Management.item
                     MessageBox.Show("The database might be corrupted");
                 }
             }
-
+            */
             
 
         }
@@ -317,6 +386,11 @@ namespace BoVeloManager.Management.item
             //Console.WriteLine("Cat id : " + Convert.ToString(kitId));
             Console.WriteLine("Cat id : " + Convert.ToString(cat_id));
 
+            updateRequestList.Add(KITid);
+            updateRequestList_add_or_del.Add("del");
+
+
+            /*
             //if (linkExist_in_bv_cat_tKit(kitId, KITid) == true)
             if (linkExist_in_bv_cat_tKit(cat_id, KITid) == true)
             {
@@ -339,6 +413,7 @@ namespace BoVeloManager.Management.item
                     MessageBox.Show("The database might be corrupted");
                 }
             }
+            */
 
 
            
