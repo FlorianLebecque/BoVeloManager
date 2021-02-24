@@ -32,6 +32,7 @@ namespace BoVeloManager.Sales {
         public addSales() {
 
             InitializeComponent();
+
             importData();
             bindListBox();
 
