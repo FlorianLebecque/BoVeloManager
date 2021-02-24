@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="Edit compatible bikes window" Height="350" Width="414" ResizeMode="NoResize">
+        Title="Edit compatible bikes window" Height="350" Width="414" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <Grid Margin="0,0,0,0">

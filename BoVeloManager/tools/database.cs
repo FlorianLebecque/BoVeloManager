@@ -14,29 +14,62 @@ namespace BoVeloManager.tools {
         public static DataTable getData(string query) {
             checkConnection();
 
+            int nbrTry = 0;
+
             DataTable dt = new DataTable();
 
-            MySqlCommand cmd = MSCon.CreateCommand();
-            cmd.CommandText = query;
+            while (nbrTry < 5) {
+                try {
+                    MySqlCommand cmd = MSCon.CreateCommand();
+                    cmd.CommandText = query;
 
-            MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
-            DataRow.Fill(dt);
+                    MySqlDataAdapter DataRow = new MySqlDataAdapter(cmd);
+                    DataRow.Fill(dt);
 
-            return dt;
+                    return dt;
+                } catch {
+                    nbrTry++;
+                }
+                
+            }
+
+            throw new Exception("Can't get data from database, code 1");
         }
 
         public static int setData(string query) {
             checkConnection();
 
-            MySqlCommand cmd = MSCon.CreateCommand();
-            cmd.CommandText = query;
+            int nbrTry = 0;
 
-            return cmd.ExecuteNonQuery();
+            while(nbrTry < 5) {
+                try {
+                    MySqlCommand cmd = MSCon.CreateCommand();
+                    cmd.CommandText = query;
+
+                    return cmd.ExecuteNonQuery();
+                } catch {
+                    nbrTry++;
+                }
+            }
+
+            throw new Exception("Can't set data to database, code 2");
+
         }
 
         private static void checkConnection() {
+
             if ((MSCon == null) || (MSCon.State == ConnectionState.Closed) || (MSCon.State == ConnectionState.Broken)) {
-                connectToDB();
+                int nbrTry = 0;
+
+                while (nbrTry < 5) {
+                    try {
+                        connectToDB();
+                        return;
+                    } catch {
+                        nbrTry++;
+                    }
+                }
+                throw new Exception("Could not connect to database, code 0");
             }
         }
 
@@ -129,16 +162,16 @@ namespace BoVeloManager.tools {
         }
         public static string getItem_by_id(int id)
         {
-            return "SELECT `id`,`name` FROM `bv_catalog` WHERE `id` = " + id.ToString();
+            return "SELECT `id`,`name`,`PriceMul` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
         public static string addItem(string name,int pm)
         {
             return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
         }
 
-        public static string setItemName(int id, string newName)
+        public static string updateItem(int id, string newName,int priceMul)
         {
-            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' WHERE `id` = " + id.ToString();
+            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' , `PriceMul` = '" + priceMul.ToString() + "' WHERE `id` = " + id.ToString();
         }
 
         public static string delItem(int id)
@@ -255,7 +288,38 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" +DateTime.Now.ToString("yyyy-MM-dd") + "')";
         }
 
+        public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
+        {
+            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
+        }
+        // Get available Kits
+        public static string getFrameKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 0";
+        }
+        public static string getWheelsKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 1";
+        }
+        public static string getBrakesKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 2";
+        }
+        public static string getSaddleKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 3";
+        }
+        public static string getHandlebarKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 4";
+        }
+        public static string getAddonKit()
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
+        }
+        public static string getType()
+        {
+            return "SELECT * FROM `bv_type_bike`";
+        }
     }
-
-
 }
