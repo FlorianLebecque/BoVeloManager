@@ -122,7 +122,7 @@ namespace BoVeloManager.Sales {
 
         private void addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
         {
-            /*
+            
             try
             {
                 string q = tools.DatabaseQuery.addSale(id_client, id_seller, prevision_date, date);
@@ -135,9 +135,8 @@ namespace BoVeloManager.Sales {
 
                 MessageBox.Show("An error has occured");
             }
-            */
-            string q = tools.DatabaseQuery.addSale(id_client, id_seller, prevision_date, date);
-            int res = tools.Database.setData(q);
+
+            this.Close();
         }
 
 
