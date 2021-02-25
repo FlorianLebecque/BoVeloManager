@@ -42,7 +42,7 @@
                 </StackPanel>
 
 
-                <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" EnableRowVirtualization="False">
                     <DataGrid.Columns>
 
                         <DataGridTemplateColumn Width="*" Header="Select kit">
