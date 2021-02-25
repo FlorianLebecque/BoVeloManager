@@ -51,12 +51,7 @@ namespace BoVeloManager.Sales {
         public addSales() {
 
             InitializeComponent();
-            importData();
-      
-
-            DisplayResume();
-
-            
+            importData();            
         }
 
         // Add new sale Button
@@ -77,11 +72,21 @@ namespace BoVeloManager.Sales {
             article.quantity = int.Parse((string)quantity.Text);
 
             sale.add_article_to_sale(article);
+
+            UpdateDisplayResume();
         }
 
-        private void DisplayResume()
+        private void UpdateDisplayResume()
         {
-            resume.Text = "hello";
+            foreach (tools.Article article in sale.Sale)
+            {
+
+
+
+
+
+
+            }
         }
 
         // Close Button
@@ -95,18 +100,20 @@ namespace BoVeloManager.Sales {
         private void BT_Send_sale_to_db(object sender, RoutedEventArgs e)
         {
             //get the form data
-            int id_client;
-            int id_seller;
+            int id_client = ClientDic.FirstOrDefault(x => x.Value == (string)client.SelectedItem).Key;
+            int id_seller = tools.user.getId();
 
-            DateTime prevision_date = new DateTime(0, 0, 0);
-            DateTime current_day = DateTime.Today;
+            DateTime prevision_date = new DateTime(2018, 04, 02);
+            //DateTime current_day = new DateTime(0,0,0);
 
-            //addSale(id_client, id_seller, prevision_date, current_day);
-            this.Close();
+            addSale(id_client, id_seller, prevision_date, prevision_date);
+
+            //this.Close();
         }
 
         private void addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
         {
+            /*
             try
             {
                 string q = tools.DatabaseQuery.addSale(id_client, id_seller, prevision_date, date);
@@ -119,7 +126,9 @@ namespace BoVeloManager.Sales {
 
                 MessageBox.Show("An error has occured");
             }
-            
+            */
+            string q = tools.DatabaseQuery.addSale(id_client, id_seller, prevision_date, date);
+            int res = tools.Database.setData(q);
         }
 
 

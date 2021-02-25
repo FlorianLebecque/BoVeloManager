@@ -8,7 +8,7 @@ namespace BoVeloManager.tools
 {
     class Sales
     {
-        List<Article> Sale = new List<Article>();
+        public List<Article> Sale = new List<Article>();
 
         float total_price; 
 

@@ -325,6 +325,11 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
         }
 
+        public static string link_sale_to_Sale_bike()
+        {
+            return "";
+        }
+
 
         #endregion
     }
