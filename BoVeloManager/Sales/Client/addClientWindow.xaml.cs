@@ -102,5 +102,9 @@ namespace BoVeloManager.Sales.Client {
 
             this.Close();
         }
+
+        private void BT_cancel_Click_1(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
     }
 }

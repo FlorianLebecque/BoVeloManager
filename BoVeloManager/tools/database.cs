@@ -259,12 +259,12 @@ namespace BoVeloManager.tools {
         //Returns all types of bikes from one sale
         public static string gettBikes_by_sale(int id_sale)
         {
-            return "SELECT id_tBike , qnt , PriceMul FROM `bv_sale_bike` as SB INNER JOIN bv_type_bike AS TB ON TB.id = SB.`id_tBike` INNER JOIN bv_catalog AS C ON TB.id_cat = C.id WHERE id_sale = " + id_sale.ToString();
+            return "SELECT id_tBike , qnt , PriceMul, name FROM `bv_sale_bike` as SB INNER JOIN bv_type_bike AS TB ON TB.id = SB.`id_tBike` INNER JOIN bv_catalog AS C ON TB.id_cat = C.id WHERE id_sale = " + id_sale.ToString();
         }
         // Returns id name price from a type of bike
         public static string gettBike(int id_Bike)
         {
-            return "SELECT id , name FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
+            return "SELECT id FROM `bv_type_bike`  WHERE id = " + id_Bike.ToString();
         }
 
         public static string getClients()
