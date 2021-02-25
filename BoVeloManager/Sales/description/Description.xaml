@@ -22,8 +22,8 @@
                         <ColumnDefinition Width="3*" />
 
                     </Grid.ColumnDefinitions>
-                    <Label  Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,0.2,-0.4" >Seller :</Label>
-                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="111,5,0,4.6"/>
+                    <Label  Grid.Column="0" HorizontalAlignment="Right"  >Seller :</Label>
+                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
                 </Grid>
 
                 <!-- Client info -->
