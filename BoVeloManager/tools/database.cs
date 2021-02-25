@@ -289,6 +289,14 @@ namespace BoVeloManager.tools {
         }
 
         // Get available Kits
+        public static string getAllKits()
+        {
+            return "SELECT * FROM 'bv_type_kit'";
+        }
+        public static string getNameOfKitById(int Id)
+        {
+            return "SELECT * FROM `bv_type_kit` WHERE `id` = " + Id.ToString();
+        }
         public static string getFrameKit()
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 0";

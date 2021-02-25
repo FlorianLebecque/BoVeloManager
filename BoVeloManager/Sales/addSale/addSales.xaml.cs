@@ -78,15 +78,24 @@ namespace BoVeloManager.Sales {
 
         private void UpdateDisplayResume()
         {
+            string res = "";
             foreach (tools.Article article in sale.Sale)
             {
+                article.setKit();
 
+                string l0 = "Model of bike : " + article.model + "\n";
+                string l1 = "   - Frame : " + article.frame + "\n";
+                string l2 = "   - wheels : " + article.wheels + "\n";
+                string l3 = "   - brakes : " + article.brakes + "\n";
+                string l4 = "   - saddle : " + article.saddle + "\n";
+                string l5 = "   - handlebar : " + article.handlebar + "\n";
+                string l6 = "Quantity : " + article.quantity + "\n";
 
+                string res_art = l0 + l1 + l2 + l3 + l4 + l5 + l6;
 
-
-
-
+                res += res_art;
             }
+            resume.Text = res;
         }
 
         // Close Button
