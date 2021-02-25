@@ -291,7 +291,7 @@ namespace BoVeloManager.tools {
         // Get available Kits
         public static string getAllKits()
         {
-            return "SELECT * FROM 'bv_type_kit'";
+            return "SELECT * FROM `bv_type_kit`";
         }
         public static string getNameOfKitById(int Id)
         {
@@ -330,7 +330,7 @@ namespace BoVeloManager.tools {
 
         public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
         {
-            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString() + "'," + date.ToString() + ")";
+            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','" + prevision_date.ToString("yyyy-MM-dd") + "'," + date.ToString("yyyy-MM-dd") + ")";
         }
 
         public static string link_sale_to_Sale_bike()
