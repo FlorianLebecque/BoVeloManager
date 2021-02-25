@@ -41,7 +41,6 @@
 
                 </StackPanel>
 
-
                 <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" EnableRowVirtualization="False">
                     <DataGrid.Columns>
 
@@ -62,14 +61,12 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
-
 
                 <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
                     <Grid.ColumnDefinitions>
