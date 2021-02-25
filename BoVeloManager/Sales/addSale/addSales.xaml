@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales"
         mc:Ignorable="d"
-        Title="Add sale" Height="644.8" Width="907.2">
+        Title="Add sale" Height="644.8" Width="907.2" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

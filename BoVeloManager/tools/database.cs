@@ -154,8 +154,6 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_type_kit` WHERE `id` < "+ maxId.ToString();
         }
 
-
-
         public static string getItem()
         {
             return "SELECT * FROM `bv_catalog`";
@@ -202,7 +200,6 @@ namespace BoVeloManager.tools {
             return "SELECT `id`,`name`,`properties`,`category`,`price` FROM `bv_type_kit` WHERE `id` = " + id.ToString();
         }
 
-
         public static string delKit(int id)
         {
             return "DELETE FROM `bv_type_kit` WHERE `id` = " + id.ToString();
@@ -224,9 +221,7 @@ namespace BoVeloManager.tools {
             return "SELECT K.name,K.price,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
-
         // Add kit Querry
-
         public static string addKit(string name, string prop, string cat)
         {
             return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
