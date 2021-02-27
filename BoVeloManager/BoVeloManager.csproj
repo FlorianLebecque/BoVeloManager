@@ -132,46 +132,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Management\item\AddItemWindow.xaml.cs">
+    <Compile Include="Classes\human.cs" />
+    <Compile Include="Classes\user.cs" />
+    <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\item\modCompatibleItemWindow.xaml.cs">
+    <Compile Include="UI\Management\item\modCompatibleItemWindow.xaml.cs">
       <DependentUpon>modCompatibleItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\item\modItemWindow.xaml.cs">
+    <Compile Include="UI\Management\item\modItemWindow.xaml.cs">
       <DependentUpon>modItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\kit\AddKitWindow.xaml.cs">
+    <Compile Include="UI\Management\kit\AddKitWindow.xaml.cs">
       <DependentUpon>AddKitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\kit\modCompatibleKitWindow.xaml.cs">
+    <Compile Include="UI\Management\kit\modCompatibleKitWindow.xaml.cs">
       <DependentUpon>modCompatibleKitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\kit\modKitWindow.xaml.cs">
+    <Compile Include="UI\Management\kit\modKitWindow.xaml.cs">
       <DependentUpon>modKitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\user\AddUserWindow.xaml.cs">
+    <Compile Include="UI\Management\user\AddUserWindow.xaml.cs">
       <DependentUpon>AddUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\Management.xaml.cs">
+    <Compile Include="UI\Management\Management.xaml.cs">
       <DependentUpon>Management.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Management\user\modUserWindow.xaml.cs">
+    <Compile Include="UI\Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\addSale\addSales.xaml.cs">
+    <Compile Include="UI\Sales\addSale\addSales.xaml.cs">
       <DependentUpon>addSales.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\Client\AddClientWindow.xaml.cs">
+    <Compile Include="UI\Sales\Client\AddClientWindow.xaml.cs">
       <DependentUpon>AddClientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\description\Description.xaml.cs">
+    <Compile Include="UI\Sales\description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sales\sales.xaml.cs">
+    <Compile Include="UI\Sales\sales.xaml.cs">
       <DependentUpon>sales.xaml</DependentUpon>
     </Compile>
-    <Compile Include="stock\stock.xaml.cs">
+    <Compile Include="UI\stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="tools\colorPicker.cs" />
@@ -179,11 +181,11 @@
     <Compile Include="tools\md5.cs" />
     <Compile Include="tools\Sales.cs" />
     <Compile Include="tools\user.cs" />
-    <Page Include="Catalogue\catalog.xaml">
+    <Page Include="UI\Catalogue\catalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Commande\commande.xaml">
+    <Page Include="UI\Commande\commande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,10 +201,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Catalogue\catalog.xaml.cs">
+    <Compile Include="UI\Catalogue\catalog.xaml.cs">
       <DependentUpon>catalog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commande\commande.xaml.cs">
+    <Compile Include="UI\Commande\commande.xaml.cs">
       <DependentUpon>commande.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.xaml.cs">
@@ -212,59 +214,59 @@
       <DependentUpon>LoginWindows.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Management\item\AddItemWindow.xaml">
+    <Page Include="UI\Management\item\AddItemWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\item\modCompatibleItemWindow.xaml">
+    <Page Include="UI\Management\item\modCompatibleItemWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\item\modItemWindow.xaml">
+    <Page Include="UI\Management\item\modItemWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Management\kit\AddKitWindow.xaml">
+    <Page Include="UI\Management\kit\AddKitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\kit\modCompatibleKitWindow.xaml">
+    <Page Include="UI\Management\kit\modCompatibleKitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\kit\modKitWindow.xaml">
+    <Page Include="UI\Management\kit\modKitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\user\AddUserWindow.xaml">
+    <Page Include="UI\Management\user\AddUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\Management.xaml">
+    <Page Include="UI\Management\Management.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Management\user\modUserWindow.xaml">
+    <Page Include="UI\Management\user\modUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\addSale\addSales.xaml">
+    <Page Include="UI\Sales\addSale\addSales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\Client\AddClientWindow.xaml">
+    <Page Include="UI\Sales\Client\AddClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\description\Description.xaml">
+    <Page Include="UI\Sales\description\Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sales\sales.xaml">
+    <Page Include="UI\Sales\sales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="stock\stock.xaml">
+    <Page Include="UI\stock\stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,7 +316,7 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Untitled.ico" />
-    <Resource Include="Catalogue\Bike.png" />
+    <Resource Include="UI\Catalogue\Bike.png" />
     <Content Include="sql2_freemysqlhosting_net.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
