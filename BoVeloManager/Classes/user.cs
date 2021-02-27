@@ -39,8 +39,6 @@ namespace BoVeloManager.Classes
             return grade;
         }
 
-
-
         public void setGrade(int number){
             grade = number;
             setRole();
