@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BoVeloManager.Classes;
 
 
 namespace BoVeloManager {
@@ -19,16 +19,20 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
+        public controler crtl;
 
         bool isOpen = false;
 
-        public Dashboard() {
+        public Dashboard(controler crtl_) {
             InitializeComponent();
+
+            crtl = crtl_;
+
 
             frame.Content = new Catalogue.Catalog();
 
             //status bar log
-            lb_user.Text = tools.user.getUserName(); 
+            lb_user.Text = crtl.getCurrentUser().getUserName(); 
         }
 
 

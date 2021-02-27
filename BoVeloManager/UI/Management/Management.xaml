@@ -33,11 +33,11 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid Name="dg_userList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" EnableRowVirtualization="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.2*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" CanUserReorder="False" />
-                            <DataGridTextColumn Width="*" Header="User" Binding="{Binding Path='user'}" IsReadOnly="True" CanUserReorder="False" />
-                            <DataGridTextColumn Width="*" Header="Grade" Binding="{Binding Path='Poste'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Width="*" Header="User" Binding="{Binding Path='name'}" IsReadOnly="True" CanUserReorder="False" />
+                            <DataGridTextColumn Width="*" Header="Role" Binding="{Binding Path='Role'}" IsReadOnly="True" CanUserReorder="False" />
                             <DataGridTemplateColumn Header="Edit" CanUserReorder="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

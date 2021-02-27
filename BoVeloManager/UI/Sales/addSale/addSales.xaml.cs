@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using System.Text.RegularExpressions;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Sales {
     /// <summary>
@@ -48,9 +49,14 @@ namespace BoVeloManager.Sales {
 
         tools.Sales sale = new tools.Sales();
 
+        controler crtl;
+
         public addSales() {
 
             InitializeComponent();
+
+            crtl = controler.Instance;
+
             importData();            
         }
 
@@ -110,7 +116,7 @@ namespace BoVeloManager.Sales {
         {
             //get the form data
             int id_client = ClientDic.FirstOrDefault(x => x.Value == (string)client.SelectedItem).Key;
-            int id_seller = tools.user.getId();
+            int id_seller = crtl.getCurrentUser().getId();
 
             DateTime prevision_date = new DateTime(2018, 04, 02);
             //DateTime current_day = new DateTime(0,0,0);

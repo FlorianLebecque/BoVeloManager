@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager {
     /// <summary>
@@ -24,8 +25,6 @@ namespace BoVeloManager {
             InitializeComponent();
 
             lb_error.Visibility = Visibility.Hidden;
-
-            tools.user.RESET();
 
             cb_keep.IsChecked = Properties.Settings.Default.keeplogged;
 
@@ -44,18 +43,16 @@ namespace BoVeloManager {
             string in_pass = passMD5;
 
 
-            //check if password are equal
-            if (tools.user.checkUserPassMD5(in_user,in_pass)) {
 
-                    //know get the user data
-                string query = tools.DatabaseQuery.getUserData_byName(in_user);
-                DataTable res = tools.Database.getData(query);
-                
-                    //set the data into user class
-                tools.user.setGrade(Convert.ToInt32(res.Rows[0]["grade"]));
-                tools.user.setId(Convert.ToInt32(res.Rows[0]["id"]));
-               
-                tools.user.setUserName(in_user);
+            controler ctrl = controler.Instance;
+
+            user cur_user = ctrl.getUser_byName(in_user);
+
+            //check if password are equal
+            if ((cur_user != null) &&(cur_user.checkPass(in_pass))) {
+
+
+                ctrl.setCurrentUser(cur_user);
 
                     //hide the login windows
                 this.Hide();
@@ -64,7 +61,7 @@ namespace BoVeloManager {
 
                     //create and show the dashboard windows
                 
-                Dashboard dashboardWindows = new Dashboard();
+                Dashboard dashboardWindows = new Dashboard(ctrl);
                 try {
                     dashboardWindows.ShowDialog();
                 } catch {}

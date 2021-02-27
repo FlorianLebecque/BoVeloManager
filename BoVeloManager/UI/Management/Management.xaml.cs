@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management {
     /// <summary>
@@ -22,6 +23,7 @@ namespace BoVeloManager.Management {
     public partial class Management : Page {
 
         bool init = false;
+
 
         public Management() {
             InitializeComponent();
@@ -40,49 +42,22 @@ namespace BoVeloManager.Management {
          */
         #region Users
 
-        /*
-            Function witch loads the users into the user datagrid
-                - get users data from database
-                - convert grade into poste
-                    ( 0 -> Monteur)
-                    ( 1 -> Vendeur) ...
-                - put the users data into the datagrid
-         */
+
         private void update_dg_userList() {
-            //get the data from the db
-            string q = tools.DatabaseQuery.getUsers(cb_sortUser.SelectedIndex);
-            DataTable dt = tools.Database.getData(q);
-
-
-            //convertion de la columns grade en poste
-            DataColumn newCol = new DataColumn();
-            newCol.ColumnName = "Poste";
-            newCol.DataType = typeof(string);
-
-            dt.Columns.Add(newCol);
-
-            foreach (DataRow r in dt.Rows) {
-
-                int g = Convert.ToInt32(r["grade"]);
-                switch (g) {
-                    case 0:
-                        r["Poste"] = "Worker";
-                        break;
-                    case 1:
-                        r["Poste"] = "Seller";
-                        break;
-                    case 2:
-                        r["Poste"] = "Manager";
-                        break;
-                }
-
-            }
-            //we can now remove the old columns
-            dt.Columns.Remove(dt.Columns["grade"]);
-
-
             //set the datatable as the items sources for the user datagrid
-            dg_userList.ItemsSource = dt.DefaultView;
+
+            dg_userList.ItemsSource = null;
+
+            switch (cb_sortUser.SelectedIndex) {
+                case 0:
+                    dg_userList.ItemsSource = controler.Instance.GetUserList();
+                    break;
+                default:
+                    dg_userList.ItemsSource = controler.Instance.GetUserList_byGrade(2 - cb_sortUser.SelectedIndex+1);
+                    break;
+            }
+
+            
         }
 
         /*
@@ -109,11 +84,12 @@ namespace BoVeloManager.Management {
         private void bt_editUser_Click(object sender, RoutedEventArgs e) {
 
             //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int userID = Convert.ToInt32(dataRowView["id"]);
+            Classes.user selectedUser = (Classes.user)((System.Windows.Controls.Button)e.Source).DataContext;
+            //int userID = Convert.ToInt32(dataRowView["id"]);
 
             //open the dialog passing the user ID
-            user.modUserWindow MUW = new user.modUserWindow(userID);
+
+            user.modUserWindow MUW = new user.modUserWindow(selectedUser);
             MUW.ShowDialog();
 
             //update the user datagrid

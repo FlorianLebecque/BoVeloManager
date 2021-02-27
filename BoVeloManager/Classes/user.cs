@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes
 {
-    class user : human
+    public class user : human
     {
-        private readonly int id;
-        private string name;
-        private int grade;
 
+        public int grade { get; set; }
+        public string Role { get; set; }
 
-        public user(int id_, string name_) {
+        public string hashPass;
+
+        public user(int id_, string name_,int grade_,string hashPass_):base(id_) {
 
             name = name_;
+            grade = grade_;
+
+            setRole();
+
+            hashPass = hashPass_;
         }
 
         public  string getUserName()
@@ -25,6 +31,7 @@ namespace BoVeloManager.Classes
 
         public int getId()
         {
+
             return id;
         }
 
@@ -32,8 +39,29 @@ namespace BoVeloManager.Classes
             return grade;
         }
 
-        public static void setGrade(int number){
 
+
+        public void setGrade(int number){
+            grade = number;
+            setRole();
+        }
+
+        public bool checkPass(string hash){
+            return hash.ToUpper() == hashPass.ToUpper() ;
+        }
+
+        private void setRole() {
+            switch (grade) {
+                case 2:
+                    Role = "Manager";
+                    break;
+                case 1:
+                    Role = "Seller";
+                    break;
+                case 0:
+                    Role = "Worker";
+                    break;
+            }
         }
 
     }

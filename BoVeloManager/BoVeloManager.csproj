@@ -132,8 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\controler.cs" />
     <Compile Include="Classes\human.cs" />
     <Compile Include="Classes\user.cs" />
+    <Compile Include="tools\Password.cs" />
     <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>
     </Compile>
@@ -180,7 +182,6 @@
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Compile Include="tools\Sales.cs" />
-    <Compile Include="tools\user.cs" />
     <Page Include="UI\Catalogue\catalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

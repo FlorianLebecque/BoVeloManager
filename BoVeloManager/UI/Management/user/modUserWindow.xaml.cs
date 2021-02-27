@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management.user {
     /// <summary>
@@ -20,18 +21,22 @@ namespace BoVeloManager.Management.user {
     public partial class modUserWindow : Window {
 
         private int userId;
+        private Classes.user mod_user;
 
-        public modUserWindow(int userId_) {
+        controler crtl;
+
+        public modUserWindow(Classes.user user_) {
             InitializeComponent();
-            
+
+            mod_user = user_;
+            crtl = controler.Instance;
+
             //initialise the windows
-            userId = userId_;
-                //get the user data
-            string q = tools.DatabaseQuery.getUser_by_id(userId);
-            DataTable res = tools.Database.getData(q);
-                //display the user data
-            tb_userName.Text = (string)res.Rows[0]["user"];
-            cb_grade.SelectedIndex = Convert.ToInt32(res.Rows[0]["grade"]);
+            userId = mod_user.getId();
+
+            //display the user data
+            tb_userName.Text = mod_user.getUserName();
+            cb_grade.SelectedIndex = mod_user.getGrade();
         }
 
 
@@ -51,25 +56,26 @@ namespace BoVeloManager.Management.user {
 
             if (ch_pass.IsChecked == false) {
 
-                updateUserGrade(userId, grade);
+                updateUserGrade(grade);
 
             }else if (ch_pass.IsChecked == true) {
 
                 string in_user = tb_userName.Text;
-                string in_pass = tb_password0.Password;
+                string in_pass = tools.md5.CreateMD5(tb_password0.Password);
 
                 //if the first password is correct
-                if (tools.user.checkUserPass(in_user, in_pass)) {
+                if (mod_user.checkPass(in_pass)) {
 
                     string new_pass_1 = tb_password1.Password;
                     string new_pass_2 = tb_password2.Password;
 
                     if ((new_pass_1.Length >= 4) && (new_pass_1 == new_pass_2)) {
                         string pass = tools.md5.CreateMD5(new_pass_1);
-                        string q = tools.DatabaseQuery.setUserPass(userId, pass);
 
-                        tools.Database.setData(q);
-                        updateUserGrade(userId, grade);
+                        mod_user.hashPass = pass;
+                        mod_user.setGrade(grade);
+
+                        int res = tools.DatabaseClassInterface.updateUser(mod_user);
 
                     } else {
                         MessageBox.Show("The new password is invalide or the old password is invalide");
@@ -84,16 +90,16 @@ namespace BoVeloManager.Management.user {
 
         }
 
-        private void updateUserGrade(int id,int grade) {
-            string q = tools.DatabaseQuery.setUserGrade(id, grade);
-            int res = tools.Database.setData(q);
+        private void updateUserGrade(int grade) {
 
-            if(res == -1) {
-                MessageBox.Show("An error has occured");
-            } else if(res == 1){
-                MessageBox.Show("Done");
+            mod_user.setGrade(grade);
+
+            int res = tools.DatabaseClassInterface.updateUser(mod_user);
+
+            if(res == 1) {
+                MessageBox.Show("User updated");
             } else {
-                MessageBox.Show("The database is corrupted");
+                MessageBox.Show("Something wrong happend");
             }
 
             this.Close();

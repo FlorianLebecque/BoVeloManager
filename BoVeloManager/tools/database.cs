@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.tools {
     class Database {
@@ -30,7 +31,7 @@ namespace BoVeloManager.tools {
                 } catch {
                     nbrTry++;
                 }
-                
+
             }
 
             throw new Exception("Can't get data from database, code 1");
@@ -41,7 +42,7 @@ namespace BoVeloManager.tools {
 
             int nbrTry = 0;
 
-            while(nbrTry < 5) {
+            while (nbrTry < 5) {
                 try {
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
@@ -117,7 +118,7 @@ namespace BoVeloManager.tools {
             }
 
 
-            return "SELECT `id`,`user`, `grade` FROM `bv_user`" + f;
+            return "SELECT * FROM `bv_user`" + f;
         }
         public static string getUserGrade_by_id(int id)
         {
@@ -145,13 +146,13 @@ namespace BoVeloManager.tools {
 
         #region Item
 
-        public static string getKits(){
+        public static string getKits() {
             return "SELECT * FROM `bv_type_kit`";
         }
 
         public static string getKits_maxId(int maxId)
         {
-            return "SELECT * FROM `bv_type_kit` WHERE `id` < "+ maxId.ToString();
+            return "SELECT * FROM `bv_type_kit` WHERE `id` < " + maxId.ToString();
         }
 
         public static string getItem()
@@ -162,12 +163,12 @@ namespace BoVeloManager.tools {
         {
             return "SELECT `id`,`name`,`PriceMul` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-        public static string addItem(string name,int pm)
+        public static string addItem(string name, int pm)
         {
             return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
         }
 
-        public static string updateItem(int id, string newName,int priceMul)
+        public static string updateItem(int id, string newName, int priceMul)
         {
             return "UPDATE `bv_catalog` SET `name` = '" + newName + "' , `PriceMul` = '" + priceMul.ToString() + "' WHERE `id` = " + id.ToString();
         }
@@ -184,7 +185,7 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
         }
-        
+
         public static string getCompatibleKitId_with_categoryId(int id_cat)
         {
             return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
@@ -229,14 +230,14 @@ namespace BoVeloManager.tools {
 
         public static string addCompatibleKit(int id_cat, int id_tKit)
         {
-            return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('"+ id_cat +"', '"+ id_tKit +"')";
+            return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('" + id_cat + "', '" + id_tKit + "')";
         }
         ////////////////////////
         public static string delCompatibleKit(int id_cat, int id_tKit)
         {
             ///REQUETE SQL A ECRIRE
             //return "DELETE FROM `bv_cat_tKit` WHERE id_cat = " + id_cat.ToString() + "AND id_tKit = " + id_tKit.ToString();
-            return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = "+ id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " +id_tKit.ToString() ;
+            return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = " + id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " + id_tKit.ToString();
         }
         ///////////////////////
 
@@ -280,7 +281,7 @@ namespace BoVeloManager.tools {
 
         public static string addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num)
         {
-            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" +DateTime.Now.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
         }
 
         // Get available Kits
@@ -336,4 +337,41 @@ namespace BoVeloManager.tools {
 
         #endregion
     }
+
+    class DatabaseClassInterface{
+        
+        public static List<user> getUsers(){
+
+                //get the user query and data from the database
+            string query = DatabaseQuery.getUsers(0);
+            DataTable dt = tools.Database.getData(query);
+
+                //convert all the user into a user object
+            List<user> temp = new List<user>();
+            for(int i = 0; i < dt.Rows.Count; i++)
+            {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string name = (string)dt.Rows[i]["user"];
+                int grade = Convert.ToInt32(dt.Rows[i]["grade"]);
+                string psw = (string)dt.Rows[i]["psw"];
+
+                temp.Add(new user(id, name, grade, psw));
+            }
+
+            return temp;
+        }
+        
+        public static int updateUser(user moduser) {
+            string q = DatabaseQuery.setUserGrade(moduser.id, moduser.grade);
+            Database.setData(q);
+            q = DatabaseQuery.setUserPass(moduser.id, moduser.hashPass);
+            Database.setData(q);
+
+            return 0;
+        }
+
+    }
+
+    
+
 }

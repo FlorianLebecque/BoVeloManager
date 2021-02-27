@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes
 {
-    class human
+    public class human
     {
-        private readonly int id;
-        private string name;
+        public int id { get; }
+        public string name { get; set; }
 
+        public human(int id_) {
+            id = id_;
+        }
 
-       
     }
 }
