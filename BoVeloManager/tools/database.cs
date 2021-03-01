@@ -371,7 +371,7 @@ namespace BoVeloManager.tools {
         }
 
         public static int addUser(User NewUser) {
-            string q = DatabaseQuery.addUser(NewUser.name, NewUser.getHashPass(), NewUser.getGrade());
+            string q = DatabaseQuery.addUser(NewUser.getUserName(), NewUser.getHashPass(), NewUser.getGrade());
             return Database.setData(q);
         }
 
