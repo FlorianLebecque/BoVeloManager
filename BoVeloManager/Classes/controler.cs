@@ -11,9 +11,9 @@ namespace BoVeloManager.Classes
 
         private static Controler instance = new Controler();
 
-        private user loggedUser;
+        private User loggedUser;
 
-        private List<user> userList;
+        private List<User> userList;
 
         
 
@@ -33,10 +33,10 @@ namespace BoVeloManager.Classes
     
     #region user
 
-        public List<user.displayInfo> GetUsersDisplayInfo(int filter) {
-            List<user.displayInfo> temp = new List<user.displayInfo>();
+        public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
+            List<User.displayInfo> temp = new List<User.displayInfo>();
 
-            foreach(user u in userList) {
+            foreach(User u in userList) {
 
                 switch (filter) {
                     case 0:
@@ -59,14 +59,13 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-
-        public user getCurrentUser() {
+        public User getCurrentUser() {
             return loggedUser;
         }
 
-        public user getUser_byName(string name) {
-            foreach(user u in userList){
-                if(u.getUserName() == name){
+        public User getUser_byName(string name) {
+            foreach(User u in userList){
+                if(u.getName() == name){
                     return u;
                 }
             }
@@ -74,8 +73,19 @@ namespace BoVeloManager.Classes
             return null;
         }
 
-        public void setCurrentUser(user cur) {
+        public void setCurrentUser(User cur) {
             loggedUser = cur;
+        }
+
+        public int getLastUserId() {
+            return userList.Select(x => x.getId()).Max();
+        }
+
+        public void createUser(User newUser) {
+
+            userList.Add(newUser);
+            DatabaseClassInterface.addUser(newUser);
+
         }
 
     #endregion

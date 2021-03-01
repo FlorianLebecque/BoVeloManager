@@ -20,15 +20,15 @@ namespace BoVeloManager.Management.user {
     /// </summary>
     public partial class modUserWindow : Window {
 
-        private Classes.user mod_user;
+        private Classes.User mod_user;
 
-        public modUserWindow(Classes.user user_) {
+        public modUserWindow(Classes.User user_) {
             InitializeComponent();
 
             mod_user = user_;
 
             //display the user data
-            tb_userName.Text = mod_user.getUserName();
+            tb_userName.Text = mod_user.getName();
             cb_grade.SelectedIndex = mod_user.getGrade();
         }
 

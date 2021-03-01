@@ -29,10 +29,16 @@ namespace BoVeloManager {
             crtl = Controler.Instance;
 
 
+
+            if(crtl.getCurrentUser().getName() != "God") {
+                ManagementBtn.Visibility = Visibility.Hidden;
+            }
+
+
             frame.Content = new Catalogue.Catalog();
 
             //status bar log
-            lb_user.Text = crtl.getCurrentUser().getUserName(); 
+            lb_user.Text = crtl.getCurrentUser().getName(); 
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {

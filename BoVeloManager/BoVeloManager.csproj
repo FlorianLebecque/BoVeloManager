@@ -133,10 +133,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\controler.cs" />
-    <Compile Include="Classes\human.cs" />
-    <Compile Include="Classes\user.cs" />
-    <Compile Include="tools\Password.cs" />
+    <Compile Include="Classes\Controler.cs" />
+    <Compile Include="Classes\Human.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>
     </Compile>
@@ -179,7 +178,6 @@
     <Compile Include="UI\stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tools\colorPicker.cs" />
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Compile Include="tools\Sales.cs" />

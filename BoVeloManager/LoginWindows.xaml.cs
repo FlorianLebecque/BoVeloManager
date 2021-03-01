@@ -44,7 +44,7 @@ namespace BoVeloManager {
 
             Controler ctrl = Controler.Instance;
 
-            user cur_user = ctrl.getUser_byName(in_user);
+            User cur_user = ctrl.getUser_byName(in_user);
 
             //check if password are equal
             if ((cur_user != null) &&(cur_user.checkPass(in_pass))) {

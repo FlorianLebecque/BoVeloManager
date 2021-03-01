@@ -11,14 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management {
     /// <summary>
     /// Interaction logic for AddUserWindow.xaml
     /// </summary>
     public partial class AddUserWindow : Window {
+
+        Controler crtl;
+
         public AddUserWindow() {
             InitializeComponent();
+
+            crtl = Controler.Instance;
         }
 
         private void BTLogin_Click(object sender, RoutedEventArgs e) {
@@ -35,7 +41,12 @@ namespace BoVeloManager.Management {
                 if((pass1 == pass2)&&(pass1 != "")&&(pass1.Length >= 4)) {
                     if(grade != -1) {
 
-                        addUser(userName, pass1, grade);               
+                        int lastID = crtl.getLastUserId();
+                        User newUser = new User(lastID,userName,grade,tools.md5.CreateMD5(pass1));
+
+                        crtl.createUser(newUser);
+                        MessageBox.Show("User added");
+                        
                         this.Close();
 
                     } else {
@@ -59,22 +70,6 @@ namespace BoVeloManager.Management {
                 case 3:
                     lb_error.Text = "You must select a grade";
                     break;
-            }
-
-        }
-
-        private void addUser(string name,string pass,int grade) {
-
-            string q = tools.DatabaseQuery.addUser(name,tools.md5.CreateMD5(pass),grade);
-
-            int res = tools.Database.setData(q);
-
-            if(res == -1) {
-                MessageBox.Show("An error has occured");
-            }else if (res == 1) {
-                MessageBox.Show("User added");
-            } else {
-                MessageBox.Show("The database might be corrupted");
             }
 
         }
