@@ -10,16 +10,12 @@ namespace BoVeloManager.Classes
     {
 
         private int grade;
-        private string Role;
         private string hashPass;
 
         public user(int id_, string name_,int grade_,string hashPass_):base(id_) {
 
             name = name_;
             grade = grade_;
-
-            setRole();
-
             hashPass = hashPass_;
         }
 
@@ -44,7 +40,6 @@ namespace BoVeloManager.Classes
 
         public void setGrade(int number){
             grade = number;
-            setRole();
         }
 
         public void setHashPass(string pass) {
@@ -55,7 +50,14 @@ namespace BoVeloManager.Classes
             return hash.ToUpper() == hashPass.ToUpper() ;
         }
 
-        private void setRole() {
+
+        public displayInfo GetDisplayInfo() {
+            displayInfo temp = new displayInfo();
+
+            temp.CurUser = this;
+            temp.name = this.name;
+
+            string Role = "";
             switch (grade) {
                 case 2:
                     Role = "Manager";
@@ -67,14 +69,8 @@ namespace BoVeloManager.Classes
                     Role = "Worker";
                     break;
             }
-        }
 
-        public displayInfo GetDisplayInfo() {
-            displayInfo temp = new displayInfo();
-
-            temp.CurUser = this;
-            temp.name = this.name;
-            temp.Role = this.Role;
+            temp.Role = Role;
             temp.id = this.id;
 
             return temp;

@@ -33,28 +33,32 @@ namespace BoVeloManager.Classes
     
     #region user
 
-        public List<user.displayInfo> GetUserList() {
+        public List<user.displayInfo> GetUsersDisplayInfo(int filter) {
             List<user.displayInfo> temp = new List<user.displayInfo>();
 
             foreach(user u in userList) {
-                temp.Add(u.GetDisplayInfo());
-            }
 
+                switch (filter) {
+                    case 0:
+                        temp.Add(u.GetDisplayInfo());
+                        break;
+                    default:
 
-            return temp;
-        }
+                        int grade = 2 - filter;
+                        if(u.getGrade() == grade) {
+                            temp.Add(u.GetDisplayInfo());
+                        }
 
-        public List<user> GetUserList_byGrade(int g) {
-            List<user> temp = new List<user>();
-
-            foreach(user u in userList) {
-                if(u.getGrade() == g) {
-                    temp.Add(u);
+                        break;
                 }
+
+                
             }
+
 
             return temp;
         }
+
 
         public user getCurrentUser() {
             return loggedUser;

@@ -48,16 +48,7 @@ namespace BoVeloManager.Management {
 
             dg_userList.ItemsSource = null;
 
-            switch (cb_sortUser.SelectedIndex) {
-                case 0:
-                    dg_userList.ItemsSource = Controler.Instance.GetUserList();
-                    break;
-                default:
-                    dg_userList.ItemsSource = Controler.Instance.GetUserList_byGrade(2 - cb_sortUser.SelectedIndex+1);
-                    break;
-            }
-
-            
+            dg_userList.ItemsSource = Controler.Instance.GetUsersDisplayInfo(cb_sortUser.SelectedIndex); 
         }
 
         /*
