@@ -20,9 +20,9 @@ namespace BoVeloManager.Management.user {
     /// </summary>
     public partial class modUserWindow : Window {
 
-        private Classes.user mod_user;
+        private Classes.User mod_user;
 
-        public modUserWindow(Classes.user user_) {
+        public modUserWindow(Classes.User user_) {
             InitializeComponent();
 
             mod_user = user_;

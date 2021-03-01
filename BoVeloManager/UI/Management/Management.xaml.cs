@@ -75,7 +75,7 @@ namespace BoVeloManager.Management {
         private void bt_editUser_Click(object sender, RoutedEventArgs e) {
 
             //get witch row we clicked on
-            Classes.user selectedUser = ((Classes.user.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurUser;
+            Classes.User selectedUser = ((Classes.User.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurUser;
             //int userID = Convert.ToInt32(dataRowView["id"]);
 
             //open the dialog passing the user ID

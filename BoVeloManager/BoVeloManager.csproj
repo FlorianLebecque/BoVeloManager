@@ -133,8 +133,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Controler.cs" />
-    <Compile Include="Classes\human.cs" />
-    <Compile Include="Classes\user.cs" />
+    <Compile Include="Classes\Human.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="tools\Password.cs" />
     <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>

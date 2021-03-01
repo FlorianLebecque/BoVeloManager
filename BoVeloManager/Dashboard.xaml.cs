@@ -29,6 +29,12 @@ namespace BoVeloManager {
             crtl = Controler.Instance;
 
 
+
+            if(crtl.getCurrentUser().name != "God") {
+                ManagementBtn.Visibility = Visibility.Hidden;
+            }
+
+
             frame.Content = new Catalogue.Catalog();
 
             //status bar log

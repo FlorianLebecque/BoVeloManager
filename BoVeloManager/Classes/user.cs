@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes
 {
-    public class user : human
+    public class User : Human
     {
 
         private int grade;
         private string hashPass;
 
-        public user(int id_, string name_,int grade_,string hashPass_):base(id_) {
-
+        public User(int id_, string name_,int grade_,string hashPass_):base(id_) {
             name = name_;
             grade = grade_;
             hashPass = hashPass_;
@@ -50,7 +49,6 @@ namespace BoVeloManager.Classes
             return hash.ToUpper() == hashPass.ToUpper() ;
         }
 
-
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 
@@ -77,7 +75,7 @@ namespace BoVeloManager.Classes
         }
 
         public struct displayInfo {
-            public user CurUser { get; set; }
+            public User CurUser { get; set; }
             public string name { get; set; }
             public string Role { get; set; }
             public int id { get; set; }

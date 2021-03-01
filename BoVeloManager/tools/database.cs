@@ -339,15 +339,17 @@ namespace BoVeloManager.tools {
     }
 
     class DatabaseClassInterface{
-        
-        public static List<user> getUsers(){
+
+        #region User
+
+        public static List<User> getUsers(){
 
                 //get the user query and data from the database
             string query = DatabaseQuery.getUsers(0);
             DataTable dt = tools.Database.getData(query);
 
                 //convert all the user into a user object
-            List<user> temp = new List<user>();
+            List<User> temp = new List<User>();
             for(int i = 0; i < dt.Rows.Count; i++)
             {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
@@ -355,23 +357,28 @@ namespace BoVeloManager.tools {
                 int grade = Convert.ToInt32(dt.Rows[i]["grade"]);
                 string psw = (string)dt.Rows[i]["psw"];
 
-                temp.Add(new user(id, name, grade, psw));
+                temp.Add(new User(id, name, grade, psw));
             }
 
             return temp;
         }
         
-        public static int updateUser(user moduser) {
-            string q = DatabaseQuery.setUserGrade(moduser.id, moduser.getGrade());
-            Database.setData(q);
-            q = DatabaseQuery.setUserPass(moduser.id, moduser.getHashPass());
-            Database.setData(q);
-
-            return 0;
+        public static int updateUser(User moduser) {
+            string q = DatabaseQuery.setUserGrade(moduser.id, moduser.getGrade()) + "\n";
+            q += DatabaseQuery.setUserPass(moduser.id, moduser.getHashPass());
+            
+            return Database.setData(q);
         }
 
+        public static int addUser(User NewUser) {
+            string q = DatabaseQuery.addUser(NewUser.name, NewUser.getHashPass(), NewUser.getGrade());
+            return Database.setData(q);
+        }
+
+
+        #endregion
     }
 
-    
+
 
 }

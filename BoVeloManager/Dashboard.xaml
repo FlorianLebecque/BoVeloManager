@@ -99,7 +99,7 @@
                             <TextBlock Text="Commande" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Tag="Management" Height="60">
+                    <ListViewItem Name="ManagementBtn" Tag="Management" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Management" VerticalAlignment="Center"  Margin="20 10"/>
