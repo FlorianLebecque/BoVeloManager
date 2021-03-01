@@ -31,7 +31,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-    #region user
+    #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -88,8 +88,13 @@ namespace BoVeloManager.Classes
 
         }
 
-    #endregion
+        #endregion
 
+
+    #region Client
+
+
+        #endregion
 
     }
 }
