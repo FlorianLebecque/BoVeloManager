@@ -14,15 +14,14 @@ namespace BoVeloManager.Classes
         private User loggedUser;
 
         private List<User> userList;
+        private List<Client> clientList;
 
         
 
         private Controler(){
 
             userList = DatabaseClassInterface.getUsers();
-
-
-
+            clientList = DatabaseClassInterface.getClients();
         }
 
         public static Controler Instance {
@@ -92,7 +91,15 @@ namespace BoVeloManager.Classes
 
 
     #region Client
+        public List<Client.displayInfo> GetClientDisplayInfo() {
+            List<Client.displayInfo> temp = new List<Client.displayInfo>();
 
+            foreach (Client c in clientList) {
+
+                temp.Add(c.GetDisplayInfo());
+            }
+            return temp;
+        }
 
         #endregion
 
