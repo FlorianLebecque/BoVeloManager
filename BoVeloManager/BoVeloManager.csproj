@@ -132,6 +132,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Controler.cs" />
     <Compile Include="Classes\Human.cs" />
     <Compile Include="Classes\User.cs" />
