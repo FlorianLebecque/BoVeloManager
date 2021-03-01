@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Sales
 {
@@ -21,20 +22,23 @@ namespace BoVeloManager.Sales
     /// </summary>
     public partial class Sales : Page
     {
+
+        Controler crtl;
+
         public Sales()
         {
             InitializeComponent();
 
+            crtl = Controler.Instance;
+
             update_dg_salesList();
             update_dg_clientList();
+
         }
 
         private void update_dg_salesList()
         {
-            string q = tools.DatabaseQuery.getSales();
-            DataTable dt = tools.Database.getData(q);
-
-            dg_salesList.ItemsSource = dt.DefaultView;
+            dg_salesList.ItemsSource = crtl.GetClientDisplayInfo();
         }
         
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
@@ -48,9 +52,7 @@ namespace BoVeloManager.Sales
 
         private void update_dg_clientList()
         {
-            string q = tools.DatabaseQuery.getClients();
-            DataTable dt = tools.Database.getData(q);
-            dg_clientList.ItemsSource = dt.DefaultView;
+            dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)

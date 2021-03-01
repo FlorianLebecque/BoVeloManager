@@ -18,11 +18,13 @@ namespace BoVeloManager.Classes
         public Client(int id_, string first_name_, string last_name_, string etp_name_, string etp_adress_, string email_, string phone_num_, DateTime insc_date_) : base(id_, first_name_ + last_name_) {
 
             etp_name = etp_name_;
-                
+
+            etp_adress = etp_adress_;
+
             email = email_;
             phone_num = phone_num_;
             insc_date = insc_date_;
-            }
+        }
 
         public string getEtpName() {
             return etp_name;
@@ -49,7 +51,7 @@ namespace BoVeloManager.Classes
             temp.etp_adress = this.getEtpAdress();
             temp.email = this.getEmail();
             temp.phone_num = this.getPhoneNumb();
-            temp.insc_date = this.getInscDate().ToString("yyyyMMdd");
+            temp.insc_date = this.getInscDate().ToString("yyyy-MM-dd");
 
             return temp;
         }

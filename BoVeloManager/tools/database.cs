@@ -396,7 +396,7 @@ namespace BoVeloManager.tools {
                 string enter_add = (string)dt.Rows[i]["enterprise_adress"];
                 string email = (string)dt.Rows[i]["email"];
                 string phone = (string)dt.Rows[i]["phone_num"];
-                DateTime datet = DateTime.Parse((string)dt.Rows[i]["enterprise_name"]);
+                DateTime datet = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
 
                 temp.Add(new Client(id, first_name, last_name,enter_name,enter_add,email,phone,datet));
             }
