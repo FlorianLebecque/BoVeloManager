@@ -132,7 +132,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\Controler.cs" />
+    <Compile Include="Classes\controler.cs" />
     <Compile Include="Classes\human.cs" />
     <Compile Include="Classes\user.cs" />
     <Compile Include="tools\Password.cs" />
