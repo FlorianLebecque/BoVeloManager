@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes
 {
-    class Client : Human
+    public class Client : Human
     {
 
         private string etp_name;
