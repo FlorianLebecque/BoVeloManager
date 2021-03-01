@@ -50,10 +50,10 @@ namespace BoVeloManager.Management {
 
             switch (cb_sortUser.SelectedIndex) {
                 case 0:
-                    dg_userList.ItemsSource = controler.Instance.GetUserList();
+                    dg_userList.ItemsSource = Controler.Instance.GetUserList();
                     break;
                 default:
-                    dg_userList.ItemsSource = controler.Instance.GetUserList_byGrade(2 - cb_sortUser.SelectedIndex+1);
+                    dg_userList.ItemsSource = Controler.Instance.GetUserList_byGrade(2 - cb_sortUser.SelectedIndex+1);
                     break;
             }
 
@@ -84,7 +84,7 @@ namespace BoVeloManager.Management {
         private void bt_editUser_Click(object sender, RoutedEventArgs e) {
 
             //get witch row we clicked on
-            Classes.user selectedUser = (Classes.user)((System.Windows.Controls.Button)e.Source).DataContext;
+            Classes.user selectedUser = ((Classes.user.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurUser;
             //int userID = Convert.ToInt32(dataRowView["id"]);
 
             //open the dialog passing the user ID
@@ -355,7 +355,6 @@ namespace BoVeloManager.Management {
 
 
         #endregion
-
 
         #region Items
 

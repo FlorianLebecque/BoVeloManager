@@ -49,13 +49,13 @@ namespace BoVeloManager.Sales {
 
         tools.Sales sale = new tools.Sales();
 
-        controler crtl;
+        Controler crtl;
 
         public addSales() {
 
             InitializeComponent();
 
-            crtl = controler.Instance;
+            crtl = Controler.Instance;
 
             importData();            
         }

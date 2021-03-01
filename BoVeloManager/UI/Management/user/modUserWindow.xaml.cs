@@ -20,19 +20,12 @@ namespace BoVeloManager.Management.user {
     /// </summary>
     public partial class modUserWindow : Window {
 
-        private int userId;
         private Classes.user mod_user;
-
-        controler crtl;
 
         public modUserWindow(Classes.user user_) {
             InitializeComponent();
 
             mod_user = user_;
-            crtl = controler.Instance;
-
-            //initialise the windows
-            userId = mod_user.getId();
 
             //display the user data
             tb_userName.Text = mod_user.getUserName();
@@ -72,7 +65,7 @@ namespace BoVeloManager.Management.user {
                     if ((new_pass_1.Length >= 4) && (new_pass_1 == new_pass_2)) {
                         string pass = tools.md5.CreateMD5(new_pass_1);
 
-                        mod_user.hashPass = pass;
+                        mod_user.setHashPass(pass);
                         mod_user.setGrade(grade);
 
                         int res = tools.DatabaseClassInterface.updateUser(mod_user);
