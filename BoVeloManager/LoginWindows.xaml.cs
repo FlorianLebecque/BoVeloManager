@@ -42,9 +42,7 @@ namespace BoVeloManager {
             string in_user = user;
             string in_pass = passMD5;
 
-
-
-            controler ctrl = controler.Instance;
+            Controler ctrl = Controler.Instance;
 
             user cur_user = ctrl.getUser_byName(in_user);
 
@@ -61,7 +59,7 @@ namespace BoVeloManager {
 
                     //create and show the dashboard windows
                 
-                Dashboard dashboardWindows = new Dashboard(ctrl);
+                Dashboard dashboardWindows = new Dashboard();
                 try {
                     dashboardWindows.ShowDialog();
                 } catch {}

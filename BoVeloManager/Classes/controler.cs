@@ -7,20 +7,17 @@ using BoVeloManager.tools;
 
 namespace BoVeloManager.Classes
 {
-    public class controler
-    {
+    public class Controler{
 
-        private static controler instance = new controler();
+        private static Controler instance = new Controler();
 
         private user loggedUser;
 
         private List<user> userList;
 
-        static controler() {
+        
 
-        }
-
-        private controler(){
+        private Controler(){
 
             userList = DatabaseClassInterface.getUsers();
 
@@ -28,31 +25,40 @@ namespace BoVeloManager.Classes
 
         }
 
-        public static controler Instance {
+        public static Controler Instance {
             get {
                 return instance;
             }
         }
     
-
     #region user
 
-
-        public List<user> GetUserList() {
-            return userList;
-        }
-
-        public List<user> GetUserList_byGrade(int g) {
-            List<user> temp = new List<user>();
+        public List<user.displayInfo> GetUsersDisplayInfo(int filter) {
+            List<user.displayInfo> temp = new List<user.displayInfo>();
 
             foreach(user u in userList) {
-                if(u.getGrade() == g) {
-                    temp.Add(u);
+
+                switch (filter) {
+                    case 0:
+                        temp.Add(u.GetDisplayInfo());
+                        break;
+                    default:
+
+                        int grade = 2 - filter;
+                        if(u.getGrade() == grade) {
+                            temp.Add(u.GetDisplayInfo());
+                        }
+
+                        break;
                 }
+
+                
             }
+
 
             return temp;
         }
+
 
         public user getCurrentUser() {
             return loggedUser;
@@ -72,7 +78,7 @@ namespace BoVeloManager.Classes
             loggedUser = cur;
         }
 
-        #endregion
+    #endregion
 
 
     }

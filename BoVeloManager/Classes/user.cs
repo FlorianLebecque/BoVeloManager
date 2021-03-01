@@ -9,18 +9,13 @@ namespace BoVeloManager.Classes
     public class user : human
     {
 
-        public int grade { get; set; }
-        public string Role { get; set; }
-
-        public string hashPass;
+        private int grade;
+        private string hashPass;
 
         public user(int id_, string name_,int grade_,string hashPass_):base(id_) {
 
             name = name_;
             grade = grade_;
-
-            setRole();
-
             hashPass = hashPass_;
         }
 
@@ -39,16 +34,30 @@ namespace BoVeloManager.Classes
             return grade;
         }
 
+        public string getHashPass() {
+            return hashPass;
+        }
+
         public void setGrade(int number){
             grade = number;
-            setRole();
+        }
+
+        public void setHashPass(string pass) {
+            hashPass = pass;
         }
 
         public bool checkPass(string hash){
             return hash.ToUpper() == hashPass.ToUpper() ;
         }
 
-        private void setRole() {
+
+        public displayInfo GetDisplayInfo() {
+            displayInfo temp = new displayInfo();
+
+            temp.CurUser = this;
+            temp.name = this.name;
+
+            string Role = "";
             switch (grade) {
                 case 2:
                     Role = "Manager";
@@ -60,6 +69,18 @@ namespace BoVeloManager.Classes
                     Role = "Worker";
                     break;
             }
+
+            temp.Role = Role;
+            temp.id = this.id;
+
+            return temp;
+        }
+
+        public struct displayInfo {
+            public user CurUser { get; set; }
+            public string name { get; set; }
+            public string Role { get; set; }
+            public int id { get; set; }
         }
 
     }

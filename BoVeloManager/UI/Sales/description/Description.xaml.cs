@@ -109,7 +109,7 @@ namespace BoVeloManager.Sales.description
             }
             return (all_kits, kits_price);
         }
-        public class BikeItem
+        public struct BikeItem
         {
             public string number_name { get; set; }
             public string kit { get; set; }

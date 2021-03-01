@@ -19,14 +19,14 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
-        public controler crtl;
+        public Controler crtl;
 
         bool isOpen = false;
 
-        public Dashboard(controler crtl_) {
+        public Dashboard() {
             InitializeComponent();
 
-            crtl = crtl_;
+            crtl = Controler.Instance;
 
 
             frame.Content = new Catalogue.Catalog();
@@ -34,10 +34,6 @@ namespace BoVeloManager {
             //status bar log
             lb_user.Text = crtl.getCurrentUser().getUserName(); 
         }
-
-
-        
-
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
             isOpen = true;
