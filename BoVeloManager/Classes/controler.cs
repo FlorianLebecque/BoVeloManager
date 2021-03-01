@@ -65,7 +65,7 @@ namespace BoVeloManager.Classes
 
         public User getUser_byName(string name) {
             foreach(User u in userList){
-                if(u.getUserName() == name){
+                if(u.getName() == name){
                     return u;
                 }
             }
@@ -78,7 +78,7 @@ namespace BoVeloManager.Classes
         }
 
         public int getLastUserId() {
-            return userList.Select(x => x.id).Max();
+            return userList.Select(x => x.getId()).Max();
         }
 
         public void createUser(User newUser) {

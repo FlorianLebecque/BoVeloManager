@@ -12,21 +12,9 @@ namespace BoVeloManager.Classes
         private int grade;
         private string hashPass;
 
-        public User(int id_, string name_,int grade_,string hashPass_):base(id_) {
-            name = name_;
+        public User(int id_, string name_, int grade_, string hashPass_) : base(id_,name_) {
             grade = grade_;
             hashPass = hashPass_;
-        }
-
-        public  string getUserName()
-        {
-            return name;
-        }
-
-        public int getId()
-        {
-
-            return id;
         }
 
         public int getGrade(){
@@ -53,7 +41,7 @@ namespace BoVeloManager.Classes
             displayInfo temp = new displayInfo();
 
             temp.CurUser = this;
-            temp.name = this.name;
+            temp.name = this.getName();
 
             string Role = "";
             switch (grade) {
@@ -69,7 +57,7 @@ namespace BoVeloManager.Classes
             }
 
             temp.Role = Role;
-            temp.id = this.id;
+            temp.id = this.getId();
 
             return temp;
         }

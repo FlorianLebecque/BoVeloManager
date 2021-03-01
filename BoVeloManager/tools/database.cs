@@ -364,14 +364,14 @@ namespace BoVeloManager.tools {
         }
         
         public static int updateUser(User moduser) {
-            string q = DatabaseQuery.setUserGrade(moduser.id, moduser.getGrade()) + "\n";
-            q += DatabaseQuery.setUserPass(moduser.id, moduser.getHashPass());
+            string q = DatabaseQuery.setUserGrade(moduser.getId(), moduser.getGrade()) + "\n";
+            q += DatabaseQuery.setUserPass(moduser.getId(), moduser.getHashPass());
             
             return Database.setData(q);
         }
 
         public static int addUser(User NewUser) {
-            string q = DatabaseQuery.addUser(NewUser.getUserName(), NewUser.getHashPass(), NewUser.getGrade());
+            string q = DatabaseQuery.addUser(NewUser.getName(), NewUser.getHashPass(), NewUser.getGrade());
             return Database.setData(q);
         }
 

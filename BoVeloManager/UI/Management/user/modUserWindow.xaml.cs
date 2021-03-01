@@ -28,7 +28,7 @@ namespace BoVeloManager.Management.user {
             mod_user = user_;
 
             //display the user data
-            tb_userName.Text = mod_user.getUserName();
+            tb_userName.Text = mod_user.getName();
             cb_grade.SelectedIndex = mod_user.getGrade();
         }
 
