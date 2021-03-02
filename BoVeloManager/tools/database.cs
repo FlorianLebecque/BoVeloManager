@@ -248,7 +248,10 @@ namespace BoVeloManager.tools {
         // Sales Querry
 
         //returns all sales from the shop
-        public static string getSales()
+        public static string getSales() {
+            return "SELECT `id` ,`id_client`, `id_seller`, `state`, `prevision_date`, `date` FROM `bv_sale`";
+        }
+        public static string getOldSales()
         {
             return "SELECT S.id,S.state, CONCAT(`first_name` , ' ', `last_name`) AS Client, S.date FROM `bv_sale` AS S INNER JOIN `bv_client` AS C ON S.id_client = C.id INNER JOIN `bv_user` AS U ON S.id_seller = U.id";
         }
@@ -407,6 +410,32 @@ namespace BoVeloManager.tools {
 
         #endregion
 
+
+        #region sales
+
+        public static List<Sale> getSales(List<Bike> bikeList, List<User> userList, List<Client> clientList) {
+
+            //get the user query and data from the database
+            string query = DatabaseQuery.getSales();
+            DataTable st = tools.Database.getData(query);
+
+            //convert all the user into a user object
+            List<Sale> temp = new List<Sale>();
+            for (int i = 0; i < st.Rows.Count; i++) {
+                int id = Convert.ToInt32(st.Rows[i]["id"]);
+                int id_client = Convert.ToInt32(st.Rows[i]["id_client"]);
+                int id_seller = Convert.ToInt32(st.Rows[i]["id_seller"]);
+                string state = (string)st.Rows[i]["state"];
+                DateTime prevision_date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
+                DateTime date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
+
+                temp.Add(new Sale(id, id_seller, id_client, state, date, prevision_date, bikeList, userList, clientList));
+               }
+
+            return temp;
+        }
+        #endregion
+          
         #region KitTemplate
 
         public static List<KitTemplate> getKitTemplates() {
@@ -438,6 +467,9 @@ namespace BoVeloManager.tools {
             return temp;
         }
 
+
+        
+
         public static int addKitTemplate(KitTemplate kt) {
             string q = DatabaseQuery.addKit(kt.getId(),kt.getName(),kt.getProperties(),kt.getPrice(),kt.getCategory());
             return Database.setData(q);
@@ -449,6 +481,7 @@ namespace BoVeloManager.tools {
         }
 
         #endregion
+
 
     }
 

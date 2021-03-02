@@ -18,9 +18,7 @@ namespace BoVeloManager.Classes
         public Client(int id_, string first_name_, string last_name_, string etp_name_, string etp_adress_, string email_, string phone_num_, DateTime insc_date_) : base(id_, first_name_ + " " +last_name_) {
 
             etp_name = etp_name_;
-
             etp_adress = etp_adress_;
-
             email = email_;
             phone_num = phone_num_;
             insc_date = insc_date_;
