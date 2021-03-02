@@ -15,6 +15,11 @@ namespace BoVeloManager.Classes
 
         private List<User> userList;
         private List<Client> clientList;
+        private List<Bike> bikeList;
+        private List<BikeTemplate> bikeTemplateList;
+
+
+
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
         
@@ -142,5 +147,34 @@ namespace BoVeloManager.Classes
 
     #endregion
 
+
+    #region Bike
+        public List<Bike.displayInfo> GetBikeDisplayInfo()
+        {
+            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
+
+            foreach (Bike b in bikeList)
+            {
+
+                temp.Add(b.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        public BikeTemplate getBikeTemplateById(int id_tBike)
+        {
+            foreach (BikeTemplate bt in bikeTemplateList)
+            {
+
+                if (bt.getId() == id_tBike)
+                {
+                    return bt;
+                }
+               
+            }
+            return null;
+        }
+
+        #endregion
     }
 }
