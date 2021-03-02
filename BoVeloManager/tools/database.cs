@@ -223,9 +223,9 @@ namespace BoVeloManager.tools {
         }
 
         // Add kit Querry
-        public static string addKit(string name, string prop, string cat)
+        public static string addKit(int id,string name, string prop,int price, int cat)
         {
-            return "INSERT INTO `bv_type_kit`(`name`, `properties`, `category`) VALUES ('" + name + "','" + prop + "','" + cat + "')";
+            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "')";
         }
 
         public static string addCompatibleKit(int id_cat, int id_tKit)
@@ -312,17 +312,18 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 3";
         }
-        public static string getHandlebarKit()
-        {
+        public static string getHandlebarKit(){
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 4";
         }
-        public static string getAddonKit()
-        {
+        public static string getAddonKit(){
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
         }
-        public static string getModel()
-        {
+        public static string getModel(){
             return "SELECT * FROM `bv_catalog`";
+        }
+
+        public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
+            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`="+cat.ToString()+ ",`Price`=" + price.ToString() + ",`properties`='" + prop + "' WHERE `id`=" + id;
         }
 
         #region Sale
@@ -409,6 +410,7 @@ namespace BoVeloManager.tools {
 
         #endregion
 
+
         #region sales
 
         public static List<Sale> getSales(List<Bike> bikeList, List<User> userList, List<Client> clientList) {
@@ -428,12 +430,59 @@ namespace BoVeloManager.tools {
                 DateTime date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
 
                 temp.Add(new Sale(id, id_seller, id_client, state, date, prevision_date, bikeList, userList, clientList));
+               }
+
+            return temp;
+        }
+        #endregion
+          
+        #region KitTemplate
+
+        public static List<KitTemplate> getKitTemplates() {
+
+            //get the user query and data from the database
+            string query = DatabaseQuery.getKits();
+            DataTable dt = tools.Database.getData(query);
+
+            //convert all the user into a user object
+            List<KitTemplate> temp = new List<KitTemplate>();
+            for (int i = 0; i < dt.Rows.Count; i++) {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string name = (string)dt.Rows[i]["name"];
+                int cat = Convert.ToInt32(dt.Rows[i]["category"]);
+                int p = Convert.ToInt32(dt.Rows[i]["Price"]);
+
+                string prop;
+                if (dt.Rows[i]["properties"] != DBNull.Value) {
+                    prop = (string)dt.Rows[i]["properties"];
+                } else {
+                    prop = "";
+                }
+
+                
+
+                temp.Add(new KitTemplate(id, name, cat,p, prop));
             }
 
             return temp;
         }
 
+
+        
+
+        public static int addKitTemplate(KitTemplate kt) {
+            string q = DatabaseQuery.addKit(kt.getId(),kt.getName(),kt.getProperties(),kt.getPrice(),kt.getCategory());
+            return Database.setData(q);
+        }
+
+        public static int updateKitTemplate(KitTemplate kt) {
+            string q = DatabaseQuery.updateKitTemplate(kt.getId(), kt.getName(), kt.getCategory(), kt.getPrice(),kt.getProperties());
+            return Database.setData(q);
+        }
+
         #endregion
+
+
     }
 
 

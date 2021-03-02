@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management.kit
 {
@@ -20,83 +21,31 @@ namespace BoVeloManager.Management.kit
     /// </summary>
     public partial class modKitWindow : Window
     {
-        private int kitId;
-        public modKitWindow(int kitId_)
+        private KitTemplate kt;
+        public modKitWindow(KitTemplate kt_)
         {
             InitializeComponent();
-
-            // initialise the windows
-            kitId = kitId_;
-            //get the user data
-            string q = tools.DatabaseQuery.getKit_by_id(kitId);
-            DataTable res = tools.Database.getData(q);
+            kt = kt_;
             //display the user data
-            tb_editName.Text = (string)res.Rows[0]["name"];
-            tb_editProperties.Text = (string)res.Rows[0]["properties"];
-            
+            tb_editName.Text = kt.getName();
+            tb_editProperties.Text = kt.getProperties();
+            tb_editPrice.Text = kt.getPrice().ToString();
+            kit_cat.SelectedIndex = kt.getCategory();
         }
 
 
 
         private void BT_update_Click(object sender, RoutedEventArgs e)
         {
-            
+            kt.setName(tb_editName.Text);
+            kt.setProperties(tb_editProperties.Text);
+            kt.setPrice(Convert.ToInt32(tb_editPrice.Text));
+            kt.setCategory(kit_cat.SelectedIndex);
 
-            string newKitName = tb_editName.Text;
-            if (newKitName != "")
-            {
-                updateKitName(kitId, newKitName);
-            }
-
-            string newProperties = tb_editProperties.Text;
-            if (newProperties != "")
-            {
-                updateKitProperties(kitId, newProperties);
-            }
-
-        }
-
-        private void updateKitName(int id, string name)
-        {
-            string q = tools.DatabaseQuery.setKitName(id, name);
-            int res = tools.Database.setData(q);
-
-            if (res == -1)
-            {
-                MessageBox.Show("An error has occured");
-            }
-            else if (res == 1)
-            {
-                MessageBox.Show("Name changed");
-            }
-            else
-            {
-                MessageBox.Show("The database is corrupted [name]");
-            }
+            tools.DatabaseClassInterface.updateKitTemplate(kt);
             this.Close();
         }
 
-        private void updateKitProperties(int id, string newProp)
-        {
-            string q = tools.DatabaseQuery.setKitProperties(id, newProp);
-            int res = tools.Database.setData(q);
-
-
-            if (res == -1)
-            {
-                MessageBox.Show("An error has occured");
-            }
-            else if (res == 1)
-            {
-                MessageBox.Show("Properties changed");
-            }
-            else
-            {
-                MessageBox.Show("The database is corrupted [properties]");
-            }
-            this.Close();
-
-        }
 
 
         private void BTCancel_Click(object sender, RoutedEventArgs e)

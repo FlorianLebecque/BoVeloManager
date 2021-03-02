@@ -16,13 +16,14 @@ namespace BoVeloManager.Classes
         private List<User> userList;
         private List<Client> clientList;
         private List<Sale> saleList;
-
+        private List<KitTemplate> kitTemplateList;
         
 
         private Controler(){
 
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
+            kitTemplateList = DatabaseClassInterface.getKitTemplates();
             saleList = DatabaseClassInterface.getSales(userList, clientList, bikeList);
         }
 
@@ -32,7 +33,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-    #region User
+        #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -93,6 +94,7 @@ namespace BoVeloManager.Classes
 
 
     #region Client
+
         public List<Client.displayInfo> GetClientDisplayInfo() {
             List<Client.displayInfo> temp = new List<Client.displayInfo>();
 
@@ -114,6 +116,29 @@ namespace BoVeloManager.Classes
                 temp.Add(s.GetSaleDisplayInfo());
             }
             return temp;
+        }
+        #endregion
+
+        #region KitTemplate
+
+        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
+
+            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+
+            foreach (KitTemplate kt in kitTemplateList) {
+                temp.Add(kt.GetDisplayInfo());
+            }
+
+            return temp;
+        }
+
+        public int getLastKitTemplate(){
+            return kitTemplateList.Select(x => x.getId()).Max();
+        }
+
+        public void createKit(KitTemplate kt) {
+            kitTemplateList.Add(kt);
+            DatabaseClassInterface.addKitTemplate(kt);
         }
 
         #endregion
