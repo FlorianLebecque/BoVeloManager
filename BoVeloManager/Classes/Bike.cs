@@ -8,12 +8,13 @@ namespace BoVeloManager.Classes
 {
     public class Bike
     {
-        public int status;
+        private readonly int id;
+        private readonly int id_sale;
+        private readonly int id_tBike;
+
+        private int status;
         public BikeTemplate BikeTemplate;
-        public int id;
-        public int id_sale;
-        public int id_tBike;
-     
+        
 
         public Bike(int status_, int id_tBike_, int id_, int id_sale_)
         {
@@ -27,6 +28,10 @@ namespace BoVeloManager.Classes
         private void link()
         {
             //BikeTemplate = Controler.getBikeTemplateById(id_tBike);
+        }
+
+        public int getSaleId() {
+            return id;
         }
 
         public displayInfo GetDisplayInfo()

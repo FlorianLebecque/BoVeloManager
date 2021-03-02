@@ -29,7 +29,8 @@ namespace BoVeloManager.Classes
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
             kitTemplateList = DatabaseClassInterface.getKitTemplates();
-            saleList = DatabaseClassInterface.getSales(userList, clientList, bikeList);
+            bikeList = DatabaseClassInterface.getBikes();
+            saleList = DatabaseClassInterface.getSales(bikeList,userList, clientList);
         }
 
         public static Controler Instance {

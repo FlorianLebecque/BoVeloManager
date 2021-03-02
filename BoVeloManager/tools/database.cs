@@ -416,7 +416,6 @@ namespace BoVeloManager.tools {
 
         #endregion
 
-
         #region sales
 
         public static List<Sale> getSales(List<Bike> bikeList, List<User> userList, List<Client> clientList) {
@@ -444,9 +443,7 @@ namespace BoVeloManager.tools {
 
         #region bike
 
-        public static List<Bike> getBike()
-        {
-
+        public static List<Bike> getBikes(){
             string query = DatabaseQuery.getBike();
             DataTable dt = tools.Database.getData(query);
 
@@ -465,8 +462,6 @@ namespace BoVeloManager.tools {
         }
 
         #endregion
-
-
           
         #region KitTemplate
 
