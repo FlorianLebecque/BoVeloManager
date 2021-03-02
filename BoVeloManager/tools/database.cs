@@ -336,6 +336,12 @@ namespace BoVeloManager.tools {
 
 
         #endregion
+
+        //bike
+        public static string getBike()
+        {
+            return "SELECT * FROM `bv_bike`";
+        }
     }
 
     class DatabaseClassInterface{
@@ -405,6 +411,31 @@ namespace BoVeloManager.tools {
         }
 
         #endregion
+
+        #region bike
+
+        public static List<Bike> getBike()
+        {
+
+            string query = DatabaseQuery.getBike();
+            DataTable dt = tools.Database.getData(query);
+
+            List<Bike> temp = new List<Bike>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                int id_tBike = Convert.ToInt32(dt.Rows[i]["id_tBike"]);
+                int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
+                int state = Convert.ToInt32(dt.Rows[i]["state"]);
+
+                temp.Add(new Bike(state, id_tBike, id, id_sale));
+            }
+
+            return temp;
+        }
+
+        #endregion
+
 
     }
 
