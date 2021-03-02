@@ -15,6 +15,7 @@ namespace BoVeloManager.Classes
 
         private List<User> userList;
         private List<Client> clientList;
+        private List<Sale> saleList;
 
         
 
@@ -22,6 +23,7 @@ namespace BoVeloManager.Classes
 
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
+            saleList = DatabaseClassInterface.getSales(userList, clientList, bikeList);
         }
 
         public static Controler Instance {
@@ -97,6 +99,19 @@ namespace BoVeloManager.Classes
             foreach (Client c in clientList) {
 
                 temp.Add(c.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        #endregion
+
+    #region Sale
+        public List<Sale.displayInfo> GetSaleDisplayInfo() {
+            List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+
+            foreach (Sale s in saleList) {
+
+                temp.Add(s.GetSaleDisplayInfo());
             }
             return temp;
         }
