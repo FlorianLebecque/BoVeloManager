@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="AddKitWindow" Height="215" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="AddKitWindow" Height="236" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
         <DockPanel>
             <StackPanel DockPanel.Dock="Top">
@@ -20,8 +20,16 @@
 
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Name :</Label>
                     <TextBox Margin="2" Name="kit_name"  Grid.Column="1"/>
-                    <ListBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="29" Margin="0,0,0,-0.2" VerticalAlignment="Top" Width="100"/>
                 </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Price :</Label>
+                    <TextBox Margin="2" Name="kit_price"  Grid.Column="1"/>
+                 </Grid>
                 <!-- Properties -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -55,7 +63,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click"/>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTADD_kit"/>
                 <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
             </Grid>
 

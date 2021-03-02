@@ -8,8 +8,8 @@ namespace BoVeloManager.Classes
 {
     public class Human
     {
-        private int id;
-        private string name;
+        private readonly int id;
+        private readonly string name;
 
         public Human(int id_,string name_) {
             id = id_;

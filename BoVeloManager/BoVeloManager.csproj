@@ -135,6 +135,7 @@
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\Controler.cs" />
     <Compile Include="Classes\Human.cs" />
+    <Compile Include="Classes\KitTemplate.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
       <DependentUpon>AddItemWindow.xaml</DependentUpon>

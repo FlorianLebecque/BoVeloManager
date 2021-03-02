@@ -132,9 +132,9 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='category'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='Price'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

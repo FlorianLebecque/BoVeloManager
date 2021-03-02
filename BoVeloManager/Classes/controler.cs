@@ -15,13 +15,15 @@ namespace BoVeloManager.Classes
 
         private List<User> userList;
         private List<Client> clientList;
-
+        private List<KitTemplate> kitTemplateList;
         
 
         private Controler(){
 
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
+            kitTemplateList = DatabaseClassInterface.getKitTemplates();
+
         }
 
         public static Controler Instance {
@@ -91,6 +93,7 @@ namespace BoVeloManager.Classes
 
 
     #region Client
+
         public List<Client.displayInfo> GetClientDisplayInfo() {
             List<Client.displayInfo> temp = new List<Client.displayInfo>();
 
@@ -99,6 +102,26 @@ namespace BoVeloManager.Classes
                 temp.Add(c.GetDisplayInfo());
             }
             return temp;
+        }
+
+        #endregion
+
+
+        #region KitTemplate
+
+        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
+
+            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+
+            foreach (KitTemplate kt in kitTemplateList) {
+                temp.Add(kt.GetDisplayInfo());
+            }
+
+            return temp;
+        }
+
+        public int getLastKitTemplate(){
+            return kitTemplateList.Select(x => x.getId()).Max();
         }
 
         #endregion

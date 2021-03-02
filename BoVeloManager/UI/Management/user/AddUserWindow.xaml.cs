@@ -41,7 +41,7 @@ namespace BoVeloManager.Management {
                 if((pass1 == pass2)&&(pass1 != "")&&(pass1.Length >= 4)) {
                     if(grade != -1) {
 
-                        int lastID = crtl.getLastUserId();
+                        int lastID = crtl.getLastUserId() + 1;
                         User newUser = new User(lastID,userName,grade,tools.md5.CreateMD5(pass1));
 
                         crtl.createUser(newUser);

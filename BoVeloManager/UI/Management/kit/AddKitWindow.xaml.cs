@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management.kit
 {
@@ -23,26 +24,27 @@ namespace BoVeloManager.Management.kit
         {
             InitializeComponent();
         }
-        private void BTLogin_Click(object sender, RoutedEventArgs e)
+        private void BTADD_kit(object sender, RoutedEventArgs e)
         {
             //get the form data
+
             string kitName = kit_name.Text;
             string kitProp = kit_prop.Text;
-            string kitCat = kit_cat.SelectedIndex.ToString();
+            int kitCat = kit_cat.SelectedIndex;
+            int kitPrice = Convert.ToInt32(kit_price.Text);
+            int id = Controler.Instance.getLastKitTemplate() + 1;
 
-
-            addKit(kitName, kitProp, kitCat);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp);
+            addKit(kt);
             this.Close();
 
     
         }
 
-        private void addKit(string name, string prop, string cat)
+        private void addKit(KitTemplate kt)
         {
             try {
-                string q = tools.DatabaseQuery.addKit(name, prop, cat);
-                int res = tools.Database.setData(q);
-
+                tools.DatabaseClassInterface.addKitTemplate(kt);
                 MessageBox.Show("Kit added");
             }
             catch { 
