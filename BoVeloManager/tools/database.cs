@@ -377,6 +377,35 @@ namespace BoVeloManager.tools {
 
 
         #endregion
+
+        #region client
+
+        public static List<Client> getClients() {
+
+            //get the user query and data from the database
+            string query = DatabaseQuery.getClients();
+            DataTable dt = tools.Database.getData(query);
+
+            //convert all the user into a user object
+            List<Client> temp = new List<Client>();
+            for (int i = 0; i < dt.Rows.Count; i++) {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string first_name = (string)dt.Rows[i]["first_name"];
+                string last_name = (string)dt.Rows[i]["last_name"];
+                string enter_name = (string)dt.Rows[i]["enterprise_name"];
+                string enter_add = (string)dt.Rows[i]["enterprise_adress"];
+                string email = (string)dt.Rows[i]["email"];
+                string phone = (string)dt.Rows[i]["phone_num"];
+                DateTime datet = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
+
+                temp.Add(new Client(id, first_name, last_name,enter_name,enter_add,email,phone,datet));
+            }
+
+            return temp;
+        }
+
+        #endregion
+
     }
 
 
