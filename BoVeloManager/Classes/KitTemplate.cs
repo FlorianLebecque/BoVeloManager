@@ -57,7 +57,6 @@ namespace BoVeloManager.Classes {
             cat = c;
         }
 
-
         public displayInfo GetDisplayInfo() {
 
             displayInfo temp = new displayInfo();

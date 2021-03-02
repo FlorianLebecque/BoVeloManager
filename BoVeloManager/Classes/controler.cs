@@ -33,7 +33,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-        #region User
+    #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -90,8 +90,7 @@ namespace BoVeloManager.Classes
 
         }
 
-        #endregion
-
+    #endregion
 
     #region Client
 
@@ -105,7 +104,7 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-        #endregion
+    #endregion
 
     #region Sale
         public List<Sale.displayInfo> GetSaleDisplayInfo() {
@@ -117,9 +116,9 @@ namespace BoVeloManager.Classes
             }
             return temp;
         }
-        #endregion
+    #endregion
 
-        #region KitTemplate
+    #region KitTemplate
 
         public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
 
@@ -141,7 +140,7 @@ namespace BoVeloManager.Classes
             DatabaseClassInterface.addKitTemplate(kt);
         }
 
-        #endregion
+    #endregion
 
     }
 }
