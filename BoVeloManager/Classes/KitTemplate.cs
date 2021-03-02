@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes {
     public class KitTemplate {
-        private int id;
+        private readonly int id;
         private string name;
         private int cat;
         private int price;
