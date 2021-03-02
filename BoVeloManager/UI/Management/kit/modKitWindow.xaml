@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         mc:Ignorable="d"
-        Title="Edit kit window" Height="220" Width="394" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Edit kit window" Height="271" Width="394" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">
@@ -13,7 +13,7 @@
             <TextBlock Margin="0 0 0 10" Text="Edit kit" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
 
             <!--Log In-->
-            <StackPanel>
+            <StackPanel DockPanel.Dock="Top">
 
 
                 <Grid  Margin="5 10 5 0">
@@ -27,30 +27,54 @@
 
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="26*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="lb_editProperties" Grid.Column="0" Grid.ColumnSpan="2">Edit properties :</Label>
-                    <TextBox x:Name="tb_editProperties" Padding="2"  Grid.Column="2"></TextBox>
+                    <Label x:Name="lb_editPrice" Grid.Column="0" >Edit prices :</Label>
+                    <TextBox x:Name="tb_editPrice" Padding="2"  Grid.Column="1"></TextBox>
                 </Grid>
-
-
-                <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
+                
+                <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                    <Button Margin="5,16,5,5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+                    <Label x:Name="lb_editProperties" Grid.Column="0" >Edit properties :</Label>
+                    <TextBox x:Name="tb_editProperties" Padding="2"  Grid.Column="1"></TextBox>
                 </Grid>
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="0"  >Category :</Label>
+                    <ComboBox Grid.Column="1"  Name="kit_cat" SelectedIndex="0">
+                        <ComboBoxItem Name="kit_ca0" Content="Frame"/>
+                        <ComboBoxItem Name="kit_ca1" Content="Wheels"/>
+                        <ComboBoxItem Name="kit_ca2" Content="Brakes"/>
+                        <ComboBoxItem Name="kit_ca3" Content="Saddle"/>
+                        <ComboBoxItem Name="kit_ca4" Content="Handlebar" />
+                        <ComboBoxItem Name="kit_ca5" Content="Addons" />
+                    </ComboBox>
+                </Grid>
+
+
+                
 
             </StackPanel>
 
 
-
+            <Grid DockPanel.Dock="Bottom" Margin="5 10 5 0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
+                <Button Margin="0 0 0 5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+            </Grid>
 
 
         </DockPanel>

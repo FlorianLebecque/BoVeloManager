@@ -41,6 +41,23 @@ namespace BoVeloManager.Classes {
             return cat;
         }
 
+        public void setName(string n) {
+            name = n;
+        }
+
+        public void setPrice(int p) {
+           price = p;
+        }
+
+        public void setProperties(string p) {
+            properties = p;
+        }
+
+        public void setCategory(int c) {
+            cat = c;
+        }
+
+
         public displayInfo GetDisplayInfo() {
 
             displayInfo temp = new displayInfo();

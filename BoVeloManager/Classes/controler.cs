@@ -32,7 +32,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-    #region User
+        #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -122,6 +122,11 @@ namespace BoVeloManager.Classes
 
         public int getLastKitTemplate(){
             return kitTemplateList.Select(x => x.getId()).Max();
+        }
+
+        public void createKit(KitTemplate kt) {
+            kitTemplateList.Add(kt);
+            DatabaseClassInterface.addKitTemplate(kt);
         }
 
         #endregion

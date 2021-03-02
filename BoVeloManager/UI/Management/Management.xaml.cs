@@ -133,12 +133,11 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
         private void bt_editKit_Click(object sender, RoutedEventArgs e) {
-            
-            //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int id = Convert.ToInt32(dataRowView["id"]);
 
-            kit.modKitWindow MKW = new kit.modKitWindow(id);
+            //get witch row we clicked on
+            KitTemplate kt = ((KitTemplate.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).curKit;
+
+            kit.modKitWindow MKW = new kit.modKitWindow(kt);
             MKW.ShowDialog();
 
             //update the kits datagrid
@@ -251,6 +250,7 @@ namespace BoVeloManager.Management {
 
 
         private void update_dg_kitList() {
+            dg_tKitList.ItemsSource = null;
             dg_tKitList.ItemsSource = Controler.Instance.getKitTemplateDisplayInfo();
         }
 

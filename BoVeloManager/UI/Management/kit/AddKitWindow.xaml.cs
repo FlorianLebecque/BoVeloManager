@@ -44,7 +44,8 @@ namespace BoVeloManager.Management.kit
         private void addKit(KitTemplate kt)
         {
             try {
-                tools.DatabaseClassInterface.addKitTemplate(kt);
+                Controler.Instance.createKit(kt);
+                
                 MessageBox.Show("Kit added");
             }
             catch { 

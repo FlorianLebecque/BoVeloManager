@@ -309,17 +309,18 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 3";
         }
-        public static string getHandlebarKit()
-        {
+        public static string getHandlebarKit(){
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 4";
         }
-        public static string getAddonKit()
-        {
+        public static string getAddonKit(){
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
         }
-        public static string getModel()
-        {
+        public static string getModel(){
             return "SELECT * FROM `bv_catalog`";
+        }
+
+        public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
+            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`="+cat.ToString()+ ",`Price`=" + price.ToString() + ",`properties`='" + prop + "' WHERE `id`=" + id;
         }
 
         #region Sale
@@ -439,6 +440,11 @@ namespace BoVeloManager.tools {
 
         public static int addKitTemplate(KitTemplate kt) {
             string q = DatabaseQuery.addKit(kt.getId(),kt.getName(),kt.getProperties(),kt.getPrice(),kt.getCategory());
+            return Database.setData(q);
+        }
+
+        public static int updateKitTemplate(KitTemplate kt) {
+            string q = DatabaseQuery.updateKitTemplate(kt.getId(), kt.getName(), kt.getCategory(), kt.getPrice(),kt.getProperties());
             return Database.setData(q);
         }
 
