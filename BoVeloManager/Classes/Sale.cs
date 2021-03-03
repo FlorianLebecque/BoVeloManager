@@ -49,13 +49,12 @@ namespace BoVeloManager.Classes {
         public string getState() {
             return state;
         }
-        public string getClientName() {
-            return client.getName();
+        public Client getClient() {
+            return client;
         }
-        public string getSellerName() {
-            return seller.getName();
+        public User getSeller() {
+            return seller;
         }
-
         public DateTime getSaleDate() {
             return sale_date;
         }
@@ -71,8 +70,8 @@ namespace BoVeloManager.Classes {
             temp.CurSale= this;
             temp.id = this.getId();
             temp.state = this.getState();
-            temp.client_name = this.getClientName();
-            temp.seller_name = this.getSellerName();
+            temp.client = this.getClient();
+            temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("yyyy-MM-dd");
 
             return temp;
@@ -80,8 +79,8 @@ namespace BoVeloManager.Classes {
 
         public struct displayInfo {
             public Sale CurSale { get; set; }
-            public string client_name { get; set; }
-            public string seller_name { get; set; }
+            public Client client { get; set; }
+            public User seller { get; set; }
             public int id { get; set; }
             public string state { get; set; }
             public string sale_date { get; set; }

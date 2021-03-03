@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Sales.description
 {
@@ -20,42 +21,36 @@ namespace BoVeloManager.Sales.description
     /// </summary>
     public partial class Description : Window
     {
-        private int id_sale;
-        public Description(int _id_sale)
+        private Sale sale;
+        public Description(Sale sale_)
         {
-            id_sale = _id_sale;
+            sale = sale_;
 
             InitializeComponent();
-            DisplayDescription(id_sale);
-            DisplayBikes(id_sale);
+            DisplayDescription(sale);
+            DisplayBikes(sale);
 
         }
 
-        public void DisplayDescription(int _id_sale) {
-                                                                                                                                                        
-            //Import all sale data
-            string sale_data = tools.DatabaseQuery.getSale_by_id(_id_sale);
-            DataTable dt = tools.Database.getData(sale_data);
-                                                                
+        public void DisplayDescription(Sale sale) {
+                                                  
             // Description Infos 
-            seller.Text = (string)dt.Rows[0]["user"];
-            client.Text = (string)dt.Rows[0]["Client"];
-            enterprise.Text = (string)dt.Rows[0]["enterprise_name"];
-            sale_date.Text = ((DateTime)dt.Rows[0]["date"]).ToString("yyyy-MM-dd");
+            seller.Text = sale.getSeller().getName();
+            client.Text = sale.getClient().getName();
+            enterprise.Text = sale.getClient().getEtpName();
+            sale_date.Text = sale.GetSaleDisplayInfo().sale_date;
         }
-        public void DisplayBikes(int _id_sale)
+        public void DisplayBikes(Sale sale)
         {
-            // import all bike from sale
-            string sale_bikes_data = tools.DatabaseQuery.gettBikes_by_sale(_id_sale);
-            DataTable sale_bikes_table = tools.Database.getData(sale_bikes_data);
+
 
             //Create new bike list 
-            List<BikeItem> bikes = new List<BikeItem>();
+            List<Bike> bikes = sale.getBikeList();
 
             float total_price = 0;
 
 
-            foreach (DataRow tBike in sale_bikes_table.Rows)
+            foreach (Bike bike in bikes)
             {
 
                 //Quantity of the tBike
@@ -109,12 +104,7 @@ namespace BoVeloManager.Sales.description
             }
             return (all_kits, kits_price);
         }
-        public struct BikeItem
-        {
-            public string number_name { get; set; }
-            public string kit { get; set; }
-            public string price { get; set; }
-        }
+
 
         private void BT_export_Click(object sender, RoutedEventArgs e)
         {
