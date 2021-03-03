@@ -15,6 +15,11 @@ namespace BoVeloManager.Classes
 
         private List<User> userList;
         private List<Client> clientList;
+        private List<Bike> bikeList;
+        private List<BikeTemplate> bikeTemplateList;
+
+
+
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
         
@@ -24,7 +29,8 @@ namespace BoVeloManager.Classes
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
             kitTemplateList = DatabaseClassInterface.getKitTemplates();
-            saleList = DatabaseClassInterface.getSales(userList, clientList, bikeList);
+            bikeList = DatabaseClassInterface.getBikes();
+            saleList = DatabaseClassInterface.getSales(bikeList,userList, clientList);
         }
 
         public static Controler Instance {
@@ -33,7 +39,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-        #region User
+    #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -90,8 +96,7 @@ namespace BoVeloManager.Classes
 
         }
 
-        #endregion
-
+    #endregion
 
     #region Client
 
@@ -105,7 +110,7 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-        #endregion
+    #endregion
 
     #region Sale
         public List<Sale.displayInfo> GetSaleDisplayInfo() {
@@ -117,9 +122,9 @@ namespace BoVeloManager.Classes
             }
             return temp;
         }
-        #endregion
+    #endregion
 
-        #region KitTemplate
+    #region KitTemplate
 
         public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
 
@@ -141,7 +146,36 @@ namespace BoVeloManager.Classes
             DatabaseClassInterface.addKitTemplate(kt);
         }
 
-        #endregion
+    #endregion
 
+
+    #region Bike
+        public List<Bike.displayInfo> GetBikeDisplayInfo()
+        {
+            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
+
+            foreach (Bike b in bikeList)
+            {
+
+                temp.Add(b.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        public BikeTemplate getBikeTemplateById(int id_tBike)
+        {
+            foreach (BikeTemplate bt in bikeTemplateList)
+            {
+
+                if (bt.getId() == id_tBike)
+                {
+                    return bt;
+                }
+               
+            }
+            return null;
+        }
+
+        #endregion
     }
 }
