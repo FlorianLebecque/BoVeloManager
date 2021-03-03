@@ -67,22 +67,13 @@ namespace BoVeloManager.Classes {
 
             switch (cat) {
                 case 0:
-                    temp.category = "Frame";
+                    temp.category = "Size";
                     break;
                 case 1:
-                    temp.category = "Wheels";
+                    temp.category = "Color";
                     break;
-                case 2:
-                    temp.category = "Brake";
-                    break;
-                case 3:
-                    temp.category = "Saddle";
-                    break;
-                case 4:
-                    temp.category = "Handlebar";
-                    break;
-                case 5:
-                    temp.category = "Addon";
+                default:
+                    temp.category = "Unkown";
                     break;
             }
 
