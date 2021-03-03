@@ -54,17 +54,13 @@ namespace BoVeloManager.Sales.description
             {
 
                 //Quantity of the tBike
-                int qnt = Convert.ToInt32(tBike["qnt"]);
+                int qnt = 1;
                 // id of the tBike
-                int id_tbike = Convert.ToInt32(tBike["id_tbike"]);
-                float price_mul = (float)Convert.ToDouble(tBike["PriceMul"]);
-                string bike_name = (string)tBike["name"];
+                int id_tbike = 1;
+                float price_mul = 1;
+                string bike_name = "1";
 
-                // Find the name of the tBike
-                string tBike_data = tools.DatabaseQuery.gettBike(id_tbike);
-                DataTable tBike_table = tools.Database.getData(tBike_data);
 
-                
 
 
                 // all tBike tKits
