@@ -32,8 +32,8 @@
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.2*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='date'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Client" Binding="{Binding Path='Client'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Client" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>

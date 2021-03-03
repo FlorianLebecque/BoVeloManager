@@ -1,0 +1,51 @@
+﻿<Window xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  x:Class="BoVeloManager.Management.item.AddItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoVeloManager.Management.item"
+        mc:Ignorable="d"
+        Title="Add bike" Height="211" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Border Padding="0 0 0 0">
+
+        <DockPanel>
+            <!-- Title -->
+            <TextBlock Margin="0 0 0 10" Text="New bike" FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+
+            <!--Log In-->
+            <StackPanel DockPanel.Dock="Top">
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0">Name:</Label>
+                    <TextBox x:Name="tb_itemName" Padding="2" Grid.Column="1"></TextBox>
+                </Grid>
+
+                <Grid Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  x:Name="lb_pricemul" Grid.Column="0">Price 10%</Label>
+                    <Slider x:Name="sl_pricemul" Grid.Column="1" Maximum="100" ValueChanged="Slider_ValueChanged" SmallChange="1" Value="10" Minimum="1" />
+                </Grid>
+
+            </StackPanel>
+            <Grid DockPanel.Dock="Bottom" Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
+                <Button x:Name="BT_AddItem"  Margin="5 0 5 5" Grid.Column="2"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold"  Click="BTAddItem_Click"/>
+                <Button x:Name="BT_cancel"   Margin="0 0 0 5" Grid.Column="1"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right"/>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>

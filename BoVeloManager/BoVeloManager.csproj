@@ -140,14 +140,14 @@
     <Compile Include="Classes\Sale.cs" />
     <Compile Include="Classes\KitTemplate.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="UI\Management\item\AddItemWindow.xaml.cs">
-      <DependentUpon>AddItemWindow.xaml</DependentUpon>
+    <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
+      <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Management\item\modCompatibleItemWindow.xaml.cs">
-      <DependentUpon>modCompatibleItemWindow.xaml</DependentUpon>
+    <Compile Include="UI\Management\bikeCatalog\modCompatibleBikeCatalogWindow.xaml.cs">
+      <DependentUpon>modCompatibleBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Management\item\modItemWindow.xaml.cs">
-      <DependentUpon>modItemWindow.xaml</DependentUpon>
+    <Compile Include="UI\Management\bikeCatalog\modBikeCatalogWindow.xaml.cs">
+      <DependentUpon>modBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Management\kit\AddKitWindow.xaml.cs">
       <DependentUpon>AddKitWindow.xaml</DependentUpon>
@@ -218,15 +218,15 @@
       <DependentUpon>LoginWindows.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\Management\item\AddItemWindow.xaml">
+    <Page Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Management\item\modCompatibleItemWindow.xaml">
+    <Page Include="UI\Management\bikeCatalog\modCompatibleBikeCatalogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Management\item\modItemWindow.xaml">
+    <Page Include="UI\Management\bikeCatalog\modBikeCatalogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -319,8 +319,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="UI\Catalogue\Bike1.jpg" />
+    <Resource Include="UI\Catalogue\Bike3.jpg" />
+    <Resource Include="UI\Catalogue\Bike2.jpg" />
     <Resource Include="Untitled.ico" />
-    <Resource Include="UI\Catalogue\Bike.png" />
     <Content Include="sql2_freemysqlhosting_net.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

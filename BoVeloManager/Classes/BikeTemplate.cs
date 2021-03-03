@@ -11,16 +11,13 @@ namespace BoVeloManager.Classes
         string name = "cc";
         int price = 5;
         int id = 54564;
-        public string getName()
-        {
+        public string getName(){
             return name;
         }
-        public int getPrice()
-        {
+        public int getPrice(){
             return price;
         }
-        public int getId()
-        {
+        public int getId(){
             return id;
         }
     }

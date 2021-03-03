@@ -138,7 +138,12 @@ namespace BoVeloManager.Classes
         }
 
         public int getLastKitTemplate(){
-            return kitTemplateList.Select(x => x.getId()).Max();
+            if (kitTemplateList.Count > 0) {
+                return kitTemplateList.Select(x => x.getId()).Max();
+            }
+            return 0;
+
+            
         }
 
         public void createKit(KitTemplate kt) {
@@ -147,7 +152,6 @@ namespace BoVeloManager.Classes
         }
 
     #endregion
-
 
     #region Bike
         public List<Bike.displayInfo> GetBikeDisplayInfo()

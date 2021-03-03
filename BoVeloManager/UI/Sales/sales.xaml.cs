@@ -38,7 +38,7 @@ namespace BoVeloManager.Sales
 
         private void update_dg_salesList()
         {
-            dg_salesList.ItemsSource = crtl.GetClientDisplayInfo();
+            dg_salesList.ItemsSource = crtl.GetSaleDisplayInfo();
         }
         
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
