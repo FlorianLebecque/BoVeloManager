@@ -24,7 +24,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
+                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
                     </StackPanel>
 
                     
