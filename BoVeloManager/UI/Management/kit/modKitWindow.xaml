@@ -50,12 +50,8 @@
                     </Grid.ColumnDefinitions>
                     <Label  Grid.Column="0"  >Category :</Label>
                     <ComboBox Grid.Column="1"  Name="kit_cat" SelectedIndex="0">
-                        <ComboBoxItem Name="kit_ca0" Content="Frame"/>
-                        <ComboBoxItem Name="kit_ca1" Content="Wheels"/>
-                        <ComboBoxItem Name="kit_ca2" Content="Brakes"/>
-                        <ComboBoxItem Name="kit_ca3" Content="Saddle"/>
-                        <ComboBoxItem Name="kit_ca4" Content="Handlebar" />
-                        <ComboBoxItem Name="kit_ca5" Content="Addons" />
+                        <ComboBoxItem Name="kit_ca0" Content="Size"/>
+                        <ComboBoxItem Name="kit_ca1" Content="Color"/>
                     </ComboBox>
                 </Grid>
 
