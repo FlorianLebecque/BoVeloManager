@@ -45,8 +45,8 @@
                     <TextBlock x:Name="lb_error" Margin="5 0 0 0"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFB20000" >LB_PASS_ERROR</TextBlock>
                     <CheckBox x:Name="cb_keep" Margin="5 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="cb_keep_Click" Content="Save my password"/>
                 </StackPanel>
-                <Button Grid.Column="1" x:Name="BTLogin" Margin="5 10" VerticalAlignment="Center" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
+                <Button Grid.Column="1" x:Name="BTLogin" Margin="0,0,10,10" VerticalAlignment="Bottom" Content="LogIn" DockPanel.Dock="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click" Width="100" HorizontalAlignment="Right"/>
             </Grid>
-            </DockPanel>
+        </DockPanel>
     </Border>
 </Window>

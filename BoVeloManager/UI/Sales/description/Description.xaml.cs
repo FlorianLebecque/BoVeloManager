@@ -52,7 +52,7 @@ namespace BoVeloManager.Sales.description
 
             foreach (Bike bike in bikes)
             {
-
+                /*
                 //Quantity of the tBike
                 int qnt = Convert.ToInt32(tBike["qnt"]);
                 // id of the tBike
@@ -77,6 +77,7 @@ namespace BoVeloManager.Sales.description
                 bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
 
                 bikesList.ItemsSource = bikes;
+                */
             }
 
             total.Text = total_price.ToString("c2");

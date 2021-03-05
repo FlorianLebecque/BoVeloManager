@@ -73,6 +73,7 @@ namespace BoVeloManager.Classes {
             temp.client = this.getClient();
             temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("yyyy-MM-dd");
+            temp.client_name = getClient().getName();
 
             return temp;
         }
@@ -82,6 +83,7 @@ namespace BoVeloManager.Classes {
             public Client client { get; set; }
             public User seller { get; set; }
             public int id { get; set; }
+            public string client_name { get; set; }
             public string state { get; set; }
             public string sale_date { get; set; }
             public string prevision_date { get; set; }
