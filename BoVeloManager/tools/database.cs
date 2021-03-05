@@ -525,25 +525,25 @@ namespace BoVeloManager.tools {
             {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
                 string name = (string)dt.Rows[i]["name"];
-                string priceMul = (string)dt.Rows[i]["priceMul"];
+                int priceMul = Convert.ToInt32(dt.Rows[i]["priceMul"]);
 
-                Btemp.Add(new BikeTemplate(id, name, priceMul);
+                Btemp.Add(new BikeTemplate(id, name, priceMul));
             }
 
             return Btemp;
             //SELECT* FROM `bv_tBike_tKit` WHERE 1
         }
-        public static int addBikeTemplate(BikeTemplate kt)
-        {
-            string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
-            return Database.setData(q);
-        }
+        //public static int addBikeTemplate(BikeTemplate kt)
+        //{
+            //string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
+            //return Database.setData(q);
+        //}
 
-        public static int updateBikeTemplate(BikeTemplate kt)
-        {
-            string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
-            return Database.setData(q);
-        }
+        //public static int updateBikeTemplate(BikeTemplate kt)
+        //{
+            //string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
+            //return Database.setData(q);
+        //}
 
         #endregion
 
