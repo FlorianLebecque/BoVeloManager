@@ -70,7 +70,7 @@ namespace BoVeloManager.Sales.description
                 float bikes_price = bike_price * ((float)qnt/100) * ((price_mul/100)+1);
                 total_price = total_price + bikes_price;
 
-                bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
+                //bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
 
                 bikesList.ItemsSource = bikes;
             }
