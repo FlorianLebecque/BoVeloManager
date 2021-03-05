@@ -46,8 +46,8 @@ namespace BoVeloManager.Sales
             DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
             int saleID = Convert.ToInt32(dataRowView["id"]);
 
-            description.Description DW = new description.Description(saleID);
-            DW.Show();
+            //description.Description DW = new description.Description(saleID);
+            //DW.Show();
         }
 
         private void update_dg_clientList()

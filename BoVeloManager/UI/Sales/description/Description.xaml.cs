@@ -52,48 +52,45 @@ namespace BoVeloManager.Sales.description
 
             foreach (Bike bike in bikes)
             {
+                var bikeDesc = bike.GetDisplayInfo();
 
                 //Quantity of the tBike
-                int qnt = Convert.ToInt32(tBike["qnt"]);
+                int qnt = 1;
                 // id of the tBike
-                int id_tbike = Convert.ToInt32(tBike["id_tbike"]);
-                float price_mul = (float)Convert.ToDouble(tBike["PriceMul"]);
-                string bike_name = (string)tBike["name"];
-
-                // Find the name of the tBike
-                string tBike_data = tools.DatabaseQuery.gettBike(id_tbike);
-                DataTable tBike_table = tools.Database.getData(tBike_data);
-
-                
-
+                int id_tbike = bikeDesc.id;
+                float price_mul = bikeDesc.priceMul;
+                string bike_name = bikeDesc.name;
+                List<KitTemplate> kitList = bike.getBikeTempl().getListKit();
 
                 // all tBike tKits
-                (string all_kits, float bike_price) = DisplayKits(id_tbike);
-
+                (string all_kits, float bike_price) = DisplayKits(kitList);
 
                 float bikes_price = bike_price * ((float)qnt/100) * ((price_mul/100)+1);
                 total_price = total_price + bikes_price;
 
-                bikes.Add(new BikeItem() { number_name = qnt.ToString() + "x " + bike_name, kit = all_kits, price = bikes_price.ToString("c2") });
+                string number_name = qnt.ToString() + "x " + bike_name;
+                string kit = all_kits;
+                string price = bikes_price.ToString("c2");
 
-                bikesList.ItemsSource = bikes;
+                bikesList.ItemsSource = number_name;
+                bikesList.ItemsSource = kit;
+                bikesList.ItemsSource = price;
             }
 
             total.Text = total_price.ToString("c2");
         }
-        public (string , int) DisplayKits(int _id_tbike)
+        public (string , int) DisplayKits(List<KitTemplate> kitList)
         {
 
             int kits_price = 0;
             string all_kits = "";
-            string tKit_data = tools.DatabaseQuery.gettKit(_id_tbike);
-            DataTable tKit_table = tools.Database.getData(tKit_data);
 
-            foreach (DataRow tKit in tKit_table.Rows)
+            foreach (KitTemplate kit in kitList)
             {
-                kits_price += Convert.ToInt32(tKit["price"]);
-                string kit_name = tKit["name"].ToString();
-                string kit_prop = tKit["properties"].ToString();
+                var kitDisp = kit.GetDisplayInfo();
+                kits_price += kitDisp.priceInt;
+                string kit_name = kitDisp.name;
+                string kit_prop = kitDisp.properties;
 
                 if (kit_prop.Length == 0) {
                     all_kits = all_kits + "● " + kit_name +"\n";
