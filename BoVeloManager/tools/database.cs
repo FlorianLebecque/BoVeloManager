@@ -227,6 +227,11 @@ namespace BoVeloManager.tools {
         {
             return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "')";
         }
+        // Add BikeTemplate Querry
+        public static string addBikeTemp(int id, string name, string priceMul)
+        {
+            return "INSERT INTO `bv_tBike_tKit`(`id`,`name`, `priceMul`) VALUES ('" + id.ToString() + "','" + name + "','" + priceMul + "')";
+        }
 
         public static string addCompatibleKit(int id_cat, int id_tKit)
         {
@@ -509,6 +514,38 @@ namespace BoVeloManager.tools {
 
         #endregion
 
+        #region BikeTemplate
+
+        public static List<BikeTemplate> getBikeTemplates()
+        {
+            string query = DatabaseQuery.getKits();
+            DataTable dt = tools.Database.getData(query);
+            List<BikeTemplate> Btemp = new List<BikeTemplate>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string name = (string)dt.Rows[i]["name"];
+                int priceMul = Convert.ToInt32(dt.Rows[i]["priceMul"]);
+
+                Btemp.Add(new BikeTemplate(id, name, priceMul));
+            }
+
+            return Btemp;
+            //SELECT* FROM `bv_tBike_tKit` WHERE 1
+        }
+        //public static int addBikeTemplate(BikeTemplate kt)
+        //{
+            //string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
+            //return Database.setData(q);
+        //}
+
+        //public static int updateBikeTemplate(BikeTemplate kt)
+        //{
+            //string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
+            //return Database.setData(q);
+        //}
+
+        #endregion
 
     }
 

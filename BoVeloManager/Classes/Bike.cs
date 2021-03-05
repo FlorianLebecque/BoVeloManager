@@ -34,6 +34,10 @@ namespace BoVeloManager.Classes
             return id;
         }
 
+        public BikeTemplate getBikeTempl() {
+            return BikeTemplate;
+        }
+
         public displayInfo GetDisplayInfo()
         {
             displayInfo temp = new displayInfo();
@@ -58,7 +62,7 @@ namespace BoVeloManager.Classes
 
             temp.name = BikeTemplate.getName();
             temp.id = BikeTemplate.getId();
-            temp.price = BikeTemplate.getPrice();
+            temp.priceMul = BikeTemplate.getPriceMul();
             temp.id_sale = id_sale;
 
             return temp;
@@ -70,7 +74,7 @@ namespace BoVeloManager.Classes
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }
-            public int price { get; set; }
+            public int priceMul { get; set; }
             public int id_sale { get; set; }
 
         }

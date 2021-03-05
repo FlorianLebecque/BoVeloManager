@@ -78,6 +78,7 @@ namespace BoVeloManager.Classes {
             }
 
             temp.price = (((float)this.getPrice())/100).ToString("c2");
+            temp.priceInt = getPrice();
             temp.properties = this.getProperties();
 
             return temp;
@@ -90,6 +91,7 @@ namespace BoVeloManager.Classes {
             public string name { get; set; }
             public string category { get; set; }
             public string price { get; set; }
+            public int priceInt { get; set; }
             public string properties { get; set; }
         }
 
