@@ -43,11 +43,11 @@ namespace BoVeloManager.Sales
         
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
         {
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int saleID = Convert.ToInt32(dataRowView["id"]);
+            Sale s = ((Sale.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurSale;
+            
 
-            //description.Description DW = new description.Description(saleID);
-            //DW.Show();
+            description.Description DW = new description.Description(s);
+            DW.Show();
         }
 
         private void update_dg_clientList()
