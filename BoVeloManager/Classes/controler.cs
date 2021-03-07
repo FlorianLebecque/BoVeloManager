@@ -110,9 +110,21 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
+        public int getLastClientId() {
+            return clientList.Select(x => x.getId()).Max();
+        }
+
+        public void createClient(Client c) {
+
+            clientList.Add(c);
+            DatabaseClassInterface.addClient(c);
+
+
+        }
+
     #endregion
 
-    #region Sale
+        #region Sale
         public List<Sale.displayInfo> GetSaleDisplayInfo() {
             List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 

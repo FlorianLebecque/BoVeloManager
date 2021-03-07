@@ -23,6 +23,7 @@ namespace BoVeloManager.Classes {
             sale_date = sale_date_;
             prevision_date = prevision_date_;
 
+            bikeList = new List<Bike>();
 
             foreach (Bike b in bikeList_) {
                 if (b.getSaleId() == id_) {

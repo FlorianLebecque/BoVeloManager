@@ -287,9 +287,9 @@ namespace BoVeloManager.tools {
         }
 
 
-        public static string addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num)
+        public static string addClient(Client c)
         {
-            return "INSERT INTO `bv_client`(`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES ('" + first_name + "','" + last_name + "','" + entreprise_name + "','" + entreprise_adress + "','" + email + "','" + phone_num + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_client`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
         }
 
         // Get available Kits
@@ -417,6 +417,11 @@ namespace BoVeloManager.tools {
             }
 
             return temp;
+        }
+
+        public static int addClient(Client c) {
+            string q = tools.DatabaseQuery.addClient(c);
+            return Database.setData(q);
         }
 
         #endregion

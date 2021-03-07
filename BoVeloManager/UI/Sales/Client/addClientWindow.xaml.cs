@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Sales.Client {
     /// <summary>
@@ -85,18 +86,10 @@ namespace BoVeloManager.Sales.Client {
 
         private void addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num) {
 
-            string q = tools.DatabaseQuery.addClient(first_name, last_name, entreprise_name, entreprise_adress, email, phone_num);
+            int id = Controler.Instance.getLastClientId()+1;
+            Classes.Client c = new Classes.Client(id,first_name,last_name,entreprise_name, entreprise_adress, email,phone_num,DateTime.Now);
 
-            int res = tools.Database.setData(q);
-
-            if (res == -1) {
-                MessageBox.Show("An error has occured");
-            } else if (res == 1) {
-                MessageBox.Show("User added");
-            } else {
-                MessageBox.Show("The database might be corrupted");
-            }
-
+            Controler.Instance.createClient(c);
         }
         private void BT_cancel_Click(object sender, RoutedEventArgs e) {
 

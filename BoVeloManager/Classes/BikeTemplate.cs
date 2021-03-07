@@ -12,15 +12,18 @@ namespace BoVeloManager.Classes
         private readonly int priceMul;
         private readonly int id;
         private List<KitTemplate> KitTemplList;
+
         public BikeTemplate(int Id,string Name, int Price )
         {
             name = Name;
             priceMul = Price;
             id = Id;
         }
+
         public string getName(){
             return name;
         }
+
         public int getPriceMul(){
             return priceMul;
         }
@@ -28,17 +31,19 @@ namespace BoVeloManager.Classes
         public List<KitTemplate> getListKit() {
             return KitTemplList;
         }
+
         public int getId(){
             return id;
         }
+
         public void linkKitTemplate(KitTemplate kt)
         {
             KitTemplList.Add(kt);
         }
-        public void unlinkKitTemplate(KitTemplate kt)
-        {
+        public void unlinkKitTemplate(KitTemplate kt){
             KitTemplList.Remove(kt);
         }
+
         public displayInfo getDisplayInfo()
         {
             displayInfo dI = new displayInfo();
@@ -48,6 +53,7 @@ namespace BoVeloManager.Classes
             dI.BikeTemp = this;
             return dI;
         }
+
         public struct displayInfo
         {
             public BikeTemplate BikeTemp;
