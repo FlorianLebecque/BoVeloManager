@@ -99,13 +99,13 @@ namespace BoVeloManager {
 
         private void log() {
             string user = tb_userName.Text;
-            string pass = "";
-
+            string pass = "";               
+            
             if (Properties.Settings.Default.keeplogged) {
                 pass = Properties.Settings.Default.magicWord;
             } else if (tb_password.IsEnabled == true){
                 pass = tools.md5.CreateMD5(tb_password.Password);
-            }
+            }            
 
             check(user, pass);
             login(user, pass);
