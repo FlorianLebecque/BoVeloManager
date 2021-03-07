@@ -10,16 +10,15 @@ namespace BoVeloManager.Classes
     {
         private readonly int id;
         private readonly int id_sale;
-        private readonly int id_tBike;
 
         private int status;
         public BikeTemplate BikeTemplate;
         
 
-        public Bike(int status_, int id_tBike_, int id_, int id_sale_)
+        public Bike(int status_, int id_, int id_sale_, BikeTemplate bt_)
         {
             status = status_;
-            id_tBike = id_tBike_;
+            BikeTemplate = bt_;
             id = id_;
             id_sale = id_sale_;
             link();

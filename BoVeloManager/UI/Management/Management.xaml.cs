@@ -325,22 +325,11 @@ namespace BoVeloManager.Management {
                 - put the users data into the datagrid
             */
         private void update_dg_itemList() {
-            //get the data from the db
-            string q = tools.DatabaseQuery.getItem();
-            DataTable dt = tools.Database.getData(q);
 
+            dg_itemList.ItemsSource = null;
 
-            //convertion de la columns grade en poste
-            DataColumn newCol = new DataColumn();
-            newCol.ColumnName = "Name";
-            newCol.DataType = typeof(string);
+            dg_itemList.ItemsSource = Controler.Instance.getCatalogBikeDisplayInfo();
 
-            dt.Columns.Add(newCol);
-
-            
-
-            //set the datatable as the items sources for the user datagrid
-            dg_itemList.ItemsSource = dt.DefaultView;
         }
 
 

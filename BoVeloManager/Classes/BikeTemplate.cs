@@ -8,20 +8,20 @@ namespace BoVeloManager.Classes
 {
     public class BikeTemplate
     {
-        private readonly string name;
+        private readonly CatalogBike catalogBike;
         private readonly int priceMul;
         private readonly int id;
         private List<KitTemplate> KitTemplList;
 
-        public BikeTemplate(int Id,string Name, int Price )
-        {
-            name = Name;
+        public BikeTemplate(int Id, CatalogBike catalogBike_, int Price ){
+            catalogBike = catalogBike_;
             priceMul = Price;
             id = Id;
+            KitTemplList = new List<KitTemplate>();
         }
 
         public string getName(){
-            return name;
+            return catalogBike.getName();
         }
 
         public int getPriceMul(){

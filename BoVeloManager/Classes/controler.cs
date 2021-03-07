@@ -16,20 +16,21 @@ namespace BoVeloManager.Classes
         private List<User> userList;
         private List<Client> clientList;
         private List<Bike> bikeList;
+        private List<CatalogBike> CatalogBikeList;
         private List<BikeTemplate> bikeTemplateList;
-
-
-
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
         
 
         private Controler(){
-
             userList = DatabaseClassInterface.getUsers();
             clientList = DatabaseClassInterface.getClients();
             kitTemplateList = DatabaseClassInterface.getKitTemplates();
-            bikeList = DatabaseClassInterface.getBikes();
+
+            CatalogBikeList = DatabaseClassInterface.getCatalogBikes();
+            
+            bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
+            bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
             saleList = DatabaseClassInterface.getSales(bikeList,userList, clientList);
         }
 
@@ -124,7 +125,7 @@ namespace BoVeloManager.Classes
 
     #endregion
 
-        #region Sale
+    #region Sale
         public List<Sale.displayInfo> GetSaleDisplayInfo() {
             List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 
@@ -193,5 +194,20 @@ namespace BoVeloManager.Classes
         }
 
         #endregion
+
+    #region CatalogBike
+
+        public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
+            List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
+
+            foreach (CatalogBike cb in CatalogBikeList) {
+                temp.Add(cb.GetDisplayInfo());
+            }
+
+            return temp;
+        }
+
+    #endregion
+
     }
 }

@@ -219,7 +219,7 @@ namespace BoVeloManager.tools {
         // get all kit info
         public static string gettKit(int id_tBike)
         {
-            return "SELECT K.name,K.price,K.category,K.properties FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
+            return "SELECT K.id FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
         // Add kit Querry
@@ -351,6 +351,11 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_bike`";
         }
+
+        public static string getTBike() {
+            return "SELECT * FROM `bv_type_bike`";
+        }
+
     }
 
     class DatabaseClassInterface{
@@ -453,7 +458,7 @@ namespace BoVeloManager.tools {
 
         #region bike
 
-        public static List<Bike> getBikes(){
+        public static List<Bike> getBikes(List<BikeTemplate> btList){
             string query = DatabaseQuery.getBike();
             DataTable dt = tools.Database.getData(query);
 
@@ -465,7 +470,12 @@ namespace BoVeloManager.tools {
                 int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
 
-                temp.Add(new Bike(state, id_tBike, id, id_sale));
+                foreach(BikeTemplate bt in btList) {
+                    if(bt.getId() == id_tBike) {
+                        temp.Add(new Bike(state, id, id_sale,bt)) ;
+                    }
+                }
+                
             }
 
             return temp;
@@ -521,18 +531,41 @@ namespace BoVeloManager.tools {
 
         #region BikeTemplate
 
-        public static List<BikeTemplate> getBikeTemplates()
+        public static List<BikeTemplate> getBikeTemplates(List<CatalogBike> cbList,List<KitTemplate> ktList)
         {
-            string query = DatabaseQuery.getKits();
+            string query = DatabaseQuery.getTBike();
             DataTable dt = tools.Database.getData(query);
             List<BikeTemplate> Btemp = new List<BikeTemplate>();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
-                string name = (string)dt.Rows[i]["name"];
-                int priceMul = Convert.ToInt32(dt.Rows[i]["priceMul"]);
+                int id_cat = Convert.ToInt32(dt.Rows[i]["id_cat"]);
+                
+                foreach(CatalogBike cb in cbList) {
+                    if (cb.getId() == id_cat) {
 
-                Btemp.Add(new BikeTemplate(id, name, priceMul));
+                        BikeTemplate bt = new BikeTemplate(id, cb, cb.getPriceMul());
+
+                        string q = DatabaseQuery.gettKit(id);
+                        DataTable kdt = Database.getData(q);
+
+                        for(int j = 0; j < kdt.Rows.Count; j++) {
+                            int idK = Convert.ToInt32(kdt.Rows[j]["id"]);
+
+                            foreach(KitTemplate kt in ktList) {
+                                if(kt.getId() == idK) {
+                                    bt.linkKitTemplate(kt);
+                                }
+                            }
+
+                        }
+                        
+
+                        Btemp.Add(bt);
+                    }
+                }
+
+                
             }
 
             return Btemp;
@@ -540,20 +573,41 @@ namespace BoVeloManager.tools {
         }
         //public static int addBikeTemplate(BikeTemplate kt)
         //{
-            //string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
-            //return Database.setData(q);
+        //string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
+        //return Database.setData(q);
         //}
 
         //public static int updateBikeTemplate(BikeTemplate kt)
         //{
-            //string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
-            //return Database.setData(q);
+        //string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
+        //return Database.setData(q);
         //}
 
         #endregion
 
+        #region CatalogBike
+
+        public static List<CatalogBike> getCatalogBikes() {
+            string q = DatabaseQuery.getItem();
+            DataTable dt = Database.getData(q);
+
+            //convert all the user into a user object
+            List<CatalogBike> temp = new List<CatalogBike>();
+            for (int i = 0; i < dt.Rows.Count; i++) {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string name = (string)dt.Rows[i]["name"];
+                int PriceMul = Convert.ToInt32(dt.Rows[i]["PriceMul"]);
+
+                temp.Add(new CatalogBike(id, name, PriceMul));
+            }
+
+            return temp;
+
+
+        }
+
+        #endregion
+
     }
-
-
 
 }
