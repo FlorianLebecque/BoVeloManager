@@ -150,6 +150,7 @@ namespace BoVeloManager.Sales {
         // complete ComboBox from database
         public void importData()
         {
+            /*
             getFrame();
             getWheels();
             getBrakes();
@@ -157,6 +158,7 @@ namespace BoVeloManager.Sales {
             getHandlebar();
             getClients();
             getModel();
+            */
         }
         public void getClients()
         {
@@ -175,6 +177,11 @@ namespace BoVeloManager.Sales {
                 ClientList.Add(client_fisrtname + " " + client_lastname);
             }
         }
+
+
+        #region TEST
+        /*
+        
         public void getModel()
         {
             string model_data = tools.DatabaseQuery.getModel();
@@ -186,6 +193,7 @@ namespace BoVeloManager.Sales {
                 ModelList.Add(row["name"].ToString());
             }
         }
+
         public void getFrame()
         {
             string frame_data = tools.DatabaseQuery.getFrameKit();
@@ -228,6 +236,8 @@ namespace BoVeloManager.Sales {
 
             addKitToListAndDic(AddonsList, AddonsDic, addons_table);
         }
+        */
+        #endregion
         private void client_Loaded(object sender, RoutedEventArgs e)
         {
             var combo = sender as ComboBox;

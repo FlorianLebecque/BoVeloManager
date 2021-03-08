@@ -52,12 +52,15 @@ namespace BoVeloManager.Classes {
         }
 
         public displayInfo GetDisplayInfo() {
+
             displayInfo temp = new displayInfo();
 
             temp.CurCatBike = this;
             temp.name = this.getName();
             temp.PriceMul = (((float)PriceMul)/100).ToString("p");
             temp.id = this.getId();
+
+            temp.kitTemplates = this.getKitTemplateList();
 
             return temp;
         }
@@ -67,6 +70,9 @@ namespace BoVeloManager.Classes {
             public string name { get; set; }
             public string PriceMul { get; set; }
             public int id { get; set; }
+            public List<KitTemplate> kitTemplates { get; set; }
+            public List<string> colorKit { get; set; }
+            public List<string> sizeKit { get; set; }
         }
     }
 }
