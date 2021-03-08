@@ -105,7 +105,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Quantity :" Margin="10"/>
-                    <TextBox Name="quantity" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox" />
+                    <TextBox Name="quantity" Grid.Column="1" Margin="10" PreviewTextInput="NumberValidationTextBox"/>
                     <StackPanel Grid.Column="2" />
                 </Grid>            
             </StackPanel>
