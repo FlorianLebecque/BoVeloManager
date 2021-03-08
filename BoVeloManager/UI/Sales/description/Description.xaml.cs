@@ -46,7 +46,6 @@ namespace BoVeloManager.Sales.description
             List<BikeItem> bikesListItems = new List<BikeItem>();
 
             var TbikeDesc = sale.GetSaleDescrInfo();
-
             foreach (Sale.TbikeInfo tBike in TbikeDesc.TbikeInfoList)
             {
 

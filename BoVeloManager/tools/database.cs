@@ -163,14 +163,14 @@ namespace BoVeloManager.tools {
         {
             return "SELECT `id`,`name`,`PriceMul` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-        public static string addItem(string name, int pm)
+        public static string addCatalogBike(CatalogBike cb)
         {
-            return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
+            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`) VALUES ('" + cb.getId().ToString() + "','" + cb.getName() + "'," + cb.getPriceMul().ToString() + ")";
         }
 
-        public static string updateItem(int id, string newName, int priceMul)
+        public static string updateCatalogBike(CatalogBike kt)
         {
-            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' , `PriceMul` = '" + priceMul.ToString() + "' WHERE `id` = " + id.ToString();
+            return "UPDATE `bv_catalog` SET `name` = '" + kt.getName() + "' , `PriceMul` = '" + kt.getPriceMul().ToString() + "' WHERE `id` = " + kt.getId().ToString();
         }
 
         public static string delItem(int id)
@@ -186,7 +186,7 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
         }
 
-        public static string getCompatibleKitId_with_categoryId(int id_cat)
+        public static string getKit_by_catalogBikeId(int id_cat)
         {
             return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
         }
@@ -587,7 +587,7 @@ namespace BoVeloManager.tools {
 
         #region CatalogBike
 
-        public static List<CatalogBike> getCatalogBikes() {
+        public static List<CatalogBike> getCatalogBikes(List<KitTemplate> ktList) {
             string q = DatabaseQuery.getItem();
             DataTable dt = Database.getData(q);
 
@@ -598,10 +598,46 @@ namespace BoVeloManager.tools {
                 string name = (string)dt.Rows[i]["name"];
                 int PriceMul = Convert.ToInt32(dt.Rows[i]["PriceMul"]);
 
-                temp.Add(new CatalogBike(id, name, PriceMul));
+                string query = DatabaseQuery.getKit_by_catalogBikeId(id);
+                DataTable kdt = Database.getData(query);
+
+                CatalogBike cb = new CatalogBike(id, name, PriceMul);
+
+                for (int j = 0; j < kdt.Rows.Count; j++) {
+                    foreach(KitTemplate kt in ktList) {
+                        if(kt.getId() == Convert.ToInt32(kdt.Rows[j]["id_tKit"])) {
+                            cb.linkKitTemplate(kt);
+                        }
+                    }
+                }
+
+
+                temp.Add(cb);
             }
 
             return temp;
+
+
+        }
+
+        public static int updateCatalogBike(CatalogBike kt) {
+            string q = DatabaseQuery.updateCatalogBike(kt);
+            return Database.setData(q);
+        }
+
+        public static int linkKTCB(CatalogBike cb,KitTemplate kt) {
+            string q = DatabaseQuery.addCompatibleKit(cb.getId(), kt.getId());
+            return Database.setData(q);
+        }
+
+        public static int unlinkKTCB(CatalogBike cb,KitTemplate kt) {
+            string q = DatabaseQuery.delCompatibleKit(cb.getId(), kt.getId());
+            return Database.setData(q);
+        }
+
+        public static int addCatalogBike(CatalogBike cb) {
+            string q = DatabaseQuery.addCatalogBike(cb);
+            return Database.setData(q);
 
 
         }

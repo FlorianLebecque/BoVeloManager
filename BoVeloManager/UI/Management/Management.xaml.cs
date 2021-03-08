@@ -163,11 +163,9 @@ namespace BoVeloManager.Management {
 
         private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e) {
 
-            //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int id = Convert.ToInt32(dataRowView["id"]);
+            KitTemplate kt = ((KitTemplate.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).curKit;
 
-            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
+            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(kt);
 
             MCKW.ShowDialog();
 
@@ -257,18 +255,16 @@ namespace BoVeloManager.Management {
 
         #endregion
 
-        #region Items
+        #region Catalog
 
         private void bt_editCompKit_Click(object sender, RoutedEventArgs e)
         {
             //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int id = Convert.ToInt32(dataRowView["id"]);
+            CatalogBike cb = ((CatalogBike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCatBike;
 
-            //kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
-            item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(id);
+            //item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(cb);
 
-            MCIW.ShowDialog();
+            //MCIW.ShowDialog();
 
             //update the kits datagrid
             update_dg_itemList();
@@ -278,11 +274,10 @@ namespace BoVeloManager.Management {
    
         private void bt_editItem_Click(object sender, RoutedEventArgs e) {
             //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int itemID = Convert.ToInt32(dataRowView["id"]);
+            CatalogBike kt = ((CatalogBike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCatBike;
 
             //open the dialog passing the item ID
-            item.modItemWindow MUW = new item.modItemWindow(itemID);
+            item.modItemWindow MUW = new item.modItemWindow(kt);
             MUW.ShowDialog();
 
             //update the item datagrid

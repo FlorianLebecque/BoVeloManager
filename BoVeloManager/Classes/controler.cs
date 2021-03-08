@@ -27,7 +27,7 @@ namespace BoVeloManager.Classes
             clientList = DatabaseClassInterface.getClients();
             kitTemplateList = DatabaseClassInterface.getKitTemplates();
 
-            CatalogBikeList = DatabaseClassInterface.getCatalogBikes();
+            CatalogBikeList = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
             
             bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
             bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
@@ -155,8 +155,6 @@ namespace BoVeloManager.Classes
                 return kitTemplateList.Select(x => x.getId()).Max();
             }
             return 0;
-
-            
         }
 
         public void createKit(KitTemplate kt) {
@@ -164,9 +162,13 @@ namespace BoVeloManager.Classes
             DatabaseClassInterface.addKitTemplate(kt);
         }
 
+        public List<KitTemplate> getKitTemplateList() {
+            return kitTemplateList;
+        }
+
     #endregion
 
-    #region Bike
+        #region Bike
         public List<Bike.displayInfo> GetBikeDisplayInfo()
         {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
@@ -205,6 +207,22 @@ namespace BoVeloManager.Classes
             }
 
             return temp;
+        }
+
+        public List<CatalogBike> getCatalogBike() {
+            return CatalogBikeList;
+        }
+
+        public int getlastCatalogBikeId() {
+            if (CatalogBikeList.Count > 0) {
+                return CatalogBikeList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        public void createCatalogBike(CatalogBike cb) {
+            CatalogBikeList.Add(cb);
+            DatabaseClassInterface.addCatalogBike(cb);
         }
 
     #endregion
