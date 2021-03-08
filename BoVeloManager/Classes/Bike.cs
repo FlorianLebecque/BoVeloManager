@@ -15,16 +15,14 @@ namespace BoVeloManager.Classes
         public BikeTemplate BikeTemplate;
         
 
-        public Bike(int status_, int id_sale_, BikeTemplate bt_)
-        {
+        public Bike(int status_, int id_sale_, BikeTemplate bt_) {
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
             link();
         }
 
-        private void link()
-        {
+        private void link() {
             //BikeTemplate = Controler.getBikeTemplateById(id_tBike);
         }
 
@@ -36,8 +34,7 @@ namespace BoVeloManager.Classes
             return BikeTemplate;
         }
 
-        public displayInfo GetDisplayInfo()
-        {
+        public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 
             temp.CurBike = this;
@@ -66,8 +63,7 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-        public struct displayInfo
-        {
+        public struct displayInfo {
             public Bike CurBike { get; set; }
             public string state { get; set; }
             public int id { get; set; }

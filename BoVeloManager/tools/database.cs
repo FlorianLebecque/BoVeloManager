@@ -168,9 +168,9 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
         }
 
-        public static string updateItem(int id, string newName, int priceMul)
+        public static string updateCatalogBike(CatalogBike kt)
         {
-            return "UPDATE `bv_catalog` SET `name` = '" + newName + "' , `PriceMul` = '" + priceMul.ToString() + "' WHERE `id` = " + id.ToString();
+            return "UPDATE `bv_catalog` SET `name` = '" + kt.getName() + "' , `PriceMul` = '" + kt.getPriceMul().ToString() + "' WHERE `id` = " + kt.getId().ToString();
         }
 
         public static string delItem(int id)
@@ -604,6 +604,11 @@ namespace BoVeloManager.tools {
             return temp;
 
 
+        }
+
+        public static int updateCatalogBike(CatalogBike kt) {
+            string q = DatabaseQuery.updateCatalogBike(kt);
+            return Database.setData(q);
         }
 
         #endregion

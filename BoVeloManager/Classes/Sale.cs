@@ -47,24 +47,31 @@ namespace BoVeloManager.Classes {
         public int getId() {
             return id;
         }
+
         public string getState() {
             return state;
         }
+
         public Client getClient() {
             return client;
         }
+
         public User getSeller() {
             return seller;
         }
+
         public DateTime getSaleDate() {
             return sale_date;
         }
+
         public DateTime getPreSaleDate() {
             return prevision_date;
         }
+
         public List<Bike> getBikeList() {
             return bikeList;
         }
+
         public displayInfo GetSaleDisplayInfo() {
             displayInfo temp = new displayInfo();
 

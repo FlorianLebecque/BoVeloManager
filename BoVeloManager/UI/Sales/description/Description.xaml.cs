@@ -47,6 +47,11 @@ namespace BoVeloManager.Sales.description
             //Create new bike list 
             List<Bike> bikes = sale.getBikeList();
 
+
+
+
+
+
             float total_price = 0;
 
 

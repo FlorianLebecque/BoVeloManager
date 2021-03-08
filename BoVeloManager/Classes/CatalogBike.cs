@@ -21,12 +21,20 @@ namespace BoVeloManager.Classes {
             return name;
         }
 
+        public void setName(string n) {
+            name = n;
+        }
+
         public int getId() {
             return id;
         }
 
         public int getPriceMul() {
             return PriceMul;
+        }
+
+        public void setPriceMul(int p) {
+            PriceMul = p;
         }
 
         public displayInfo GetDisplayInfo() {

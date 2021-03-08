@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using BoVeloManager.Classes;
+
 namespace BoVeloManager.Management.item
 {
     /// <summary>
@@ -20,19 +22,18 @@ namespace BoVeloManager.Management.item
     /// </summary>
     public partial class modItemWindow : Window
     {
-        private int itemId;
-        public modItemWindow(int itemId_)
+        private CatalogBike kt;
+        public modItemWindow(CatalogBike kt_)
         {
             InitializeComponent();
 
             //initialize the windows
-            itemId = itemId_;
-            //get the item data
-            string q = tools.DatabaseQuery.getItem_by_id(itemId);
-            DataTable res = tools.Database.getData(q);
+            kt = kt_;
+
+
             //diplay the item data
-            tb_newItemName.Text = (string)res.Rows[0]["name"];
-            sl_pricemul.Value = Convert.ToInt32(res.Rows[0]["PriceMul"]);
+            tb_newItemName.Text = kt.getName();
+            sl_pricemul.Value = kt.getPriceMul();
             lb_pricemul.Content = "Price " + (sl_pricemul.Value / 100).ToString("P");
         }
 
@@ -45,7 +46,7 @@ namespace BoVeloManager.Management.item
                 //string q = tools.DatabaseQuery.setItemName(itemId, newItemName);
                 int price = (int)sl_pricemul.Value;
                 //tools.Database.setData(q);
-                updateItemName(itemId, newItemName,price);
+                updateItemName(newItemName,price);
             }
             else
             {
@@ -53,23 +54,14 @@ namespace BoVeloManager.Management.item
             }
         }
 
-        private void updateItemName(int id, string name,int priceMul)
+        private void updateItemName(string name,int priceMul)
         {
-            string q = tools.DatabaseQuery.updateItem(id, name,priceMul);
-            int res = tools.Database.setData(q);
 
-            if (res == -1)
-            {
-                MessageBox.Show("An error has occured");
-            }
-            else if (res == 1)
-            {
-                MessageBox.Show("Done");
-            }
-            else
-            {
-                MessageBox.Show("The database is corrupted");
-            }
+            kt.setName(name);
+            kt.setPriceMul(priceMul);
+
+            tools.DatabaseClassInterface.updateCatalogBike(kt);
+
             this.Close();
         }
 
