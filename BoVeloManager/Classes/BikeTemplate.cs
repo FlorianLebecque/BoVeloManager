@@ -28,11 +28,9 @@ namespace BoVeloManager.Classes
         }
         public float getPrice(){
             float price = 0;
-            float priceMul = getCat().getPriceMul()/100;
             foreach (KitTemplate kit in KitTemplList) {
                 price += kit.getPrice();
             }
-            price = price + price * priceMul;
             return price;
         }
 
