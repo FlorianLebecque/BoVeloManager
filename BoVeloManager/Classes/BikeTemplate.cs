@@ -51,6 +51,17 @@ namespace BoVeloManager.Classes
             KitTemplList.Remove(kt);
         }
 
+        public string getPropkitString() {
+            string propKit = "";
+            foreach (KitTemplate kit in getListKit()) { 
+                if (kit.getProperties().Length == 0) {
+                    propKit = propKit + "● " + kit.getName() + "\n";
+                } else {
+                    propKit = propKit + "● " + kit.getName() + " [" + kit.getProperties() + "] \n";
+                }
+            }
+            return propKit;
+        }
         public displayInfo getDisplayInfo()
         {
             displayInfo dI = new displayInfo();
@@ -59,6 +70,7 @@ namespace BoVeloManager.Classes
             dI.priceMul = (((float)getCat().getPriceMul()) / 100).ToString("P");
             dI.name = getName();
             dI.BikeTemp = this;
+            dI.propKit = getPropkitString();
             return dI;
         }
 
@@ -66,6 +78,7 @@ namespace BoVeloManager.Classes
         {
             public BikeTemplate BikeTemp;
             public List<KitTemplate> KitTemplList;
+            public string propKit { get; set; }
             public int id { get; set; }
             public string name { get; set; }
             public string price { get; set; }

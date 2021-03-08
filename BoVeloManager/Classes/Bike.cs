@@ -60,7 +60,7 @@ namespace BoVeloManager.Classes
 
             temp.name = BikeTemplate.getName();
             temp.id = BikeTemplate.getId();
-            temp.priceMul = BikeTemplate.getPriceMul();
+            temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = id_sale;
 
             return temp;
