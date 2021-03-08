@@ -111,6 +111,7 @@ namespace BoVeloManager.Classes {
             public List<TbikeInfo> TbikeInfoList;
             public float total_price { get; set; }
         }
+
         public List<TbikeInfo> getQntTBike() {
             List<TbikeInfo> TempTbikeInfoList = new List<TbikeInfo>();
 
@@ -135,11 +136,12 @@ namespace BoVeloManager.Classes {
             }
             return TempTbikeInfoList;
         }
+
         public float getTotalPrice() {
             float total_price = 0;
 
             foreach (Bike bike in bikeList) {
-                float priceMul = bike.getBikeTempl().getCat().getPriceMul()/100;
+                float priceMul = ((float)(bike.getBikeTempl().getCat().getPriceMul()))/100;
 
                 foreach(KitTemplate kit in bike.getBikeTempl().getListKit()) {
                     total_price += kit.getPrice();
@@ -148,6 +150,7 @@ namespace BoVeloManager.Classes {
             }
             return total_price;
         }
+
         public struct TbikeInfo {
             public BikeTemplate CurTempl { get; set; }
             public int qnt { get; set; }
