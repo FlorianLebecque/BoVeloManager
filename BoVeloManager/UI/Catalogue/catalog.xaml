@@ -119,6 +119,39 @@
                 </Grid>
             </ListViewItem>
 
+            <!-- new bike -->
+            <ListViewItem>
+                <Grid Width="300" Height="430">
+                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+
+                    <StackPanel Height="125" VerticalAlignment="Bottom">
+                        <TextBlock Margin="10 5 10 0" Foreground="Black">coucou sinon</TextBlock>
+                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
+                            <ComboBoxItem>26"</ComboBoxItem>
+                            <ComboBoxItem>32"</ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
+                            <ComboBoxItem>Red</ComboBoxItem>
+                            <ComboBoxItem>Blue</ComboBoxItem>
+                            <ComboBoxItem>Violet</ComboBoxItem>
+                            <ComboBoxItem>Green</ComboBoxItem>
+                            <ComboBoxItem>Orange</ComboBoxItem>
+                        </ComboBox>
+                        <Grid Margin="10 5 10 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Margin="0 0 5 0" Grid.Column="0">1</TextBox>
+                            <Button Grid.Column="1" >
+                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
+                            </Button>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+            </ListViewItem>
+
         </ListView>
 
     </DockPanel>
