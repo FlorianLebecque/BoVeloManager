@@ -12,7 +12,7 @@ namespace BoVeloManager.Classes
         private readonly int id_sale;
 
         private int status;
-        public BikeTemplate BikeTemplate;
+        private BikeTemplate BikeTemplate;
         
 
         public Bike(int status_, int id_sale_, BikeTemplate bt_)

@@ -72,7 +72,9 @@ namespace BoVeloManager.Sales.description
                 string kit = all_kits;
                 string price = bikes_price.ToString("c2");
 
-                bikesList.ItemsSource = bikes;
+                bikesList.ItemsSource = number_name;
+                bikesList.ItemsSource = kit;
+                bikesList.ItemsSource = price;
             }
 
             total.Text = total_price.ToString("c2");

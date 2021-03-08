@@ -89,5 +89,63 @@ namespace BoVeloManager.Classes {
             public string sale_date { get; set; }
             public string prevision_date { get; set; }
         }
+        
+        public descrInfo GetSaleDescrInfo() {
+            descrInfo temp = new descrInfo();
+
+            temp.CurSale = this;
+            temp.TbikeInfoList = this.getQntTBike();
+            temp.total_price = this.getTotalPrice();
+            return temp;
+        }
+
+        public struct descrInfo {
+            public Sale CurSale { get; set; }
+            public List<TbikeInfo> TbikeInfoList;
+            public float total_price { get; set; }
+        }
+        public List<TbikeInfo> getQntTBike() {
+            List<TbikeInfo> TempTbikeInfoList = new List<TbikeInfo>();
+
+            foreach (Bike bike in getBikeList()) {
+                TbikeInfo contain = new TbikeInfo();
+                contain.init = false;
+                foreach (TbikeInfo tBI in TempTbikeInfoList) {
+                    if (tBI.CurTempl == bike.getBikeTempl()) {
+                        contain = tBI;
+                    } 
+                }
+                if (contain.init) {
+                    contain.qnt++;
+                }
+                else {
+                    contain.init = true;
+                    contain.qnt = 1;
+                    contain.CurTempl = bike.getBikeTempl();
+                    TempTbikeInfoList.Add(contain);
+                }
+                
+            }
+            return TempTbikeInfoList;
+        }
+        public float getTotalPrice() {
+            float total_price = 0;
+
+            foreach (Bike bike in bikeList) {
+                float priceMul = bike.getBikeTempl().getCat().getPriceMul()/100;
+
+                foreach(KitTemplate kit in bike.getBikeTempl().getListKit()) {
+                    total_price += kit.getPrice();
+                }
+                total_price = total_price + total_price * priceMul;
+            }
+            return total_price;
+        }
+        public struct TbikeInfo {
+            public BikeTemplate CurTempl { get; set; }
+            public int qnt { get; set; }
+            public bool init { get; set; }
+        }
+
     }
 }

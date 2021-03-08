@@ -9,13 +9,12 @@ namespace BoVeloManager.Classes
     public class BikeTemplate
     {
         private readonly CatalogBike catalogBike;
-        private readonly int priceMul;
+        private readonly int price;
         private readonly int id;
         private List<KitTemplate> KitTemplList;
 
-        public BikeTemplate(int Id, CatalogBike catalogBike_, int Price ){
+        public BikeTemplate(int Id, CatalogBike catalogBike_){
             catalogBike = catalogBike_;
-            priceMul = Price;
             id = Id;
             KitTemplList = new List<KitTemplate>();
         }
@@ -24,8 +23,17 @@ namespace BoVeloManager.Classes
             return catalogBike.getName();
         }
 
-        public int getPriceMul(){
-            return priceMul;
+        public CatalogBike getCat() {
+            return catalogBike;
+        }
+        public float getPrice(){
+            float price = 0;
+            float priceMul = getCat().getPriceMul()/100;
+            foreach (KitTemplate kit in KitTemplList) {
+                price += kit.getPrice();
+            }
+            price = price + price * priceMul;
+            return price;
         }
 
         public List<KitTemplate> getListKit() {
@@ -47,7 +55,8 @@ namespace BoVeloManager.Classes
         {
             displayInfo dI = new displayInfo();
             dI.id = getId();
-            dI.priceMul = (((float)getPriceMul())/100).ToString("P");
+            dI.price = this.getPrice().ToString("P");
+            dI.priceMul = (((float)getCat().getPriceMul()) / 100).ToString("P");
             dI.name = getName();
             dI.BikeTemp = this;
             return dI;
@@ -59,6 +68,7 @@ namespace BoVeloManager.Classes
             public List<KitTemplate> KitTemplList;
             public int id { get; set; }
             public string name { get; set; }
+            public string price { get; set; }
             public string priceMul { get; set; }
         }
         

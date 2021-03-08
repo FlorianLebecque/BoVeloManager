@@ -544,7 +544,7 @@ namespace BoVeloManager.tools {
                 foreach(CatalogBike cb in cbList) {
                     if (cb.getId() == id_cat) {
 
-                        BikeTemplate bt = new BikeTemplate(id, cb, cb.getPriceMul());
+                        BikeTemplate bt = new BikeTemplate(id, cb);
 
                         string q = DatabaseQuery.gettKit(id);
                         DataTable kdt = Database.getData(q);
