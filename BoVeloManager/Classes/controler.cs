@@ -155,8 +155,6 @@ namespace BoVeloManager.Classes
                 return kitTemplateList.Select(x => x.getId()).Max();
             }
             return 0;
-
-            
         }
 
         public void createKit(KitTemplate kt) {
@@ -213,6 +211,18 @@ namespace BoVeloManager.Classes
 
         public List<CatalogBike> getCatalogBike() {
             return CatalogBikeList;
+        }
+
+        public int getlastCatalogBikeId() {
+            if (CatalogBikeList.Count > 0) {
+                return CatalogBikeList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        public void createCatalogBike(CatalogBike cb) {
+            CatalogBikeList.Add(cb);
+            DatabaseClassInterface.addCatalogBike(cb);
         }
 
     #endregion

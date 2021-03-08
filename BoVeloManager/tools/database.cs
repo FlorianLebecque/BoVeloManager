@@ -163,9 +163,9 @@ namespace BoVeloManager.tools {
         {
             return "SELECT `id`,`name`,`PriceMul` FROM `bv_catalog` WHERE `id` = " + id.ToString();
         }
-        public static string addItem(string name, int pm)
+        public static string addCatalogBike(CatalogBike cb)
         {
-            return "INSERT INTO `bv_catalog` (`name`,`PriceMul`) VALUES ('" + name + "'," + pm.ToString() + ")";
+            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`) VALUES ('" + cb.getId().ToString() + "','" + cb.getName() + "'," + cb.getPriceMul().ToString() + ")";
         }
 
         public static string updateCatalogBike(CatalogBike kt)
@@ -633,6 +633,13 @@ namespace BoVeloManager.tools {
         public static int unlinkKTCB(CatalogBike cb,KitTemplate kt) {
             string q = DatabaseQuery.delCompatibleKit(cb.getId(), kt.getId());
             return Database.setData(q);
+        }
+
+        public static int addCatalogBike(CatalogBike cb) {
+            string q = DatabaseQuery.addItem(cb);
+            return Database.setData(q);
+
+
         }
 
         #endregion

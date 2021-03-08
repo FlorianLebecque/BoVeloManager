@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Management.item
 {
@@ -30,7 +31,7 @@ namespace BoVeloManager.Management.item
             int err = 0;
             if ((itemName.Length >= 2) && (itemName != ""))
             {    //check if the itemName is 2 caracters min, and not empty
-                addItem(itemName);
+                addItem(itemName, (int)sl_pricemul.Value);
                 this.Close();
 
             }
@@ -44,22 +45,15 @@ namespace BoVeloManager.Management.item
             }
         }
 
-        private void addItem(string name)
+        private void addItem(string name,int priceMul)
         {
-            string q = tools.DatabaseQuery.addItem(name, (int)sl_pricemul.Value);
-            int res = tools.Database.setData(q);
-            if (res == -1)
-            {
-                MessageBox.Show("An error has occured");
-            }
-            else if (res == 1)
-            {
-                MessageBox.Show("Item added");
-            }
-            else
-            {
-                MessageBox.Show("The database might be corrupted");
-            }
+
+            int id = Controler.Instance.getlastCatalogBikeId();
+
+            CatalogBike cb = new CatalogBike(id,name, priceMul);
+            Controler.Instance.createCatalogBike(cb);
+
+            
         }
 
             private void BTCancel_Click(object sender, RoutedEventArgs e)
