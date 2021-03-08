@@ -636,7 +636,7 @@ namespace BoVeloManager.tools {
         }
 
         public static int addCatalogBike(CatalogBike cb) {
-            string q = DatabaseQuery.addItem(cb);
+            string q = DatabaseQuery.addCatalogBike(cb);
             return Database.setData(q);
 
 
