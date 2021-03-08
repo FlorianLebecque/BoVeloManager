@@ -28,7 +28,7 @@ namespace BoVeloManager.Sales.description
 
             InitializeComponent();
             DisplayDescription(sale);
-            DisplayBikes(sale);
+            DisplayTBikes(sale);
 
         }
 
@@ -40,72 +40,50 @@ namespace BoVeloManager.Sales.description
             enterprise.Text = sale.getClient().getEtpName();
             sale_date.Text = sale.GetSaleDisplayInfo().sale_date;
         }
-        public void DisplayBikes(Sale sale)
+        public void DisplayTBikes(Sale sale)
         {
-
-
             //Create new bike list 
-            List<Bike> bikes = sale.getBikeList();
+            List<BikeItem> bikesListItems = new List<BikeItem>();
 
-
-
-
-
-
-            float total_price = 0;
-
-
-            foreach (Bike bike in bikes)
+            var TbikeDesc = sale.GetSaleDescrInfo();
+            foreach (Sale.TbikeInfo tBike in TbikeDesc.TbikeInfoList)
             {
-                var bikeDesc = bike.GetDisplayInfo();
 
                 //Quantity of the tBike
-                int qnt = 1;
-                // id of the tBike
-                int id_tbike = bikeDesc.id;
-                float price_mul = bikeDesc.priceMul;
-                string bike_name = bikeDesc.name;
-                List<KitTemplate> kitList = bike.getBikeTempl().getListKit();
+                int qnt = tBike.qnt;
+                string bike_name = tBike.CurTempl.getName();
+                List<KitTemplate> kitList = tBike.CurTempl.getListKit();
 
                 // all tBike tKits
-                (string all_kits, float bike_price) = DisplayKits(kitList);
+                DisplayKits(kitList);
 
-                float bikes_price = bike_price * ((float)qnt/100) * ((price_mul/100)+1);
-                total_price = total_price + bikes_price;
+                string string_kits_ = tBike.CurTempl.getPropkitString();
+                float Tbike_price = tBike.CurTempl.getPrice();
 
-                string number_name = qnt.ToString() + "x " + bike_name;
-                string kit = all_kits;
-                string price = bikes_price.ToString("c2");
-
-                bikesList.ItemsSource = bikes;
+                string qnt_name_ = qnt.ToString() + "x " + bike_name;
+                string price_ = (Tbike_price/100).ToString("c2");
+                bikesListItems.Add(new BikeItem() { qnt_name = qnt_name_ , string_kits = string_kits_, price = price_ });
             }
 
-            total.Text = total_price.ToString("c2");
+            bikesList.ItemsSource = bikesListItems;
+            total.Text = (sale.getTotalPrice()/100).ToString("c2");
         }
-        public (string , int) DisplayKits(List<KitTemplate> kitList)
+        public void DisplayKits(List<KitTemplate> kitList)
         {
-
-            int kits_price = 0;
-            string all_kits = "";
-
             foreach (KitTemplate kit in kitList)
             {
                 var kitDisp = kit.GetDisplayInfo();
-                kits_price += kitDisp.priceInt;
                 string kit_name = kitDisp.name;
                 string kit_prop = kitDisp.properties;
-
-                if (kit_prop.Length == 0) {
-                    all_kits = all_kits + "● " + kit_name +"\n";
-                }
-                else {
-                    all_kits = all_kits + "● " + kit_name + " [" + kit_prop + "] \n";
-                } 
             }
-            return (all_kits, kits_price);
         }
 
+        public class BikeItem {
+            public string qnt_name { get; set; }
+            public string string_kits { get; set; }
+            public string price { get; set; }
 
+        } 
         private void BT_export_Click(object sender, RoutedEventArgs e)
         {
 

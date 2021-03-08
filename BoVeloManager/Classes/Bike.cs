@@ -12,7 +12,7 @@ namespace BoVeloManager.Classes
         private readonly int id_sale;
 
         private int status;
-        public BikeTemplate BikeTemplate;
+        private BikeTemplate BikeTemplate;
         
 
         public Bike(int status_, int id_sale_, BikeTemplate bt_) {
@@ -57,7 +57,7 @@ namespace BoVeloManager.Classes
 
             temp.name = BikeTemplate.getName();
             temp.id = BikeTemplate.getId();
-            temp.priceMul = BikeTemplate.getPriceMul();
+            temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = id_sale;
 
             return temp;
