@@ -36,8 +36,7 @@ namespace BoVeloManager.Classes
             return id;
         }
 
-        public void linkKitTemplate(KitTemplate kt)
-        {
+        public void linkKitTemplate(KitTemplate kt){
             KitTemplList.Add(kt);
         }
         public void unlinkKitTemplate(KitTemplate kt){

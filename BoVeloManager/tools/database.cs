@@ -472,7 +472,7 @@ namespace BoVeloManager.tools {
 
                 foreach(BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
-                        temp.Add(new Bike(state, id, id_sale,bt)) ;
+                        temp.Add(new Bike(state, id_sale,bt)) ;
                     }
                 }
                 
