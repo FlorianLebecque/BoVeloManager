@@ -163,11 +163,9 @@ namespace BoVeloManager.Management {
 
         private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e) {
 
-            //get witch row we clicked on
-            DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-            int id = Convert.ToInt32(dataRowView["id"]);
+            KitTemplate kt = ((KitTemplate.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).curKit;
 
-            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(id);
+            kit.modCompatibleKitWindow MCKW = new kit.modCompatibleKitWindow(kt);
 
             MCKW.ShowDialog();
 
@@ -262,9 +260,9 @@ namespace BoVeloManager.Management {
         private void bt_editCompKit_Click(object sender, RoutedEventArgs e)
         {
             //get witch row we clicked on
-            CatalogBike kt = ((CatalogBike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCatBike;
+            CatalogBike cb = ((CatalogBike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCatBike;
 
-            //item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(kt);
+            //item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(cb);
 
             //MCIW.ShowDialog();
 

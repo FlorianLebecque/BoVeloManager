@@ -27,11 +27,11 @@
 
                 <Label Margin="5 0 0 0" x:Name="lb_editCompItems">Compatible bikes :</Label>
 
-                <ListBox  x:Name="lb_selectCompIt" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0" UseLayoutRounding="False" Height="188">
+                <ListBox  x:Name="lb_selectCompBike" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0" Height="188" >
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox x:Name="cb_selCompIt" Content="{Binding Path=name}"  IsChecked="{Binding Path=itemChecked}"/>
+                            <CheckBox Content="{Binding Path=name}"   IsChecked="{Binding Path=itemChecked}" Tag="{Binding Path=id}"  />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
 

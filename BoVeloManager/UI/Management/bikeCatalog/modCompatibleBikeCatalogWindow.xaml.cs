@@ -256,7 +256,7 @@ namespace BoVeloManager.Management.item
             //get item compatible id in dt2
             //string req = tools.DatabaseQuery.getCompatibleCatId_with_KitId(kitId);
             //string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(kitId);
-            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(cat_id);
+            string req = tools.DatabaseQuery.getKit_by_catalogBikeId(cat_id);
 
             DataTable dt = tools.Database.getData(req);
 
@@ -345,7 +345,7 @@ namespace BoVeloManager.Management.item
         {
             bool linkExist = false;
             //dt has all kit id linked with the gived cat_id
-            string req = tools.DatabaseQuery.getCompatibleKitId_with_categoryId(cat_id);
+            string req = tools.DatabaseQuery.getKit_by_catalogBikeId(cat_id);
             DataTable dt = tools.Database.getData(req);
 
             foreach (DataRow r in dt.Rows)

@@ -186,7 +186,7 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = " + cat.ToString();
         }
 
-        public static string getCompatibleKitId_with_categoryId(int id_cat)
+        public static string getKit_by_catalogBikeId(int id_cat)
         {
             return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
         }
@@ -587,7 +587,7 @@ namespace BoVeloManager.tools {
 
         #region CatalogBike
 
-        public static List<CatalogBike> getCatalogBikes() {
+        public static List<CatalogBike> getCatalogBikes(List<KitTemplate> ktList) {
             string q = DatabaseQuery.getItem();
             DataTable dt = Database.getData(q);
 
@@ -598,7 +598,21 @@ namespace BoVeloManager.tools {
                 string name = (string)dt.Rows[i]["name"];
                 int PriceMul = Convert.ToInt32(dt.Rows[i]["PriceMul"]);
 
-                temp.Add(new CatalogBike(id, name, PriceMul));
+                string query = DatabaseQuery.getKit_by_catalogBikeId(id);
+                DataTable kdt = Database.getData(query);
+
+                CatalogBike cb = new CatalogBike(id, name, PriceMul);
+
+                for (int j = 0; j < kdt.Rows.Count; j++) {
+                    foreach(KitTemplate kt in ktList) {
+                        if(kt.getId() == Convert.ToInt32(kdt.Rows[j]["id_tKit"])) {
+                            cb.linkKitTemplate(kt);
+                        }
+                    }
+                }
+
+
+                temp.Add(cb);
             }
 
             return temp;
@@ -608,6 +622,16 @@ namespace BoVeloManager.tools {
 
         public static int updateCatalogBike(CatalogBike kt) {
             string q = DatabaseQuery.updateCatalogBike(kt);
+            return Database.setData(q);
+        }
+
+        public static int linkKTCB(CatalogBike cb,KitTemplate kt) {
+            string q = DatabaseQuery.addCompatibleKit(cb.getId(), kt.getId());
+            return Database.setData(q);
+        }
+
+        public static int unlinkKTCB(CatalogBike cb,KitTemplate kt) {
+            string q = DatabaseQuery.delCompatibleKit(cb.getId(), kt.getId());
             return Database.setData(q);
         }
 

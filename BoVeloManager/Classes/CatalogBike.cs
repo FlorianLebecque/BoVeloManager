@@ -10,11 +10,13 @@ namespace BoVeloManager.Classes {
         private readonly int id;
         private string name;
         private int PriceMul;
+        private List<KitTemplate> kitTemplateList;
 
         public CatalogBike(int id_,string name_,int priceMul_) {
             id = id_;
             name = name_;
             PriceMul = priceMul_;
+            kitTemplateList = new List<KitTemplate>();
         }
 
         public string getName() {
@@ -35,6 +37,18 @@ namespace BoVeloManager.Classes {
 
         public void setPriceMul(int p) {
             PriceMul = p;
+        }
+
+        public void linkKitTemplate(KitTemplate kt) {
+            kitTemplateList.Add(kt);
+        }
+
+        public void unlinkKitTemplate(KitTemplate kt) {
+            kitTemplateList.Remove(kt);
+        }
+
+        public List<KitTemplate> getKitTemplateList() {
+            return kitTemplateList;
         }
 
         public displayInfo GetDisplayInfo() {
