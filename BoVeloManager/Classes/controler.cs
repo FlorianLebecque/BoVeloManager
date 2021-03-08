@@ -23,15 +23,13 @@ namespace BoVeloManager.Classes
         
 
         private Controler(){
-            userList = DatabaseClassInterface.getUsers();
-            clientList = DatabaseClassInterface.getClients();
-            kitTemplateList = DatabaseClassInterface.getKitTemplates();
-
-            CatalogBikeList = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
-            
-            bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
-            bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
-            saleList = DatabaseClassInterface.getSales(bikeList,userList, clientList);
+            userList            = DatabaseClassInterface.getUsers();
+            clientList          = DatabaseClassInterface.getClients();
+            kitTemplateList     = DatabaseClassInterface.getKitTemplates();
+            CatalogBikeList     = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
+            bikeTemplateList    = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
+            bikeList            = DatabaseClassInterface.getBikes(bikeTemplateList);
+            saleList            = DatabaseClassInterface.getSales(bikeList,userList, clientList);
         }
 
         public static Controler Instance {
@@ -168,7 +166,7 @@ namespace BoVeloManager.Classes
 
     #endregion
 
-        #region Bike
+    #region Bike
         public List<Bike.displayInfo> GetBikeDisplayInfo()
         {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
@@ -195,7 +193,7 @@ namespace BoVeloManager.Classes
             return null;
         }
 
-        #endregion
+    #endregion
 
     #region CatalogBike
 
