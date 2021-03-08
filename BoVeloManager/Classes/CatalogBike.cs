@@ -41,10 +41,12 @@ namespace BoVeloManager.Classes {
 
         public void linkKitTemplate(KitTemplate kt) {
             kitTemplateList.Add(kt);
+            
         }
 
         public void unlinkKitTemplate(KitTemplate kt) {
             kitTemplateList.Remove(kt);
+            
         }
 
         public List<KitTemplate> getKitTemplateList() {

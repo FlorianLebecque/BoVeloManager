@@ -56,7 +56,6 @@ namespace BoVeloManager.Management.kit
                     if (!cb.getKitTemplateList().Contains(kt)) {
                         cb.linkKitTemplate(kt);
                         tools.DatabaseClassInterface.linkKTCB(cb, kt);
-
                     }
 
                 } else {                        //we don't want the kit
