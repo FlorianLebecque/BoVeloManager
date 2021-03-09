@@ -369,10 +369,12 @@
     <Folder Include="public\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Untitled.png" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
     <Resource Include="UI\Catalogue\Bike2.jpg" />
     <Resource Include="Untitled.ico" />
+    <None Include="bin\Untitled.jpg" />
     <Content Include="sql2_freemysqlhosting_net.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,7 +16,7 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using System.Drawing.Imaging;
 
 namespace BoVeloManager.tools {
     class ExportPdf 
@@ -27,6 +27,8 @@ namespace BoVeloManager.tools {
 
             SaveFileDialog SFD = new SaveFileDialog();
             SFD.ShowDialog();
+
+            
 
             dest = SFD.FileName;
 
@@ -40,7 +42,7 @@ namespace BoVeloManager.tools {
 
 
 
-            PdfDocument pdfDoc = new PdfDocument(new PdfWriter(@"..//Sale_pdf.pdf"));
+            PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
             Document doc = new Document(pdfDoc);
 
             var saleDesc = sale.GetSaleDisplayInfo();
@@ -48,12 +50,22 @@ namespace BoVeloManager.tools {
             Table Headertable = new Table(2, false)
                 .UseAllAvailableWidth();
             // Adding picture 
-
+            /*
             Image img = new Image(ImageDataFactory
             .Create(@"..\Untitled.jpg"))
                 .SetHeight(80)
                 .SetWidth(80)
             .SetTextAlignment(TextAlignment.LEFT);
+            */
+
+            MemoryStream ms = new MemoryStream();
+            Properties.Resources.Icon_pdf.Save(ms, ImageFormat.Jpeg);
+            byte[] bmpBytes = ms.ToArray();
+
+            ImageData imgD = ImageDataFactory.Create(bmpBytes);
+            Image img = new Image(imgD);
+            img.SetHeight(80);
+            img.SetWidth(80);
 
             // Adding sale infos 
 
