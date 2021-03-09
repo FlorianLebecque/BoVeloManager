@@ -365,7 +365,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="public\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
