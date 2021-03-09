@@ -38,6 +38,9 @@
                             <ComboBoxItem>2</ComboBoxItem>
                             <ComboBoxItem>3</ComboBoxItem>
                         </ComboBox>
+                        <Button  Margin="30 0 0 0" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Add"/>
+                        </Button>
                     </StackPanel>
 
 
