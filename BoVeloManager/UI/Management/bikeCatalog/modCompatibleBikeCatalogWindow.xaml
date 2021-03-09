@@ -23,7 +23,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="lb_kitName" Grid.Column="0">Item name:</Label>
-                        <TextBlock x:Name="tb_kitName" Padding="2" Grid.Column="1" Text="ITEM_NAME"></TextBlock>
+                        <TextBlock x:Name="tb_BikeName" Padding="2" Grid.Column="1" Text="ITEM_NAME"></TextBlock>
                     </Grid>
 
                     <Grid  Margin="5 10 5 0">
@@ -41,22 +41,21 @@
 
                 </StackPanel>
 
-                <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5.333,46.333" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" EnableRowVirtualization="False">
+                <DataGrid Name="dg_selCompatibleKit" Margin="5,73,5,45" Grid.Column="0" Grid.Row="0" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5" EnableRowVirtualization="False">
                     <DataGrid.Columns>
 
                         <DataGridTemplateColumn Width="*" Header="Select kit">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox x:Name="check_tutar"  VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsChecked="{Binding Path='itemChecked'}"  Checked="check_tutar_Checked" Unchecked="check_tutar_Unchecked"></CheckBox>
+                                    <CheckBox x:Name="check_tutar"  VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsChecked="{Binding Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=itemChecked}" ></CheckBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                         <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
                         <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='cat'}" IsReadOnly="True" />
-                        <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
-                        <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='Price'}" IsReadOnly="True" />
+                        <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='prop'}" IsReadOnly="True" />
+                        <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
 
                     </DataGrid.Columns>
                 </DataGrid>

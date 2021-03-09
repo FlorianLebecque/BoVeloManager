@@ -1,0 +1,147 @@
+﻿<Page x:Class="BoVeloManager.UI.Planning.Planning"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BoVeloManager.UI.Planning"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="Planning" Background="White" Foreground="Black">
+
+    <Grid>
+
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
+
+            <TabItem Header="Planning">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_lastWeek" VerticalAlignment="Center" Margin=" 10 12" Click="bt_lastWeek_Click">
+                            <materialDesign:PackIcon Kind="ArrowLeft"/>
+                        </Button>
+                        <TextBlock x:Name="lb_nbrWeek" VerticalAlignment="Center">5</TextBlock>
+                        <Button x:Name="bt_nextWeek" VerticalAlignment="Center" Margin=" 10 12" Click="bt_nextWeek_Click">
+                            <materialDesign:PackIcon Kind="ArrowRight"/>
+                        </Button>
+                        <TextBlock VerticalAlignment="Center" Text="Poste :"></TextBlock>
+                        <ComboBox Width="40" Margin="10 12" SelectedIndex="0" VerticalAlignment="Center">
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+
+                    <!-- Data Grid Sales  -->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0 0 1 0">
+                            <Grid>
+                                <TextBlock  Margin="5" HorizontalAlignment="Center">Monday</TextBlock>
+                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding Name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding Date}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding Status}">Status : waiting</TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Margin="0 5 0 0" HorizontalAlignment="Left" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Done"/>
+                                                        </Button>
+                                                        <Button Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Right" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Eye"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
+
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0 0 1 0">
+                            <Grid>
+                                <TextBlock  Margin="5" HorizontalAlignment="Center">Tuesday</TextBlock>
+                                <ListView x:Name="lv_tuesday" AllowDrop="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>hello</TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0 0 1 0">
+                            <Grid>
+                                <TextBlock  Margin="5" HorizontalAlignment="Center">Wednesday</TextBlock>
+                                <ListView x:Name="lv_wednesday">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>hello</TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0 0 1 0">
+                            <Grid>
+                                <TextBlock  Margin="5" HorizontalAlignment="Center">Thursday</TextBlock>
+                                <ListView x:Name="lv_thursday">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>hello</TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="5" BorderBrush="Black" BorderThickness="0 0 0 0">
+                            <Grid>
+                                <TextBlock  Margin="5" HorizontalAlignment="Center">Friday</TextBlock>
+                                <ListView x:Name="lv_friday">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>hello</TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            
+        </dragablz:TabablzControl>
+
+    </Grid>
+</Page>
