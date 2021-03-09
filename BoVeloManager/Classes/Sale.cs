@@ -14,8 +14,7 @@ namespace BoVeloManager.Classes {
         private string state;
         private User seller;
         private Client client;
-        private List<Bike> bikeList;
-        
+        private List<Bike> bikeList;        
 
         public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList, List<Client> clientList) {
             id = id_;

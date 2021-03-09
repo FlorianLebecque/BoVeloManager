@@ -22,7 +22,7 @@
             </Button>
         </Grid>
 
-        <ListView SelectionMode="Single" Name="CatalogListView">
+        <ListView SelectionMode="Single" Name="CatalogListView" ScrollViewer.CanContentScroll="False">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -34,20 +34,20 @@
                 <DataTemplate>
                     
                     <Grid Width="300" Height="430">
-                        <Image Source="{Binding pic}" Stretch="UniformToFill" Margin="0,0,0,130"/>
+                        <Image Source="{Binding Path=pic}" Stretch="UniformToFill" Margin="0,0,0,130"/>
 
                         <StackPanel Height="125" VerticalAlignment="Bottom">
-                            <TextBlock Text="{Binding name}" Margin="10 5 10 0" Foreground="Black"/>
+                            <TextBlock Text="{Binding Path=name}" Margin="10 5 10 0" Foreground="Black"/>
 
-                            <ComboBox Name="citySize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                            <ComboBox Name="cityColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                            <ComboBox ItemsSource="{Binding Path=sizeList}" SelectedItem="{Binding Path=size}" Margin="10 5 10 0" Foreground="Black"/>
+                            <ComboBox ItemsSource="{Binding Path=colorList}" SelectedItem="{Binding Path=color}" Margin="10 5 10 0" Foreground="Black"/>
 
                             <Grid Margin="10 5 10 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"/>
+                                <TextBox Text="{Binding Path=qnt}" Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"/>
                                 <Button Grid.Column="1" Click="Add_Bike_Click" >
                                     <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
                                 </Button>

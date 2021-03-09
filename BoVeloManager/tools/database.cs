@@ -170,7 +170,7 @@ namespace BoVeloManager.tools {
         }
         public static string addCatalogBike(CatalogBike cb)
         {
-            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`) VALUES ('" + cb.getId().ToString() + "','" + cb.getName() + "'," + cb.getPriceMul().ToString() + ")";
+            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`,`picture`) VALUES (" + cb.getId().ToString() + ",'" + cb.getName() + "'," + cb.getPriceMul().ToString() + ", 'Bike0.jpg')";
         }
 
         public static string updateCatalogBike(CatalogBike kt)

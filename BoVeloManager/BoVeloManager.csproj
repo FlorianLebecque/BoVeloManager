@@ -369,6 +369,7 @@
     <Folder Include="public\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="UI\Catalogue\Bike0.jpg" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
     <Resource Include="UI\Catalogue\Bike2.jpg" />

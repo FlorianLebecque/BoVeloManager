@@ -42,7 +42,13 @@ namespace BoVeloManager.Catalogue {
 
         private void Add_Bike_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Bike not yet added");
+            BikeCat b = ((BikeCat)((System.Windows.Controls.Button)e.Source).DataContext);
+
+            string size = b.size;
+            string color = b.color;
+            int qnt = b.qnt;
+                        
+            //BikeTemplate temp = new BikeTemplate();
         }
 
         private void DisplayCatalogue()
@@ -78,15 +84,15 @@ namespace BoVeloManager.Catalogue {
                     KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
                     if (kit_struct.category == "Color")
                     {
-                        sizeList_.Add(kit_struct.name);
+                        colorList_.Add(kit_struct.name);
                     }
                     else if (kit_struct.category == "Size")
                     {
-                        colorList_.Add(kit_struct.name);
+                        sizeList_.Add(kit_struct.name);
                     }
-                }                
+                }
 
-                System.Drawing.Image pic_ = temp.pic;
+                string pic_ = temp.pic;
 
                 BikeCatList.Add(new BikeCat() { name = name_, colorList = colorList_, sizeList = sizeList_, pic = pic_});
             }
@@ -109,36 +115,13 @@ namespace BoVeloManager.Catalogue {
 
         public class BikeCat
         {
-            public System.Drawing.Image pic { get; set; }
+            public string pic { get; set; }
             public string name { get; set; }
             public List<string> sizeList { get; set; }
             public List<string> colorList { get; set; }
-        }
-
-        private void BindComboBox()
-        {
-            List<string> Size = new List<string>();
-            List<string> Color = new List<string>();
-
-            List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
-
-            foreach (KitTemplate kit in KitList)
-            {
-                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
-                string kit_cat = kit_struct.category;
-
-                if (kit_cat == "Size")
-                {
-                    Size.Add(kit_struct.name);
-                }
-                else if (kit_cat == "Color")
-                {
-                    Color.Add(kit_struct.name);
-                }
-            }
-
-
-            
+            public string size { get; set; }
+            public string color { get; set; }
+            public int qnt { get; set; }
         }
     }
 }
