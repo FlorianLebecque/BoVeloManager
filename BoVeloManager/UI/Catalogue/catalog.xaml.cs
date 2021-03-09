@@ -23,10 +23,7 @@ namespace BoVeloManager.Catalogue {
     public partial class Catalog : Page {
         public Catalog() {
             InitializeComponent();
-
             DisplayCatalogue();
-
-            //BindComboBox();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -43,12 +40,49 @@ namespace BoVeloManager.Catalogue {
         private void Add_Bike_Click(object sender, RoutedEventArgs e)
         {
             BikeCat b = ((BikeCat)((System.Windows.Controls.Button)e.Source).DataContext);
+            
+            //List<KitTemplate> temp = new List<KitTemplate>();
 
-            string size = b.size;
-            string color = b.color;
+            string cb = b.name;
+            string s = b.size;
+            string c = b.color;
             int qnt = b.qnt;
-                        
-            //BikeTemplate temp = new BikeTemplate();
+
+            KitTemplate size;
+            KitTemplate color;
+            CatalogBike catBike;
+
+            foreach (KitTemplate kit in Controler.Instance.getKitTemplateList())
+            {
+                if (kit.getName() == s)
+                {
+                    size = kit;
+                }
+                if (kit.getName() == c)
+                {
+                    color = kit;
+                }
+            }
+
+            foreach (CatalogBike cbike in Controler.Instance.getCatalogBike())
+            {
+                if (cbike.getName() == cb)
+                {
+                    catBike = cbike;
+                }
+                else
+                {
+                    catBike = cbike;
+                }
+            }
+
+            int biketemplateId = Controler.Instance.getLastBikeTemplateId() + 1;
+
+            BikeTemplate temp = new BikeTemplate(biketemplateId, catBike);
+
+            //Controler.Instance.setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List < Bike > bikeList_, List < User > userList, List < Client > clientList);
+
+            MessageBox.Show("Item added to basket");
         }
 
         private void DisplayCatalogue()

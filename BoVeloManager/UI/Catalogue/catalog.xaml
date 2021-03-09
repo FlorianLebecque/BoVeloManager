@@ -17,9 +17,6 @@
             <Button Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right">
                 <materialDesign:PackIcon Kind="Cart" Height="20" Width="20"/>
             </Button>
-            <Button Height="30" Width="60" Margin="10,5,12,5" Name="Add_tBike" Click="Add_tBike_Click" HorizontalAlignment="Left">
-                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20"/>
-            </Button>
         </Grid>
 
         <ListView SelectionMode="Single" Name="CatalogListView" ScrollViewer.CanContentScroll="False">

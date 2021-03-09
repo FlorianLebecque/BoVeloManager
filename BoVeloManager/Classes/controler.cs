@@ -21,6 +21,7 @@ namespace BoVeloManager.Classes
         private List<BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
+        private Sale CurrentSale;
         
 
         private Controler(){
@@ -134,6 +135,16 @@ namespace BoVeloManager.Classes
             }
             return temp;
         }
+
+        public Sale getCurrentSale()
+        {
+            return CurrentSale;
+        }
+        public void setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList_, List<Client> clientList_)
+        {
+            CurrentSale = new Sale(id_, id_seller, id_client, state_, sale_date_, prevision_date_, bikeList_, userList_, clientList_);
+        }
+        
     #endregion
 
     #region KitTemplate
@@ -193,6 +204,15 @@ namespace BoVeloManager.Classes
         }
         return null;
     }
+
+        public int getLastBikeTemplateId()
+        {
+            if (bikeTemplateList.Count > 0)
+            {
+                return bikeTemplateList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
 
         public static int getNBRWeek(DateTime dt) {
             return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
