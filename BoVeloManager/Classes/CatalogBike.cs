@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace BoVeloManager.Classes {
     public class CatalogBike {
@@ -10,13 +11,15 @@ namespace BoVeloManager.Classes {
         private readonly int id;
         private string name;
         private int PriceMul;
+        private Image pic;
         private List<KitTemplate> kitTemplateList;
-        
+               
 
-        public CatalogBike(int id_,string name_,int priceMul_) {
+        public CatalogBike(int id_,string name_,int priceMul_, string pic_filename) {
             id = id_;
             name = name_;
             PriceMul = priceMul_;
+            pic = Image.FromFile(pic_filename);
             kitTemplateList = new List<KitTemplate>();
         }
 
@@ -62,6 +65,7 @@ namespace BoVeloManager.Classes {
             temp.name = this.getName();
             temp.PriceMul = (((float)PriceMul)/100).ToString("p");
             temp.id = this.getId();
+            temp.pic = this.pic;
 
             temp.kitTemplates = this.getKitTemplateList();
 
@@ -73,6 +77,7 @@ namespace BoVeloManager.Classes {
             public string name { get; set; }
             public string PriceMul { get; set; }
             public int id { get; set; }
+            public Image pic { get; set; }
             public List<KitTemplate> kitTemplates { get; set; }
             public List<string> colorKit { get; set; }
             public List<string> sizeKit { get; set; }

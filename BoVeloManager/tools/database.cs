@@ -599,11 +599,12 @@ namespace BoVeloManager.tools {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
                 string name = (string)dt.Rows[i]["name"];
                 int PriceMul = Convert.ToInt32(dt.Rows[i]["PriceMul"]);
+                string pic_filename = (string)dt.Rows[i]["picture"];
 
                 string query = DatabaseQuery.getKit_by_catalogBikeId(id);
                 DataTable kdt = Database.getData(query);
 
-                CatalogBike cb = new CatalogBike(id, name, PriceMul);
+                CatalogBike cb = new CatalogBike(id, name, PriceMul, pic_filename);
 
                 for (int j = 0; j < kdt.Rows.Count; j++) {
                     foreach(KitTemplate kt in ktList) {

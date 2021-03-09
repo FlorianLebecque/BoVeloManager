@@ -49,11 +49,11 @@ namespace BoVeloManager.Management.item
         {
 
             int id = Controler.Instance.getlastCatalogBikeId();
+            string pic_filename = "Bike0.jpg";
 
-            CatalogBike cb = new CatalogBike(id,name, priceMul);
+            CatalogBike cb = new CatalogBike(id,name, priceMul, pic_filename);
             Controler.Instance.createCatalogBike(cb);
-
-            
+                        
         }
 
             private void BTCancel_Click(object sender, RoutedEventArgs e)
