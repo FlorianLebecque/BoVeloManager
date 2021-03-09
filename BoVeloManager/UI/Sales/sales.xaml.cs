@@ -24,9 +24,11 @@ namespace BoVeloManager.Sales
     public partial class Sales : Page
     {
 
+        private static Sales instance = new Sales();
+
         Controler crtl;
 
-        public Sales()
+        private Sales()
         {
             InitializeComponent();
 
@@ -36,6 +38,13 @@ namespace BoVeloManager.Sales
             update_dg_clientList();
 
         }
+
+        public static Sales Instance {
+            get {
+                return instance;
+            }
+        }
+
 
         private void update_dg_salesList()
         {

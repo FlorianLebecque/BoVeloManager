@@ -22,10 +22,11 @@ namespace BoVeloManager.Management {
     /// </summary>
     public partial class Management : Page {
 
+        private static Management instance = new Management();
+        
         bool init = false;
 
-
-        public Management() {
+        private Management() {
             InitializeComponent();
             init = true;
 
@@ -35,6 +36,12 @@ namespace BoVeloManager.Management {
             set_cbtype3_content();
             cb_type3.SelectedIndex = 0;
             update_dg_kitList();
+        }
+
+        public static Management Instance {
+            get {
+                return instance;
+            }
         }
 
         /*

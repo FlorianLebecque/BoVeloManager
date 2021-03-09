@@ -81,24 +81,26 @@
                             <TextBlock Text="Sales" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <!--
                     <ListViewItem Tag="Stock" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Archive" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Stock" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                     <ListViewItem Tag="Planning" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Calendar" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Planning" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <!--
                     <ListViewItem Tag="Command" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Truck" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Commande" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem> -->
                     <ListViewItem Name="ManagementBtn" Tag="Management" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="10"/>

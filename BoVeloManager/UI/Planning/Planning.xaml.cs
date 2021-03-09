@@ -21,17 +21,24 @@ namespace BoVeloManager.UI.Planning {
     /// </summary>
     public partial class Planning : Page {
 
+        private static Planning instance = new Planning();
 
         private int nbrWeek;
         private bool has_init = false;
 
-        public Planning() {
+        private Planning() {
             InitializeComponent();
             has_init = true;
 
             nbrWeek = Controler.getNBRWeek(DateTime.Now);
 
             init();
+        }
+
+        public static Planning Instance {
+            get {
+                return instance;
+            }
         }
 
         private void init() {

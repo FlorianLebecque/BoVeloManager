@@ -9,7 +9,6 @@ namespace BoVeloManager.Classes
     public class BikeTemplate
     {
         private readonly CatalogBike catalogBike;
-        private readonly int price;
         private readonly int id;
         private List<KitTemplate> KitTemplList;
 

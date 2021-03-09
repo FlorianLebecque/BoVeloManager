@@ -35,7 +35,7 @@ namespace BoVeloManager {
             }
 
 
-            frame.Content = new Catalogue.Catalog();
+            frame.Content = Catalogue.Catalog.Instance;
 
             //status bar log
             lb_user.Text = crtl.getCurrentUser().getName(); 
@@ -77,7 +77,7 @@ namespace BoVeloManager {
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Tag.ToString()) {
                 case "Catalog":
-                    frame.Content = new Catalogue.Catalog();
+                    frame.Content = Catalogue.Catalog.Instance;
                     break;
                 case "Command":
                     frame.Content = new Commande.Commande();
@@ -86,13 +86,13 @@ namespace BoVeloManager {
                     frame.Content = new stock.stock();
                     break;
                 case "Planning":
-                    frame.Content = new UI.Planning.Planning();
+                    frame.Content = UI.Planning.Planning.Instance;
                     break;
                 case "Management":
-                    frame.Content = new Management.Management();
+                    frame.Content = Management.Management.Instance;
                     break;
                 case "Sales":
-                    frame.Content = new Sales.Sales();
+                    frame.Content = Sales.Sales.Instance;
                     break;
 
             }

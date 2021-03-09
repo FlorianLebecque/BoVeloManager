@@ -20,10 +20,19 @@ namespace BoVeloManager.Catalogue {
     /// Interaction logic for Page1.xaml
     /// </summary>
     public partial class Catalog : Page {
-        public Catalog() {
+
+        private static Catalog instance = new Catalog();
+
+        private Catalog() {
             InitializeComponent();
 
             BindComboBox();
+        }
+
+        public static Catalog Instance {
+            get {
+                return instance;
+            }
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

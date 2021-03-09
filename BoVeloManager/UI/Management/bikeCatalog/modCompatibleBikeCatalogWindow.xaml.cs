@@ -30,10 +30,7 @@ namespace BoVeloManager.Management.item
         private List<int> updateRequestList = new List<int>{} ;
         private List<string> updateRequestList_add_or_del = new List<string> { };
 
-
-        DataTable dt_item;
-        public modCompatibleItemWindow(CatalogBike bc_)
-        {
+        public modCompatibleItemWindow(CatalogBike bc_){
             InitializeComponent();
 
             // initialise the windows
