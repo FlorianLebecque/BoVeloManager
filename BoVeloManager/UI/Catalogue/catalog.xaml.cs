@@ -54,7 +54,7 @@ namespace BoVeloManager.Catalogue {
             {
                 #region TEST
                 /*
-                string name_ = "hello";
+                //string name_ = "hello";
                 List<string> colorList_ = new List<string>();
                 List<string> sizeList_ = new List<string>();
 
@@ -65,6 +65,26 @@ namespace BoVeloManager.Catalogue {
                 sizeList_.Add("XS");
                 */
                 #endregion 
+
+                string name_ = temp.name;
+
+                // Sorte kitTemplate
+                List<KitTemplate> kitList = temp.kitTemplates;
+                List<string> sizeList_ = new List<string>();
+                List<string> colorList_ = new List<string>();
+
+                foreach (KitTemplate kit in kitList)
+                {
+                    KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                    if (kit_struct.category == "Color")
+                    {
+                        sizeList_.Add(kit_struct.name);
+                    }
+                    else if (kit_struct.category == "Size")
+                    {
+                        colorList_.Add(kit_struct.name);
+                    }
+                }                
 
                 System.Drawing.Image pic_ = temp.pic;
 
@@ -85,6 +105,7 @@ namespace BoVeloManager.Catalogue {
 
             CatalogListView.ItemsSource = BikeCatList;
         }
+       
 
         public class BikeCat
         {
