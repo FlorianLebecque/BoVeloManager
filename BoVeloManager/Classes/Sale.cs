@@ -65,9 +65,10 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime getPreSaleDate() {
-            List<DateTime> PreList = new List<DateTime>();
+            /*List<DateTime> PreList = new List<DateTime>();
             foreach 
-            return prevision_date;
+            return prevision_date;*/
+            return DateTime.Now;
         }
 
         public List<Bike> getBikeList() {

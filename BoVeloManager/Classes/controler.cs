@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -193,13 +194,18 @@ namespace BoVeloManager.Classes
             return null;
         }
 
+        public static int getNBRWeek(DateTime dt) {
+            return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
+        }
+
         public List<Bike.displayInfo> GetBikeDisplayInfo_byWeek(int week) {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
             foreach(Bike b in bikeList) {
-
+                if(getNBRWeek(b.getConstructDate()) == week) {
+                    temp.Add(b.GetDisplayInfo());
+                }
             }
-
 
             return temp;
         }

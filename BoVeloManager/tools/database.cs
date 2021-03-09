@@ -477,7 +477,18 @@ namespace BoVeloManager.tools {
                 int id_tBike = Convert.ToInt32(dt.Rows[i]["id_tBike"]);
                 int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
-                DateTime Constr_date = DateTime.Parse((string)dt.Rows[i]["planne_cDate"]);
+
+                string date = (string)dt.Rows[i]["planne_cDate"];   //yyyy-mm-dd
+
+                string[] date_a = date.Split('-');
+                int[] date_i = new int[3];
+
+                date_i[0] = Convert.ToInt32(date_a[0]);
+                date_i[1] = Convert.ToInt32(date_a[1]);
+                date_i[2] = Convert.ToInt32(date_a[2]);
+
+
+                DateTime Constr_date = new DateTime(date_i[0],date_i[1],date_i[2]);
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
