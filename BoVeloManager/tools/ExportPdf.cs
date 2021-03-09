@@ -21,26 +21,29 @@ using System.Drawing.Imaging;
 namespace BoVeloManager.tools {
     class ExportPdf 
         {
-        private string dest;
-        public ExportPdf(string dest_) {
-            dest = dest_;
+        
+
+        public static void ManipulatePdf(Sale sale) {
+
+            string dest;
 
             SaveFileDialog SFD = new SaveFileDialog();
-            SFD.ShowDialog();
+            SFD.Filter = "Pdf Files|*.pdf";
 
-            
+            DialogResult DR = SFD.ShowDialog();
 
-            dest = SFD.FileName;
+            if (DR == DialogResult.OK) {
+
+                dest = SFD.FileName;
+
+            } else if(DR == DialogResult.Cancel){
+                return;
+            } else {
+                return;
+            }
 
             FileInfo file = new FileInfo(dest);
-            
-
             file.Directory.Create();
-        }
-
-        public void ManipulatePdf(Sale sale) {
-
-
 
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
             Document doc = new Document(pdfDoc);
@@ -49,33 +52,28 @@ namespace BoVeloManager.tools {
 
             Table Headertable = new Table(2, false)
                 .UseAllAvailableWidth();
-            // Adding picture 
-            /*
-            Image img = new Image(ImageDataFactory
-            .Create(@"..\Untitled.jpg"))
-                .SetHeight(80)
-                .SetWidth(80)
-            .SetTextAlignment(TextAlignment.LEFT);
-            */
 
+            // Adding picture 
             MemoryStream ms = new MemoryStream();
             Properties.Resources.Icon_pdf.Save(ms, ImageFormat.Jpeg);
             byte[] bmpBytes = ms.ToArray();
-
             ImageData imgD = ImageDataFactory.Create(bmpBytes);
             Image img = new Image(imgD);
             img.SetHeight(80);
             img.SetWidth(80);
 
+
             // Adding sale infos 
 
-            Paragraph info = new Paragraph("Seller :  " + saleDesc.seller.getName()+"\n"+ "Client :  " + saleDesc.client_name + "\n" + "Enterprise name :  " + saleDesc.client.getEtpName() + "\n" + "Enterprise adress :  " + saleDesc.client.getEtpAdress())
+            Paragraph info = new Paragraph("Seller :  " + saleDesc.seller.getName() + "\n" + "Client :  " + saleDesc.client_name + "\n" + "Enterprise name :  " + saleDesc.client.getEtpName() + "\n" + "Enterprise adress :  " + saleDesc.client.getEtpAdress())
                 .SetBorder(new SolidBorder(1))
-                .SetFontSize(13);
+                .SetFontSize(13)
+                .SetPaddingLeft(5);
+
 
             Cell cell_img = new Cell(1, 1)
                .SetTextAlignment(TextAlignment.LEFT)
-               .SetWidth(80)
+               .SetWidth(81)
                .Add(img);
 
             Cell cell_parag = new Cell(1, 1)

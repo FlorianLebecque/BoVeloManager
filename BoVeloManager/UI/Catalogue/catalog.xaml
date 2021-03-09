@@ -22,7 +22,7 @@
             </Button>
         </Grid>
 
-        <ListView SelectionMode="Single" >
+        <ListView ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled"  SelectionMode="Single" >
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
