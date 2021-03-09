@@ -154,7 +154,7 @@ namespace BoVeloManager.Classes {
             return total_price;
         }
 
-        public struct TbikeInfo {
+        public class TbikeInfo {
             public BikeTemplate CurTempl { get; set; }
             public int qnt { get; set; }
             public bool init { get; set; }

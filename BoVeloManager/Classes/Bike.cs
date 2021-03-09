@@ -94,12 +94,12 @@ namespace BoVeloManager.Classes
             temp.state = state;
 
             temp.name = BikeTemplate.getName();
-            temp.id = BikeTemplate.getId();
+            temp.id = getId();
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = this.getSaleId();
             temp.ConstDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
             temp.price = this.getPrice().ToString("c2");
-
+            temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
             return temp;
         }
 
@@ -112,6 +112,7 @@ namespace BoVeloManager.Classes
             public string name { get; set; }
             public int priceMul { get; set; }
             public int id_sale { get; set; }
+            public string title { get; set; }
         }
 
     }

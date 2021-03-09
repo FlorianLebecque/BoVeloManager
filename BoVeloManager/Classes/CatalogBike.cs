@@ -19,7 +19,7 @@ namespace BoVeloManager.Classes {
             id = id_;
             name = name_;
             PriceMul = priceMul_;
-            pic = Image.FromFile(pic_filename);
+            //pic = Image.FromFile(pic_filename);
             kitTemplateList = new List<KitTemplate>();
         }
 
