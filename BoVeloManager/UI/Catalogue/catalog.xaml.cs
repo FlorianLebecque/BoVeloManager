@@ -43,6 +43,8 @@ namespace BoVeloManager.Catalogue {
 
         private void LinkComboBox()
         {
+            
+
             List<string> temp = new List<string>();
             temp.Add("Item 1");
             temp.Add("Item 2");
@@ -59,11 +61,6 @@ namespace BoVeloManager.Catalogue {
 
             newBikeSize.ItemsSource = temp;
             newBikeColor.ItemsSource = temp;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
