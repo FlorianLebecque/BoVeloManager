@@ -193,9 +193,20 @@ namespace BoVeloManager.Classes
             return null;
         }
 
+        public List<Bike.displayInfo> GetBikeDisplayInfo_byWeek(int week) {
+            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
+
+            foreach(Bike b in bikeList) {
+
+            }
+
+
+            return temp;
+        }
+
     #endregion
 
-    #region CatalogBike
+        #region CatalogBike
 
         public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
             List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();

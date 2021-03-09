@@ -50,8 +50,8 @@ namespace BoVeloManager.Sales
             DW.Show();
         }
 
-        private void update_dg_clientList()
-        {
+        private void update_dg_clientList() {
+            dg_clientList.ItemsSource = null;
             dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
         }
 
@@ -64,7 +64,7 @@ namespace BoVeloManager.Sales
         }
 
         private void bt_editClient_Click(object sender, RoutedEventArgs e){
-            
+
         }
 
         private void bt_addSale_Click(object sender, RoutedEventArgs e)
