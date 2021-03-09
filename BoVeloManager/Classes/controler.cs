@@ -168,34 +168,34 @@ namespace BoVeloManager.Classes
 
     #endregion
 
-        #region Bike
-        public List<Bike.displayInfo> GetBikeDisplayInfo()
+    #region Bike
+    public List<Bike.displayInfo> GetBikeDisplayInfo()
+    {
+        List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
+
+        foreach (Bike b in bikeList)
         {
-            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
-            foreach (Bike b in bikeList)
-            {
-
-                temp.Add(b.GetDisplayInfo());
-            }
-            return temp;
+            temp.Add(b.GetDisplayInfo());
         }
+        return temp;
+    }
 
-        public BikeTemplate getBikeTemplateById(int id_tBike)
+    public BikeTemplate getBikeTemplateById(int id_tBike)
+    {
+        foreach (BikeTemplate bt in bikeTemplateList)
         {
-            foreach (BikeTemplate bt in bikeTemplateList)
-            {
 
-                if (bt.getId() == id_tBike)
-                {
-                    return bt;
-                }
+            if (bt.getId() == id_tBike)
+            {
+                return bt;
+            }
                
-            }
-            return null;
         }
+        return null;
+    }
 
-        #endregion
+    #endregion
 
     #region CatalogBike
 

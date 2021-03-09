@@ -43,24 +43,37 @@ namespace BoVeloManager.Catalogue {
 
         private void LinkComboBox()
         {
-            
+            List<string> Size = new List<string>();
+            List<string> Color = new List<string>();
 
-            List<string> temp = new List<string>();
-            temp.Add("Item 1");
-            temp.Add("Item 2");
-            temp.Add("Item 3");
+            List<Classes.KitTemplate> KitList = Classes.Controler.Instance.getKitTemplateList();
 
-            citySize.ItemsSource = temp;
-            cityColor.ItemsSource = temp;
+            foreach (Classes.KitTemplate kit in KitList)
+            {
+                Classes.KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                string kit_cat = kit_struct.category;
 
-            exploraterSize.ItemsSource = temp;
-            exploraterColor.ItemsSource = temp;
+                if (kit_cat == "Size")
+                {
+                    Size.Add(kit_struct.name);
+                }
+                else if (kit_cat == "Color")
+                {
+                    Color.Add(kit_struct.name);
+                }
+            }
 
-            allTerrainSize.ItemsSource = temp;
-            allTerrainColor.ItemsSource = temp;
+            citySize.ItemsSource = Size;
+            cityColor.ItemsSource = Color;
 
-            newBikeSize.ItemsSource = temp;
-            newBikeColor.ItemsSource = temp;
+            exploraterSize.ItemsSource = Size;
+            exploraterColor.ItemsSource = Color;
+
+            allTerrainSize.ItemsSource = Size;
+            allTerrainColor.ItemsSource = Color;
+
+            newBikeSize.ItemsSource = Size;
+            newBikeColor.ItemsSource = Color;
         }
     }
 }
