@@ -87,7 +87,9 @@ namespace BoVeloManager.Sales.description
         } 
         private void BT_export_Click(object sender, RoutedEventArgs e)
         {
-            ExportPdf expPdf = new ExportPdf();
+            ExportPdf expPdf = new ExportPdf(@"C:\Users\vicoj\OneDrive\Bureau\exemple.pdf");
+
+            expPdf.ManipulatePdf(sale) ;
         }
         private void BT_close_Click(object sender, RoutedEventArgs e)
         {
