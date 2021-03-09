@@ -111,7 +111,7 @@ namespace BoVeloManager.Catalogue {
 
             CatalogListView.ItemsSource = BikeCatList;
         }
-       
+        
 
         public class BikeCat
         {
