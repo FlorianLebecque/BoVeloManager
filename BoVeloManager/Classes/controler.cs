@@ -168,7 +168,7 @@ namespace BoVeloManager.Classes
 
     #endregion
 
-        #region Bike
+    #region Bike
         public List<Bike.displayInfo> GetBikeDisplayInfo()
         {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
