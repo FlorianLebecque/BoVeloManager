@@ -11,6 +11,7 @@ namespace BoVeloManager.Classes {
         private string name;
         private int PriceMul;
         private List<KitTemplate> kitTemplateList;
+        
 
         public CatalogBike(int id_,string name_,int priceMul_) {
             id = id_;

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Catalogue {
     /// <summary>
@@ -22,7 +23,7 @@ namespace BoVeloManager.Catalogue {
         public Catalog() {
             InitializeComponent();
 
-            LinkComboBox();
+            BindComboBox();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -41,16 +42,16 @@ namespace BoVeloManager.Catalogue {
             MessageBox.Show("Bike not yet added");
         }
 
-        private void LinkComboBox()
+        private void BindComboBox()
         {
             List<string> Size = new List<string>();
             List<string> Color = new List<string>();
 
-            List<Classes.KitTemplate> KitList = Classes.Controler.Instance.getKitTemplateList();
+            List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
 
-            foreach (Classes.KitTemplate kit in KitList)
+            foreach (KitTemplate kit in KitList)
             {
-                Classes.KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
                 string kit_cat = kit_struct.category;
 
                 if (kit_cat == "Size")
@@ -74,6 +75,8 @@ namespace BoVeloManager.Catalogue {
 
             newBikeSize.ItemsSource = Size;
             newBikeColor.ItemsSource = Color;
+
+            
         }
     }
 }
