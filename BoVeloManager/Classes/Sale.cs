@@ -149,12 +149,7 @@ namespace BoVeloManager.Classes {
             float total_price = 0;
 
             foreach (Bike bike in bikeList) {
-                float priceMul = ((float)(bike.getBikeTempl().getCat().getPriceMul()))/100;
-
-                foreach(KitTemplate kit in bike.getBikeTempl().getListKit()) {
-                    total_price += kit.getPrice();
-                }
-                total_price = total_price + total_price * priceMul;
+                total_price += bike.getPrice();
             }
             return total_price;
         }
