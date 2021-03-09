@@ -39,6 +39,14 @@ namespace BoVeloManager.Classes
         public DateTime getInscDate() {
             return insc_date;
         }
+        public void setEditClient(string entreprise_name, string entreprise_adress, string email_, string phone_num_) {
+
+            etp_name = entreprise_name;
+            etp_adress = entreprise_adress;
+            email = email_;
+            phone_num = phone_num_;
+
+        }
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 

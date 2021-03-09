@@ -132,8 +132,13 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_user`(`user`, `psw`, `grade`) VALUES ('" + name + "','" + pass + "'," + grade.ToString() + ")";
         }
 
+
         public static string setUserGrade(int id, int grade) {
             return "UPDATE `bv_user` SET `grade`= " + grade.ToString() + " WHERE `id` = " + id.ToString();
+        }
+
+        public static string updateClient(int id, string entreprise_name, string enterprise_adress, string email, string phone_num) {
+            return "UPDATE `bv_client` SET `enterprise_name`= '" + entreprise_name + "', `enterprise_adress`= '" + enterprise_adress + "',  `email`= '" + email + "', `phone_num`= '" + phone_num + "' WHERE `id` = " + id.ToString();
         }
 
         public static string setUserPass(int id, string pass) {
@@ -423,7 +428,10 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
-
+        public static int updateClient(Client modClient) {
+            string q = DatabaseQuery.updateClient(modClient.getId(), modClient.getEtpName(), modClient.getEtpAdress(), modClient.getEmail(), modClient.getPhoneNumb());
+            return Database.setData(q);
+        }
         public static int addClient(Client c) {
             string q = tools.DatabaseQuery.addClient(c);
             return Database.setData(q);
@@ -469,10 +477,11 @@ namespace BoVeloManager.tools {
                 int id_tBike = Convert.ToInt32(dt.Rows[i]["id_tBike"]);
                 int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
+                DateTime Constr_date = DateTime.Parse((string)dt.Rows[i]["planne_cDate"]);
 
-                foreach(BikeTemplate bt in btList) {
+                foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
-                        temp.Add(new Bike(state, id_sale,bt)) ;
+                        temp.Add(new Bike(state, id_sale,bt, Constr_date)) ;
                     }
                 }
                 

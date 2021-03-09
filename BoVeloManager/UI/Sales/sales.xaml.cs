@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BoVeloManager.Classes;
 
+
 namespace BoVeloManager.Sales
 {
     /// <summary>
@@ -52,6 +53,7 @@ namespace BoVeloManager.Sales
 
         private void update_dg_clientList()
         {
+            dg_clientList.ItemsSource = null;
             dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
         }
 
@@ -64,7 +66,10 @@ namespace BoVeloManager.Sales
         }
 
         private void bt_editClient_Click(object sender, RoutedEventArgs e){
-            
+            Classes.Client c = ((Classes.Client.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurClient;
+            BoVeloManager.UI.Sales.Client.EditClientWindow ECW = new UI.Sales.Client.EditClientWindow(c);
+            ECW.ShowDialog();
+            update_dg_clientList();
         }
 
         private void bt_addSale_Click(object sender, RoutedEventArgs e)

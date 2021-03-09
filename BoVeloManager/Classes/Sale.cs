@@ -65,12 +65,15 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime getPreSaleDate() {
+            List<DateTime> PreList = new List<DateTime>();
+            foreach 
             return prevision_date;
         }
 
         public List<Bike> getBikeList() {
             return bikeList;
         }
+
 
         public displayInfo GetSaleDisplayInfo() {
             displayInfo temp = new displayInfo();
