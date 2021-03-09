@@ -91,5 +91,14 @@ namespace BoVeloManager.UI.Planning {
             }
            
         }
+
+        private void bt_show_Click(object sender, RoutedEventArgs e) {
+
+            Bike bk = ((Bike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurBike;
+
+
+            description.description desp = new description.description(bk);
+            desp.Show();
+        }
     }
 }
