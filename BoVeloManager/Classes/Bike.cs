@@ -13,12 +13,15 @@ namespace BoVeloManager.Classes
 
         private int status;
         private BikeTemplate BikeTemplate;
-        
+        private DateTime constr_date;
 
-        public Bike(int status_, int id_sale_, BikeTemplate bt_) {
+
+
+        public Bike(int status_, int id_sale_, BikeTemplate bt_, DateTime constr_date_) {
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
+            constr_date = constr_date_;
             link();
         }
 
@@ -28,6 +31,10 @@ namespace BoVeloManager.Classes
 
         public int getSaleId() {
             return id_sale;
+        }
+
+        public DateTime getConstructDate() {
+            return constr_date;
         }
 
         public BikeTemplate getBikeTempl() {
@@ -58,13 +65,15 @@ namespace BoVeloManager.Classes
             temp.name = BikeTemplate.getName();
             temp.id = BikeTemplate.getId();
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
-            temp.id_sale = id_sale;
+            temp.id_sale = this.getSaleId();
+            temp.ConstDate = this.getConstructDate().ToString("MM/dd/yyyy");
 
             return temp;
         }
 
         public struct displayInfo {
             public Bike CurBike { get; set; }
+            public string ConstDate { get; set; }
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }

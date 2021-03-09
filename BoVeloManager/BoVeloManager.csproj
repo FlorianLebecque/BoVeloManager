@@ -177,6 +177,9 @@
     <Compile Include="UI\Sales\Client\AddClientWindow.xaml.cs">
       <DependentUpon>AddClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Sales\Client\EditClientWindow.xaml.cs">
+      <DependentUpon>EditClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Sales\description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
@@ -267,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Sales\Client\AddClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Sales\Client\EditClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
