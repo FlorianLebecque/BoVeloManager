@@ -198,11 +198,11 @@ namespace BoVeloManager.Classes
             return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
         }
 
-        public List<Bike.displayInfo> GetBikeDisplayInfo_byWeek(int week) {
+        public List<Bike.displayInfo> GetBikeDisplayInfo_byWeekAndPost(int week,int poste) {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
             foreach(Bike b in bikeList) {
-                if(getNBRWeek(b.getConstructDate()) == week) {
+                if((getNBRWeek(b.getConstructDate()) == week)&&(b.getPoste() == poste)) {
                     temp.Add(b.GetDisplayInfo());
                 }
             }

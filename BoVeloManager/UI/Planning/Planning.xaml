@@ -33,7 +33,7 @@
                             <materialDesign:PackIcon Kind="ArrowRight"/>
                         </Button>
                         <TextBlock VerticalAlignment="Center" Text="Poste :"></TextBlock>
-                        <ComboBox Width="40" Margin="10 12" SelectedIndex="0" VerticalAlignment="Center">
+                        <ComboBox x:Name="cb_poste" Width="40" Margin="10 12" SelectedIndex="0" VerticalAlignment="Center" SelectionChanged="cb_poste_SelectionChanged">
                             <ComboBoxItem>1</ComboBoxItem>
                             <ComboBoxItem>2</ComboBoxItem>
                             <ComboBoxItem>3</ComboBoxItem>
@@ -62,9 +62,9 @@
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
                                                 <StackPanel>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding Name}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding Date}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding Status}">Status : waiting</TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*"/>
@@ -81,7 +81,6 @@
                                             </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
-
                                 </ListView>
 
                             </Grid>
@@ -90,10 +89,28 @@
                         <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
                                 <TextBlock  Margin="5" HorizontalAlignment="Center">Tuesday</TextBlock>
-                                <ListView x:Name="lv_tuesday" AllowDrop="True">
+                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_tuesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock>hello</TextBlock>
+                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Margin="0 5 0 0" HorizontalAlignment="Left" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Done"/>
+                                                        </Button>
+                                                        <Button Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Right" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Eye"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -103,10 +120,28 @@
                         <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
                                 <TextBlock  Margin="5" HorizontalAlignment="Center">Wednesday</TextBlock>
-                                <ListView x:Name="lv_wednesday">
+                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_wednesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock>hello</TextBlock>
+                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Margin="0 5 0 0" HorizontalAlignment="Left" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Done"/>
+                                                        </Button>
+                                                        <Button Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Right" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Eye"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -116,10 +151,28 @@
                         <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
                                 <TextBlock  Margin="5" HorizontalAlignment="Center">Thursday</TextBlock>
-                                <ListView x:Name="lv_thursday">
+                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_thursday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock>hello</TextBlock>
+                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Margin="0 5 0 0" HorizontalAlignment="Left" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Done"/>
+                                                        </Button>
+                                                        <Button Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Right" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Eye"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -129,10 +182,28 @@
                         <Border Grid.Column="5" BorderBrush="Black" BorderThickness="0 0 0 0">
                             <Grid>
                                 <TextBlock  Margin="5" HorizontalAlignment="Center">Friday</TextBlock>
-                                <ListView x:Name="lv_friday">
-                                    <ListView.ItemTemplate>
+                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_friday" AllowDrop="True">
+                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock>hello</TextBlock>
+                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                                <StackPanel>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0" Margin="0 5 0 0" HorizontalAlignment="Left" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Done"/>
+                                                        </Button>
+                                                        <Button Grid.Column="1" Margin="0 5 0 0" HorizontalAlignment="Right" Background="White" Foreground="#FF607D8B">
+                                                            <materialDesign:PackIcon Kind="Eye"/>
+                                                        </Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

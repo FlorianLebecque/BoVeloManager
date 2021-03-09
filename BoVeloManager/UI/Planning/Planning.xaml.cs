@@ -23,9 +23,11 @@ namespace BoVeloManager.UI.Planning {
 
 
         private int nbrWeek;
+        private bool has_init = false;
 
         public Planning() {
             InitializeComponent();
+            has_init = true;
 
             nbrWeek = Controler.getNBRWeek(DateTime.Now);
 
@@ -36,7 +38,7 @@ namespace BoVeloManager.UI.Planning {
             lb_nbrWeek.Text = "Week : " + nbrWeek.ToString();
 
 
-            List<Bike.displayInfo> bk_dpiList = Controler.Instance.GetBikeDisplayInfo_byWeek(nbrWeek);
+            List<Bike.displayInfo> bk_dpiList = Controler.Instance.GetBikeDisplayInfo_byWeekAndPost(nbrWeek, cb_poste.SelectedIndex);
 
             //sort them to only get the one for the week
             List<Bike.displayInfo> bk_dpiList_Mon = new List<Bike.displayInfo>();
@@ -81,6 +83,13 @@ namespace BoVeloManager.UI.Planning {
         private void bt_lastWeek_Click(object sender, RoutedEventArgs e) {
             nbrWeek--;
             init();
+        }
+
+        private void cb_poste_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (has_init) {
+                init();
+            }
+           
         }
     }
 }

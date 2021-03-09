@@ -477,7 +477,7 @@ namespace BoVeloManager.tools {
                 int id_tBike = Convert.ToInt32(dt.Rows[i]["id_tBike"]);
                 int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
-
+                int poste = Convert.ToInt32(dt.Rows[i]["poste"]);
 
 
 
@@ -485,7 +485,7 @@ namespace BoVeloManager.tools {
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
-                        temp.Add(new Bike(state, id_sale,bt, Constr_date)) ;
+                        temp.Add(new Bike(state, id_sale,poste,bt, Constr_date)) ;
                     }
                 }
                 

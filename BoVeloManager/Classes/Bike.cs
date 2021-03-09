@@ -12,12 +12,13 @@ namespace BoVeloManager.Classes
         private readonly int id_sale;
 
         private int status;
+        private int Poste;
         private BikeTemplate BikeTemplate;
         private DateTime constr_date;
 
 
 
-        public Bike(int status_, int id_sale_, BikeTemplate bt_, DateTime constr_date_) {
+        public Bike(int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
@@ -39,6 +40,10 @@ namespace BoVeloManager.Classes
 
         public BikeTemplate getBikeTempl() {
             return BikeTemplate;
+        }
+
+        public int getPoste() {
+            return Poste;
         }
 
         public displayInfo GetDisplayInfo() {
