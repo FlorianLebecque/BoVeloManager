@@ -298,6 +298,7 @@ namespace BoVeloManager.tools {
         }
 
         // Get available Kits
+        #region Kits
         public static string getAllKits()
         {
             return "SELECT * FROM `bv_type_kit`";
@@ -306,35 +307,22 @@ namespace BoVeloManager.tools {
         {
             return "SELECT * FROM `bv_type_kit` WHERE `id` = " + Id.ToString();
         }
-        public static string getFrameKit()
-        {
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = 0";
-        }
-        public static string getWheelsKit()
+        
+        public static string getColor()
         {
             return "SELECT * FROM `bv_type_kit` WHERE `category` = 1";
         }
-        public static string getBrakesKit()
+
+        public static string getSize()
         {
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = 2";
-        }
-        public static string getSaddleKit()
-        {
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = 3";
-        }
-        public static string getHandlebarKit(){
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = 4";
-        }
-        public static string getAddonKit(){
-            return "SELECT * FROM `bv_type_kit` WHERE `category` = 5";
-        }
-        public static string getModel(){
-            return "SELECT * FROM `bv_catalog`";
+            return "SELECT * FROM `bv_type_kit` WHERE `category` = 0";
         }
 
         public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
             return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`="+cat.ToString()+ ",`Price`=" + price.ToString() + ",`properties`='" + prop + "' WHERE `id`=" + id;
         }
+
+        #endregion 
 
         #region Sale
 
@@ -601,6 +589,7 @@ namespace BoVeloManager.tools {
         #region CatalogBike
 
         public static List<CatalogBike> getCatalogBikes(List<KitTemplate> ktList) {
+
             string q = DatabaseQuery.getItem();
             DataTable dt = Database.getData(q);
 

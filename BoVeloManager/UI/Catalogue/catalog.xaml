@@ -13,6 +13,15 @@
 
     <DockPanel>
 
+        <Grid DockPanel.Dock="Top" Height="40">
+            <Button Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Cart" Height="20" Width="20"/>
+            </Button>
+            <Button Height="30" Width="60" Margin="10,5,12,5" Name="Add_tBike" Click="Add_tBike_Click" HorizontalAlignment="Left">
+                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20"/>
+            </Button>
+        </Grid>
+
         <ListView SelectionMode="Single" >
 
             <ListBox.ItemsPanel>
@@ -20,31 +29,25 @@
                     <StackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
-            
+
+            <!-- City bike -->
             <ListViewItem>
                 <Grid Width="300" Height="430">
                     <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
 
                     <StackPanel Height="125" VerticalAlignment="Bottom">
                         <TextBlock Margin="10 5 10 0" Foreground="Black">City bike</TextBlock>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>26"</ComboBoxItem>
-                            <ComboBoxItem>32"</ComboBoxItem>
-                        </ComboBox>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>Red</ComboBoxItem>
-                            <ComboBoxItem>Blue</ComboBoxItem>
-                            <ComboBoxItem>Violet</ComboBoxItem>
-                            <ComboBoxItem>Green</ComboBoxItem>
-                            <ComboBoxItem>Orange</ComboBoxItem>
-                        </ComboBox>
+                        
+                        <ComboBox Name="citySize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        <ComboBox Name="cityColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        
                         <Grid Margin="10 5 10 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0">1</TextBox>
-                            <Button Grid.Column="1" >
+                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                            <Button Grid.Column="1" Click="Add_Bike_Click" >
                                 <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
                             </Button>
                         </Grid>
@@ -53,62 +56,73 @@
                 </Grid>
             </ListViewItem>
 
+            <!-- Explorer bike -->
             <ListViewItem>
                 <Grid Width="300" Height="430">
-                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+                    <Image Source="Bike2.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
 
                     <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">City bike</TextBlock>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>26"</ComboBoxItem>
-                            <ComboBoxItem>32"</ComboBoxItem>
-                        </ComboBox>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>Red</ComboBoxItem>
-                            <ComboBoxItem>Blue</ComboBoxItem>
-                            <ComboBoxItem>Violet</ComboBoxItem>
-                            <ComboBoxItem>Green</ComboBoxItem>
-                            <ComboBoxItem>Orange</ComboBoxItem>
-                        </ComboBox>
+                        <TextBlock Margin="10 5 10 0" Foreground="Black">Explorer bike</TextBlock>
+                        <ComboBox Name="exploraterSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        <ComboBox Name="exploraterColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
                         <Grid Margin="10 5 10 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0">1</TextBox>
-                            <Button Grid.Column="1" >
+                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                            <Button Grid.Column="1" Click="Add_Bike_Click">
                                 <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
                             </Button>
                         </Grid>
-
                     </StackPanel>
                 </Grid>
             </ListViewItem>
 
+
+            <!-- All terrain -->
             <ListViewItem>
                 <Grid Width="300" Height="430">
-                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+                    <Image Source="Bike3.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
 
                     <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">City bike</TextBlock>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>26"</ComboBoxItem>
-                            <ComboBoxItem>32"</ComboBoxItem>
-                        </ComboBox>
-                        <ComboBox Margin="10 5 10 0" SelectedIndex="0" Foreground="Black">
-                            <ComboBoxItem>Red</ComboBoxItem>
-                            <ComboBoxItem>Blue</ComboBoxItem>
-                            <ComboBoxItem>Violet</ComboBoxItem>
-                            <ComboBoxItem>Green</ComboBoxItem>
-                            <ComboBoxItem>Orange</ComboBoxItem>
-                        </ComboBox>
+                        <TextBlock Margin="10 5 10 0" Foreground="Black">All terrain</TextBlock>
+                        
+                        <ComboBox Name="allTerrainSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        <ComboBox Name="allTerrainColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        
                         <Grid Margin="10 5 10 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0">1</TextBox>
-                            <Button Grid.Column="1" >
+                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                            <Button Grid.Column="1" Click="Add_Bike_Click">
+                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </ListViewItem>
+
+            <!-- new bike -->
+            <ListViewItem>
+                <Grid Width="300" Height="430">
+                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+
+                    <StackPanel Height="125" VerticalAlignment="Bottom">
+                        <TextBlock Margin="10 5 10 0" Foreground="Black">coucou sinon</TextBlock>
+                        
+                        <ComboBox Name="newBikeSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        <ComboBox Name="newBikeColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
+                        
+                        <Grid Margin="10 5 10 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                            <Button Grid.Column="1" Click="Add_Bike_Click">
                                 <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
                             </Button>
                         </Grid>
@@ -118,7 +132,7 @@
             </ListViewItem>
 
         </ListView>
-        
+
     </DockPanel>
-    
+
 </Page>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.Catalogue {
     /// <summary>
@@ -20,7 +22,61 @@ namespace BoVeloManager.Catalogue {
     public partial class Catalog : Page {
         public Catalog() {
             InitializeComponent();
+
+            BindComboBox();
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Add_tBike_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("PROGRAM BUILDING ...");
+        }
+
+        private void Add_Bike_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Bike not yet added");
+        }
+
+        private void BindComboBox()
+        {
+            List<string> Size = new List<string>();
+            List<string> Color = new List<string>();
+
+            List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
+
+            foreach (KitTemplate kit in KitList)
+            {
+                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                string kit_cat = kit_struct.category;
+
+                if (kit_cat == "Size")
+                {
+                    Size.Add(kit_struct.name);
+                }
+                else if (kit_cat == "Color")
+                {
+                    Color.Add(kit_struct.name);
+                }
+            }
+
+            citySize.ItemsSource = Size;
+            cityColor.ItemsSource = Color;
+
+            exploraterSize.ItemsSource = Size;
+            exploraterColor.ItemsSource = Color;
+
+            allTerrainSize.ItemsSource = Size;
+            allTerrainColor.ItemsSource = Color;
+
+            newBikeSize.ItemsSource = Size;
+            newBikeColor.ItemsSource = Color;
+
+            
+        }
     }
 }

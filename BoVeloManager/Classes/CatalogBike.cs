@@ -11,6 +11,7 @@ namespace BoVeloManager.Classes {
         private string name;
         private int PriceMul;
         private List<KitTemplate> kitTemplateList;
+        
 
         public CatalogBike(int id_,string name_,int priceMul_) {
             id = id_;
@@ -54,12 +55,15 @@ namespace BoVeloManager.Classes {
         }
 
         public displayInfo GetDisplayInfo() {
+
             displayInfo temp = new displayInfo();
 
             temp.CurCatBike = this;
             temp.name = this.getName();
             temp.PriceMul = (((float)PriceMul)/100).ToString("p");
             temp.id = this.getId();
+
+            temp.kitTemplates = this.getKitTemplateList();
 
             return temp;
         }
@@ -69,6 +73,9 @@ namespace BoVeloManager.Classes {
             public string name { get; set; }
             public string PriceMul { get; set; }
             public int id { get; set; }
+            public List<KitTemplate> kitTemplates { get; set; }
+            public List<string> colorKit { get; set; }
+            public List<string> sizeKit { get; set; }
         }
     }
 }
