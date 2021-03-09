@@ -202,7 +202,7 @@ namespace BoVeloManager.Classes
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
             foreach(Bike b in bikeList) {
-                if((getNBRWeek(b.getConstructDate()) == week)&&(b.getPoste() == poste)) {
+                if((getNBRWeek(b.getPlannedtDate()) == week)&&(b.getPoste() == poste)) {
                     temp.Add(b.GetDisplayInfo());
                 }
             }

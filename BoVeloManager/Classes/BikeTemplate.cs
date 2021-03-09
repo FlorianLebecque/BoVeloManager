@@ -51,12 +51,8 @@ namespace BoVeloManager.Classes
 
         public string getPropkitString() {
             string propKit = "";
-            foreach (KitTemplate kit in getListKit()) { 
-                if (kit.getProperties().Length == 0) {
-                    propKit = propKit + "● " + kit.getName() + "\n";
-                } else {
-                    propKit = propKit + "● " + kit.getName() + " [" + kit.getProperties() + "] \n";
-                }
+            foreach (KitTemplate kit in getListKit()) {
+                propKit += kit.getPropkitString() + "\n";
             }
             return propKit;
         }

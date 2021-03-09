@@ -10,23 +10,28 @@ namespace BoVeloManager.Classes
     {
  
         private readonly int id_sale;
-
+        private readonly int id;
         private int status;
         private int Poste;
         private BikeTemplate BikeTemplate;
-        private DateTime constr_date;
+        private DateTime PlannedDate;
 
-        public Bike(int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
+        public Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
+            id = id_;
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
             Poste = Poste_;
-            constr_date = constr_date_;
+            PlannedDate = constr_date_;
             link();
         }
 
         private void link() {
             //BikeTemplate = Controler.getBikeTemplateById(id_tBike);
+        }
+
+        public int getId() {
+            return id;
         }
 
         public int getSaleId() {
@@ -40,11 +45,15 @@ namespace BoVeloManager.Classes
                 bike_price += kit.getPrice();
             }
             bike_price = bike_price + bike_price * priceMul;
-            return bike_price;
+            return bike_price/100;
         }
 
-        public DateTime getConstructDate() {
-            return constr_date;
+        public DateTime getPlannedtDate() {
+            return PlannedDate;
+        }
+
+        public void setPlannedDate(DateTime dt) {
+            PlannedDate = dt;
         }
 
         public BikeTemplate getBikeTempl() {
@@ -57,6 +66,10 @@ namespace BoVeloManager.Classes
 
         public int getPoste() {
             return Poste;
+        }
+
+        public void setPoste(int p) {
+            Poste = p;
         }
 
         public displayInfo GetDisplayInfo() {
@@ -84,7 +97,8 @@ namespace BoVeloManager.Classes
             temp.id = BikeTemplate.getId();
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = this.getSaleId();
-            temp.ConstDate = this.getConstructDate().ToString("MM/dd/yyyy");
+            temp.ConstDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
+            temp.price = this.getPrice().ToString("c2");
 
             return temp;
         }
@@ -92,7 +106,7 @@ namespace BoVeloManager.Classes
         public struct displayInfo {
             public Bike CurBike { get; set; }
             public string price  { get; set; }
-        public string ConstDate { get; set; }
+            public string ConstDate { get; set; }
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }
