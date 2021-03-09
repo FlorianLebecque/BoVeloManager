@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Sale Description" Height="500" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
@@ -99,8 +100,12 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_export"  VerticalAlignment="Bottom" Content="Export"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_export_Click" />
-                <Button Margin="0 0 0 5" x:Name="BT_close"  VerticalAlignment="Bottom" Content="Close" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="BT_close_Click"/>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_export"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_export_Click" >
+                    <materialDesign:PackIcon Kind="Export"/>
+                </Button>
+                <Button Margin="0 0 0 5" x:Name="BT_close"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="BT_close_Click">
+                    <materialDesign:PackIcon Kind="Close"/>
+                </Button>
             </Grid>
         </DockPanel>
     </Border>

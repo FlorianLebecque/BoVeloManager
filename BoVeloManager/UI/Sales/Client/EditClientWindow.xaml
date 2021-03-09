@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.UI.Sales.Client"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="EditClientWindow" Height="450" Width="484" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Border Padding="0 0 0 0">
@@ -70,12 +71,17 @@
             <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Update"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_Update_Click" />
-                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="BT_cancel_Click"/>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right"  Click="BT_cancel_Click">
+                        <materialDesign:PackIcon Kind="Cancel"/>
+                    </Button>
+                    <Button Margin="5 0 5 5"  x:Name="BT_Add"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_Update_Click" >
+                        <materialDesign:PackIcon Kind="Tick"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </DockPanel>
     </Border>

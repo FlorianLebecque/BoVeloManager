@@ -67,7 +67,7 @@ namespace BoVeloManager.Sales.description
             }
 
             bikesList.ItemsSource = bikesListItems;
-            total.Text = (sale.getTotalPrice()/100).ToString("c2");
+            total.Text = (sale.getTotalPrice()).ToString("c2");
         }
         public void DisplayKits(List<KitTemplate> kitList)
         {

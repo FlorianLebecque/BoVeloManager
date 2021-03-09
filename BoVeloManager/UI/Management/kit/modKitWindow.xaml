@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Edit kit window" Height="271" Width="394" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
@@ -68,8 +69,12 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!-- <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock> -->
-                <Button Margin="0 0 0 5" x:Name="BT_update" VerticalAlignment="Bottom" Content="Update" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2"/>
-                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2"/>
+                <Button Margin="0 0 0 5" x:Name="BT_update" VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BT_update_Click" Width="120" Height="30" HorizontalAlignment="Right"  Grid.Column="3" Grid.ColumnSpan="2">
+                    <materialDesign:PackIcon Kind="Tick"/>
+                </Button>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click"  Width="120" Height="30" HorizontalAlignment="Right"  Grid.ColumnSpan="2">
+                    <materialDesign:PackIcon Kind="Cancel"/>
+                </Button>
             </Grid>
 
 

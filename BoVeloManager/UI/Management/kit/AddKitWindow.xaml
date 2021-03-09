@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="AddKitWindow" Height="236" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
@@ -59,8 +60,12 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTADD_kit"/>
-                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="BT_Add"  VerticalAlignment="Bottom"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTADD_kit">
+                    <materialDesign:PackIcon Kind="Add"/>
+                </Button>
+                <Button Margin="0 0 0 5" x:Name="BT_cancel"  VerticalAlignment="Bottom"  FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+                    <materialDesign:PackIcon Kind="Cancel"/>
+                </Button>
             </Grid>
 
         </DockPanel>

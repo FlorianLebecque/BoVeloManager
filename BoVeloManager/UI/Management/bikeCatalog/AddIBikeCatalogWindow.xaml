@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.Management.item"
+       
         mc:Ignorable="d"
         Title="Add bike" Height="211" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
@@ -43,8 +44,12 @@
                 </Grid.ColumnDefinitions>
                 
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button x:Name="BT_AddItem"  Margin="5 0 5 5" Grid.Column="2"  VerticalAlignment="Bottom" Content="Add"  FontSize="16" Foreground="White" FontWeight="Bold"  Click="BTAddItem_Click"/>
-                <Button x:Name="BT_cancel"   Margin="0 0 0 5" Grid.Column="1"  VerticalAlignment="Bottom" Content="Cancel" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right"/>
+                <Button x:Name="BT_AddItem"  Margin="5 0 5 5" Grid.Column="2"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold"  Click="BTAddItem_Click">
+                    <materialDesign:PackIcon Kind="Add"/>
+                </Button>
+                <Button x:Name="BT_cancel"   Margin="0 0 0 5" Grid.Column="1"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" Width="100" HorizontalAlignment="Right">
+                    <materialDesign:PackIcon Kind="Cancel"/>
+                </Button>
             </Grid>
         </DockPanel>
     </Border>
