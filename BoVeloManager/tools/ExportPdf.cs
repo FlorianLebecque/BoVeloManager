@@ -24,7 +24,15 @@ namespace BoVeloManager.tools {
         private string dest;
         public ExportPdf(string dest_) {
             dest = dest_;
+
+            SaveFileDialog SFD = new SaveFileDialog();
+            SFD.ShowDialog();
+
+            dest = SFD.FileName;
+
             FileInfo file = new FileInfo(dest);
+            
+
             file.Directory.Create();
         }
 
