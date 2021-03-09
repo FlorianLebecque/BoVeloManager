@@ -43,7 +43,17 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >State :</Label>
-                    <TextBlock Name="tb_state" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
+                    <ComboBox x:Name="cb_state"  Grid.Column="1">
+                        <ComboBoxItem>
+                            Waiting
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            In progress
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Done
+                        </ComboBoxItem>
+                    </ComboBox>
                 </Grid>
 
                 <!-- Enterprise info -->
@@ -72,11 +82,11 @@
                     </Button>
                 </Grid>
                 <Border BorderThickness="0,2" BorderBrush="DarkGray">
-                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="bikesList" MaxHeight="240" Height="240">
+                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="lv_kitList" MaxHeight="240" Height="240">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0 5 0 5">
-                                    <TextBlock Margin="15 0 0 0" Text="{Binding string_kits}"  HorizontalAlignment="Left" TextAlignment="Left" />
+                                    <TextBlock Margin="15 0 0 0" Text="{Binding name}"  HorizontalAlignment="Left" TextAlignment="Left" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

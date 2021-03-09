@@ -41,6 +41,10 @@ namespace BoVeloManager.Classes
             return BikeTemplate;
         }
 
+        public int getState() {
+            return status;
+        }
+
         public int getPoste() {
             return Poste;
         }
@@ -53,13 +57,13 @@ namespace BoVeloManager.Classes
             string state = "";
             switch (status)
             {
-                case 2:
+                case 0:
                     state = "Waiting";
                     break;
                 case 1:
                     state = "In progress";
                     break;
-                case 0:
+                case 2:
                     state = "Done";
                     break;
             }

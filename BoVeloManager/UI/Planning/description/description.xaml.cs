@@ -26,9 +26,16 @@ namespace BoVeloManager.UI.Planning.description {
             bk = bk_;
 
             tb_name.Text = bk.getBikeTempl().getName();
-            tb_state.Text = bk.GetDisplayInfo().state;
+            cb_state.SelectedIndex = bk.getState();
             tb_pld_date.Text = bk.GetDisplayInfo().ConstDate;
-            
+
+            List<KitTemplate.displayInfo> listKit = new List<KitTemplate.displayInfo>();
+            foreach (KitTemplate kt in bk.getBikeTempl().getListKit()) {
+                listKit.Add(kt.GetDisplayInfo());
+            }
+
+            lv_kitList.ItemsSource = listKit;
+
 
         }
     }
