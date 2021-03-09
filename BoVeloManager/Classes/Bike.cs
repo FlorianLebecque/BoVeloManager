@@ -16,12 +16,11 @@ namespace BoVeloManager.Classes
         private BikeTemplate BikeTemplate;
         private DateTime constr_date;
 
-
-
         public Bike(int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
+            Poste = Poste_;
             constr_date = constr_date_;
             link();
         }
@@ -82,7 +81,6 @@ namespace BoVeloManager.Classes
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = this.getSaleId();
             temp.ConstDate = this.getConstructDate().ToString("MM/dd/yyyy");
-            temp.price = this.getPrice().ToString("c2");
 
             return temp;
         }
@@ -96,7 +94,6 @@ namespace BoVeloManager.Classes
             public string name { get; set; }
             public int priceMul { get; set; }
             public int id_sale { get; set; }
-
         }
 
     }
