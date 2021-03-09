@@ -33,6 +33,16 @@ namespace BoVeloManager.Classes
             return id_sale;
         }
 
+        public float getPrice() {
+            float bike_price = 0;
+            float priceMul = ((float)(this.getBikeTempl().getCat().getPriceMul())) / 100;
+            foreach (KitTemplate kit in this.getBikeTempl().getListKit()) {
+                bike_price += kit.getPrice();
+            }
+            bike_price = bike_price + bike_price * priceMul;
+            return bike_price;
+        }
+
         public DateTime getConstructDate() {
             return constr_date;
         }
@@ -74,14 +84,15 @@ namespace BoVeloManager.Classes
             temp.id = BikeTemplate.getId();
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = this.getSaleId();
-            temp.ConstDate = this.getConstructDate().ToString("dd/MM/yyyy");
+            temp.ConstDate = this.getConstructDate().ToString("MM/dd/yyyy");
 
             return temp;
         }
 
         public struct displayInfo {
             public Bike CurBike { get; set; }
-            public string ConstDate { get; set; }
+            public string price  { get; set; }
+        public string ConstDate { get; set; }
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }

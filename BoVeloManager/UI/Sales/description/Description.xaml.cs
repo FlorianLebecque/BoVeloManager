@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BoVeloManager.Classes;
+using BoVeloManager.tools;
 
 namespace BoVeloManager.Sales.description
 {
@@ -86,7 +87,7 @@ namespace BoVeloManager.Sales.description
         } 
         private void BT_export_Click(object sender, RoutedEventArgs e)
         {
-
+            ExportPdf expPdf = new ExportPdf();
         }
         private void BT_close_Click(object sender, RoutedEventArgs e)
         {
