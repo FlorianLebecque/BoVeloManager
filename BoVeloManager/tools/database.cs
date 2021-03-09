@@ -345,6 +345,10 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_bike`";
         }
 
+        public static string updateBike(Bike bk) {
+            return "UPDATE `bv_bike` SET `state`= "+ bk.getState().ToString() +" ,`planne_cDate`='"+ bk.getPlannedtDate().ToString("yyyy-MM-dd") +"' ,`poste`= "+bk.getPoste().ToString()+" WHERE `id` = " + bk.getId();
+        }
+
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
         }
@@ -473,7 +477,7 @@ namespace BoVeloManager.tools {
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
-                        temp.Add(new Bike(state, id_sale,poste,bt, Constr_date)) ;
+                        temp.Add(new Bike(id,state, id_sale,poste,bt, Constr_date)) ;
                     }
                 }
                 
@@ -482,8 +486,13 @@ namespace BoVeloManager.tools {
             return temp;
         }
 
+        public static int updateBike(Bike bk) {
+            string q = DatabaseQuery.updateBike(bk);
+            return Database.setData(q);
+        }
+
         #endregion
-          
+
         #region KitTemplate
 
         public static List<KitTemplate> getKitTemplates() {

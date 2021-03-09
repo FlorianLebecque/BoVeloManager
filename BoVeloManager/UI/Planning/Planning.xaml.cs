@@ -48,7 +48,7 @@ namespace BoVeloManager.UI.Planning {
             List<Bike.displayInfo> bk_dpiList_Fri = new List<Bike.displayInfo>();
 
             foreach(Bike.displayInfo bdpi in bk_dpiList) {
-                switch (bdpi.CurBike.getConstructDate().DayOfWeek) {
+                switch (bdpi.CurBike.getPlannedtDate().DayOfWeek) {
                     case DayOfWeek.Monday:
                         bk_dpiList_Mon.Add(bdpi);
                         break;
@@ -95,10 +95,9 @@ namespace BoVeloManager.UI.Planning {
         private void bt_show_Click(object sender, RoutedEventArgs e) {
 
             Bike bk = ((Bike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurBike;
-
-
             description.description desp = new description.description(bk);
-            desp.Show();
+            desp.ShowDialog();
+            init();
         }
     }
 }

@@ -60,7 +60,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
@@ -92,7 +92,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_tuesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
@@ -123,7 +123,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_wednesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
@@ -154,7 +154,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_thursday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
@@ -185,7 +185,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_friday" AllowDrop="True">
                                      <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="8" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding name}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>

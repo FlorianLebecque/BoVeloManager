@@ -58,6 +58,14 @@ namespace BoVeloManager.Classes {
             cat = c;
         }
 
+        public string getPropkitString() {
+            if (this.getProperties().Length == 0) {
+                return "● " + this.getName();
+            } else {
+                return  "● " + this.getName() + " [" + this.getProperties() + "]";
+            }
+        }
+
         public displayInfo GetDisplayInfo() {
 
             displayInfo temp = new displayInfo();
@@ -81,6 +89,7 @@ namespace BoVeloManager.Classes {
             temp.price = (((float)this.getPrice())/100).ToString("c2");
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();
+            temp.fancyName = getPropkitString();
 
             return temp;
 
@@ -93,6 +102,7 @@ namespace BoVeloManager.Classes {
             public string category { get; set; }
             public string price { get; set; }
             public int priceInt { get; set; }
+            public string fancyName { get; set; }
             public string properties { get; set; }
         }
 
