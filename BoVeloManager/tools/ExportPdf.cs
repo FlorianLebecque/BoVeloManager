@@ -55,13 +55,14 @@ namespace BoVeloManager.tools {
 
             // Adding picture 
             MemoryStream ms = new MemoryStream();
-            Properties.Resources.Icon_pdf.Save(ms, ImageFormat.Jpeg);
+            tools.SVGRender.render(2000,2000).Save(ms, ImageFormat.Png);
             byte[] bmpBytes = ms.ToArray();
+
             ImageData imgD = ImageDataFactory.Create(bmpBytes);
             Image img = new Image(imgD);
             img.SetHeight(80);
             img.SetWidth(80);
-
+            
 
             // Adding sale infos 
 

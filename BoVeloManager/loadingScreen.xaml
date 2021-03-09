@@ -1,0 +1,17 @@
+﻿<Window x:Class="BoVeloManager.loadingScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoVeloManager"
+        mc:Ignorable="d"
+        Title="loadingScreen" Height="192" Width="194" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent" ContentRendered="Window_ContentRendered">    
+        
+    <Grid>
+        
+        <Image Width="180" Height="180" x:Name="spash" Margin="7,0,7,12"></Image>
+        <ProgressBar x:Name="pgb" Margin="0,185,0,3" Maximum="2"></ProgressBar>
+    </Grid>
+</Window>
