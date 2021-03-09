@@ -52,7 +52,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Enterprise :</Label>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Entreprise :</Label>
                     <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
                 <Border BorderThickness="0,2" BorderBrush="DarkGray">

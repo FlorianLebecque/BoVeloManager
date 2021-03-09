@@ -79,8 +79,7 @@ namespace BoVeloManager.Classes {
             public int id { get; set; }
             public Image pic { get; set; }
             public List<KitTemplate> kitTemplates { get; set; }
-            public List<string> colorKit { get; set; }
-            public List<string> sizeKit { get; set; }
+
         }
     }
 }

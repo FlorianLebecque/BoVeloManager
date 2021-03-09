@@ -212,33 +212,33 @@ namespace BoVeloManager.Classes
 
     #endregion
 
-        #region CatalogBike
+    #region CatalogBike
 
-        public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
-            List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
+    public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
+        List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
 
-            foreach (CatalogBike cb in CatalogBikeList) {
-                temp.Add(cb.GetDisplayInfo());
-            }
-
-            return temp;
+        foreach (CatalogBike cb in CatalogBikeList) {
+            temp.Add(cb.GetDisplayInfo());
         }
 
-        public List<CatalogBike> getCatalogBike() {
-            return CatalogBikeList;
-        }
+        return temp;
+    }
 
-        public int getlastCatalogBikeId() {
-            if (CatalogBikeList.Count > 0) {
-                return CatalogBikeList.Select(x => x.getId()).Max();
-            }
-            return 0;
-        }
+    public List<CatalogBike> getCatalogBike() {
+        return CatalogBikeList;
+    }
 
-        public void createCatalogBike(CatalogBike cb) {
-            CatalogBikeList.Add(cb);
-            DatabaseClassInterface.addCatalogBike(cb);
+    public int getlastCatalogBikeId() {
+        if (CatalogBikeList.Count > 0) {
+            return CatalogBikeList.Select(x => x.getId()).Max();
         }
+        return 0;
+    }
+
+    public void createCatalogBike(CatalogBike cb) {
+        CatalogBikeList.Add(cb);
+        DatabaseClassInterface.addCatalogBike(cb);
+    }
 
     #endregion
 
