@@ -65,10 +65,13 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime getPreSaleDate() {
-            /*List<DateTime> PreList = new List<DateTime>();
-            foreach 
-            return prevision_date;*/
-            return DateTime.Now;
+            List<DateTime> PreList = new List<DateTime>();
+            foreach (Bike bike in bikeList) {
+                PreList.Add(bike.getConstructDate());
+            }
+            PreList.Sort((a, b) => a.CompareTo(b));
+            prevision_date = PreList.Last();
+            return prevision_date;
         }
 
         public List<Bike> getBikeList() {
@@ -85,7 +88,8 @@ namespace BoVeloManager.Classes {
             temp.client = this.getClient();
             temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("yyyy-MM-dd");
-            temp.client_name = getClient().getName();
+            temp.client_name = this.getClient().getName();
+            temp.prevision_date = this.getPreSaleDate().ToString("yyyy-MM-dd");
 
             return temp;
         }
