@@ -176,64 +176,6 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
 
-        /*
-        private void update_dg_kitList_bis() {
-
-        }
-
-
-            int cat = cb_type2.SelectedIndex;
-            string q;
-            //get the data from the db
-            if (cat == 0)
-            {
-                q = tools.DatabaseQuery.getKits();
-            }
-            else
-            {
-                q = tools.DatabaseQuery.getKit_by_category(cat);
-            }
-            DataTable dt = tools.Database.getData(q);
-
-            
-
-            //convertion de la columns grade en poste
-            DataColumn newCol = new DataColumn();
-            newCol.ColumnName = "cat";
-            newCol.DataType = typeof(string);
-            dt.Columns.Add(newCol);
-            foreach (DataRow r in dt.Rows) {
-
-                int g = Convert.ToInt32(r["category"]);
-                switch (g) {
-                    case 0:
-                        r["cat"] = "Frame";
-                        break;
-                    case 1:
-                        r["cat"] = "Wheels";
-                        break;
-                    case 2:
-                        r["cat"] = "Brake";
-                        break;
-                    case 3:
-                        r["cat"] = "Saddle";
-                        break;
-                    case 4:
-                        r["cat"] = "Handlebar";
-                        break;
-                    case 5:
-                        r["cat"] = "Addons";
-                        break;
-                }
-            }
-            //we can now remove the old columns
-            dt.Columns.Remove(dt.Columns["category"]);
-
-            //set the datatable dt as the items sources for the user datagrid
-            dg_tKitList.ItemsSource = dt.DefaultView;
-
-        }
-        */
 
         private void set_cbtype3_content() {
             //set the datatable cb_t as the item sources for the combobox content
@@ -262,9 +204,9 @@ namespace BoVeloManager.Management {
             //get witch row we clicked on
             CatalogBike cb = ((CatalogBike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCatBike;
 
-            //item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(cb);
+            item.modCompatibleItemWindow MCIW = new item.modCompatibleItemWindow(cb);
 
-            //MCIW.ShowDialog();
+            MCIW.ShowDialog();
 
             //update the kits datagrid
             update_dg_itemList();

@@ -87,7 +87,7 @@
                             <TextBlock Text="Stock" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Tag="Stock" Height="60">
+                    <ListViewItem Tag="Planning" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Calendar" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Planning" VerticalAlignment="Center"  Margin="20 10"/>
