@@ -77,7 +77,7 @@ namespace BoVeloManager.UI.Planning.description {
 
                 DateTime sel = (DateTime)dp.SelectedDate;
 
-                if (sel >= DateTime.Now) {
+                if (sel.Date >= DateTime.Now.Date) {
                     bk.setPlannedDate(sel);
                     tools.DatabaseClassInterface.updateBike(bk);
                     init();
