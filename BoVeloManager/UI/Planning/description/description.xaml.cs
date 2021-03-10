@@ -21,7 +21,6 @@ namespace BoVeloManager.UI.Planning.description {
 
         private Bike bk;
         private bool has_init = false;
-        DateTime planed;
 
         public description(Bike bk_) {
             InitializeComponent();
@@ -36,17 +35,15 @@ namespace BoVeloManager.UI.Planning.description {
             
             int state = bk.getState();
 
-            planed = bk.getPlannedtDate();
-
             if (state == 2) {
                 cb_state.IsEnabled = false;
-                //bt_setPlannedDate.IsEnabled = false;
+                dp_pld_date.IsEnabled = false;
                 cb_poste.IsEnabled = false;
             }
 
             tb_name.Text = bk.getBikeTempl().getName();
             cb_state.SelectedIndex = state;
-            tb_pld_date.SelectedDate = bk.getPlannedtDate();
+            dp_pld_date.SelectedDate = bk.getPlannedtDate();
             tb_price.Text = bk.GetDisplayInfo().price;
             cb_poste.SelectedIndex = bk.getPoste();
 
