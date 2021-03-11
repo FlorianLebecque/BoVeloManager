@@ -21,6 +21,11 @@ namespace BoVeloManager.Catalogue {
     /// Interaction logic for Page1.xaml
     /// </summary>
     public partial class Catalog : Page {
+
+        CatalogBike catBike;
+        KitTemplate size;
+        KitTemplate color;        
+
         public Catalog() {
             InitializeComponent();
             DisplayCatalogue();
@@ -48,37 +53,14 @@ namespace BoVeloManager.Catalogue {
             string c = b.color;
             int qnt = b.qnt;
 
-            KitTemplate size;
-            KitTemplate color;
-            CatalogBike catBike;
+            convertInformation(cb, s, c);
 
-            foreach (KitTemplate kit in Controler.Instance.getKitTemplateList())
-            {
-                if (kit.getName() == s)
-                {
-                    size = kit;
-                }
-                if (kit.getName() == c)
-                {
-                    color = kit;
-                }
-            }
+            Controler.Instance.tempSale.addItem(catBike, size, color, qnt);
 
-            foreach (CatalogBike cbike in Controler.Instance.getCatalogBike())
-            {
-                if (cbike.getName() == cb)
-                {
-                    catBike = cbike;
-                }
-                else
-                {
-                    catBike = cbike;
-                }
-            }
 
-            int biketemplateId = Controler.Instance.getLastBikeTemplateId() + 1;
+            //int biketemplateId = Controler.Instance.getLastBikeTemplateId() + 1;
 
-            BikeTemplate temp = new BikeTemplate(biketemplateId, catBike);
+            //BikeTemplate temp = new BikeTemplate(biketemplateId, catBike);
 
             //Controler.Instance.setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List < Bike > bikeList_, List < User > userList, List < Client > clientList);
 
@@ -145,7 +127,34 @@ namespace BoVeloManager.Catalogue {
 
             CatalogListView.ItemsSource = BikeCatList;
         }
-        
+
+        private void convertInformation(string cat, string s, string c)
+        {
+
+
+            // retrouve le kit couleur et le kit taille parmis la liste de l'ensemble des kits
+            foreach (KitTemplate kit in Controler.Instance.getKitTemplateList())
+            {
+                if (kit.getName() == s)
+                {
+                    size = kit;
+                }
+                if (kit.getName() == c)
+                {
+                    color = kit;
+                }
+            }
+
+            // retrouve le catalogBike parmis la liste des catalogBike
+            foreach (CatalogBike cbike in Controler.Instance.getCatalogBike())
+            {
+                if (cbike.getName() == cat)
+                {
+                    catBike = cbike;
+                }
+            }
+        }
+
 
         public class BikeCat
         {

@@ -21,7 +21,7 @@ namespace BoVeloManager.Classes
         private List<BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
-        private Sale CurrentSale;
+        public TempSale tempSale;
         
 
         private Controler(){
@@ -126,25 +126,29 @@ namespace BoVeloManager.Classes
     #endregion
 
     #region Sale
-        public List<Sale.displayInfo> GetSaleDisplayInfo() {
-            List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+    public List<Sale.displayInfo> GetSaleDisplayInfo() {
+        List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 
-            foreach (Sale s in saleList) {
+        foreach (Sale s in saleList) {
 
-                temp.Add(s.GetSaleDisplayInfo());
-            }
-            return temp;
+            temp.Add(s.GetSaleDisplayInfo());
         }
+        return temp;
+    }
 
-        public Sale getCurrentSale()
-        {
-            return CurrentSale;
-        }
-        public void setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList_, List<Client> clientList_)
-        {
-            CurrentSale = new Sale(id_, id_seller, id_client, state_, sale_date_, prevision_date_, bikeList_, userList_, clientList_);
-        }
-        
+    #region TEST
+    /*
+    public Sale getCurrentSale()
+    {
+        return CurrentSale;
+    }
+    public void setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList_, List<Client> clientList_)
+    {
+        CurrentSale = new Sale(id_, id_seller, id_client, state_, sale_date_, prevision_date_, bikeList_, userList_, clientList_);
+    }
+    */
+    #endregion
+
     #endregion
 
     #region KitTemplate

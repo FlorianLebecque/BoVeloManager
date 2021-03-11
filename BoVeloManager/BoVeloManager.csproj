@@ -173,6 +173,7 @@
     <Compile Include="Classes\Human.cs" />
     <Compile Include="Classes\Sale.cs" />
     <Compile Include="Classes\KitTemplate.cs" />
+    <Compile Include="Classes\TempSale.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
