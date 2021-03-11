@@ -28,7 +28,6 @@ namespace BoVeloManager.UI.Planning.description {
             bk = bk_;
 
             init();
-
         }
 
         public void init() {
@@ -83,6 +82,10 @@ namespace BoVeloManager.UI.Planning.description {
                     dp.SelectedDate = bk.getPlannedtDate();
                 }
             }
+        }
+
+        private void cb_state_SelectionChanged(object sender, SelectionChangedEventArgs e){
+
         }
     }
 }
