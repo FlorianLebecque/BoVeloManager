@@ -92,6 +92,7 @@ namespace BoVeloManager.UI.Planning.description {
                 Seulement et uniquement quand cette variable est true alors on peut commencer
 
                 AVANT de passer à l'état Done (dernier etat possible du vélo) Il faut demander une confirmation car c'est inchangeable)
+                (voir avec messagebox et confirmation)
             
                 //On peut passer de l'état : 
                     0 (Waiting) -> 1 (In progress)
