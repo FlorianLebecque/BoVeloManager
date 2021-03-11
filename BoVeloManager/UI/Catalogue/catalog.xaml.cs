@@ -37,16 +37,9 @@ namespace BoVeloManager.Catalogue {
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void Add_tBike_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("PROGRAM BUILDING ...");
-        }
-
         private void Add_Bike_Click(object sender, RoutedEventArgs e)
         {
             BikeCat b = ((BikeCat)((System.Windows.Controls.Button)e.Source).DataContext);
-            
-            //List<KitTemplate> temp = new List<KitTemplate>();
 
             string cb = b.name;
             string s = b.size;
@@ -65,21 +58,7 @@ namespace BoVeloManager.Catalogue {
             List<CatalogBike.displayInfo> catalogBikesDisplayInfoList = Controler.Instance.getCatalogBikeDisplayInfo();
 
             foreach (CatalogBike.displayInfo temp in catalogBikesDisplayInfoList)
-            {
-                #region TEST
-                /*
-                //string name_ = "hello";
-                List<string> colorList_ = new List<string>();
-                List<string> sizeList_ = new List<string>();
-
-                colorList_.Add("rouge");
-                colorList_.Add("vert");
-
-                sizeList_.Add("XL");
-                sizeList_.Add("XS");
-                */
-                #endregion 
-
+            {                
                 string name_ = temp.name;
 
                 // Sorte kitTemplate
@@ -105,25 +84,11 @@ namespace BoVeloManager.Catalogue {
                 BikeCatList.Add(new BikeCat() { name = name_, colorList = colorList_, sizeList = sizeList_, pic = pic_});
             }
 
-            #region TEST
-            /*
-            List<string> Size = new List<string>();
-            List<string> Color = new List<string>();
-
-            Size.Add("ta mere");
-            Color.Add("tchoin tchoin");
-
-            BikeCatList.Add(new BikeCat() { name = "yo", colorList = Color, sizeList = Size, pic = System.Drawing.Image.FromFile("Bike0.jpg") });
-            */
-            #endregion
-
             CatalogListView.ItemsSource = BikeCatList;
         }
 
         private void convertInformation(string cat, string s, string c)
         {
-
-
             // retrouve le kit couleur et le kit taille parmis la liste de l'ensemble des kits
             foreach (KitTemplate kit in Controler.Instance.getKitTemplateList())
             {
@@ -147,6 +112,24 @@ namespace BoVeloManager.Catalogue {
             }
         }
 
+        private void bt_addSale_Click(object sender, RoutedEventArgs e)
+        {
+
+            #region affichage console
+            Console.WriteLine("###################");
+            foreach (BikeTemplate tBike in Controler.Instance.GetBikeTemplateList())
+            {
+                Console.WriteLine("------------");
+                Console.WriteLine("Name : " + tBike.getName());
+                foreach (KitTemplate kit in tBike.getListKit())
+                {
+                    Console.WriteLine("kit : " + kit.getName());
+                }
+            }
+            Console.WriteLine("###################");
+            #endregion
+
+        }
 
         public class BikeCat
         {
@@ -158,5 +141,7 @@ namespace BoVeloManager.Catalogue {
             public string color { get; set; }
             public int qnt { get; set; }
         }
+
+        
     }
 }

@@ -41,9 +41,23 @@ namespace BoVeloManager.Classes
                 tBike = new BikeTemplate(tBike_id, catBike);
                 tBike.linkKitTemplate(size);
                 tBike.linkKitTemplate(color);
+                Controler.Instance.GetBikeTemplateList().Add(tBike);
             }
 
             addBikeTemplateToBasket(qnt, tBike);
+
+            #region affichage console
+            foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
+            {
+                Console.WriteLine("------------");
+                Console.WriteLine("Name : " + kvp.Key.getName());
+                foreach (KitTemplate kit in kvp.Key.getListKit())
+                {
+                    Console.WriteLine("kit : " + kit.getName());
+                }
+                Console.WriteLine("Quantity : " + kvp.Value);                
+            }
+            #endregion
         }
 
         // Verification existence BikeTemplate dans la db
@@ -55,8 +69,12 @@ namespace BoVeloManager.Classes
 
             foreach (BikeTemplate bikeTemplate in tBike_list)
             {
-                if (bikeTemplate.getCat() == catBike && bikeTemplate.getListKit() == listKit)
+                //x.All(y.Contains)
+                //if (bikeTemplate.getCat().getName() == catBike.getName() && bikeTemplate.getListKit() == listKit)
+
+                if (bikeTemplate.getCat().getName() == catBike.getName() && bikeTemplate.getListKit().All(listKit.Contains) && listKit.All(bikeTemplate.getListKit().Contains))
                 {
+                    Console.WriteLine("le bike template ajouté existe dans la base de donnée");
                     tempBikeTemplate = bikeTemplate;
                     return true;
                 }
@@ -70,20 +88,23 @@ namespace BoVeloManager.Classes
         {
             if (basket.ContainsKey(tBike))
             {
-                //int qnt_ = basket.FirstOrDefault(x => x.Value == tBike).Key;
-                //qnt_ += qnt;
+                Console.WriteLine("basket contains this bike template");
+
+                int qnt_ = default;
+                BikeTemplate tBike_ = default;
 
                 foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
-                {
+                {                    
                     if (kvp.Key == tBike)
                     {
-                        int qnt_ = kvp.Value;
-                        BikeTemplate tBike_ = kvp.Key;
-
-                        basket.Remove(tBike);
-                        basket.Add(tBike_, qnt_ + qnt);
+                        Console.WriteLine("bike template founded");
+                        qnt_ = kvp.Value;
+                        tBike_ = kvp.Key;                                                
                     }
                 }
+
+                basket.Remove(tBike);
+                basket.Add(tBike_, qnt_ + qnt);
             }
             else
             {
