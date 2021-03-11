@@ -110,7 +110,19 @@ namespace BoVeloManager.UI.Planning.description {
                 
 
              */
-
+            if (has_init)
+            {
+                bk.setState(cb_state.SelectedIndex);
+                tools.DatabaseClassInterface.updateBike(bk);
+                if (cb_state.SelectedIndex == 2)
+                {
+                    MessageBox.Show("Do you really wish to set the state to Done, this action is irreversible");
+                    //afficher une box oui/non (pop-up?)
+                }
+                init();
+            }
+            //J'ai pas fait le querry dans database mais jai mis le setState dans Bike, je sais pas si il est nécessaire de faire un setBikeState si il y a un updateBike qui traite le status?
+            //
 
         }
     }

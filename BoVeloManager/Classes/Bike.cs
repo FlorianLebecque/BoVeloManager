@@ -71,6 +71,10 @@ namespace BoVeloManager.Classes
         public void setPoste(int p) {
             Poste = p;
         }
+        public void setState(int s)
+        {
+            status = s;
+        }
 
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();

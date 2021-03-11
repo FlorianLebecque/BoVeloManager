@@ -490,6 +490,11 @@ namespace BoVeloManager.tools {
             string q = DatabaseQuery.updateBike(bk);
             return Database.setData(q);
         }
+        public static int setBikeState(Bike bk)
+        {
+            string q = DatabaseQuery.updateBike(bk);
+            return Database.setData(q);
+        }
 
         #endregion
 
