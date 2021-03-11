@@ -21,7 +21,7 @@ namespace BoVeloManager.Classes
         private List<BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
-        public TempSale tempSale;
+        public TempSale tempSale = new TempSale();
         
 
         private Controler(){
@@ -119,8 +119,6 @@ namespace BoVeloManager.Classes
 
             clientList.Add(c);
             DatabaseClassInterface.addClient(c);
-
-
         }
 
     #endregion
@@ -193,6 +191,11 @@ namespace BoVeloManager.Classes
             temp.Add(b.GetDisplayInfo());
         }
         return temp;
+    }
+
+    public List<BikeTemplate> GetBikeTemplateList()
+    {
+        return bikeTemplateList;
     }
 
     public BikeTemplate getBikeTemplateById(int id_tBike)

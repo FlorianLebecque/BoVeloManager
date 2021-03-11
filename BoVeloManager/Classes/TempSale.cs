@@ -8,14 +8,8 @@ namespace BoVeloManager.Classes
 {
     // Rassemble tous les composants nécaissaires a l'encodage de la vente
     public class TempSale
-    {
-        private int nb_x;
-        private int nb_y;
-        private int nb_z;
-
-        private BikeTemplate x;
-        private BikeTemplate y;
-        private BikeTemplate z;
+    {       
+        private Dictionary<int, BikeTemplate> basket = new Dictionary<int, BikeTemplate>();
 
         private Client client;
         private User seller;
@@ -25,6 +19,8 @@ namespace BoVeloManager.Classes
 
         private Sale sale;
 
+        private BikeTemplate tempBikeTemplate;
+
         public TempSale()
         {
 
@@ -32,19 +28,68 @@ namespace BoVeloManager.Classes
 
         
 
-        public void addItem(CatalogBike catBike, KitTemplate size, KitTemplate color, int qnt) 
+        public void addItems(CatalogBike catBike, KitTemplate size, KitTemplate color, int qnt) 
         {
-            
+            BikeTemplate tBike;
+            if (existBikeTemplate(catBike, size, color, Controler.Instance.GetBikeTemplateList()))
+            {
+                tBike = tempBikeTemplate;
+            }
+            else
+            {
+                int tBike_id = Controler.Instance.getLastBikeTemplateId() + 1;
+                tBike = new BikeTemplate(tBike_id, catBike);
+                tBike.linkKitTemplate(size);
+                tBike.linkKitTemplate(color);
+            }
 
-
+            addBikeTemplateToBasket(qnt, tBike);
         }
 
+        // Verification existence BikeTemplate parmis la db
+        private bool existBikeTemplate(CatalogBike catBike, KitTemplate size, KitTemplate color, List<BikeTemplate> tBike_list)
+        {
+            List<KitTemplate> listKit = new List<KitTemplate>();
+            listKit.Add(size);
+            listKit.Add(color);
+
+            foreach (BikeTemplate bikeTemplate in tBike_list)
+            {
+                if (bikeTemplate.getCat() == catBike && bikeTemplate.getListKit() == listKit)
+                {
+                    tempBikeTemplate = bikeTemplate;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
+        {
+            
+        }
         public void saveSale()
         {
 
+            // Bike bike = new Bike();
+
+            createSale();
+
+            /*
+            foreach (Bike bike in BikeList)
+            {
+                addBikeToSale(bike);
+            }
+            */
+            
 
             drainTempSale();
         }
+
+        // creation vente
+        private void createSale() { }
+        // ajout un par un des velos et les rattacher a la vente par son id
+        private void addBikeToSale(Bike bike) { }
 
         public void drainTempSale()
         {

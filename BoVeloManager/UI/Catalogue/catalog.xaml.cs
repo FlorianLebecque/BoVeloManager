@@ -55,7 +55,7 @@ namespace BoVeloManager.Catalogue {
 
             convertInformation(cb, s, c);
 
-            Controler.Instance.tempSale.addItem(catBike, size, color, qnt);
+            Controler.Instance.tempSale.addItems(catBike, size, color, qnt);
 
 
             //int biketemplateId = Controler.Instance.getLastBikeTemplateId() + 1;
