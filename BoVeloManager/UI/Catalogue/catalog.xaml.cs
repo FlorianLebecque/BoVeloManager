@@ -56,14 +56,6 @@ namespace BoVeloManager.Catalogue {
             convertInformation(cb, s, c);
 
             Controler.Instance.tempSale.addItems(catBike, size, color, qnt);
-
-
-            //int biketemplateId = Controler.Instance.getLastBikeTemplateId() + 1;
-
-            //BikeTemplate temp = new BikeTemplate(biketemplateId, catBike);
-
-            //Controler.Instance.setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List < Bike > bikeList_, List < User > userList, List < Client > clientList);
-
             MessageBox.Show("Item added to basket");
         }
 

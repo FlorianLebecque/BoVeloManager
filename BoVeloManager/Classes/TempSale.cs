@@ -46,7 +46,7 @@ namespace BoVeloManager.Classes
             addBikeTemplateToBasket(qnt, tBike);
         }
 
-        // Verification existence BikeTemplate parmis la db
+        // Verification existence BikeTemplate dans la db
         private bool existBikeTemplate(CatalogBike catBike, KitTemplate size, KitTemplate color, List<BikeTemplate> tBike_list)
         {
             List<KitTemplate> listKit = new List<KitTemplate>();
@@ -64,6 +64,8 @@ namespace BoVeloManager.Classes
 
             return false;
         }
+
+        // Verification existence BikeTemplate dans le panier (basket)
         private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
         {
             if (basket.ContainsKey(tBike))
