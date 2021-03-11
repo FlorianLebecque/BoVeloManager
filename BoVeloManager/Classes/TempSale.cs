@@ -9,7 +9,7 @@ namespace BoVeloManager.Classes
     // Rassemble tous les composants nécaissaires a l'encodage de la vente
     public class TempSale
     {       
-        private Dictionary<int, BikeTemplate> basket = new Dictionary<int, BikeTemplate>();
+        private Dictionary<BikeTemplate, int> basket = new Dictionary<BikeTemplate, int>();
 
         private Client client;
         private User seller;
@@ -66,7 +66,27 @@ namespace BoVeloManager.Classes
         }
         private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
         {
-            
+            if (basket.ContainsKey(tBike))
+            {
+                //int qnt_ = basket.FirstOrDefault(x => x.Value == tBike).Key;
+                //qnt_ += qnt;
+
+                foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
+                {
+                    if (kvp.Key == tBike)
+                    {
+                        int qnt_ = kvp.Value;
+                        BikeTemplate tBike_ = kvp.Key;
+
+                        basket.Remove(tBike);
+                        basket.Add(tBike_, qnt_ + qnt);
+                    }
+                }
+            }
+            else
+            {
+                basket.Add(tBike, qnt);
+            }
         }
         public void saveSale()
         {
