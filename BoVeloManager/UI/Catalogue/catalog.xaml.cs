@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using BoVeloManager.Classes;
+using BoVeloManager.UI.Catalogue.Confirmation;
 using System.Drawing;
 
 
@@ -113,7 +114,7 @@ namespace BoVeloManager.Catalogue {
             }
         }
 
-        private void bt_addSale_Click(object sender, RoutedEventArgs e)
+        private void bt_confirmation_Click(object sender, RoutedEventArgs e)
         {
 
             #region affichage console
@@ -130,11 +131,8 @@ namespace BoVeloManager.Catalogue {
             Console.WriteLine("###################");
             #endregion
 
-            //description.Description DW = new description.Description(s);
-            //DW.Show();
-
-            
-            
+            Confirmation CW = new Confirmation();
+            CW.Show();  
 
         }
 

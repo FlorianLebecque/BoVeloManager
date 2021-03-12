@@ -14,7 +14,7 @@
     <DockPanel>
 
         <Grid DockPanel.Dock="Top" Height="40">
-            <Button x:Name="bt_addSale" Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right" Click="bt_addSale_Click">
+            <Button x:Name="bt_confirmation" Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right" Click="bt_confirmation_Click">
                 <materialDesign:PackIcon Kind="Cart" Height="20" Width="20"/>
             </Button>
         </Grid>
