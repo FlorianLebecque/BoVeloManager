@@ -176,6 +176,9 @@
     <Compile Include="Classes\TempSale.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="tools\ExportPdf.cs" />
+    <Compile Include="UI\Catalogue\Confirmation\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
@@ -227,6 +230,10 @@
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Page Include="UI\Catalogue\catalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Catalogue\Confirmation\Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

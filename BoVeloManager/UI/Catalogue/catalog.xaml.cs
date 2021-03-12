@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using BoVeloManager.Classes;
 using System.Drawing;
 
+
 namespace BoVeloManager.Catalogue {
     /// <summary>
     /// Interaction logic for Page1.xaml
@@ -128,6 +129,12 @@ namespace BoVeloManager.Catalogue {
             }
             Console.WriteLine("###################");
             #endregion
+
+            //description.Description DW = new description.Description(s);
+            //DW.Show();
+
+            
+            
 
         }
 
