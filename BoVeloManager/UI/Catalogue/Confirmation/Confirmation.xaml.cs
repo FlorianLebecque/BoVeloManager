@@ -115,16 +115,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
             BikeItem b = ((BikeItem)((System.Windows.Controls.Button)e.Source).DataContext);
             Controler.Instance.tempSale.getBasket().Remove(b.tbike);
 
-            Console.WriteLine("Price to delete : " + b.price);
-
-            string str = b.price.Substring(0, b.price.Length - 1);
-
-            Console.WriteLine("prix enlevé (float) = " + b.price.Substring(0, b.price.Length - 1));
-            Console.WriteLine("prix enlevé (str) = " + str);
-
-            Console.WriteLine("old price : " + tot);
-            tot -= float.Parse(str);
-            Console.WriteLine("new price : " + tot);
+            tot = 0;
 
             displayDetails();
         }
