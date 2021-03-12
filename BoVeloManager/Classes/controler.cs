@@ -121,6 +121,11 @@ namespace BoVeloManager.Classes
             DatabaseClassInterface.addClient(c);
         }
 
+        public List<Client> getClientList()
+        {
+            return clientList;
+        }
+
     #endregion
 
     #region Sale

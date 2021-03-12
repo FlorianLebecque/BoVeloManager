@@ -79,7 +79,7 @@ namespace BoVeloManager.Sales.description
             }
         }
 
-        public class BikeItem {
+        private class BikeItem {
             public string qnt_name { get; set; }
             public string string_kits { get; set; }
             public string price { get; set; }

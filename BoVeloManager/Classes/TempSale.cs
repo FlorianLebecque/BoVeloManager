@@ -21,12 +21,15 @@ namespace BoVeloManager.Classes
 
         private BikeTemplate tempBikeTemplate;
 
-        public TempSale()
+        public TempSale() 
         {
 
         }
 
-        
+        public Dictionary<BikeTemplate, int> getBasket()
+        {
+            return basket;
+        }
 
         public void addItems(CatalogBike catBike, KitTemplate size, KitTemplate color, int qnt) 
         {

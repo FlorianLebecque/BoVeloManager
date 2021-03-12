@@ -48,9 +48,27 @@ namespace BoVeloManager.Catalogue {
             string c = b.color;
             int qnt = b.qnt;
 
-            convertInformation(cb, s, c);
+            // Find Object - catch pas pris en compte car find met la valeur pas default si il ne trouve rien
+            try
+            {
+                CatalogBike catBike = Controler.Instance.getCatalogBike().Find(x => x.getName() == cb);
+                KitTemplate size = Controler.Instance.getKitTemplateList().Find(x => x.getName() == s);
+                KitTemplate color = Controler.Instance.getKitTemplateList().Find(x => x.getName() == c);
 
-            Controler.Instance.tempSale.addItems(catBike, size, color, qnt);
+                Console.WriteLine("Tout est ok");
+
+                Controler.Instance.tempSale.addItems(catBike, size, color, qnt);
+            }
+            catch
+            {
+                Console.WriteLine("erreur");
+                MessageBox.Show("Information missing");
+                Add_Bike_Click(sender, e);
+            }           
+
+            //convertInformation(cb, s, c);
+
+            
             MessageBox.Show("Item added to basket");
         }
 
@@ -89,8 +107,13 @@ namespace BoVeloManager.Catalogue {
             CatalogListView.ItemsSource = BikeCatList;
         }
 
+        // Inutile
         private void convertInformation(string cat, string s, string c)
         {
+            //Client client = Controler.Instance.getClientList().Find(x => x.getName() == name);
+
+
+
             // retrouve le kit couleur et le kit taille parmis la liste de l'ensemble des kits
             foreach (KitTemplate kit in Controler.Instance.getKitTemplateList())
             {
