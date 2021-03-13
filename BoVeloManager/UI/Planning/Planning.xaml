@@ -38,7 +38,7 @@
                             <ComboBoxItem>2</ComboBoxItem>
                             <ComboBoxItem>3</ComboBoxItem>
                         </ComboBox>
-                        <Button  Margin="30 0 0 0" VerticalAlignment="Center">
+                        <Button  x:Name="bt_AddBike" Margin="30 0 0 0" VerticalAlignment="Center" Click="bt_AddBike_Click">
                             <materialDesign:PackIcon Kind="Add"/>
                         </Button>
                     </StackPanel>

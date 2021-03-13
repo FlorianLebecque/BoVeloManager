@@ -81,7 +81,7 @@ namespace BoVeloManager.UI.Planning {
             lv_friday.ItemsSource = bk_dpiList_Fri;
 
         }
-
+        
         private void bt_nextWeek_Click(object sender, RoutedEventArgs e) {
             nbrWeek++;
             init();
@@ -105,6 +105,15 @@ namespace BoVeloManager.UI.Planning {
             description.description desp = new description.description(bk);
             desp.ShowDialog();
             init();
+        }
+
+        private void bt_AddBike_Click(object sender, RoutedEventArgs e)
+        {
+            AddBike AUW = new AddBike();
+            AUW.ShowDialog();
+
+            //update the user datagrid
+            //update_dg_userList();
         }
     }
 }
