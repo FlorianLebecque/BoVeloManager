@@ -19,7 +19,7 @@ namespace BoVeloManager.tools {
 
             DataTable dt = new DataTable();
 
-            while (nbrTry < 5) {
+            while (nbrTry < Properties.Settings.Default.MAX_DB_TRY) {
                 try {
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
@@ -42,7 +42,7 @@ namespace BoVeloManager.tools {
 
             int nbrTry = 0;
 
-            while (nbrTry < 5) {
+            while (nbrTry < Properties.Settings.Default.MAX_DB_TRY) {
                 try {
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
