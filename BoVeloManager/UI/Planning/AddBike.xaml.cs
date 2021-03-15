@@ -27,14 +27,57 @@ namespace BoVeloManager.UI.Planning
             BindComboBoxCat();
         }
 
-        private void BTLogin_Click(object sender, RoutedEventArgs e)
+        private void BTLogin_Click(object sender, RoutedEventArgs a)
         {
             int indexCatalog = BikeCatalog.SelectedIndex;
+            int indexSize = BikeSize.SelectedIndex;
+            int indexColor = BikeColor.SelectedIndex;
+            int indexPoste = Poste.SelectedIndex;
             int Quantity = Convert.ToInt32(BikeQuantity.Text);
             //int id = Controler.Instance.getLastBikeTemplate() + 1;
             //Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime planned_date_, DateTime constr_date_)
             //Bike b = new Bike(id, kitName, kitCat, kitPrice, kitProp);
             //addBike(kt);
+            List<BikeTemplate> BikeTemplateList = Controler.Instance.getBikeTemplateList();
+            foreach (BikeTemplate bt in BikeTemplateList)
+            {
+                if (bt.getCat().Equals(Controler.Instance.getCatalogBike()[indexCatalog]))
+                {
+                    List<KitTemplate> Size = new List<KitTemplate>();
+                    List<KitTemplate> Color = new List<KitTemplate>();
+
+                    List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
+
+                    foreach (KitTemplate kit in KitList)
+                    {
+                        KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                        string kit_cat = kit_struct.category;
+
+                        if (kit_cat == "Size")
+                        {
+                            Size.Add(kit);
+                        }
+                        else if (kit_cat == "Color")
+                        {
+                            Color.Add(kit);
+                        }
+
+                    }
+                    List<KitTemplate> x = new List<KitTemplate>() {Size[indexSize], Color[indexColor]};
+                    //if (Enumerable.SequenceEqual(bt.getCat().getKitTemplateList().OrderBy(e => e), x)) //Bike template exists //ERROR
+                    if (true)
+                    {
+                        Bike b = new Bike(0, 0, 00000, indexPoste, bt, DateTime.Now, DateTime.Now);
+                        addBike(b);
+                    }
+                    else //Bike template doesn t exist
+                    {
+                        BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
+                        Bike b = new Bike(0, 0, 00000, indexPoste, newbt, DateTime.Now, DateTime.Now);
+                        addBike(b);
+                    }
+                }
+            }
             this.Close();
 
 

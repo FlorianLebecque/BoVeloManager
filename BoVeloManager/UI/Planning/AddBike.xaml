@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="b" Grid.Column="0">Poste:</Label>
-                    <ComboBox x:Name="cb_grade" Padding="2" Margin="55,0,71,0" SelectedIndex="0">
+                    <ComboBox x:Name="Poste" Padding="2" Margin="55,0,71,0" SelectedIndex="0">
                         <ComboBoxItem >1</ComboBoxItem>
                         <ComboBoxItem >2</ComboBoxItem>
                         <ComboBoxItem >3</ComboBoxItem>
