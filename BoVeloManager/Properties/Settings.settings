@@ -27,7 +27,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="MAX_DB_TRY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
   </Settings>
 </SettingsFile>
