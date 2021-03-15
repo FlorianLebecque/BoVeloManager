@@ -54,9 +54,7 @@ namespace BoVeloManager.Management.item
             }
         }
 
-        private void updateItemName(string name,int priceMul)
-        {
-
+        private void updateItemName(string name,int priceMul){
             kt.setName(name);
             kt.setPriceMul(priceMul);
 
