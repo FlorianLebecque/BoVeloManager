@@ -32,7 +32,9 @@ namespace BoVeloManager.UI.Planning.description {
             
             int state = bk.getState();
 
-            if (state == 2) {
+            
+
+            if ((state == 2)&&(Controler.Instance.getCurrentUser().getName() != "God")) {
                 cb_state.IsEnabled = false;
                 dp_pld_date.IsEnabled = false;
                 cb_poste.IsEnabled = false;
