@@ -319,7 +319,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
-            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`="+cat.ToString()+ ",`Price`=" + price.ToString() + ",`properties`='" + prop + "' WHERE `id`=" + id;
+            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`='"+cat.ToString()+ "',`Price`='"+price.ToString()+"',`properties`='" + prop + "' WHERE `id`=" + id;
         }
 
         #endregion 

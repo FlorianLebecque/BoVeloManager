@@ -65,11 +65,11 @@ namespace BoVeloManager.Catalogue {
 
                 if (kit_cat == "Size")
                 {
-                    Size.Add(kit_struct.name);
+                    Size.Add(kit_struct.properties);
                 }
                 else if (kit_cat == "Color")
                 {
-                    Color.Add(kit_struct.name);
+                    Color.Add(kit_struct.properties);
                 }
             }
 
