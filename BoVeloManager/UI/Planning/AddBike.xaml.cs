@@ -23,15 +23,36 @@ namespace BoVeloManager.UI.Planning
         public AddBike()
         {
             InitializeComponent();
-            BindComboBox();
+            
+            BindComboBoxCat();
         }
 
         private void BTLogin_Click(object sender, RoutedEventArgs e)
         {
-           // Bike newBike = new Bike();
-            //Controler.createBike(newBike);
+            int indexCatalog = BikeCatalog.SelectedIndex;
+            int Quantity = Convert.ToInt32(BikeQuantity.Text);
+            //int id = Controler.Instance.getLastBikeTemplate() + 1;
+            //Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime planned_date_, DateTime constr_date_)
+            //Bike b = new Bike(id, kitName, kitCat, kitPrice, kitProp);
+            //addBike(kt);
+            this.Close();
+
 
         }
+
+        private void addBike(Bike bike)
+        {
+            try
+            {
+                Controler.Instance.createBike(bike);
+            }
+            catch
+            {
+                MessageBox.Show("An error has occured");
+            }
+        }
+
+
 
         private void BTCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -40,10 +61,13 @@ namespace BoVeloManager.UI.Planning
 
         private void BindComboBox()
         {
+            int indexCatalog = BikeCatalog.SelectedIndex;
+            int idCatalogue = Controler.Instance.getCatalogBike()[indexCatalog].getId();
             List<string> Size = new List<string>();
             List<string> Color = new List<string>();
 
-            List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
+            //List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
+            List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
 
             foreach (KitTemplate kit in KitList)
             {
@@ -58,6 +82,7 @@ namespace BoVeloManager.UI.Planning
                 {
                     Color.Add(kit_struct.name);
                 }
+ 
             }
 
             BikeSize.ItemsSource = Size;
@@ -65,5 +90,24 @@ namespace BoVeloManager.UI.Planning
 
         }
 
+        private void BindComboBoxCat()
+        {
+            List<string> Cat = new List<string>();
+
+            List<CatalogBike> CatList = Controler.Instance.getCatalogBike();
+
+            foreach (CatalogBike c in CatList)
+            {
+                Cat.Add(c.getName());
+            }
+
+            BikeCatalog.ItemsSource = Cat;
+
+        }
+
+        private void BikeCatalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BindComboBox();
+        }
     }
 }
