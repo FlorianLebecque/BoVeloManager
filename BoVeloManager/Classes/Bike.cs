@@ -18,13 +18,14 @@ namespace BoVeloManager.Classes
         private DateTime PlannedDate;
         private DateTime ConstrucDate;
 
-        public Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
+        public Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime planned_date_, DateTime constr_date_) {
             id = id_;
             status = status_;
             BikeTemplate = bt_;
             id_sale = id_sale_;
             Poste = Poste_;
-            PlannedDate = constr_date_;
+            PlannedDate = planned_date_;
+            ConstrucDate = constr_date_;
             link();
         }
 

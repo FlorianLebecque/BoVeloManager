@@ -346,7 +346,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string updateBike(Bike bk) {
-            return "UPDATE `bv_bike` SET `state`= "+ bk.getState().ToString() +" ,`planne_cDate`='"+ bk.getPlannedtDate().ToString("yyyy-MM-dd") +"' ,`poste`= "+bk.getPoste().ToString()+" WHERE `id` = " + bk.getId();
+            return "UPDATE `bv_bike` SET `state`= "+ bk.getState().ToString() +" ,`planne_cDate`='"+ bk.getPlannedtDate().ToString("yyyy-MM-dd") +"' ,`poste`= "+bk.getPoste().ToString()+ ",`create_Date`='" + bk.getConstructionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
         }
 
         public static string getTBike() {
@@ -473,11 +473,18 @@ namespace BoVeloManager.tools {
 
 
 
-                DateTime Constr_date = (DateTime)dt.Rows[i]["planne_cDate"];
+                DateTime planned_date = (DateTime)dt.Rows[i]["planne_cDate"];
+                DateTime Constr_date;
+                if (dt.Rows[i]["create_Date"] != DBNull.Value) {
+                    Constr_date = (DateTime)dt.Rows[i]["create_Date"];
+                } else {
+                    Constr_date = DateTime.MinValue;
+                }
+                
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
-                        temp.Add(new Bike(id,state, id_sale,poste,bt, Constr_date)) ;
+                        temp.Add(new Bike(id,state, id_sale,poste,bt, planned_date, Constr_date)) ;
                     }
                 }
                 
