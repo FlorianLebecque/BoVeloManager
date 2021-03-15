@@ -14,13 +14,13 @@ namespace BoVeloManager.Classes
 
         private User loggedUser;
 
-        private List<User> userList;
-        private List<Client> clientList;
-        private List<Bike> bikeList;
-        private List<CatalogBike> CatalogBikeList;
-        private List<BikeTemplate> bikeTemplateList;
-        private List<Sale> saleList;
-        private List<KitTemplate> kitTemplateList;
+        private List<User>          userList;
+        private List<Client>        clientList;
+        private List<Bike>          bikeList;
+        private List<CatalogBike>   CatalogBikeList;
+        private List<BikeTemplate>  bikeTemplateList;
+        private List<Sale>          saleList;
+        private List<KitTemplate>   kitTemplateList;
         
 
         private Controler(){

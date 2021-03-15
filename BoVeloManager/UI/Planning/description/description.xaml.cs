@@ -79,7 +79,7 @@ namespace BoVeloManager.UI.Planning.description {
                     tools.DatabaseClassInterface.updateBike(bk);
                     init();
                 } else {
-                    MessageBox.Show("You can't choose this date");
+                    tools.UI.MessageBox.Show("Date error","You can't choose this date");
                     dp.SelectedDate = bk.getPlannedtDate();
                 }
             }

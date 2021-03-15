@@ -151,11 +151,11 @@ namespace BoVeloManager.UI.Planning {
             if (State == 0) {
                 State +=1 ;
 
-            }else if (State == 1 && (MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
+            }else if (State == 1 && (tools.UI.MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
                 State += 1;
 
             } else if (State == 2) {
-                MessageBox.Show("Bike already done");
+                tools.UI.MessageBox.Show("Bike already done", "Bike status");
             }
 
             bk.setState(State);

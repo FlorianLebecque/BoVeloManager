@@ -198,6 +198,9 @@
     <Compile Include="tools\date.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="tools\SVGRender.cs" />
+    <Compile Include="tools\UI\MessageBox.xaml.cs">
+      <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,10 @@
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Page Include="loadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tools\UI\MessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
