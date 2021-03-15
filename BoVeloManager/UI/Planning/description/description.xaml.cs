@@ -114,10 +114,16 @@ namespace BoVeloManager.UI.Planning.description {
 
         private void BT_seeSale_Click(object sender, RoutedEventArgs e) {
             int saleID = bk.getSaleId();
-            Sale s = Controler.Instance.getSale_byId(saleID);
+            try {
+                Sale s = Controler.Instance.getSale_byId(saleID);
+                BoVeloManager.Sales.description.Description sd = new BoVeloManager.Sales.description.Description(s);
+                sd.Show();
+            } catch {
+                tools.UI.MessageBox.Show("This bike has no sale", "Error");
+            }
+           
 
-            BoVeloManager.Sales.description.Description sd = new BoVeloManager.Sales.description.Description(s);
-            sd.Show();
+            
 
         }
     }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Sale Description" Height="500" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Sale Description" Height="526" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
