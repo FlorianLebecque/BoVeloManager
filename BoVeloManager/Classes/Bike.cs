@@ -15,6 +15,7 @@ namespace BoVeloManager.Classes
         private int Poste;
         private BikeTemplate BikeTemplate;
         private DateTime PlannedDate;
+        private DateTime ConstrucDate;
 
         public Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
             id = id_;
@@ -76,6 +77,21 @@ namespace BoVeloManager.Classes
             status = s;
         }
 
+        public void setConstructionDate(DateTime dt) {
+            ConstrucDate = dt;
+        }
+
+        public DateTime getConstructionDate()
+        {
+            if(ConstrucDate != null){
+                return ConstrucDate;
+            }
+            else {
+                return DateTime.MinValue;
+            }
+            
+        }
+
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 
@@ -101,16 +117,20 @@ namespace BoVeloManager.Classes
             temp.id = getId();
             temp.priceMul = BikeTemplate.getCat().getPriceMul();
             temp.id_sale = this.getSaleId();
-            temp.ConstDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
+            temp.PlannedDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
             temp.price = this.getPrice().ToString("c2");
             temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
+
+            DateTime dt = getConstructionDate();
+
             return temp;
         }
 
         public struct displayInfo {
             public Bike CurBike { get; set; }
             public string price  { get; set; }
-            public string ConstDate { get; set; }
+            public string PlannedDate { get; set; }
+            public string ConstrucDate { get; set; }
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }
