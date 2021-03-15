@@ -177,9 +177,18 @@ namespace BoVeloManager.Classes
             return kitTemplateList;
         }
 
-    #endregion
+        #endregion
 
-    #region Bike
+        #region Bike
+
+        public int getLastBike()
+        {
+            if (bikeList.Count > 0)
+            {
+                return bikeList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
 
         public List<Bike.displayInfo> GetBikeDisplayInfo()
         {

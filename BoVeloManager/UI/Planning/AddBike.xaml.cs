@@ -62,26 +62,28 @@ namespace BoVeloManager.UI.Planning
             int done = 0;
             foreach (BikeTemplate bt in BikeTemplateList)
             {
-                //if (bt.getCat().Equals(Controler.Instance.getCatalogBike()[indexCatalog]))
-                //{
                     
                     List<KitTemplate> x = new List<KitTemplate>() {Size[indexSize], Color[indexColor]};
-                    //if (Enumerable.SequenceEqual(bt.getListKit().OrderBy(e => e), x)) //Bike template exists //ERROR
                     if(compare(bt.getListKit(),x) && done == 0)
                     {
-                        Bike b = new Bike(12345, 0, 12, indexPoste, bt, DateTime.Now, DateTime.MinValue);
-                        addBike(b);
-                        done = 1;
-                    }
-                //}
+                        for (int i = 0; i < Quantity; i++)
+                        {
+                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, indexPoste, bt, DateTime.Now, DateTime.MinValue);
+                            addBike(b);
+                        }
+                    done = 1;
+                }
             }
             if (done == 0)
             {
-                BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
-                newbt.linkKitTemplate(Size[indexSize]);
-                newbt.linkKitTemplate(Color[indexColor]);
-                Bike b = new Bike(12344, 0, 12, indexPoste, newbt, DateTime.Now, DateTime.MinValue);
-                addBike(b);
+                for (int i = 0; i < Quantity; i++)
+                {
+                    BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
+                    newbt.linkKitTemplate(Size[indexSize]);
+                    newbt.linkKitTemplate(Color[indexColor]);
+                    Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, 10, indexPoste, newbt, DateTime.Now, DateTime.MinValue);
+                    addBike(b);
+                }
             }
             this.Close();
 

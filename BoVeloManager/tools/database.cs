@@ -366,7 +366,7 @@ namespace BoVeloManager.tools {
             //}
             //else
             //{
-                return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + id + "," + bt.getId() + "," + id_sale + "," + status + "," + planned_date.ToString("yyyy-MM-dd") + "," + constr_date.ToString("yyyy-MM-dd") + "," + Poste + ")";
+                return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + planned_date.ToString("yyyy-MM-dd") + "','" + constr_date.ToString("yyyy-MM-dd") + "','" + Poste.ToString() + "')";
             //}   
                 
         }
