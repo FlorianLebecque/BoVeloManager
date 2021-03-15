@@ -134,7 +134,7 @@ namespace BoVeloManager.tools {
 
                 Cell cell4 = new Cell(1, 1)
                    .SetTextAlignment(TextAlignment.RIGHT)
-                   .Add(new Paragraph((tBike.CurTempl.getPrice()/100).ToString("c2")));
+                   .Add(new Paragraph((tBike.CurTempl.getPrice()* tBike.qnt).ToString("c2")));
 
                 cells.Add(cell1);
                 cells.Add(cell2);
