@@ -49,7 +49,12 @@ namespace BoVeloManager.tools {
 
                     return cmd.ExecuteNonQuery();
                 } catch {
-                    nbrTry++;
+                    nbrTry++; 
+                    if(nbrTry % 5 == 0) {
+                        tools.UI.MessageBox.Show("Trying to reconnect", "Error");
+                        connectToDB();
+                    }
+
                 }
             }
 
