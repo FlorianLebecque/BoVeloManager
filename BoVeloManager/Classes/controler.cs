@@ -134,9 +134,21 @@ namespace BoVeloManager.Classes
             }
             return temp;
         }
+
+        public Sale getSale_byId(int id) {
+            
+            foreach(Sale s in saleList){
+                if(s.getId() == id) {
+                    return s;
+                }
+            }
+
+            throw new Exception("No sale found");
+        }
+
     #endregion
 
-    #region KitTemplate
+        #region KitTemplate
 
         public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
 

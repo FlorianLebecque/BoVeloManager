@@ -135,5 +135,14 @@ namespace BoVeloManager.UI.Planning.description {
         private void Window_ContentRendered(object sender, EventArgs e) {
             has_init = true;
         }
+
+        private void BT_seeSale_Click(object sender, RoutedEventArgs e) {
+            int saleID = bk.getSaleId();
+            Sale s = Controler.Instance.getSale_byId(saleID);
+
+            BoVeloManager.Sales.description.Description sd = new BoVeloManager.Sales.description.Description(s);
+            sd.Show();
+
+        }
     }
 }
