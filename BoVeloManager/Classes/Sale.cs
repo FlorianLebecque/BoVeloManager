@@ -78,7 +78,6 @@ namespace BoVeloManager.Classes {
             return bikeList;
         }
 
-
         public displayInfo GetSaleDisplayInfo() {
             displayInfo temp = new displayInfo();
 
