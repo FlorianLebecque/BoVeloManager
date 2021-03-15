@@ -169,7 +169,7 @@ namespace BoVeloManager.Classes
         return temp;
     }
 
-    public int getLastKitTemplate(){
+    public int getLastKitTemplateId(){
         if (kitTemplateList.Count > 0) {
             return kitTemplateList.Select(x => x.getId()).Max();
         }
