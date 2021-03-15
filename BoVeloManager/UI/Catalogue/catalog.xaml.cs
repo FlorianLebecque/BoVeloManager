@@ -28,7 +28,7 @@ namespace BoVeloManager.Catalogue {
         KitTemplate size;
         KitTemplate color;
 
-        static Catalog instance;
+        static Catalog instance = new Catalog();
 
         private Catalog() {
             InitializeComponent();
