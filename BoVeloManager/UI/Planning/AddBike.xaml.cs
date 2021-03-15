@@ -39,48 +39,69 @@ namespace BoVeloManager.UI.Planning
             //Bike b = new Bike(id, kitName, kitCat, kitPrice, kitProp);
             //addBike(kt);
             List<BikeTemplate> BikeTemplateList = Controler.Instance.getBikeTemplateList();
+            List<KitTemplate> Size = new List<KitTemplate>();
+            List<KitTemplate> Color = new List<KitTemplate>();
+
+            List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
+
+            foreach (KitTemplate kit in KitList)
+            {
+                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                string kit_cat = kit_struct.category;
+
+                if (kit_cat == "Size")
+                {
+                    Size.Add(kit);
+                }
+                else if (kit_cat == "Color")
+                {
+                    Color.Add(kit);
+                }
+
+            }
+            int done = 0;
             foreach (BikeTemplate bt in BikeTemplateList)
             {
-                if (bt.getCat().Equals(Controler.Instance.getCatalogBike()[indexCatalog]))
-                {
-                    List<KitTemplate> Size = new List<KitTemplate>();
-                    List<KitTemplate> Color = new List<KitTemplate>();
-
-                    List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
-
-                    foreach (KitTemplate kit in KitList)
-                    {
-                        KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
-                        string kit_cat = kit_struct.category;
-
-                        if (kit_cat == "Size")
-                        {
-                            Size.Add(kit);
-                        }
-                        else if (kit_cat == "Color")
-                        {
-                            Color.Add(kit);
-                        }
-
-                    }
+                //if (bt.getCat().Equals(Controler.Instance.getCatalogBike()[indexCatalog]))
+                //{
+                    
                     List<KitTemplate> x = new List<KitTemplate>() {Size[indexSize], Color[indexColor]};
-                    //if (Enumerable.SequenceEqual(bt.getCat().getKitTemplateList().OrderBy(e => e), x)) //Bike template exists //ERROR
-                    if (true)
+                    //if (Enumerable.SequenceEqual(bt.getListKit().OrderBy(e => e), x)) //Bike template exists //ERROR
+                    if(compare(bt.getListKit(),x) && done == 0)
                     {
-                        Bike b = new Bike(12345, 0, 12345, indexPoste, bt, DateTime.Now, DateTime.Now);
+                        Bike b = new Bike(12345, 0, 12, indexPoste, bt, DateTime.Now, DateTime.MinValue);
                         addBike(b);
+                        done = 1;
                     }
-                    else //Bike template doesn t exist
-                    {
-                        BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
-                        Bike b = new Bike(12345, 0, 12345, indexPoste, newbt, DateTime.Now, DateTime.Now);
-                        addBike(b);
-                    }
-                }
+                //}
+            }
+            if (done == 0)
+            {
+                BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
+                newbt.linkKitTemplate(Size[indexSize]);
+                newbt.linkKitTemplate(Color[indexColor]);
+                Bike b = new Bike(12344, 0, 12, indexPoste, newbt, DateTime.Now, DateTime.MinValue);
+                addBike(b);
             }
             this.Close();
 
 
+        }
+
+        private bool compare(List<KitTemplate> x, List<KitTemplate> y)
+        {
+            if ((x.Count() == y.Count()) && (x.Count()==2) &&(y.Count()==2))
+            {
+                if ((x[0].Equals(y[0]))&&(x[1].Equals(y[1])))
+                {
+                    return true;
+                }
+                if ((x[0].Equals(y[1])) && (x[1].Equals(y[0])))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void addBike(Bike bike)
