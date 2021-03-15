@@ -224,6 +224,9 @@
     <Compile Include="UI\Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Planning\AddBike.xaml.cs">
+      <DependentUpon>AddBike.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Planning\description\description.xaml.cs">
       <DependentUpon>description.xaml</DependentUpon>
     </Compile>
@@ -317,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Management\user\modUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Planning\AddBike.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
