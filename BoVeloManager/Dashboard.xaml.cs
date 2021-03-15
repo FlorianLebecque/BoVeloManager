@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BoVeloManager.Classes;
 
 
 namespace BoVeloManager {
@@ -19,21 +19,30 @@ namespace BoVeloManager {
     /// </summary>
     public partial class Dashboard : Window {
 
+        public Controler crtl;
 
         bool isOpen = false;
 
         public Dashboard() {
             InitializeComponent();
 
-            frame.Content = new Catalogue.Catalog();
+            crtl = Controler.Instance;
 
-            //status bar log
-            lb_user.Text = tools.user.getUserName(); 
+            init();
+
         }
 
+        private void init() {
+            if (crtl.getCurrentUser().getName() != "God") {
+                ManagementBtn.Visibility = Visibility.Hidden;
+            }
 
-        
 
+            frame.Content = Catalogue.Catalog.Instance;
+
+            //status bar log
+            lb_user.Text = crtl.getCurrentUser().getName();
+        }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
             isOpen = true;
@@ -71,7 +80,7 @@ namespace BoVeloManager {
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Tag.ToString()) {
                 case "Catalog":
-                    frame.Content = new Catalogue.Catalog();
+                    frame.Content = Catalogue.Catalog.Instance;
                     break;
                 case "Command":
                     frame.Content = new Commande.Commande();
@@ -79,14 +88,27 @@ namespace BoVeloManager {
                 case "Stock":
                     frame.Content = new stock.stock();
                     break;
+                case "Planning":
+                    frame.Content = UI.Planning.Planning.Instance;
+                    break;
                 case "Management":
-                    frame.Content = new Management.Management();
+                    frame.Content = Management.Management.Instance;
                     break;
                 case "Sales":
-                    frame.Content = new Sales.Sales();
+                    frame.Content = Sales.Sales.Instance;
                     break;
 
             }
+        }
+
+
+        private void lb_user_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            User usr = Controler.Instance.getCurrentUser();
+
+            Management.user.modUserWindow MUW = new Management.user.modUserWindow(usr);
+            MUW.ShowDialog();
+            init();
         }
     }
 }

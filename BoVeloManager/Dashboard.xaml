@@ -60,7 +60,7 @@
                         </TransformGroup>
                     </Grid.RenderTransform>
 
-                    <TextBlock x:Name="lb_user" Margin="0 0 10 0"  Foreground="#607D8B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"> USER_NAME</TextBlock>
+                    <TextBlock x:Name="lb_user" Cursor="Hand"  Margin="0 0 10 0"  Foreground="#607D8B" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" MouseDown="lb_user_MouseDown"> USER_NAME</TextBlock>
                     <Button x:Name="ButtonOpenMenu" Height="30" Width="60" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#607D8B" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
@@ -81,25 +81,27 @@
                             <TextBlock Text="Sales" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <!--
                     <ListViewItem Tag="Stock" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Archive" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Stock" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Tag="Stock" Height="60">
+                    </ListViewItem>-->
+                    <ListViewItem Tag="Planning" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Calendar" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Planning" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <!--
                     <ListViewItem Tag="Command" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Truck" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Commande" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Tag="Management" Height="60">
+                    </ListViewItem> -->
+                    <ListViewItem Name="ManagementBtn" Tag="Management" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Settings" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Management" VerticalAlignment="Center"  Margin="20 10"/>

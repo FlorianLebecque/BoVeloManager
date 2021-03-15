@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using BoVeloManager.Classes;
+using BoVeloManager.Management;
 
 namespace BoVeloManager {
     /// <summary>
@@ -24,8 +26,6 @@ namespace BoVeloManager {
             InitializeComponent();
 
             lb_error.Visibility = Visibility.Hidden;
-
-            tools.user.RESET();
 
             cb_keep.IsChecked = Properties.Settings.Default.keeplogged;
 
@@ -43,19 +43,15 @@ namespace BoVeloManager {
             string in_user = user;
             string in_pass = passMD5;
 
+            Controler ctrl = Controler.Instance;
+
+            User cur_user = ctrl.getUser_byName(in_user);
 
             //check if password are equal
-            if (tools.user.checkUserPassMD5(in_user,in_pass)) {
+            if ((cur_user != null) &&(cur_user.checkPass(in_pass))) {
 
-                    //know get the user data
-                string query = tools.DatabaseQuery.getUserData_byName(in_user);
-                DataTable res = tools.Database.getData(query);
-                
-                    //set the data into user class
-                tools.user.setGrade(Convert.ToInt32(res.Rows[0]["grade"]));
-                tools.user.setId(Convert.ToInt32(res.Rows[0]["id"]));
-               
-                tools.user.setUserName(in_user);
+
+                ctrl.setCurrentUser(cur_user);
 
                     //hide the login windows
                 this.Hide();
@@ -104,13 +100,13 @@ namespace BoVeloManager {
 
         private void log() {
             string user = tb_userName.Text;
-            string pass = "";
-
+            string pass = "";               
+            
             if (Properties.Settings.Default.keeplogged) {
                 pass = Properties.Settings.Default.magicWord;
             } else if (tb_password.IsEnabled == true){
                 pass = tools.md5.CreateMD5(tb_password.Password);
-            }
+            }            
 
             check(user, pass);
             login(user, pass);
@@ -137,6 +133,11 @@ namespace BoVeloManager {
             } else {
                 tb_password.IsEnabled = true;
             }
+        }
+
+        private void NewUser_Click(object sender, RoutedEventArgs e) {
+            AddUserWindow AUW = new AddUserWindow();
+            AUW.ShowDialog();
         }
     }
 }
