@@ -479,7 +479,7 @@ namespace BoVeloManager.tools {
 
                 int id_sale;
 
-                if (dt.Rows[i]["id_sale"] == DBNull.Value) {
+                if (dt.Rows[i]["id_sale"] != DBNull.Value) {
                     id_sale  = Convert.ToInt32(dt.Rows[i]["id_sale"]);
                 } else {
                     id_sale = -1;
