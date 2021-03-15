@@ -97,37 +97,25 @@ namespace BoVeloManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int MAX_BIKE_PER_DAY {
             get {
-                return ((string)(this["Setting"]));
+                return ((int)(this["MAX_BIKE_PER_DAY"]));
             }
             set {
-                this["Setting"] = value;
+                this["MAX_BIKE_PER_DAY"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int MAX_DB_TRY {
             get {
-                return ((string)(this["Setting1"]));
+                return ((int)(this["MAX_DB_TRY"]));
             }
             set {
-                this["Setting1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting2 {
-            get {
-                return ((string)(this["Setting2"]));
-            }
-            set {
-                this["Setting2"] = value;
+                this["MAX_DB_TRY"] = value;
             }
         }
     }

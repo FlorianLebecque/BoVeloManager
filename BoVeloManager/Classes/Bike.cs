@@ -26,12 +26,8 @@ namespace BoVeloManager.Classes
             Poste = Poste_;
             PlannedDate = planned_date_;
             ConstrucDate = constr_date_;
-            link();
         }
 
-        private void link() {
-            //BikeTemplate = Controler.getBikeTemplateById(id_tBike);
-        }
 
         public int getId() {
             return id;
@@ -42,13 +38,7 @@ namespace BoVeloManager.Classes
         }
 
         public float getPrice() {
-            float bike_price = 0;
-            float priceMul = ((float)(this.getBikeTempl().getCat().getPriceMul())) / 100;
-            foreach (KitTemplate kit in this.getBikeTempl().getListKit()) {
-                bike_price += kit.getPrice();
-            }
-            bike_price = bike_price + bike_price * priceMul;
-            return bike_price/100;
+            return this.BikeTemplate.getPrice();
         }
 
         public DateTime getPlannedtDate() {
@@ -120,10 +110,10 @@ namespace BoVeloManager.Classes
 
             temp.name = BikeTemplate.getName();
             temp.id = getId();
-            temp.priceMul = BikeTemplate.getCat().getPriceMul();
+            temp.priceMul = BikeTemplate.getCat().getPriceMulDiv();
             temp.id_sale = this.getSaleId();
             temp.PlannedDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
-            temp.price = this.getPrice().ToString("c2");
+            temp.price = this.BikeTemplate.getPrice().ToString("c2");
             temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
             
             DateTime dt = getConstructionDate();
@@ -139,7 +129,7 @@ namespace BoVeloManager.Classes
             public string state { get; set; }
             public int id { get; set; }
             public string name { get; set; }
-            public int priceMul { get; set; }
+            public float priceMul { get; set; }
             public int id_sale { get; set; }
             public string title { get; set; }
             public Brush color { get; set; }

@@ -19,7 +19,7 @@ namespace BoVeloManager.tools {
 
             DataTable dt = new DataTable();
 
-            while (nbrTry < 5) {
+            while (nbrTry < Properties.Settings.Default.MAX_DB_TRY) {
                 try {
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
@@ -42,14 +42,19 @@ namespace BoVeloManager.tools {
 
             int nbrTry = 0;
 
-            while (nbrTry < 5) {
+            while (nbrTry < Properties.Settings.Default.MAX_DB_TRY) {
                 try {
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
 
                     return cmd.ExecuteNonQuery();
                 } catch {
-                    nbrTry++;
+                    nbrTry++; 
+                    if(nbrTry % 5 == 0) {
+                        tools.UI.MessageBox.Show("Trying to reconnect", "Error");
+                        connectToDB();
+                    }
+
                 }
             }
 
@@ -319,7 +324,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
-            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`="+cat.ToString()+ ",`Price`=" + price.ToString() + ",`properties`='" + prop + "' WHERE `id`=" + id;
+            return "UPDATE `bv_type_kit` SET `name`= '"+name+"',`category`='"+cat.ToString()+ "',`Price`='"+price.ToString()+"',`properties`='" + prop + "' WHERE `id`=" + id;
         }
 
         #endregion 
@@ -351,6 +356,10 @@ namespace BoVeloManager.tools {
 
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
+        }
+        public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime constr_date)
+        {
+            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + Poste + "','" + constr_date.ToString("yyyy-MM-dd") + "')";
         }
 
     }
@@ -500,6 +509,12 @@ namespace BoVeloManager.tools {
         public static int setBikeState(Bike bk)
         {
             string q = DatabaseQuery.updateBike(bk);
+            return Database.setData(q);
+        }
+
+        public static int addBike(Bike NewBike)
+        {   
+            string q = DatabaseQuery.addBike(NewBike.getId(), NewBike.getState(), NewBike.getSaleId(), NewBike.getPoste(), NewBike.getBikeTempl(), NewBike.getPlannedtDate());
             return Database.setData(q);
         }
 

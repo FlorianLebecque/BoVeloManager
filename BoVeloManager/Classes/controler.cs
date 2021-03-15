@@ -14,13 +14,13 @@ namespace BoVeloManager.Classes
 
         private User loggedUser;
 
-        private List<User> userList;
-        private List<Client> clientList;
-        private List<Bike> bikeList;
-        private List<CatalogBike> CatalogBikeList;
-        private List<BikeTemplate> bikeTemplateList;
-        private List<Sale> saleList;
-        private List<KitTemplate> kitTemplateList;
+        private List<User>          userList;
+        private List<Client>        clientList;
+        private List<Bike>          bikeList;
+        private List<CatalogBike>   CatalogBikeList;
+        private List<BikeTemplate>  bikeTemplateList;
+        private List<Sale>          saleList;
+        private List<KitTemplate>   kitTemplateList;
         
 
         private Controler(){
@@ -134,6 +134,18 @@ namespace BoVeloManager.Classes
             }
             return temp;
         }
+
+        public Sale getSale_byId(int id) {
+            
+            foreach(Sale s in saleList){
+                if(s.getId() == id) {
+                    return s;
+                }
+            }
+
+            throw new Exception("No sale found");
+        }
+
     #endregion
 
     #region KitTemplate
@@ -168,41 +180,38 @@ namespace BoVeloManager.Classes
     #endregion
 
     #region Bike
-    public List<Bike.displayInfo> GetBikeDisplayInfo()
-    {
-        List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
-        foreach (Bike b in bikeList)
+        public List<Bike.displayInfo> GetBikeDisplayInfo()
         {
+            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
-            temp.Add(b.GetDisplayInfo());
-        }
-        return temp;
-    }
-
-    public BikeTemplate getBikeTemplateById(int id_tBike)
-    {
-        foreach (BikeTemplate bt in bikeTemplateList)
-        {
-
-            if (bt.getId() == id_tBike)
+            foreach (Bike b in bikeList)
             {
-                return bt;
-            }
-               
-        }
-        return null;
-    }
 
-        public static int getNBRWeek(DateTime dt) {
-            return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
+                temp.Add(b.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        public BikeTemplate getBikeTemplateById(int id_tBike)
+        {
+            foreach (BikeTemplate bt in bikeTemplateList)
+            {
+
+                if (bt.getId() == id_tBike)
+                {
+                    return bt;
+                }
+               
+            }
+            return null;
         }
 
         public List<Bike.displayInfo> GetBikeDisplayInfo_byWeekAndPost(int week,int poste) {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
             foreach(Bike b in bikeList) {
-                if((getNBRWeek(b.getPlannedtDate()) == week)&&(b.getPoste() == poste)) {
+                if((date.getNBRWeek(b.getPlannedtDate()) == week)&&(b.getPoste() == poste)) {
                     temp.Add(b.GetDisplayInfo());
                 }
             }
@@ -210,9 +219,17 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
+        public void createBike(Bike newBike)
+        {
+
+            bikeList.Add(newBike);
+            DatabaseClassInterface.addBike(newBike);
+
+        }
+
     #endregion
 
-        #region CatalogBike
+    #region CatalogBike
 
         public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
             List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();

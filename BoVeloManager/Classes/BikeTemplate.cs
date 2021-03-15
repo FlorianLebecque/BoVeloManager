@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoVeloManager.tools.UI;
 
 namespace BoVeloManager.Classes
 {
@@ -30,7 +31,9 @@ namespace BoVeloManager.Classes
             foreach (KitTemplate kit in KitTemplList) {
                 price += kit.getPrice();
             }
-            return price;
+            
+            price = price * (1 + getCat().getPriceMulDiv());
+            return price/100;
         }
 
         public List<KitTemplate> getListKit() {
@@ -59,8 +62,8 @@ namespace BoVeloManager.Classes
         {
             displayInfo dI = new displayInfo();
             dI.id = getId();
-            dI.price = this.getPrice().ToString("P");
-            dI.priceMul = (((float)getCat().getPriceMul()) / 100).ToString("P");
+            dI.price = (this.getPrice()/100).ToString("c2");
+            dI.priceMul = (this.getCat().getPriceMulDiv()).ToString("c2");
             dI.name = getName();
             dI.BikeTemp = this;
             dI.propKit = getPropkitString();

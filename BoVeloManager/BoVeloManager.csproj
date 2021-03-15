@@ -195,8 +195,12 @@
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tools\date.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="tools\SVGRender.cs" />
+    <Compile Include="tools\UI\MessageBox.xaml.cs">
+      <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
@@ -224,6 +228,9 @@
     <Compile Include="UI\Management\user\modUserWindow.xaml.cs">
       <DependentUpon>modUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Planning\AddBike.xaml.cs">
+      <DependentUpon>AddBike.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Planning\description\description.xaml.cs">
       <DependentUpon>description.xaml</DependentUpon>
     </Compile>
@@ -248,6 +255,10 @@
     <Compile Include="tools\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Page Include="loadingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tools\UI\MessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,6 +328,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Management\user\modUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Planning\AddBike.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

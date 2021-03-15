@@ -23,14 +23,11 @@
     <Setting Name="DBUser" Type="System.String" Scope="Application">
       <Value Profile="(Default)">5gTtIpnDHk</Value>
     </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MAX_BIKE_PER_DAY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="Setting1" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="Setting2" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="MAX_DB_TRY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
     </Setting>
   </Settings>
 </SettingsFile>

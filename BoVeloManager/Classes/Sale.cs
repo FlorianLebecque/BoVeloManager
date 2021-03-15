@@ -65,13 +65,20 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime getPreSaleDate() {
-            List<DateTime> PreList = new List<DateTime>();
-            foreach (Bike bike in bikeList) {
-                PreList.Add(bike.getPlannedtDate());
+
+            if (bikeList.Count > 0) {
+                List<DateTime> PreList = new List<DateTime>();
+                foreach (Bike bike in bikeList) {
+                    PreList.Add(bike.getPlannedtDate());
+                }
+                PreList.Sort((a, b) => a.CompareTo(b));
+                prevision_date = PreList.Last();
+
+                return prevision_date;
+            } else {
+                return DateTime.MinValue;
             }
-            PreList.Sort((a, b) => a.CompareTo(b));
-            prevision_date = PreList.Last();
-            return prevision_date;
+            
         }
 
         public List<Bike> getBikeList() {

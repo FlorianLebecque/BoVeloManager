@@ -62,7 +62,7 @@ namespace BoVeloManager.Sales.description
                 float Tbike_price = tBike.CurTempl.getPrice();
 
                 string qnt_name_ = qnt.ToString() + "x " + bike_name;
-                string price_ = ((Tbike_price*qnt)/100).ToString("c2");
+                string price_ = (Tbike_price*qnt).ToString("c2");
                 bikesListItems.Add(new BikeItem() { qnt_name = qnt_name_ , string_kits = string_kits_, price = price_ });
             }
 
