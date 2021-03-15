@@ -68,6 +68,7 @@ namespace BoVeloManager.Classes {
             foreach (Bike bike in bikeList) {
                 PreList.Add(bike.getPlannedtDate());
             }
+            PreList.Add(DateTime.Now);
             PreList.Sort((a, b) => a.CompareTo(b));
             prevision_date = PreList.Last();
             return prevision_date;

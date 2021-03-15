@@ -21,7 +21,7 @@ namespace BoVeloManager.Classes
         private List<BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
-        public TempSale tempSale = new TempSale();
+        public TempSale tempSale;
         
 
         private Controler(){
@@ -32,6 +32,8 @@ namespace BoVeloManager.Classes
             bikeTemplateList    = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
             bikeList            = DatabaseClassInterface.getBikes(bikeTemplateList);
             saleList            = DatabaseClassInterface.getSales(bikeList,userList, clientList);
+
+            tempSale = new TempSale();
         }
 
         public static Controler Instance {
@@ -40,7 +42,7 @@ namespace BoVeloManager.Classes
             }
         }
     
-    #region User
+        #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
@@ -97,133 +99,136 @@ namespace BoVeloManager.Classes
 
         }
 
-    #endregion
-
-    #region Client
-
-        public List<Client.displayInfo> GetClientDisplayInfo() {
-            List<Client.displayInfo> temp = new List<Client.displayInfo>();
-
-            foreach (Client c in clientList) {
-
-                temp.Add(c.GetDisplayInfo());
-            }
-            return temp;
-        }
-
-        public int getLastClientId() {
-            return clientList.Select(x => x.getId()).Max();
-        }
-
-        public void createClient(Client c) {
-
-            clientList.Add(c);
-            DatabaseClassInterface.addClient(c);
-        }
-
-        public List<Client> getClientList()
+        public List<User> getUserList()
         {
-            return clientList;
-        }
-
-    #endregion
-
-    #region Sale
-        public List<Sale.displayInfo> GetSaleDisplayInfo() {
-            List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
-
-            foreach (Sale s in saleList) {
-
-                temp.Add(s.GetSaleDisplayInfo());
-            }
-            return temp;
-        }
-
-        public void createSale(Sale s)
-        {
-            saleList.Add(s);
-            DatabaseClassInterface.addSale(s);
-        }
-
-        public int getLastSaleId()
-        {
-            if (saleList.Count > 0)
-            {
-                return saleList.Select(x => x.getId()).Max();
-            }
-            return 0;
+            return userList;
         }
 
         #endregion
 
+        #region Client
+
+            public List<Client.displayInfo> GetClientDisplayInfo() {
+                List<Client.displayInfo> temp = new List<Client.displayInfo>();
+
+                foreach (Client c in clientList) {
+
+                    temp.Add(c.GetDisplayInfo());
+                }
+                return temp;
+            }
+
+            public int getLastClientId() {
+                return clientList.Select(x => x.getId()).Max();
+            }
+
+            public void createClient(Client c) {
+
+                clientList.Add(c);
+                DatabaseClassInterface.addClient(c);
+            }
+
+            public List<Client> getClientList()
+            {
+                return clientList;
+            }
+
+        #endregion
+
+        #region Sale
+            public List<Sale.displayInfo> GetSaleDisplayInfo() {
+                List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+
+                foreach (Sale s in saleList) {
+
+                    temp.Add(s.GetSaleDisplayInfo());
+                }
+                return temp;
+            }
+
+            public void createSale(Sale s)
+            {
+                saleList.Add(s);
+                DatabaseClassInterface.addSale(s);
+            }
+
+            public int getLastSaleId()
+            {
+                if (saleList.Count > 0)
+                {
+                    return saleList.Select(x => x.getId()).Max();
+                }
+                return 0;
+            }
+
+            #endregion
+
         #region KitTemplate
 
-    public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
+        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
 
-        List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
 
-        foreach (KitTemplate kt in kitTemplateList) {
-            temp.Add(kt.GetDisplayInfo());
-        }
-
-        return temp;
-    }
-
-    public int getLastKitTemplateId(){
-        if (kitTemplateList.Count > 0) {
-            return kitTemplateList.Select(x => x.getId()).Max();
-        }
-        return 0;
-    }
-
-    public void createKit(KitTemplate kt) {
-        kitTemplateList.Add(kt);
-        DatabaseClassInterface.addKitTemplate(kt);
-    }
-
-    public List<KitTemplate> getKitTemplateList() {
-        return kitTemplateList;
-    }
-
-#endregion
-
-    #region Bike
-    public List<Bike.displayInfo> GetBikeDisplayInfo()
-    {
-        List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
-
-        foreach (Bike b in bikeList)
-        {
-
-            temp.Add(b.GetDisplayInfo());
-        }
-        return temp;
-    }
-
-    public List<BikeTemplate> GetBikeTemplateList()
-    {
-        return bikeTemplateList;
-    }
-
-    public BikeTemplate getBikeTemplateById(int id_tBike)
-    {
-        foreach (BikeTemplate bt in bikeTemplateList)
-        {
-
-            if (bt.getId() == id_tBike)
-            {
-                return bt;
+            foreach (KitTemplate kt in kitTemplateList) {
+                temp.Add(kt.GetDisplayInfo());
             }
-               
-        }
-        return null;
-    }
 
-        public int getLastBikeTemplateId()
+            return temp;
+        }
+
+        public int getLastKitTemplateId(){
+            if (kitTemplateList.Count > 0) {
+                return kitTemplateList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        public void createKit(KitTemplate kt) {
+            kitTemplateList.Add(kt);
+            DatabaseClassInterface.addKitTemplate(kt);
+        }
+
+        public List<KitTemplate> getKitTemplateList() {
+            return kitTemplateList;
+        }
+
+        #endregion
+
+        #region Bike
+
+        public void createBike(Bike b)
         {
-            if (bikeTemplateList.Count > 0)
+            bikeList.Add(b);
+            DatabaseClassInterface.addBike(b);
+        }
+
+        public List<Bike.displayInfo> GetBikeDisplayInfo()
+        {
+            List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
+
+            foreach (Bike b in bikeList)
             {
-                return bikeTemplateList.Select(x => x.getId()).Max();
+
+                temp.Add(b.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        public List<Bike> getBikesList()
+        {
+            return bikeList;
+        }
+
+        public int getLastBikeId()
+        {
+            if (bikeList.Count > 0)
+            {
+                Console.WriteLine("######");
+                foreach (Bike b in bikeList)
+                {
+                    Console.WriteLine("id = " + b.getId());
+                }
+                return bikeList.Select(x => x.getId()).Max();
             }
             return 0;
         }
@@ -244,11 +249,43 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-    #endregion
+        #endregion
 
-    #region CatalogBike
+        #region BikeTemplate
 
-    public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
+        public List<BikeTemplate> GetBikeTemplateList()
+        {
+            return bikeTemplateList;
+        }
+
+        public BikeTemplate getBikeTemplateById(int id_tBike)
+        {
+            foreach (BikeTemplate bt in bikeTemplateList)
+            {
+
+                if (bt.getId() == id_tBike)
+                {
+                    return bt;
+                }
+
+            }
+            return null;
+        }
+
+        public int getLastBikeTemplateId()
+        {
+            if (bikeTemplateList.Count > 0)
+            {
+                return bikeTemplateList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        #endregion
+
+        #region CatalogBike
+
+        public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
         List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
 
         foreach (CatalogBike cb in CatalogBikeList) {

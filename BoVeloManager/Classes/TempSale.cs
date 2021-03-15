@@ -17,13 +17,20 @@ namespace BoVeloManager.Classes
         DateTime sale_date;
         DateTime prevision_date;
 
+        int saleID;
+
         private List<Bike> bikeList;
         private BikeTemplate tempBikeTemplate;
 
         public TempSale() 
         {
-            seller = Controler.Instance.getCurrentUser();
+            bikeList = new List<Bike>();
+            
+        }
 
+        public void setSeller()
+        {
+            seller = Controler.Instance.getCurrentUser();
         }
         public void setClient(Client c)
         {
@@ -120,35 +127,63 @@ namespace BoVeloManager.Classes
         }
         public void saveSale()
         {
-            int saleID = Controler.Instance.getLastSaleId() + 1;
+            saleID = Controler.Instance.getLastSaleId() + 1;
+            setSeller();
             int sellerID = seller.getId();
             int clientID = client.getId();
             DateTime sale_date = DateTime.Now;
-            DateTime prevision_date = DateTime.Now;
-           
+            DateTime prevision_date = getNextPrevisionDate();
+
+            List<User> userList = Controler.Instance.getUserList();
+            List<Client> clientList = Controler.Instance.getClientList();
 
 
-            Sale s = new Sale(saleID, sellerID, clientID, "open", sale_date, prevision_date, bikeList);
-            Controler.Instance.createSale(s);
-            
-            
+            Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, bikeList, userList, clientList);
+            Controler.Instance.createSale(sale);
+
+
+            bikeList = addBasketToSale_and_DB(basket);
 
             drainTempSale();
         }
+        
 
         // creation vente
         private void createSale() { }
         // ajout un par un des velos et les rattacher a la vente par son id
-        private void addBasketToSale(Dictionary<BikeTemplate, int> basket)
+        private List<Bike> addBasketToSale_and_DB(Dictionary<BikeTemplate, int> basket)
         {
+            List<Bike> temp = new List<Bike>();
+
             foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
             {
                 for (int i = 0 ; i < kvp.Value ; i++)
                 {
-                    int bikeID = Controler.Instance.getL
-                    Bike b = new Bike();
+                    int bikeID = Controler.Instance.getLastBikeId() + 1;
+
+                    Console.WriteLine(Controler.Instance.getLastBikeId());
+                    Console.WriteLine(bikeID);
+
+                    DateTime constr_date = getConstrDate();
+                    Bike b = new Bike(bikeID, 0, saleID, 0, kvp.Key, constr_date);
+
+                    Controler.Instance.createBike(b);
+
+                    temp.Add(b);
                 }
-            }        
+            }
+
+            return temp;
+        }
+
+        private DateTime getNextPrevisionDate()
+        {
+            return DateTime.Now;
+        }
+
+        private DateTime getConstrDate()
+        {
+            return DateTime.Now;
         }
 
         public void drainTempSale()

@@ -121,7 +121,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
-                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="bt_save"  VerticalAlignment="Bottom" Content="Export"  FontSize="16" Foreground="White" FontWeight="Bold" Click="bt_save_Click"/>
+                <Button Margin="5 0 5 5" Grid.Column="3" x:Name="bt_save"  VerticalAlignment="Bottom" Content="Save"  FontSize="16" Foreground="White" FontWeight="Bold" Click="bt_save_Click"/>
                 <Button Margin="0 0 0 5" x:Name="bt_close"  VerticalAlignment="Bottom" Content="Close" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="bt_close_Click"/>
             </Grid>
         </DockPanel>

@@ -15,6 +15,7 @@ namespace BoVeloManager.Classes
         private int Poste;
         private BikeTemplate BikeTemplate;
         private DateTime PlannedDate;
+        private DateTime CreationDate;
 
         public Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime constr_date_) {
             id = id_;

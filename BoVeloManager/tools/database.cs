@@ -328,12 +328,18 @@ namespace BoVeloManager.tools {
 
         public static string addSale(Sale s)
         {
-            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_sale`(`id`, `id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getId() + "', '" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
         }
 
         public static string link_sale_to_Sale_bike(Sale s, Bike b)
         {
             return "";
+        }
+
+        public static string addBike(Bike b)
+        {
+            //return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES ('" + b.getId() + "', '" + b.getBikeTempl().getId() + "', '" + b.getSaleId() + "', '" + b.getState() + "', '" + b.getPlannedtDate() + "', '" + b.getPlannedtDate() + "', '" + b.getPoste() + "')";
+            return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getSaleId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', " + b.getPoste() + ")";
         }
 
 
@@ -464,6 +470,12 @@ namespace BoVeloManager.tools {
         #endregion
 
         #region bike
+
+        public static int addBike(Bike b)
+        {
+            string q = tools.DatabaseQuery.addBike(b);
+            return Database.setData(q);
+        }
 
         public static List<Bike> getBikes(List<BikeTemplate> btList){
             string query = DatabaseQuery.getBike();
