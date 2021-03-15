@@ -191,6 +191,7 @@
     <Compile Include="Classes\Human.cs" />
     <Compile Include="Classes\Sale.cs" />
     <Compile Include="Classes\KitTemplate.cs" />
+    <Compile Include="Classes\TempSale.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
@@ -200,6 +201,9 @@
     <Compile Include="tools\SVGRender.cs" />
     <Compile Include="tools\UI\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Catalogue\Confirmation\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
@@ -263,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Catalogue\catalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Catalogue\Confirmation\Confirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -411,6 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Untitled.svg" />
+    <Resource Include="UI\Catalogue\Bike0.jpg" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
     <Resource Include="UI\Catalogue\Bike2.jpg" />

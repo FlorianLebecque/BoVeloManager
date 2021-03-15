@@ -11,7 +11,7 @@ namespace BoVeloManager.Classes {
         private readonly int id;
         private string name;
         private int PriceMul;
-        private Image pic;
+        private string pic;
         private List<KitTemplate> kitTemplateList;
                
 
@@ -19,7 +19,7 @@ namespace BoVeloManager.Classes {
             id = id_;
             name = name_;
             PriceMul = priceMul_;
-            //pic = Image.FromFile(pic_filename);
+            pic = pic_filename;
             kitTemplateList = new List<KitTemplate>();
         }
 
@@ -80,10 +80,9 @@ namespace BoVeloManager.Classes {
             public string name { get; set; }
             public string PriceMul { get; set; }
             public int id { get; set; }
-            public Image pic { get; set; }
+            public string pic { get; set; }
             public List<KitTemplate> kitTemplates { get; set; }
-            public List<string> colorKit { get; set; }
-            public List<string> sizeKit { get; set; }
+
         }
     }
 }

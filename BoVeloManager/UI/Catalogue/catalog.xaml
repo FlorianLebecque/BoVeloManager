@@ -14,123 +14,47 @@
     <DockPanel>
 
         <Grid DockPanel.Dock="Top" Height="40">
-            <Button Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right">
+            <Button x:Name="bt_confirmation" Height="30" Width="60" Margin="0,5,12,5" HorizontalAlignment="Right" Click="bt_confirmation_Click">
                 <materialDesign:PackIcon Kind="Cart" Height="20" Width="20"/>
-            </Button>
-            <Button Height="30" Width="60" Margin="10,5,12,5" Name="Add_tBike" Click="Add_tBike_Click" HorizontalAlignment="Left">
-                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20"/>
             </Button>
         </Grid>
 
-        <ListView ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled"  SelectionMode="Single" >
+        <ListView SelectionMode="Single" Name="CatalogListView" ScrollViewer.CanContentScroll="False">
 
-            <ListBox.ItemsPanel>
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+            </ListView.ItemsPanel>
 
-            <!-- City bike -->
-            <ListViewItem>
-                <Grid Width="300" Height="430">
-                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    
+                    <Grid Width="300" Height="430">
+                        <Image Source="{Binding Path=pic}" Stretch="UniformToFill" Margin="0,0,0,130"/>
 
-                    <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">City bike</TextBlock>
-                        
-                        <ComboBox Name="citySize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        <ComboBox Name="cityColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        
-                        <Grid Margin="10 5 10 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
-                            <Button Grid.Column="1" Click="Add_Bike_Click" >
-                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
-                            </Button>
-                        </Grid>
+                        <StackPanel Height="125" VerticalAlignment="Bottom">
+                            <TextBlock Text="{Binding Path=name}" Margin="10 5 10 0" Foreground="Black"/>
 
-                    </StackPanel>
-                </Grid>
-            </ListViewItem>
+                            <ComboBox ItemsSource="{Binding Path=sizeList}" SelectedItem="{Binding Path=size}" Margin="10 5 10 0" Foreground="Black"/>
+                            <ComboBox ItemsSource="{Binding Path=colorList}" SelectedItem="{Binding Path=color}" Margin="10 5 10 0" Foreground="Black"/>
 
-            <!-- Explorer bike -->
-            <ListViewItem>
-                <Grid Width="300" Height="430">
-                    <Image Source="Bike2.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
+                            <Grid Margin="10 5 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Path=qnt}" Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"/>
+                                <Button Grid.Column="1" Click="Add_Bike_Click" >
+                                    <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
+                                </Button>
+                            </Grid>
 
-                    <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">Explorer bike</TextBlock>
-                        <ComboBox Name="exploraterSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        <ComboBox Name="exploraterColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        <Grid Margin="10 5 10 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
-                            <Button Grid.Column="1" Click="Add_Bike_Click">
-                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
-                            </Button>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-            </ListViewItem>
+                        </StackPanel>
+                    </Grid>
 
-
-            <!-- All terrain -->
-            <ListViewItem>
-                <Grid Width="300" Height="430">
-                    <Image Source="Bike3.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
-
-                    <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">All terrain</TextBlock>
-                        
-                        <ComboBox Name="allTerrainSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        <ComboBox Name="allTerrainColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        
-                        <Grid Margin="10 5 10 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
-                            <Button Grid.Column="1" Click="Add_Bike_Click">
-                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
-                            </Button>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-            </ListViewItem>
-
-            <!-- new bike -->
-            <ListViewItem>
-                <Grid Width="300" Height="430">
-                    <Image Source="Bike1.jpg" Stretch="UniformToFill" Margin="0,0,0,130"/>
-
-                    <StackPanel Height="125" VerticalAlignment="Bottom">
-                        <TextBlock Margin="10 5 10 0" Foreground="Black">coucou sinon</TextBlock>
-                        
-                        <ComboBox Name="newBikeSize" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        <ComboBox Name="newBikeColor" Margin="10 5 10 0" SelectedIndex="0" Foreground="Black"/>
-                        
-                        <Grid Margin="10 5 10 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Margin="0 0 5 0" Grid.Column="0" PreviewTextInput="NumberValidationTextBox"></TextBox>
-                            <Button Grid.Column="1" Click="Add_Bike_Click">
-                                <materialDesign:PackIcon Kind="CartAdd" Height="20" Width="20"/>
-                            </Button>
-                        </Grid>
-
-                    </StackPanel>
-                </Grid>
-            </ListViewItem>
-
+                </DataTemplate>                
+            </ListView.ItemTemplate>
         </ListView>
 
     </DockPanel>
