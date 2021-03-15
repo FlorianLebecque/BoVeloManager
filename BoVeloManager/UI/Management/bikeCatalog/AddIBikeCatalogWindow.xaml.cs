@@ -48,7 +48,7 @@ namespace BoVeloManager.Management.item
         private void addItem(string name,int priceMul)
         {
 
-            int id = Controler.Instance.getlastCatalogBikeId();
+            int id = Controler.Instance.getlastCatalogBikeId()+1;
             string pic_filename = "Bike0.jpg";
 
             CatalogBike cb = new CatalogBike(id,name, priceMul, pic_filename);

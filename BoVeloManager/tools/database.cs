@@ -175,7 +175,7 @@ namespace BoVeloManager.tools {
         }
         public static string addCatalogBike(CatalogBike cb)
         {
-            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`) VALUES ('" + cb.getId().ToString() + "','" + cb.getName() + "'," + cb.getPriceMul().ToString() + ")";
+            return "INSERT INTO `bv_catalog` (`id`,`name`,`PriceMul`,`picture`) VALUES (" + cb.getId().ToString() + ",'" + cb.getName() + "'," + cb.getPriceMul().ToString() + ", 'Bike0.jpg')";
         }
 
         public static string updateCatalogBike(CatalogBike kt)
@@ -237,12 +237,6 @@ namespace BoVeloManager.tools {
         {
             return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "')";
         }
-        // Add BikeTemplate Querry
-        public static string addBikeTemp(int id, string name, string priceMul)
-        {
-            return "INSERT INTO `bv_tBike_tKit`(`id`,`name`, `priceMul`) VALUES ('" + id.ToString() + "','" + name + "','" + priceMul + "')";
-        }
-
         public static string addCompatibleKit(int id_cat, int id_tKit)
         {
             return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('" + id_cat + "', '" + id_tKit + "')";
@@ -331,14 +325,30 @@ namespace BoVeloManager.tools {
 
         #region Sale
 
-        public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
+        public static string addSale(Sale s)
         {
-            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','Open','" + prevision_date.ToString("yyyy-MM-dd") + "','" + date.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_sale`(`id`, `id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getId() + "', '" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
         }
 
-        public static string link_sale_to_Sale_bike()
+        public static string link_sale_to_Sale_bike(Sale s, Bike b)
         {
             return "";
+        }
+
+        public static string addBikeTemplate(BikeTemplate t)
+        {
+            return "INSERT INTO `bv_type_bike` (`id`, `id_cat`) VALUES (" + t.getId() + ", " + t.getCat().getId() + ")";
+        }
+
+        public static string addBike(Bike b)
+        {
+            //return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES ('" + b.getId() + "', '" + b.getBikeTempl().getId() + "', '" + b.getSaleId() + "', '" + b.getState() + "', '" + b.getPlannedtDate() + "', '" + b.getPlannedtDate() + "', '" + b.getPoste() + "')";
+            return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getSaleId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', " + b.getPoste() + ")";
+        }
+
+        public static string link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
+        {
+            return "INSERT INTO `bv_tBike_tKit` (`id_tBike`, `id_tKit`) VALUES (" + bt.getId() + ", " + kt.getId() + ")";
         }
 
 
@@ -463,9 +473,22 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
+
+        public static int addSale(Sale s)
+        {
+            string q = tools.DatabaseQuery.addSale(s);
+            return Database.setData(q);
+        }
+
         #endregion
 
         #region bike
+
+        public static int addBike(Bike b)
+        {
+            string q = tools.DatabaseQuery.addBike(b);
+            return Database.setData(q);
+        }
 
         public static List<Bike> getBikes(List<BikeTemplate> btList){
             string query = DatabaseQuery.getBike();
@@ -577,6 +600,18 @@ namespace BoVeloManager.tools {
         #endregion
 
         #region BikeTemplate
+
+        public static int addBikeTemplate(BikeTemplate t)
+        {
+            string q = tools.DatabaseQuery.addBikeTemplate(t);
+            return Database.setData(q);
+        }
+
+        public static int link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
+        {
+            string q = tools.DatabaseQuery.link_kit_to_tbike(bt, kt);
+            return Database.setData(q);
+        }
 
         public static List<BikeTemplate> getBikeTemplates(List<CatalogBike> cbList,List<KitTemplate> ktList)
         {
