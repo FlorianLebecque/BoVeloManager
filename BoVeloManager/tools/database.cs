@@ -476,7 +476,17 @@ namespace BoVeloManager.tools {
             {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
                 int id_tBike = Convert.ToInt32(dt.Rows[i]["id_tBike"]);
-                int id_sale = Convert.ToInt32(dt.Rows[i]["id_sale"]);
+
+                int id_sale;
+
+                if (dt.Rows[i]["id_sale"] == DBNull.Value) {
+                    id_sale  = Convert.ToInt32(dt.Rows[i]["id_sale"]);
+                } else {
+                    id_sale = -1;
+                }
+
+
+                
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
                 int poste = Convert.ToInt32(dt.Rows[i]["poste"]);
 
