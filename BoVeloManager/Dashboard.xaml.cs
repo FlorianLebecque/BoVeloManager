@@ -28,9 +28,12 @@ namespace BoVeloManager {
 
             crtl = Controler.Instance;
 
+            init();
 
+        }
 
-            if(crtl.getCurrentUser().getName() != "God") {
+        private void init() {
+            if (crtl.getCurrentUser().getName() != "God") {
                 ManagementBtn.Visibility = Visibility.Hidden;
             }
 
@@ -38,7 +41,7 @@ namespace BoVeloManager {
             frame.Content = Catalogue.Catalog.Instance;
 
             //status bar log
-            lb_user.Text = crtl.getCurrentUser().getName(); 
+            lb_user.Text = crtl.getCurrentUser().getName();
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {
@@ -96,6 +99,16 @@ namespace BoVeloManager {
                     break;
 
             }
+        }
+
+
+        private void lb_user_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            User usr = Controler.Instance.getCurrentUser();
+
+            Management.user.modUserWindow MUW = new Management.user.modUserWindow(usr);
+            MUW.ShowDialog();
+            init();
         }
     }
 }
