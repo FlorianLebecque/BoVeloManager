@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.UI.Planning.description"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Description" Height="556" Width="409" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Description" Height="556" Width="409" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered">
     <Border Padding="0 0 0 0">
 
         <DockPanel>
