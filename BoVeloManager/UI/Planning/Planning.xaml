@@ -60,7 +60,7 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}Ad">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
