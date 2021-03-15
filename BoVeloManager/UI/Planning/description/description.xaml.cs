@@ -24,9 +24,7 @@ namespace BoVeloManager.UI.Planning.description {
 
         public description(Bike bk_) {
             InitializeComponent();
-            has_init = true;
             bk = bk_;
-
             init();
         }
 
@@ -69,7 +67,7 @@ namespace BoVeloManager.UI.Planning.description {
         private void tb_pld_date_SelectedDateChanged(object sender, SelectionChangedEventArgs e) {
             DatePicker dp = (DatePicker)sender;
 
-            if (dp.SelectedDate != null) {
+            if (has_init) {
 
                 DateTime sel = (DateTime)dp.SelectedDate;
 
@@ -129,6 +127,10 @@ namespace BoVeloManager.UI.Planning.description {
             //J'ai pas fait le querry dans database mais jai mis le setState dans Bike, je sais pas si il est nécessaire de faire un setBikeState si il y a un updateBike qui traite le status?
             //
 
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e) {
+            has_init = true;
         }
     }
 }
