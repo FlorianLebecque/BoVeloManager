@@ -193,6 +193,10 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
+        public List<BikeTemplate> getBikeTemplateList()
+        {
+            return bikeTemplateList;
+        }
         public BikeTemplate getBikeTemplateById(int id_tBike)
         {
             foreach (BikeTemplate bt in bikeTemplateList)
@@ -205,6 +209,19 @@ namespace BoVeloManager.Classes
                
             }
             return null;
+        }
+
+        public int getLastBikeTemplate()
+        {
+            if (bikeTemplateList.Count > 0)
+            {
+                return bikeTemplateList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        public static int getNBRWeek(DateTime dt) {
+            return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
         }
 
         public List<Bike.displayInfo> GetBikeDisplayInfo_byWeekAndPost(int week,int poste) {

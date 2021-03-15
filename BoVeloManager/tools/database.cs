@@ -357,9 +357,9 @@ namespace BoVeloManager.tools {
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
         }
-        public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime constr_date)
+        public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime planned_date, DateTime constr_date)
         {
-            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + Poste + "','" + constr_date.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`, `create_Date`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + Poste + "','" + planned_date.ToString("yyyy-MM-dd") + "','" + constr_date.ToString("yyyy-MM-dd") + "')";
         }
 
     }
@@ -514,7 +514,7 @@ namespace BoVeloManager.tools {
 
         public static int addBike(Bike NewBike)
         {   
-            string q = DatabaseQuery.addBike(NewBike.getId(), NewBike.getState(), NewBike.getSaleId(), NewBike.getPoste(), NewBike.getBikeTempl(), NewBike.getPlannedtDate());
+            string q = DatabaseQuery.addBike(NewBike.getId(), NewBike.getState(), NewBike.getSaleId(), NewBike.getPoste(), NewBike.getBikeTempl(), NewBike.getPlannedtDate(), NewBike.getConstructionDate());
             return Database.setData(q);
         }
 
