@@ -128,7 +128,6 @@ namespace BoVeloManager.UI.Planning.description {
                 init();
             }
             //J'ai pas fait le querry dans database mais jai mis le setState dans Bike, je sais pas si il est nécessaire de faire un setBikeState si il y a un updateBike qui traite le status?
-            //
 
         }
 

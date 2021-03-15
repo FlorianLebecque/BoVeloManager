@@ -63,7 +63,6 @@
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -95,7 +94,6 @@
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -126,7 +124,6 @@
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -157,7 +154,6 @@
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -188,7 +184,6 @@
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
