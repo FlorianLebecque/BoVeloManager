@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.UI.Planning
 {
@@ -22,11 +23,13 @@ namespace BoVeloManager.UI.Planning
         public AddBike()
         {
             InitializeComponent();
+            BindComboBox();
         }
 
         private void BTLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+           // Bike newBike = new Bike();
+            //Controler.createBike(newBike);
 
         }
 
@@ -34,5 +37,33 @@ namespace BoVeloManager.UI.Planning
         {
             this.Close();
         }
+
+        private void BindComboBox()
+        {
+            List<string> Size = new List<string>();
+            List<string> Color = new List<string>();
+
+            List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
+
+            foreach (KitTemplate kit in KitList)
+            {
+                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
+                string kit_cat = kit_struct.category;
+
+                if (kit_cat == "Size")
+                {
+                    Size.Add(kit_struct.name);
+                }
+                else if (kit_cat == "Color")
+                {
+                    Color.Add(kit_struct.name);
+                }
+            }
+
+            BikeSize.ItemsSource = Size;
+            BikeColor.ItemsSource = Color;
+
+        }
+
     }
 }

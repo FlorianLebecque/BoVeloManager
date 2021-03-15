@@ -210,7 +210,15 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-    #endregion
+        public void createBike(Bike newBike)
+        {
+
+            bikeList.Add(newBike);
+            DatabaseClassInterface.addBike(newBike);
+
+        }
+
+        #endregion
 
         #region CatalogBike
 

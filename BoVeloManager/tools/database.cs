@@ -352,6 +352,10 @@ namespace BoVeloManager.tools {
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
         }
+        public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime constr_date)
+        {
+            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + Poste + "','" + constr_date.ToString("yyyy-MM-dd") + "')";
+        }
 
     }
 
@@ -488,6 +492,12 @@ namespace BoVeloManager.tools {
 
         public static int updateBike(Bike bk) {
             string q = DatabaseQuery.updateBike(bk);
+            return Database.setData(q);
+        }
+
+        public static int addBike(Bike NewBike)
+        {   
+            string q = DatabaseQuery.addBike(NewBike.getId(), NewBike.getState(), NewBike.getSaleId(), NewBike.getPoste(), NewBike.getBikeTempl(), NewBike.getPlannedtDate());
             return Database.setData(q);
         }
 
