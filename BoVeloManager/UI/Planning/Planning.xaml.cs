@@ -110,5 +110,26 @@ namespace BoVeloManager.UI.Planning {
         private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
         }
+
+        private void bt_quickDone_Click(object sender, RoutedEventArgs e) {
+            Bike bk = ((Bike.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurBike;
+            int State = bk.getState();
+            if (State == 0) {
+                State +=1 ;
+
+            }else if (State == 1 && (MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
+                State += 1;
+
+            } else if (cb_poste.SelectedIndex == 2) {
+                MessageBox.Show("Bike already done");
+            }
+
+            bk.setState(State);
+            bk.setConstructionDate(DateTime.Now);
+            tools.DatabaseClassInterface.updateBike(bk);
+
+            init();
+
+        }
     }
 }
