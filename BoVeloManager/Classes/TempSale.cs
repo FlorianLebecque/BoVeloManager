@@ -150,10 +150,6 @@ namespace BoVeloManager.Classes
             drainTempSale();
         }
         
-
-        // creation vente
-        private void createSale() { }
-        // ajout un par un des velos et les rattacher a la vente par son id
         private List<Bike> addBasketToSale_and_DB(Dictionary<BikeTemplate, int> basket)
         {
             List<Bike> temp = new List<Bike>();

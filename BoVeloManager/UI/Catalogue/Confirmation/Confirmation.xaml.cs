@@ -105,6 +105,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
         private void bt_save_Click(object sender, RoutedEventArgs e)
         {
             Controler.Instance.tempSale.saveSale();
+            this.Close();
         }
         private void bt_close_Click(object sender, RoutedEventArgs e)
         {
