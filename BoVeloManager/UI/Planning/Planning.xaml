@@ -60,10 +60,10 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}Ad">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -92,10 +92,10 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_tuesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -123,10 +123,10 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_wednesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -154,10 +154,10 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_thursday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>
@@ -185,10 +185,10 @@
                                 <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_friday" AllowDrop="True">
                                      <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Padding="5" CornerRadius="5" Background="#FF607D8B">
+                                            <Border Padding="5" CornerRadius="5" Background="{Binding color}">
                                                 <StackPanel>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding title}"></TextBlock>
-                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding ConstDate}"></TextBlock>
+                                                    <TextBlock Foreground="White" HorizontalAlignment="Right" Text="{Binding PlannedDate}"></TextBlock>
                                                     <TextBlock Foreground="White" HorizontalAlignment="Left" Text="{Binding state}"></TextBlock>
                                                     <Grid>
                                                         <Grid.ColumnDefinitions>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace BoVeloManager.Classes
 {
@@ -102,12 +103,15 @@ namespace BoVeloManager.Classes
             {
                 case 0:
                     state = "Waiting";
+                    temp.color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#8c6363"));
                     break;
                 case 1:
                     state = "In progress";
+                    temp.color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#637B8C"));
                     break;
                 case 2:
                     state = "Done";
+                    temp.color = (SolidColorBrush)(new BrushConverter().ConvertFrom("#678c63"));
                     break;
             }
 
@@ -120,7 +124,7 @@ namespace BoVeloManager.Classes
             temp.PlannedDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
             temp.price = this.getPrice().ToString("c2");
             temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
-
+            
             DateTime dt = getConstructionDate();
 
             return temp;
@@ -137,6 +141,7 @@ namespace BoVeloManager.Classes
             public int priceMul { get; set; }
             public int id_sale { get; set; }
             public string title { get; set; }
+            public Brush color { get; set; }
         }
 
     }
