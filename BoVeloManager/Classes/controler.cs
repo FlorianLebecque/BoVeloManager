@@ -253,6 +253,16 @@ namespace BoVeloManager.Classes
 
         #region BikeTemplate
 
+        public void createBikeTemplate(BikeTemplate t)
+        {
+            DatabaseClassInterface.addBikeTemplate(t);
+        }
+
+        public void link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
+        {
+            DatabaseClassInterface.link_kit_to_tbike(bt, kt);
+        }
+
         public List<BikeTemplate> GetBikeTemplateList()
         {
             return bikeTemplateList;

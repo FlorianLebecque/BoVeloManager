@@ -21,11 +21,12 @@ namespace BoVeloManager.Classes
 
         private List<Bike> bikeList;
         private BikeTemplate tempBikeTemplate;
+        private List<BikeTemplate> newBikeTemplates;
 
         public TempSale() 
         {
             bikeList = new List<Bike>();
-            
+            newBikeTemplates = new List<BikeTemplate>();
         }
 
         public void setSeller()
@@ -55,7 +56,9 @@ namespace BoVeloManager.Classes
                 tBike = new BikeTemplate(tBike_id, catBike);
                 tBike.linkKitTemplate(size);
                 tBike.linkKitTemplate(color);
+                // add new bike template to controller list and newBikeTemplates to update db
                 Controler.Instance.GetBikeTemplateList().Add(tBike);
+                newBikeTemplates.Add(tBike);
             }
 
             addBikeTemplateToBasket(qnt, tBike);
@@ -141,7 +144,7 @@ namespace BoVeloManager.Classes
             Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, bikeList, userList, clientList);
             Controler.Instance.createSale(sale);
 
-
+            updateTBikeInDB();
             bikeList = addBasketToSale_and_DB(basket);
 
             drainTempSale();
@@ -168,12 +171,22 @@ namespace BoVeloManager.Classes
                     Bike b = new Bike(bikeID, 0, saleID, 0, kvp.Key, constr_date);
 
                     Controler.Instance.createBike(b);
-
                     temp.Add(b);
                 }
             }
 
             return temp;
+        }
+        public void updateTBikeInDB()
+        {
+            foreach (BikeTemplate tbike in newBikeTemplates)
+            {
+                Controler.Instance.createBikeTemplate(tbike);
+                foreach (KitTemplate tKit in tbike.getListKit())
+                {
+                    Controler.Instance.link_kit_to_tbike(tbike, tKit);
+                }
+            }
         }
 
         private DateTime getNextPrevisionDate()
