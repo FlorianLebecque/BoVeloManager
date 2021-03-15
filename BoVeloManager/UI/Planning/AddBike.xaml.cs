@@ -67,13 +67,13 @@ namespace BoVeloManager.UI.Planning
                     //if (Enumerable.SequenceEqual(bt.getCat().getKitTemplateList().OrderBy(e => e), x)) //Bike template exists //ERROR
                     if (true)
                     {
-                        Bike b = new Bike(0, 0, 00000, indexPoste, bt, DateTime.Now, DateTime.Now);
+                        Bike b = new Bike(12345, 0, 12345, indexPoste, bt, DateTime.Now, DateTime.Now);
                         addBike(b);
                     }
                     else //Bike template doesn t exist
                     {
                         BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
-                        Bike b = new Bike(0, 0, 00000, indexPoste, newbt, DateTime.Now, DateTime.Now);
+                        Bike b = new Bike(12345, 0, 12345, indexPoste, newbt, DateTime.Now, DateTime.Now);
                         addBike(b);
                     }
                 }
