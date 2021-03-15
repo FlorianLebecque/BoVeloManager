@@ -30,7 +30,8 @@ namespace BoVeloManager.Classes
             foreach (KitTemplate kit in KitTemplList) {
                 price += kit.getPrice();
             }
-            return price;
+            price += price * getCat().getPriceMul();
+            return price/100;
         }
 
         public List<KitTemplate> getListKit() {
@@ -59,8 +60,8 @@ namespace BoVeloManager.Classes
         {
             displayInfo dI = new displayInfo();
             dI.id = getId();
-            dI.price = this.getPrice().ToString("P");
-            dI.priceMul = (((float)getCat().getPriceMul()) / 100).ToString("P");
+            dI.price = (this.getPrice()/100).ToString("c2");
+            dI.priceMul = (this.getCat().getPriceMul()).ToString("c2");
             dI.name = getName();
             dI.BikeTemp = this;
             dI.propKit = getPropkitString();
