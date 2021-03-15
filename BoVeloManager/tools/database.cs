@@ -359,7 +359,7 @@ namespace BoVeloManager.tools {
         }
         public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime planned_date, DateTime constr_date)
         {
-            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`, `create_Date`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + Poste + "','" + planned_date.ToString("yyyy-MM-dd") + "','" + constr_date.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `poste`, `planne_cDate`, `create_Date`) VALUES (" + id.ToString() + "," + bt.getId().ToString() + "," + id_sale.ToString() + "," + status.ToString() + "," + Poste.ToString() + "," + planned_date.ToString("yyyy-MM-dd") + "," + constr_date.ToString("yyyy-MM-dd") + ")";
         }
 
     }
