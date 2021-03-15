@@ -110,7 +110,7 @@ namespace BoVeloManager.Classes
 
             temp.name = BikeTemplate.getName();
             temp.id = getId();
-            temp.priceMul = BikeTemplate.getCat().getPriceMul();
+            temp.priceMul = BikeTemplate.getCat().getPriceMulDiv();
             temp.id_sale = this.getSaleId();
             temp.PlannedDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
             temp.price = this.BikeTemplate.getPrice().ToString("c2");
