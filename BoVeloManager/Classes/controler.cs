@@ -129,61 +129,63 @@ namespace BoVeloManager.Classes
     #endregion
 
     #region Sale
-    public List<Sale.displayInfo> GetSaleDisplayInfo() {
-        List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+        public List<Sale.displayInfo> GetSaleDisplayInfo() {
+            List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 
-        foreach (Sale s in saleList) {
+            foreach (Sale s in saleList) {
 
-            temp.Add(s.GetSaleDisplayInfo());
-        }
-        return temp;
-    }
-
-    #region TEST
-    /*
-    public Sale getCurrentSale()
-    {
-        return CurrentSale;
-    }
-    public void setCurrentSale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList_, List<Client> clientList_)
-    {
-        CurrentSale = new Sale(id_, id_seller, id_client, state_, sale_date_, prevision_date_, bikeList_, userList_, clientList_);
-    }
-    */
-    #endregion
-
-    #endregion
-
-    #region KitTemplate
-
-        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
-
-            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
-
-            foreach (KitTemplate kt in kitTemplateList) {
-                temp.Add(kt.GetDisplayInfo());
+                temp.Add(s.GetSaleDisplayInfo());
             }
-
             return temp;
         }
 
-        public int getLastKitTemplate(){
-            if (kitTemplateList.Count > 0) {
-                return kitTemplateList.Select(x => x.getId()).Max();
+        public void createSale(Sale s)
+        {
+            saleList.Add(s);
+            DatabaseClassInterface.addSale(s);
+        }
+
+        public int getLastSaleId()
+        {
+            if (saleList.Count > 0)
+            {
+                return saleList.Select(x => x.getId()).Max();
             }
             return 0;
         }
 
-        public void createKit(KitTemplate kt) {
-            kitTemplateList.Add(kt);
-            DatabaseClassInterface.addKitTemplate(kt);
+        #endregion
+
+        #region KitTemplate
+
+    public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
+
+        List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+
+        foreach (KitTemplate kt in kitTemplateList) {
+            temp.Add(kt.GetDisplayInfo());
         }
 
-        public List<KitTemplate> getKitTemplateList() {
-            return kitTemplateList;
-        }
+        return temp;
+    }
 
-    #endregion
+    public int getLastKitTemplate(){
+        if (kitTemplateList.Count > 0) {
+            return kitTemplateList.Select(x => x.getId()).Max();
+        }
+        return 0;
+    }
+
+    public void createKit(KitTemplate kt) {
+        kitTemplateList.Add(kt);
+        DatabaseClassInterface.addKitTemplate(kt);
+    }
+
+    public List<KitTemplate> getKitTemplateList() {
+        return kitTemplateList;
+    }
+
+#endregion
 
     #region Bike
     public List<Bike.displayInfo> GetBikeDisplayInfo()

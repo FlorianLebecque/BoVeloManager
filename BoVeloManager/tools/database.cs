@@ -326,12 +326,12 @@ namespace BoVeloManager.tools {
 
         #region Sale
 
-        public static string addSale(int id_client, int id_seller, DateTime prevision_date, DateTime date)
+        public static string addSale(Sale s)
         {
-            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + id_client + "','" + id_seller + "','Open','" + prevision_date.ToString("yyyy-MM-dd") + "','" + date.ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_sale`(`id_client`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
         }
 
-        public static string link_sale_to_Sale_bike()
+        public static string link_sale_to_Sale_bike(Sale s, Bike b)
         {
             return "";
         }
@@ -454,6 +454,13 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
+
+        public static int addSale(Sale s)
+        {
+            string q = tools.DatabaseQuery.addSale(s);
+            return Database.setData(q);
+        }
+
         #endregion
 
         #region bike

@@ -55,6 +55,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
         private void cb_client_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             enterprise.Text = findClient(cb_client.SelectedItem.ToString()).getEtpName();
+            Controler.Instance.tempSale.setClient(findClient(cb_client.SelectedItem.ToString()));
         }
 
         #endregion

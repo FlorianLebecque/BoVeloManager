@@ -14,16 +14,20 @@ namespace BoVeloManager.Classes
         private Client client;
         private User seller;
 
-        DateTime date;
+        DateTime sale_date;
         DateTime prevision_date;
 
-        private Sale sale;
-
+        private List<Bike> bikeList;
         private BikeTemplate tempBikeTemplate;
 
         public TempSale() 
         {
+            seller = Controler.Instance.getCurrentUser();
 
+        }
+        public void setClient(Client c)
+        {
+            client = c;
         }
 
         public Dictionary<BikeTemplate, int> getBasket()
@@ -116,17 +120,17 @@ namespace BoVeloManager.Classes
         }
         public void saveSale()
         {
+            int saleID = Controler.Instance.getLastSaleId() + 1;
+            int sellerID = seller.getId();
+            int clientID = client.getId();
+            DateTime sale_date = DateTime.Now;
+            DateTime prevision_date = DateTime.Now;
+           
 
-            // Bike bike = new Bike();
 
-            createSale();
-
-            /*
-            foreach (Bike bike in BikeList)
-            {
-                addBikeToSale(bike);
-            }
-            */
+            Sale s = new Sale(saleID, sellerID, clientID, "open", sale_date, prevision_date, bikeList);
+            Controler.Instance.createSale(s);
+            
             
 
             drainTempSale();
@@ -135,7 +139,17 @@ namespace BoVeloManager.Classes
         // creation vente
         private void createSale() { }
         // ajout un par un des velos et les rattacher a la vente par son id
-        private void addBikeToSale(Bike bike) { }
+        private void addBasketToSale(Dictionary<BikeTemplate, int> basket)
+        {
+            foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
+            {
+                for (int i = 0 ; i < kvp.Value ; i++)
+                {
+                    int bikeID = Controler.Instance.getL
+                    Bike b = new Bike();
+                }
+            }        
+        }
 
         public void drainTempSale()
         {
