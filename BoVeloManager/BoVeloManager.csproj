@@ -195,6 +195,7 @@
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tools\date.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="tools\SVGRender.cs" />
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">

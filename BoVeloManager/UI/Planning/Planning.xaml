@@ -54,10 +54,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0 0 1 0">
+                        <Border x:Name="g_mon" Grid.Column="0" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
-                                <TextBlock  Margin="5" HorizontalAlignment="Center">Monday</TextBlock>
-                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
+                                <TextBlock  Margin="5" HorizontalAlignment="Center" FontWeight="Bold">Monday</TextBlock>
+                                <TextBlock x:Name="tb_mon"  Margin="5 25" HorizontalAlignment="Center">DATE_OF_THE_DAY</TextBlock>
+                                <ListView Margin="0 40 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_monday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
@@ -85,10 +86,11 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0 0 1 0">
+                        <Border x:Name="g_tue" Grid.Column="1" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
-                                <TextBlock  Margin="5" HorizontalAlignment="Center">Tuesday</TextBlock>
-                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_tuesday" AllowDrop="True">
+                                <TextBlock  Margin="5" HorizontalAlignment="Center" FontWeight="Bold">Tuesday</TextBlock>
+                                <TextBlock x:Name="tb_tue"  Margin="5 25" HorizontalAlignment="Center">DATE_OF_THE_DAY</TextBlock>
+                                <ListView Margin="0 40 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_tuesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
@@ -115,10 +117,11 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0 0 1 0">
+                        <Border x:Name="g_wen" Grid.Column="2" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
-                                <TextBlock  Margin="5" HorizontalAlignment="Center">Wednesday</TextBlock>
-                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_wednesday" AllowDrop="True">
+                                <TextBlock Margin="5" HorizontalAlignment="Center" FontWeight="Bold">Wednesday</TextBlock>
+                                <TextBlock x:Name="tb_wen"  Margin="5 25" HorizontalAlignment="Center">DATE_OF_THE_DAY</TextBlock>
+                                <ListView Margin="0 40 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_wednesday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
@@ -145,10 +148,11 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0 0 1 0">
+                        <Border x:Name="g_thu" Grid.Column="3" BorderBrush="Black" BorderThickness="0 0 1 0">
                             <Grid>
-                                <TextBlock  Margin="5" HorizontalAlignment="Center">Thursday</TextBlock>
-                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_thursday" AllowDrop="True">
+                                <TextBlock  Margin="5" HorizontalAlignment="Center" FontWeight="Bold">Thursday</TextBlock>
+                                <TextBlock x:Name="tb_thu"  Margin="5 25" HorizontalAlignment="Center">DATE_OF_THE_DAY</TextBlock>
+                                <ListView Margin="0 40 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_thursday" AllowDrop="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">
@@ -175,10 +179,11 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Column="5" BorderBrush="Black" BorderThickness="0 0 0 0">
+                        <Border x:Name="g_fri" Grid.Column="5" BorderBrush="Black" BorderThickness="0 0 0 0">
                             <Grid>
-                                <TextBlock  Margin="5" HorizontalAlignment="Center">Friday</TextBlock>
-                                <ListView Margin="0 30 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_friday" AllowDrop="True">
+                                <TextBlock  Margin="5" HorizontalAlignment="Center" FontWeight="Bold">Friday</TextBlock>
+                                <TextBlock x:Name="tb_fri"  Margin="5 25" HorizontalAlignment="Center">DATE_OF_THE_DAY</TextBlock>
+                                <ListView Margin="0 40 0 0" HorizontalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="lv_friday" AllowDrop="True">
                                      <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Border Padding="5" CornerRadius="5" Background="{Binding color}">

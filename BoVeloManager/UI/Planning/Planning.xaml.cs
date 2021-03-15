@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 using BoVeloManager.Classes;
 
 namespace BoVeloManager.UI.Planning {
@@ -30,7 +31,7 @@ namespace BoVeloManager.UI.Planning {
             InitializeComponent();
             has_init = true;
 
-            nbrWeek = Controler.getNBRWeek(DateTime.Now);
+            nbrWeek = tools.date.getNBRWeek(DateTime.Now);
 
             init();
         }
@@ -44,6 +45,12 @@ namespace BoVeloManager.UI.Planning {
         private void init() {
             lb_nbrWeek.Text = "Week : " + nbrWeek.ToString();
 
+
+            tb_mon.Text = tools.date.FirstDateOfWeek(DateTime.Now.Year, nbrWeek).ToString("dd-MM-yyyy");
+            tb_tue.Text = tools.date.FirstDateOfWeek(DateTime.Now.Year, nbrWeek).AddDays(1).ToString("dd-MM-yyyy");
+            tb_wen.Text = tools.date.FirstDateOfWeek(DateTime.Now.Year, nbrWeek).AddDays(2).ToString("dd-MM-yyyy");
+            tb_thu.Text = tools.date.FirstDateOfWeek(DateTime.Now.Year, nbrWeek).AddDays(3).ToString("dd-MM-yyyy");
+            tb_fri.Text = tools.date.FirstDateOfWeek(DateTime.Now.Year, nbrWeek).AddDays(4).ToString("dd-MM-yyyy");
 
             List<Bike.displayInfo> bk_dpiList = Controler.Instance.GetBikeDisplayInfo_byWeekAndPost(nbrWeek, cb_poste.SelectedIndex);
 
@@ -74,12 +81,39 @@ namespace BoVeloManager.UI.Planning {
                 }
             }
 
+            if(tools.date.getNBRWeek(DateTime.Now) == nbrWeek) {
+                switch (DateTime.Now.DayOfWeek) {
+                    case DayOfWeek.Monday:
+                        g_mon.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFC9C9C9"));
+                        break;
+                    case DayOfWeek.Tuesday:
+                        g_tue.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFC9C9C9"));
+                        break;
+                    case DayOfWeek.Wednesday:
+                        g_wen.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFC9C9C9"));
+                        break;
+                    case DayOfWeek.Thursday:
+                        g_thu.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFC9C9C9"));
+                        break;
+                    case DayOfWeek.Friday:
+                        g_fri.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFC9C9C9"));
+                        break;
+                }
+            } else {
+                g_mon.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                g_tue.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                g_wen.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                g_thu.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+                g_fri.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
+            }
+
+            
+
             lv_monday.ItemsSource = bk_dpiList_Mon;
             lv_tuesday.ItemsSource = bk_dpiList_Tue;
             lv_wednesday.ItemsSource = bk_dpiList_Wed;
             lv_thursday.ItemsSource = bk_dpiList_Thu;
             lv_friday.ItemsSource = bk_dpiList_Fri;
-
         }
         
         private void bt_nextWeek_Click(object sender, RoutedEventArgs e) {
