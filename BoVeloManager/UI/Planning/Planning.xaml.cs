@@ -106,5 +106,9 @@ namespace BoVeloManager.UI.Planning {
             desp.ShowDialog();
             init();
         }
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using BoVeloManager.Classes;
+using BoVeloManager.Management;
 
 namespace BoVeloManager {
     /// <summary>
@@ -132,6 +133,11 @@ namespace BoVeloManager {
             } else {
                 tb_password.IsEnabled = true;
             }
+        }
+
+        private void NewUser_Click(object sender, RoutedEventArgs e) {
+            AddUserWindow AUW = new AddUserWindow();
+            AUW.ShowDialog();
         }
     }
 }
