@@ -23,14 +23,12 @@ namespace BoVeloManager.Sales.description
     public partial class Description : Window
     {
         private Sale sale;
-        public Description(Sale sale_)
-        {
+        public Description(Sale sale_) {
             sale = sale_;
 
             InitializeComponent();
             DisplayDescription(sale);
             DisplayTBikes(sale);
-
         }
 
         public void DisplayDescription(Sale sale) {
@@ -40,9 +38,10 @@ namespace BoVeloManager.Sales.description
             client.Text = sale.getClient().getName();
             enterprise.Text = sale.getClient().getEtpName();
             sale_date.Text = sale.GetSaleDisplayInfo().sale_date;
+            status.Text = sale.GetSaleDisplayInfo().state;
         }
-        public void DisplayTBikes(Sale sale)
-        {
+
+        public void DisplayTBikes(Sale sale) {
             //Create new bike list 
             List<BikeItem> bikesListItems = new List<BikeItem>();
 
@@ -69,8 +68,8 @@ namespace BoVeloManager.Sales.description
             bikesList.ItemsSource = bikesListItems;
             total.Text = (sale.getTotalPrice()).ToString("c2");
         }
-        public void DisplayKits(List<KitTemplate> kitList)
-        {
+
+        public void DisplayKits(List<KitTemplate> kitList) {
             foreach (KitTemplate kit in kitList)
             {
                 var kitDisp = kit.GetDisplayInfo();
@@ -85,12 +84,12 @@ namespace BoVeloManager.Sales.description
             public string price { get; set; }
 
         } 
-        private void BT_export_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void BT_export_Click(object sender, RoutedEventArgs e) {
             ExportPdf.ManipulatePdf(sale) ;
         }
-        private void BT_close_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void BT_close_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
 

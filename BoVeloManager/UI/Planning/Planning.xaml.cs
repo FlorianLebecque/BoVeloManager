@@ -170,9 +170,7 @@ namespace BoVeloManager.UI.Planning {
         {
             AddBike AUW = new AddBike();
             AUW.ShowDialog();
-
-            //update the user datagrid
-            //update_dg_userList();
+            init();
         }
     }
 }

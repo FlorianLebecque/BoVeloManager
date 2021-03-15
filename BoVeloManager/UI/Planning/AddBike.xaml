@@ -22,7 +22,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0">Catalog :</Label>
-                    <ComboBox Name="BikeCatalog" Margin="54,5,290,0" SelectedIndex="0" Foreground="Black" Grid.ColumnSpan="2"/>
+                    <ComboBox Name="BikeCatalog" Margin="54,5,290,0" SelectedIndex="0" Foreground="Black" Grid.ColumnSpan="2" SelectionChanged="BikeCatalog_SelectionChanged"/>
                 </Grid>
                 
                 <Grid Margin="5 10 5 0">
@@ -51,7 +51,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0">Quantity :</Label>
-                    <TextBox x:Name="tb_userName" Padding="2" Grid.ColumnSpan="2" Margin="84,0,294,0"/>
+                    <TextBox x:Name="BikeQuantity" Padding="2" Grid.ColumnSpan="2" Margin="84,0,294,0"/>
                 </Grid>
                 
                 <Grid  Margin="5 10 5 0">
@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="b" Grid.Column="0">Poste:</Label>
-                    <ComboBox x:Name="cb_grade" Padding="2" Margin="55,0,71,0">
+                    <ComboBox x:Name="Poste" Padding="2" Margin="55,0,71,0" SelectedIndex="0">
                         <ComboBoxItem >1</ComboBoxItem>
                         <ComboBoxItem >2</ComboBoxItem>
                         <ComboBoxItem >3</ComboBoxItem>
