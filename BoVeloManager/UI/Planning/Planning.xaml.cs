@@ -120,7 +120,7 @@ namespace BoVeloManager.UI.Planning {
             }else if (State == 1 && (MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
                 State += 1;
 
-            } else if (cb_poste.SelectedIndex == 2) {
+            } else if (State == 2) {
                 MessageBox.Show("Bike already done");
             }
 
