@@ -26,9 +26,11 @@ namespace BoVeloManager.Catalogue {
 
         CatalogBike catBike;
         KitTemplate size;
-        KitTemplate color;        
+        KitTemplate color;
 
-        public Catalog() {
+        static Catalog instance;
+
+        private Catalog() {
             InitializeComponent();
             DisplayCatalogue();
         }

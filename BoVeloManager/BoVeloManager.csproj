@@ -202,6 +202,9 @@
     <Compile Include="tools\UI\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Catalogue\Confirmation\Confirmation.xaml.cs">
+      <DependentUpon>Confirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>

@@ -164,7 +164,7 @@ namespace BoVeloManager.Classes
                     Console.WriteLine(bikeID);
 
                     DateTime constr_date = getConstrDate();
-                    Bike b = new Bike(bikeID, 0, saleID, 0, kvp.Key, constr_date);
+                    Bike b = new Bike(bikeID, 0, saleID, 0, kvp.Key, DateTime.Now,constr_date);
 
                     Controler.Instance.createBike(b);
                     temp.Add(b);

@@ -136,30 +136,41 @@ namespace BoVeloManager.Classes
         #endregion
 
         #region Sale
-            public List<Sale.displayInfo> GetSaleDisplayInfo() {
-                List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+        public List<Sale.displayInfo> GetSaleDisplayInfo() {
+            List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 
-                foreach (Sale s in saleList) {
+            foreach (Sale s in saleList) {
 
-                    temp.Add(s.GetSaleDisplayInfo());
-                }
-                return temp;
+                temp.Add(s.GetSaleDisplayInfo());
             }
+            return temp;
+        }
 
-            public void createSale(Sale s)
+        public void createSale(Sale s)
+        {
+            saleList.Add(s);
+            DatabaseClassInterface.addSale(s);
+        }
+
+        public int getLastSaleId()
+        {
+            if (saleList.Count > 0)
             {
-                saleList.Add(s);
-                DatabaseClassInterface.addSale(s);
+                return saleList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
+        public Sale getSale_byId(int id ) { 
+            foreach(Sale s in saleList) {
+                if(s.getId() == id) {
+                    return s;
+                }
             }
 
-            public int getLastSaleId()
-            {
-                if (saleList.Count > 0)
-                {
-                    return saleList.Select(x => x.getId()).Max();
-                }
-                return 0;
-            }
+            throw new Exception("No sale found with Id : " + id.ToString());
+
+        }
 
             #endregion
 
@@ -298,6 +309,10 @@ namespace BoVeloManager.Classes
                 return bikeTemplateList.Select(x => x.getId()).Max();
             }
             return 0;
+        }
+
+        public List<BikeTemplate> getBikeTemplateList() {
+            return bikeTemplateList;
         }
 
         #endregion
