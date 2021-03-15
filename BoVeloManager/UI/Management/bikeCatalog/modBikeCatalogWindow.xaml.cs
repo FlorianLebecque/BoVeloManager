@@ -50,7 +50,7 @@ namespace BoVeloManager.Management.item
             }
             else
             {
-                MessageBox.Show("The new name is invalid");
+                tools.UI.MessageBox.Show("The new name is invalid", "Error");
             }
         }
 

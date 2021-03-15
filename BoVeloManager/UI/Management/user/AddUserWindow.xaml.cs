@@ -45,7 +45,7 @@ namespace BoVeloManager.Management {
                         User newUser = new User(lastID,userName,grade,tools.md5.CreateMD5(pass1));
 
                         crtl.createUser(newUser);
-                        MessageBox.Show("User added");
+                        tools.UI.MessageBox.Show("User added","Action confirmation");
                         
                         this.Close();
 

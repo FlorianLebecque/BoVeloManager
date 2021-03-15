@@ -74,7 +74,7 @@ namespace BoVeloManager.Management.item
 
             }
 
-            MessageBox.Show("updated");
+            tools.UI.MessageBox.Show("updated", "Action confirmation");
             this.Close();
         }
 

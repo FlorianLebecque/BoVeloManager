@@ -104,7 +104,7 @@ namespace BoVeloManager.Management {
         private void bt_delUser_Click(object sender, RoutedEventArgs e) {
 
             //User delete test
-            if (MessageBox.Show("Are you sure ?", "User deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+            if (tools.UI.MessageBox.Show("Are you sure ?", "User deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int userID = Convert.ToInt32(dataRowView["id"]);
@@ -114,7 +114,7 @@ namespace BoVeloManager.Management {
                 tools.Database.setData(q);
 
                 //Update the list
-                MessageBox.Show("User deleted");
+                tools.UI.MessageBox.Show("User deleted","Action confirmation");
                 update_dg_userList();
             }
 
@@ -153,7 +153,7 @@ namespace BoVeloManager.Management {
 
         private void btn_delKit_Click(object sender, RoutedEventArgs e) {
             //Kit delete test
-            if (MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
+            if (tools.UI.MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                 //retrieve the row we click
                 DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
                 int kitID = Convert.ToInt32(dataRowView["id"]);
@@ -163,7 +163,7 @@ namespace BoVeloManager.Management {
                 tools.Database.setData(q);
 
                 //Update the list
-                MessageBox.Show("Kit deleted");
+                tools.UI.MessageBox.Show("Kit deleted","Action confirmation");
                 update_dg_kitList();
             }
         }

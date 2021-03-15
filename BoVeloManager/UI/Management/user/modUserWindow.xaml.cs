@@ -71,12 +71,12 @@ namespace BoVeloManager.Management.user {
                         int res = tools.DatabaseClassInterface.updateUser(mod_user);
 
                     } else {
-                        MessageBox.Show("The new password is invalide or the old password is invalide");
+                        tools.UI.MessageBox.Show("The new password is invalide or the old password is invalide","Error");
                     }
 
 
                 } else {
-                    MessageBox.Show("The new password is invalide or the old password is invalide");
+                    tools.UI.MessageBox.Show("The new password is invalide or the old password is invalide","Error");
                 }
 
             }
@@ -90,9 +90,9 @@ namespace BoVeloManager.Management.user {
             int res = tools.DatabaseClassInterface.updateUser(mod_user);
 
             if(res == 1) {
-                MessageBox.Show("User updated");
+                tools.UI.MessageBox.Show("User updated","Action confirmation");
             } else {
-                MessageBox.Show("Something wrong happend");
+                tools.UI.MessageBox.Show("Something wrong happend","Error");
             }
 
             this.Close();

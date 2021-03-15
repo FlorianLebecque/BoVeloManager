@@ -45,12 +45,12 @@ namespace BoVeloManager.Management.kit
         {
             try {
                 Controler.Instance.createKit(kt);
-                
-                MessageBox.Show("Kit added");
-            }
-            catch { 
 
-                MessageBox.Show("An error has occured");
+                tools.UI.MessageBox.Show("Kit added","Action confirmation");
+            }
+            catch {
+
+                tools.UI.MessageBox.Show("An error has occured","Error");
             }
         }
 

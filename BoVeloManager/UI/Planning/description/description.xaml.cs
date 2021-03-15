@@ -114,7 +114,7 @@ namespace BoVeloManager.UI.Planning.description {
             if (has_init)
             {
                 int nextState = bk.getState();
-                if ((cb_state.SelectedIndex) == 2&&(MessageBox.Show("This action is ireversible are you sure ?","Bike state",MessageBoxButton.YesNo) == MessageBoxResult.Yes)){
+                if ((cb_state.SelectedIndex) == 2&&(tools.UI.MessageBox.Show("This action is ireversible are you sure ?","Bike state",MessageBoxButton.YesNo) == MessageBoxResult.Yes)){
                     nextState = cb_poste.SelectedIndex;
                     bk.setConstructionDate(DateTime.Now);
                 }
@@ -122,7 +122,7 @@ namespace BoVeloManager.UI.Planning.description {
                     nextState = cb_poste.SelectedIndex;
                 }
 
-                bk.setState(cb_state.SelectedIndex);
+                bk.setState(nextState);
                 
                 tools.DatabaseClassInterface.updateBike(bk);
                 init();
