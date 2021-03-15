@@ -130,5 +130,17 @@ namespace BoVeloManager.Properties {
                 this["Setting2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int MAX_BIKE_PER_DAY {
+            get {
+                return ((int)(this["MAX_BIKE_PER_DAY"]));
+            }
+            set {
+                this["MAX_BIKE_PER_DAY"] = value;
+            }
+        }
     }
 }
