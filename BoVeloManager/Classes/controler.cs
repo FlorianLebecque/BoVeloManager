@@ -389,9 +389,20 @@ namespace BoVeloManager.Classes
             }
             else
             {                
-                return a(fda.AddDays(1));
+                return a(NextDay(fda));
             }
         }   
+
+        private DateTime NextDay(DateTime fda) {
+            fda = fda.AddDays(1);
+
+            if((fda.DayOfWeek == DayOfWeek.Saturday)||(fda.DayOfWeek == DayOfWeek.Sunday)) {
+                return NextDay(fda);
+            } else {
+                return fda;
+            }
+
+        }
 
         public int numbOfBike(DateTime day, int poste) {
             int count = 0;
