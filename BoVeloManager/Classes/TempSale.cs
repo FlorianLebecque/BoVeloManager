@@ -66,13 +66,13 @@ namespace BoVeloManager.Classes
             #region affichage console
             foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
             {
-                Console.WriteLine("------------");
-                Console.WriteLine("Name : " + kvp.Key.getName());
+                //Console.WriteLine("------------");
+                //Console.WriteLine("Name : " + kvp.Key.getName());
                 foreach (KitTemplate kit in kvp.Key.getListKit())
                 {
-                    Console.WriteLine("kit : " + kit.getName());
+                    //Console.WriteLine("kit : " + kit.getName());
                 }
-                Console.WriteLine("Quantity : " + kvp.Value);                
+                //Console.WriteLine("Quantity : " + kvp.Value);                
             }
             #endregion
         }
@@ -91,7 +91,7 @@ namespace BoVeloManager.Classes
 
                 if (bikeTemplate.getCat().getName() == catBike.getName() && bikeTemplate.getListKit().All(listKit.Contains) && listKit.All(bikeTemplate.getListKit().Contains))
                 {
-                    Console.WriteLine("le bike template ajouté existe dans la base de donnée");
+                    //Console.WriteLine("le bike template ajouté existe dans la base de donnée");
                     tempBikeTemplate = bikeTemplate;
                     return true;
                 }
@@ -105,7 +105,7 @@ namespace BoVeloManager.Classes
         {
             if (basket.ContainsKey(tBike))
             {
-                Console.WriteLine("basket contains this bike template");
+                //Console.WriteLine("basket contains this bike template");
 
                 int qnt_ = default;
                 BikeTemplate tBike_ = default;
@@ -114,7 +114,7 @@ namespace BoVeloManager.Classes
                 {                    
                     if (kvp.Key == tBike)
                     {
-                        Console.WriteLine("bike template founded");
+                        //Console.WriteLine("bike template founded");
                         qnt_ = kvp.Value;
                         tBike_ = kvp.Key;                                                
                     }
@@ -160,11 +160,12 @@ namespace BoVeloManager.Classes
                 {
                     int bikeID = Controler.Instance.getLastBikeId() + 1;
 
-                    Console.WriteLine(Controler.Instance.getLastBikeId());
-                    Console.WriteLine(bikeID);
-
                     DateTime constr_date = getConstrDate();
-                    Bike b = new Bike(bikeID, 0, saleID, 0, kvp.Key, DateTime.Now,constr_date);
+                    DateTime planned_date = getNextPrevisionDate();                    
+                   
+                    int poste = Controler.Instance.getAvailablePoste();                    
+
+                    Bike b = new Bike(bikeID, 0, saleID, poste, kvp.Key, planned_date, constr_date);
 
                     Controler.Instance.createBike(b);
                     temp.Add(b);
@@ -187,7 +188,7 @@ namespace BoVeloManager.Classes
 
         private DateTime getNextPrevisionDate()
         {
-            return DateTime.Now;
+            return Controler.Instance.getFirstAvailableDay();
         }
 
         private DateTime getConstrDate()

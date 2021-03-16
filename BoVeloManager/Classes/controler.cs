@@ -8,7 +8,7 @@ using BoVeloManager.tools;
 
 namespace BoVeloManager.Classes
 {
-    public class Controler{
+    public class Controler {
 
         private static Controler instance = new Controler();
 
@@ -22,16 +22,16 @@ namespace BoVeloManager.Classes
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
         public TempSale tempSale;
-        
 
-        private Controler(){
-            userList            = DatabaseClassInterface.getUsers();
-            clientList          = DatabaseClassInterface.getClients();
-            kitTemplateList     = DatabaseClassInterface.getKitTemplates();
-            CatalogBikeList     = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
-            bikeTemplateList    = DatabaseClassInterface.getBikeTemplates(CatalogBikeList,kitTemplateList);
-            bikeList            = DatabaseClassInterface.getBikes(bikeTemplateList);
-            saleList            = DatabaseClassInterface.getSales(bikeList,userList, clientList);
+
+        private Controler() {
+            userList = DatabaseClassInterface.getUsers();
+            clientList = DatabaseClassInterface.getClients();
+            kitTemplateList = DatabaseClassInterface.getKitTemplates();
+            CatalogBikeList = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
+            bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList, kitTemplateList);
+            bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
+            saleList = DatabaseClassInterface.getSales(bikeList, userList, clientList);
 
             tempSale = new TempSale();
         }
@@ -41,13 +41,13 @@ namespace BoVeloManager.Classes
                 return instance;
             }
         }
-    
+
         #region User
 
         public List<User.displayInfo> GetUsersDisplayInfo(int filter) {
             List<User.displayInfo> temp = new List<User.displayInfo>();
 
-            foreach(User u in userList) {
+            foreach (User u in userList) {
 
                 switch (filter) {
                     case 0:
@@ -56,14 +56,14 @@ namespace BoVeloManager.Classes
                     default:
 
                         int grade = 2 - filter;
-                        if(u.getGrade() == grade) {
+                        if (u.getGrade() == grade) {
                             temp.Add(u.GetDisplayInfo());
                         }
 
                         break;
                 }
 
-                
+
             }
 
 
@@ -75,8 +75,8 @@ namespace BoVeloManager.Classes
         }
 
         public User getUser_byName(string name) {
-            foreach(User u in userList){
-                if(u.getName() == name){
+            foreach (User u in userList) {
+                if (u.getName() == name) {
                     return u;
                 }
             }
@@ -108,30 +108,30 @@ namespace BoVeloManager.Classes
 
         #region Client
 
-            public List<Client.displayInfo> GetClientDisplayInfo() {
-                List<Client.displayInfo> temp = new List<Client.displayInfo>();
+        public List<Client.displayInfo> GetClientDisplayInfo() {
+            List<Client.displayInfo> temp = new List<Client.displayInfo>();
 
-                foreach (Client c in clientList) {
+            foreach (Client c in clientList) {
 
-                    temp.Add(c.GetDisplayInfo());
-                }
-                return temp;
+                temp.Add(c.GetDisplayInfo());
             }
+            return temp;
+        }
 
-            public int getLastClientId() {
-                return clientList.Select(x => x.getId()).Max();
-            }
+        public int getLastClientId() {
+            return clientList.Select(x => x.getId()).Max();
+        }
 
-            public void createClient(Client c) {
+        public void createClient(Client c) {
 
-                clientList.Add(c);
-                DatabaseClassInterface.addClient(c);
-            }
+            clientList.Add(c);
+            DatabaseClassInterface.addClient(c);
+        }
 
-            public List<Client> getClientList()
-            {
-                return clientList;
-            }
+        public List<Client> getClientList()
+        {
+            return clientList;
+        }
 
         #endregion
 
@@ -161,9 +161,9 @@ namespace BoVeloManager.Classes
             return 0;
         }
 
-        public Sale getSale_byId(int id ) { 
-            foreach(Sale s in saleList) {
-                if(s.getId() == id) {
+        public Sale getSale_byId(int id) {
+            foreach (Sale s in saleList) {
+                if (s.getId() == id) {
                     return s;
                 }
             }
@@ -172,11 +172,11 @@ namespace BoVeloManager.Classes
 
         }
 
-            #endregion
+        #endregion
 
         #region KitTemplate
 
-        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo(){
+        public List<KitTemplate.displayInfo> getKitTemplateDisplayInfo() {
 
             List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
 
@@ -187,7 +187,7 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-        public int getLastKitTemplateId(){
+        public int getLastKitTemplateId() {
             if (kitTemplateList.Count > 0) {
                 return kitTemplateList.Select(x => x.getId()).Max();
             }
@@ -234,10 +234,10 @@ namespace BoVeloManager.Classes
         {
             if (bikeList.Count > 0)
             {
-                Console.WriteLine("######");
+                //Console.WriteLine("######");
                 foreach (Bike b in bikeList)
                 {
-                    Console.WriteLine("id = " + b.getId());
+                    //Console.WriteLine("id = " + b.getId());
                 }
                 return bikeList.Select(x => x.getId()).Max();
             }
@@ -257,11 +257,11 @@ namespace BoVeloManager.Classes
             return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
         }
 
-        public List<Bike.displayInfo> GetBikeDisplayInfo_byWeekAndPost(int week,int poste) {
+        public List<Bike.displayInfo> GetBikeDisplayInfo_byWeekAndPost(int week, int poste) {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
 
-            foreach(Bike b in bikeList) {
-                if((date.getNBRWeek(b.getPlannedtDate()) == week)&&(b.getPoste() == poste)) {
+            foreach (Bike b in bikeList) {
+                if ((date.getNBRWeek(b.getPlannedtDate()) == week) && (b.getPoste() == poste)) {
                     temp.Add(b.GetDisplayInfo());
                 }
             }
@@ -320,32 +320,85 @@ namespace BoVeloManager.Classes
         #region CatalogBike
 
         public List<CatalogBike.displayInfo> getCatalogBikeDisplayInfo() {
-        List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
+            List<CatalogBike.displayInfo> temp = new List<CatalogBike.displayInfo>();
 
-        foreach (CatalogBike cb in CatalogBikeList) {
-            temp.Add(cb.GetDisplayInfo());
+            foreach (CatalogBike cb in CatalogBikeList) {
+                temp.Add(cb.GetDisplayInfo());
+            }
+
+            return temp;
         }
 
-        return temp;
-    }
-
-    public List<CatalogBike> getCatalogBike() {
-        return CatalogBikeList;
-    }
-
-    public int getlastCatalogBikeId() {
-        if (CatalogBikeList.Count > 0) {
-            return CatalogBikeList.Select(x => x.getId()).Max();
+        public List<CatalogBike> getCatalogBike() {
+            return CatalogBikeList;
         }
-        return 0;
-    }
 
-    public void createCatalogBike(CatalogBike cb) {
-        CatalogBikeList.Add(cb);
-        DatabaseClassInterface.addCatalogBike(cb);
-    }
+        public int getlastCatalogBikeId() {
+            if (CatalogBikeList.Count > 0) {
+                return CatalogBikeList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
 
-    #endregion
+        public void createCatalogBike(CatalogBike cb) {
+            CatalogBikeList.Add(cb);
+            DatabaseClassInterface.addCatalogBike(cb);
+        }
 
+        #endregion
+
+        private int poste;
+        public int getAvailablePoste()
+        {
+            Console.WriteLine("getPOste = " + poste);
+            return poste;
+        }
+
+        public DateTime getFirstAvailableDay()
+        {
+            DateTime fda = DateTime.Today;
+            return a(fda);
+        }
+
+        public DateTime a(DateTime fda)
+        {
+            if (numbOfBike(fda, 1) < 5)
+            {
+                
+                Console.WriteLine("doit aller dans le poste 1 pour aujourd'hui");
+
+                poste = 1;
+                return fda;
+            }
+            else if (numbOfBike(fda, 2) < 5)
+            {
+                poste = 2;
+                return fda;
+            }
+            else if (numbOfBike(fda, 3) < 5)
+            {
+                poste = 3;
+                return fda;
+            }
+            else
+            {
+                fda.AddDays(1);
+                return a(fda);
+            }
+        }
+
+        public int numbOfBike(DateTime day, int poste)
+        {
+            int count = 0;
+            foreach (Bike bike in bikeList)
+            {
+                if (bike.getPlannedtDate().ToString("d") == day.ToString("d") && bike.getPoste() == poste)
+                {                    
+                    count++;
+                }
+            }
+            Console.WriteLine("number of bike = " + count);
+            return count;
+        }
     }
 }
