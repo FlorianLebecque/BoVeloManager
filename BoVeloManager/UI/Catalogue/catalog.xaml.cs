@@ -75,9 +75,8 @@ namespace BoVeloManager.Catalogue {
             }           
 
             //convertInformation(cb, s, c);
-
-            
-            MessageBox.Show("Item added to basket");
+                        
+            tools.UI.MessageBox.Show("Item added to basket", "info");
         }
 
         private void DisplayCatalogue()
@@ -109,7 +108,7 @@ namespace BoVeloManager.Catalogue {
 
                 string pic_ = temp.pic;
 
-                BikeCatList.Add(new BikeCat() { name = name_, colorList = colorList_, sizeList = sizeList_, pic = pic_});
+                BikeCatList.Add(new BikeCat() { name = name_, colorList = colorList_, sizeList = sizeList_, pic = pic_, qnt = 1});
             }
 
             CatalogListView.ItemsSource = BikeCatList;
