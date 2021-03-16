@@ -391,10 +391,9 @@ namespace BoVeloManager.Classes
             {                
                 return a(fda.AddDays(1));
             }
-        }
+        }   
 
-        public int numbOfBike(DateTime day, int poste)
-        {
+        public int numbOfBike(DateTime day, int poste) {
             int count = 0;
             foreach (Bike bike in bikeList)
             {

@@ -343,9 +343,16 @@ namespace BoVeloManager.tools {
         public static string addBike(Bike b)
         {
             //return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getSaleId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + b.getPoste() + ")";
-            return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getSaleId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + DateTime.MinValue.ToString("yyyy-MM-dd") + "', " + b.getPoste() + ")";
+            if(b.getSaleId() >= 0){
+                return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getSaleId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', " + b.getPoste() + ")";
+            }
+            else
+            {
+                return "INSERT INTO `bv_bike` (`id`, `id_tBike`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES (" + b.getId() + ", " + b.getBikeTempl().getId() + ", " + b.getState() + ", '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', '" + b.getPlannedtDate().ToString("yyyy-MM-dd") + "', " + b.getPoste() + ")";
+                
+            }
         }
-
+        
         public static string link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
         {
             return "INSERT INTO `bv_tBike_tKit` (`id_tBike`, `id_tKit`) VALUES (" + bt.getId() + ", " + kt.getId() + ")";
@@ -448,10 +455,12 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
+
         public static int updateClient(Client modClient) {
             string q = DatabaseQuery.updateClient(modClient.getId(), modClient.getEtpName(), modClient.getEtpAdress(), modClient.getEmail(), modClient.getPhoneNumb());
             return Database.setData(q);
         }
+
         public static int addClient(Client c) {
             string q = tools.DatabaseQuery.addClient(c);
             return Database.setData(q);
@@ -517,12 +526,8 @@ namespace BoVeloManager.tools {
                     id_sale = -1;
                 }
 
-
-                
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
                 int poste = Convert.ToInt32(dt.Rows[i]["poste"]);
-
-
 
                 DateTime planned_date = (DateTime)dt.Rows[i]["planne_cDate"];
                 DateTime Constr_date;
@@ -531,7 +536,6 @@ namespace BoVeloManager.tools {
                 } else {
                     Constr_date = DateTime.MinValue;
                 }
-                
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
@@ -548,8 +552,8 @@ namespace BoVeloManager.tools {
             string q = DatabaseQuery.updateBike(bk);
             return Database.setData(q);
         }
-        public static int setBikeState(Bike bk)
-        {
+
+        public static int setBikeState(Bike bk) {
             string q = DatabaseQuery.updateBike(bk);
             return Database.setData(q);
         }
