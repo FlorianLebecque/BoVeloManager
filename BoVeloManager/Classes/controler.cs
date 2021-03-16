@@ -213,6 +213,15 @@ namespace BoVeloManager.Classes
             DatabaseClassInterface.addBike(b);
         }
 
+        public int getLastBike()
+        {
+            if (bikeList.Count > 0)
+            {
+                return bikeList.Select(x => x.getId()).Max();
+            }
+            return 0;
+        }
+
         public List<Bike.displayInfo> GetBikeDisplayInfo()
         {
             List<Bike.displayInfo> temp = new List<Bike.displayInfo>();
@@ -276,6 +285,7 @@ namespace BoVeloManager.Classes
         public void createBikeTemplate(BikeTemplate t)
         {
             DatabaseClassInterface.addBikeTemplate(t);
+            bikeTemplateList.Add(t);
         }
 
         public void link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
