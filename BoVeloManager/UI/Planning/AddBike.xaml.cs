@@ -64,7 +64,10 @@ namespace BoVeloManager.UI.Planning
                     {
                         for (int i = 0; i < Quantity; i++)
                         {
-                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, Controler.Instance.getAvailablePoste(), bt, Controler.Instance.getFirstAvailableDay(), DateTime.MinValue);/////////////////
+                            DateTime plan_day = Controler.Instance.getFirstAvailableDay();
+                            int poste = Controler.Instance.getAvailablePoste();
+
+                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, poste, bt, plan_day, DateTime.MinValue);/////////////////
                             //Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, -1, 2, bt, DateTime.Now, DateTime.MinValue);
                         addBike(b);
                         }
@@ -79,7 +82,11 @@ namespace BoVeloManager.UI.Planning
                     newbt.linkKitTemplate(Size[indexSize]);
                     newbt.linkKitTemplate(Color[indexColor]);
                     Controler.Instance.createBikeTemplate(newbt);
-                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, Controler.Instance.getAvailablePoste(), Controler.Instance.getBikeTemplateById(newbt.getId()), Controler.Instance.getFirstAvailableDay(), DateTime.MinValue);//////////
+
+                    DateTime plan_day = Controler.Instance.getFirstAvailableDay();
+                    int poste = Controler.Instance.getAvailablePoste();
+
+                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, poste, Controler.Instance.getBikeTemplateById(newbt.getId()), plan_day, DateTime.MinValue);//////////
                     //Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, -1, 2, Controler.Instance.getBikeTemplateById(newbt.getId()), DateTime.Now, DateTime.MinValue);
                     addBike(b);
                 }
