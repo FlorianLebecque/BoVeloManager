@@ -148,23 +148,6 @@ namespace BoVeloManager.Catalogue {
         private void bt_confirmation_Click(object sender, RoutedEventArgs e)
         {
 
-            
-            #region affichage console
-            /*
-            Console.WriteLine("###################");
-            foreach (BikeTemplate tBike in Controler.Instance.GetBikeTemplateList())
-            {
-                Console.WriteLine("------------");
-                Console.WriteLine("Name : " + tBike.getName());
-                foreach (KitTemplate kit in tBike.getListKit())
-                {
-                    Console.WriteLine("kit : " + kit.getName());
-                }
-            }
-            Console.WriteLine("###################");
-            */
-            #endregion
-
             Confirmation CW = new Confirmation();
             CW.Show();  
 
