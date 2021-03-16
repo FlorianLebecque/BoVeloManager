@@ -152,7 +152,7 @@ namespace BoVeloManager.UI.Planning
                 }
                 else if (kit_cat == "Color")
                 {
-                    Color.Add(kit_struct.properties);
+                    Color.Add(kit_struct.name);
                 }
  
             }
