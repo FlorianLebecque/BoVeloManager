@@ -372,28 +372,24 @@ namespace BoVeloManager.Classes
 
         public DateTime a(DateTime fda)
         {
-            if (numbOfBike(fda, 1) < 5)
+            if (numbOfBike(fda, 0) < Properties.Settings.Default.MAX_BIKE_PER_DAY)
+            {                
+                poste = 0;
+                return fda;
+            }
+            else if (numbOfBike(fda, 1) < Properties.Settings.Default.MAX_BIKE_PER_DAY)
             {
-                
-                Console.WriteLine("doit aller dans le poste 1 pour aujourd'hui");
-
                 poste = 1;
                 return fda;
             }
-            else if (numbOfBike(fda, 2) < 5)
+            else if (numbOfBike(fda, 2) < Properties.Settings.Default.MAX_BIKE_PER_DAY)
             {
                 poste = 2;
                 return fda;
             }
-            else if (numbOfBike(fda, 3) < 5)
-            {
-                poste = 3;
-                return fda;
-            }
             else
-            {
-                fda.AddDays(1);
-                return a(fda);
+            {                
+                return a(fda.AddDays(1));
             }
         }   
 
@@ -401,7 +397,7 @@ namespace BoVeloManager.Classes
             int count = 0;
             foreach (Bike bike in bikeList)
             {
-                if (bike.getPlannedtDate().ToString("d") == day.ToString("d") && bike.getPoste() == poste)
+                if ((bike.getPlannedtDate().Date  == day.Date) && (bike.getPoste() == poste))
                 {                    
                     count++;
                 }

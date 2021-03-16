@@ -60,8 +60,8 @@ namespace BoVeloManager.Catalogue {
             try
             {
                 CatalogBike catBike = Controler.Instance.getCatalogBike().Find(x => x.getName() == cb);
-                KitTemplate size = Controler.Instance.getKitTemplateList().Find(x => x.getName() == s);
-                KitTemplate color = Controler.Instance.getKitTemplateList().Find(x => x.getName() == c);
+                KitTemplate size = Controler.Instance.getKitTemplateList().Find(x => x.getProperties() == s);
+                KitTemplate color = Controler.Instance.getKitTemplateList().Find(x => x.getProperties() == c);
 
                 Console.WriteLine("Tout est ok");
 
@@ -99,11 +99,11 @@ namespace BoVeloManager.Catalogue {
                     KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
                     if (kit_struct.category == "Color")
                     {
-                        colorList_.Add(kit_struct.name);
+                        colorList_.Add(kit_struct.properties);
                     }
                     else if (kit_struct.category == "Size")
                     {
-                        sizeList_.Add(kit_struct.name);
+                        sizeList_.Add(kit_struct.properties);
                     }
                 }
 
@@ -147,23 +147,6 @@ namespace BoVeloManager.Catalogue {
 
         private void bt_confirmation_Click(object sender, RoutedEventArgs e)
         {
-
-            
-            #region affichage console
-            /*
-            Console.WriteLine("###################");
-            foreach (BikeTemplate tBike in Controler.Instance.GetBikeTemplateList())
-            {
-                Console.WriteLine("------------");
-                Console.WriteLine("Name : " + tBike.getName());
-                foreach (KitTemplate kit in tBike.getListKit())
-                {
-                    Console.WriteLine("kit : " + kit.getName());
-                }
-            }
-            Console.WriteLine("###################");
-            */
-            #endregion
 
             Confirmation CW = new Confirmation();
             CW.Show();  

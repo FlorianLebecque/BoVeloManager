@@ -80,8 +80,8 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
 
                 string qnt_name_ = qnt.ToString() + "x " + tBike_.getName();
                 string string_kits_ = tBike_.getPropkitString();
-                float p = tBike_.getPrice() * qnt / 100;
-                string price_ = ((tBike_.getPrice()*qnt)/100).ToString() + "$";
+                float p = tBike_.getPrice() * qnt ;
+                string price_ = (tBike_.getPrice()*qnt).ToString("c2");
                 tot += p;
 
                 bil.Add(new BikeItem() { tbike = tBike_ ,qnt_name = qnt_name_, string_kits = string_kits_, price = price_ });
@@ -89,7 +89,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
 
             bikesList.ItemsSource = bil;
 
-            total.Text = tot.ToString() + "$";
+            total.Text = tot.ToString("c2");
         }
 
         private class BikeItem
