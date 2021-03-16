@@ -32,7 +32,6 @@ namespace BoVeloManager.UI.Planning
             int indexCatalog = BikeCatalog.SelectedIndex;
             int indexSize = BikeSize.SelectedIndex;
             int indexColor = BikeColor.SelectedIndex;
-            int indexPoste = Poste.SelectedIndex;
             int Quantity = Convert.ToInt32(BikeQuantity.Text);
 
             List<BikeTemplate> BikeTemplateList = Controler.Instance.getBikeTemplateList();
@@ -65,7 +64,7 @@ namespace BoVeloManager.UI.Planning
                     {
                         for (int i = 0; i < Quantity; i++)
                         {
-                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, indexPoste, bt, DateTime.Now, DateTime.MinValue);
+                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, 2, bt, DateTime.Now, DateTime.MinValue);/////////////////
                             addBike(b);
                         }
                     done = 1;
@@ -79,7 +78,7 @@ namespace BoVeloManager.UI.Planning
                     newbt.linkKitTemplate(Size[indexSize]);
                     newbt.linkKitTemplate(Color[indexColor]);
                     Controler.Instance.createBikeTemplate(newbt);
-                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, indexPoste, Controler.Instance.getBikeTemplateById(newbt.getId()), DateTime.Now, DateTime.MinValue);
+                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, 2, Controler.Instance.getBikeTemplateById(newbt.getId()), DateTime.Now, DateTime.MinValue);//////////
                     addBike(b);
                 }
             }
