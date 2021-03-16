@@ -36,8 +36,8 @@
                         <StackPanel Height="125" VerticalAlignment="Bottom">
                             <TextBlock Text="{Binding Path=name}" Margin="10 5 10 0" Foreground="Black"/>
 
-                            <ComboBox ItemsSource="{Binding Path=sizeList}" SelectedItem="{Binding Path=size}" Margin="10 5 10 0" Foreground="Black"/>
-                            <ComboBox ItemsSource="{Binding Path=colorList}" SelectedItem="{Binding Path=color}" Margin="10 5 10 0" Foreground="Black"/>
+                            <ComboBox ItemsSource="{Binding Path=sizeList}" SelectedItem="{Binding Path=size}" SelectedIndex="0" Margin="10 5 10 0" Foreground="Black"/>
+                            <ComboBox ItemsSource="{Binding Path=colorList}" SelectedItem="{Binding Path=color}" SelectedIndex="0" Margin="10 5 10 0" Foreground="Black"/>
 
                             <Grid Margin="10 5 10 0">
                                 <Grid.ColumnDefinitions>

@@ -388,9 +388,8 @@ namespace BoVeloManager.Classes
                 return fda;
             }
             else
-            {
-                fda.AddDays(1);
-                return a(fda);
+            {                
+                return a(fda.AddDays(1));
             }
         }
 
@@ -399,7 +398,7 @@ namespace BoVeloManager.Classes
             int count = 0;
             foreach (Bike bike in bikeList)
             {
-                if (bike.getPlannedtDate().ToString("d") == day.ToString("d") && bike.getPoste() == poste)
+                if ((bike.getPlannedtDate().Date  == day.Date) && (bike.getPoste() == poste))
                 {                    
                     count++;
                 }
