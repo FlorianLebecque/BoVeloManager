@@ -34,10 +34,7 @@ namespace BoVeloManager.UI.Planning
             int indexColor = BikeColor.SelectedIndex;
             int indexPoste = Poste.SelectedIndex;
             int Quantity = Convert.ToInt32(BikeQuantity.Text);
-            //int id = Controler.Instance.getLastBikeTemplate() + 1;
-            //Bike(int id_,int status_, int id_sale_,int Poste_, BikeTemplate bt_, DateTime planned_date_, DateTime constr_date_)
-            //Bike b = new Bike(id, kitName, kitCat, kitPrice, kitProp);
-            //addBike(kt);
+
             List<BikeTemplate> BikeTemplateList = Controler.Instance.getBikeTemplateList();
             List<KitTemplate> Size = new List<KitTemplate>();
             List<KitTemplate> Color = new List<KitTemplate>();
@@ -78,10 +75,11 @@ namespace BoVeloManager.UI.Planning
             {
                 for (int i = 0; i < Quantity; i++)
                 {
-                    BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate() + 1, Controler.Instance.getCatalogBike()[indexCatalog]);
+                    BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate()+1, Controler.Instance.getCatalogBike()[indexCatalog]);
                     newbt.linkKitTemplate(Size[indexSize]);
                     newbt.linkKitTemplate(Color[indexColor]);
-                    Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, 10, indexPoste, newbt, DateTime.Now, DateTime.MinValue);
+                    Controler.Instance.createBikeTemplate(newbt);
+                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, 10, indexPoste, Controler.Instance.getBikeTemplateById(newbt.getId()), DateTime.Now, DateTime.MinValue);
                     addBike(b);
                 }
             }

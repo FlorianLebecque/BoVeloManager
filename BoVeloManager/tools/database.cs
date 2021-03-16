@@ -367,8 +367,8 @@ namespace BoVeloManager.tools {
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
         }
-        public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime planned_date, DateTime constr_date)
-        {
+        //public static string addBike(int id, int status, int id_sale, int Poste, BikeTemplate bt, DateTime planned_date, DateTime constr_date)
+        //{
             //if (id_sale < 0)
             //{
             //    string str = "NULL";
@@ -376,10 +376,10 @@ namespace BoVeloManager.tools {
             //}
             //else
             //{
-                return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + planned_date.ToString("yyyy-MM-dd") + "','" + constr_date.ToString("yyyy-MM-dd") + "','" + Poste.ToString() + "')";
+                //return "INSERT INTO `bv_bike`(`id`, `id_tBike`, `id_sale`, `state`, `planne_cDate`, `create_Date`, `poste`) VALUES ('" + id + "','" + bt.getId() + "','" + id_sale + "','" + status + "','" + planned_date.ToString("yyyy-MM-dd") + "','" + constr_date.ToString("yyyy-MM-dd") + "','" + Poste.ToString() + "')";
             //}   
                 
-        }
+        //}
 
     }
 

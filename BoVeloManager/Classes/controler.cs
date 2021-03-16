@@ -285,6 +285,7 @@ namespace BoVeloManager.Classes
         public void createBikeTemplate(BikeTemplate t)
         {
             DatabaseClassInterface.addBikeTemplate(t);
+            bikeTemplateList.Add(t);
         }
 
         public void link_kit_to_tbike(BikeTemplate bt, KitTemplate kt)
