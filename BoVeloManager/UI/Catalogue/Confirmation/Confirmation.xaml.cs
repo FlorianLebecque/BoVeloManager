@@ -121,5 +121,6 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
 
             displayDetails();
         }
+
     }
 }
