@@ -101,7 +101,6 @@ namespace BoVeloManager {
             }
         }
 
-
         private void lb_user_MouseDown(object sender, MouseButtonEventArgs e)
         {
             User usr = Controler.Instance.getCurrentUser();

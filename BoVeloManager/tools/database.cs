@@ -455,10 +455,12 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
+
         public static int updateClient(Client modClient) {
             string q = DatabaseQuery.updateClient(modClient.getId(), modClient.getEtpName(), modClient.getEtpAdress(), modClient.getEmail(), modClient.getPhoneNumb());
             return Database.setData(q);
         }
+
         public static int addClient(Client c) {
             string q = tools.DatabaseQuery.addClient(c);
             return Database.setData(q);
@@ -524,12 +526,8 @@ namespace BoVeloManager.tools {
                     id_sale = -1;
                 }
 
-
-                
                 int state = Convert.ToInt32(dt.Rows[i]["state"]);
                 int poste = Convert.ToInt32(dt.Rows[i]["poste"]);
-
-
 
                 DateTime planned_date = (DateTime)dt.Rows[i]["planne_cDate"];
                 DateTime Constr_date;
@@ -538,7 +536,6 @@ namespace BoVeloManager.tools {
                 } else {
                     Constr_date = DateTime.MinValue;
                 }
-                
 
                 foreach (BikeTemplate bt in btList) {
                     if(bt.getId() == id_tBike) {
@@ -555,8 +552,8 @@ namespace BoVeloManager.tools {
             string q = DatabaseQuery.updateBike(bk);
             return Database.setData(q);
         }
-        public static int setBikeState(Bike bk)
-        {
+
+        public static int setBikeState(Bike bk) {
             string q = DatabaseQuery.updateBike(bk);
             return Database.setData(q);
         }
