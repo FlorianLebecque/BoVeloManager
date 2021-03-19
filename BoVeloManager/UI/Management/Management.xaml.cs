@@ -101,24 +101,7 @@ namespace BoVeloManager.Management {
                 - send the query to the database
                 - update the list
          */
-        private void bt_delUser_Click(object sender, RoutedEventArgs e) {
 
-            //User delete test
-            if (tools.UI.MessageBox.Show("Are you sure ?", "User deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
-                //retrieve the row we click
-                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-                int userID = Convert.ToInt32(dataRowView["id"]);
-
-                //create and send the request to the db
-                string q = tools.DatabaseQuery.delUser(userID);
-                tools.Database.setData(q);
-
-                //Update the list
-                tools.UI.MessageBox.Show("User deleted","Action confirmation");
-                update_dg_userList();
-            }
-
-        }
 
         private void cb_sortUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             //ICollectionView cv = CollectionViewSource.GetDefaultView(dg_userList.ItemsSource);
@@ -151,22 +134,6 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
 
-        private void btn_delKit_Click(object sender, RoutedEventArgs e) {
-            //Kit delete test
-            if (tools.UI.MessageBox.Show("Are you sure ?", "Kit deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
-                //retrieve the row we click
-                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-                int kitID = Convert.ToInt32(dataRowView["id"]);
-
-                //create and send the request to the db
-                string q = tools.DatabaseQuery.delKit(kitID);
-                tools.Database.setData(q);
-
-                //Update the list
-                tools.UI.MessageBox.Show("Kit deleted","Action confirmation");
-                update_dg_kitList();
-            }
-        }
 
         private void bt_editCompatibleKit_Click(object sender, RoutedEventArgs e) {
 
@@ -186,7 +153,7 @@ namespace BoVeloManager.Management {
 
         private void set_cbtype3_content() {
             //set the datatable cb_t as the item sources for the combobox content
-            string q_cb = tools.DatabaseQuery.getItem();
+            string q_cb = tools.DatabaseQuery.getCatalogBike();
             DataTable cb_t = tools.Database.getData(q_cb);
             cb_type3.ItemsSource = cb_t.DefaultView;
             //Add 'show all' row to cb_t
@@ -234,22 +201,7 @@ namespace BoVeloManager.Management {
         }
 
 
-        private void bt_delItem_Click(object sender, RoutedEventArgs e) {
-            //Item delete test
-            if (MessageBox.Show("Are you sure ?", "Item deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
-                //retrieve the row we click
-                DataRowView dataRowView = (DataRowView)((System.Windows.Controls.Button)e.Source).DataContext;
-                int itemID = Convert.ToInt32(dataRowView["id"]);
 
-                //create and send the request to the db
-                string q = tools.DatabaseQuery.delItem(itemID);
-                tools.Database.setData(q);
-
-                //Update the list
-                MessageBox.Show("Item deleted");
-                update_dg_itemList();
-            }
-        }
 
         private void bt_addItem_Click(object sender, RoutedEventArgs e) {
  
