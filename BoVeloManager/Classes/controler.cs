@@ -25,14 +25,14 @@ namespace BoVeloManager.Classes
 
 
         private Controler() {
-            userList = DatabaseClassInterface.getUsers();
-            clientList = DatabaseClassInterface.getClients();
-            kitTemplateList = DatabaseClassInterface.getKitTemplates();
-            CatalogBikeList = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
-            bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList, kitTemplateList);
-            bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
-            saleList = DatabaseClassInterface.getSales(bikeList, userList, clientList);
-
+            LOAD_USERS();
+            LOAD_CLIENTS();
+            LOAD_KITEMP();
+            LOAD_CATALOG();
+            LOAD_BIKETEMP();
+            LOAD_BIKES();
+            LOAD_SALES();
+            
             tempSale = new TempSale();
         }
 
@@ -41,6 +41,39 @@ namespace BoVeloManager.Classes
                 return instance;
             }
         }
+
+        #region LOAD
+
+        public void LOAD_USERS() {
+            userList = DatabaseClassInterface.getUsers();
+        }
+
+        public void LOAD_CLIENTS() {
+            clientList = DatabaseClassInterface.getClients();
+        }
+
+        public void LOAD_KITEMP() {
+            kitTemplateList = DatabaseClassInterface.getKitTemplates();
+        }
+
+        public void LOAD_CATALOG() {
+            CatalogBikeList = DatabaseClassInterface.getCatalogBikes(kitTemplateList);
+        }
+
+        public void LOAD_BIKETEMP() {
+            bikeTemplateList = DatabaseClassInterface.getBikeTemplates(CatalogBikeList, kitTemplateList);
+        }
+
+        public void LOAD_BIKES() {
+            bikeList = DatabaseClassInterface.getBikes(bikeTemplateList);
+        }
+
+        public void LOAD_SALES() {
+            saleList = DatabaseClassInterface.getSales(bikeList, userList, clientList);
+        }
+
+        #endregion 
+
 
         #region User
 
