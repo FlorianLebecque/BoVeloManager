@@ -132,16 +132,21 @@ namespace BoVeloManager.tools {
 
 
 
-        public static string updateClient(int id, string entreprise_name, string enterprise_adress, string email, string phone_num) {
-            return "UPDATE `bv_client` SET `enterprise_name`= '" + entreprise_name + "', `enterprise_adress`= '" + enterprise_adress + "',  `email`= '" + email + "', `phone_num`= '" + phone_num + "' WHERE `id` = " + id.ToString();
+        public static string updateHumans(int id, string entreprise_name, string enterprise_adress, string email, string phone_num) {
+            return "UPDATE `bv_human` SET `enterprise_name`= '" + entreprise_name + "', `enterprise_adress`= '" + enterprise_adress + "',  `email`= '" + email + "', `phone_num`= '" + phone_num + "' WHERE `id` = " + id.ToString();
         }
 
-        public static string getClients() {
-            return "SELECT `id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num` , `date` FROM `bv_client`";
+        public static string getHumans(int fct) {
+            return "SELECT *  FROM `bv_human` WHERE `fct` = " + fct.ToString();
         }
 
-        public static string addClient(Client c) {
-            return "INSERT INTO `bv_client`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+        public static string addHuman(Human c) {
+            if (c is Client ) {
+                return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "',0)";
+            } else {
+                return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "',1)";
+
+            }
         }
 
 
@@ -279,7 +284,7 @@ namespace BoVeloManager.tools {
         public static List<Client> getClients() {
 
             //get the user query and data from the database
-            string query = DatabaseQuery.getClients();
+            string query = DatabaseQuery.getHumans(0);
             DataTable dt = tools.Database.getData(query);
 
             //convert all the user into a user object
@@ -299,14 +304,36 @@ namespace BoVeloManager.tools {
 
             return temp;
         }
+        public static List<Supplier> getSupplier() {
 
-        public static int updateClient(Client modClient) {
-            string q = DatabaseQuery.updateClient(modClient.getId(), modClient.getEtpName(), modClient.getEtpAdress(), modClient.getEmail(), modClient.getPhoneNumb());
+            //get the user query and data from the database
+            string query = DatabaseQuery.getHumans(1);
+            DataTable dt = tools.Database.getData(query);
+
+            //convert all the user into a user object
+            List<Supplier> temp = new List<Supplier>();
+            for (int i = 0; i < dt.Rows.Count; i++) {
+                int id = Convert.ToInt32(dt.Rows[i]["id"]);
+                string first_name = (string)dt.Rows[i]["first_name"];
+                string last_name = (string)dt.Rows[i]["last_name"];
+                string enter_name = (string)dt.Rows[i]["enterprise_name"];
+                string enter_add = (string)dt.Rows[i]["enterprise_adress"];
+                string email = (string)dt.Rows[i]["email"];
+                string phone = (string)dt.Rows[i]["phone_num"];
+                DateTime datet = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
+
+                temp.Add(new Supplier(id, first_name, last_name, enter_name, enter_add, email, phone, datet));
+            }
+
+            return temp;
+        }
+        public static int updateHuman(Human modClient) {
+            string q = DatabaseQuery.updateHumans(modClient.getId(), modClient.getEtpName(), modClient.getEtpAdress(), modClient.getEmail(), modClient.getPhoneNumb());
             return Database.setData(q);
         }
 
-        public static int addClient(Client c) {
-            string q = tools.DatabaseQuery.addClient(c);
+        public static int addHuman(Human c) {
+            string q = tools.DatabaseQuery.addHuman(c);
             return Database.setData(q);
         }
 

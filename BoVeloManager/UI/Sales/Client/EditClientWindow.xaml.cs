@@ -51,7 +51,7 @@ namespace BoVeloManager.UI.Sales.Client {
         private void editClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num) {
 
             client.setEditClient(entreprise_name, entreprise_adress, email, phone_num);
-            tools.DatabaseClassInterface.updateClient(client);
+            tools.DatabaseClassInterface.updateHuman(client);
         }
     }
 }
