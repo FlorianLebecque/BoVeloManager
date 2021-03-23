@@ -185,13 +185,8 @@ namespace BoVeloManager.tools {
             return "SELECT *  FROM `bv_human` WHERE `fct` = " + fct.ToString();
         }
 
-        public static string addHuman(Human c) {
-            if (c is Client ) {
-                return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "',0)";
-            } else {
-                return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "',1)";
-
-            }
+        public static string addHuman(Human c,int fct) {
+                return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "',"+fct.ToString()+")";
         }
 
 
@@ -376,8 +371,8 @@ namespace BoVeloManager.tools {
             return Database.setData(q);
         }
 
-        public static int addHuman(Human c) {
-            string q = tools.DatabaseQuery.addHuman(c);
+        public static int addHuman(Human c,int fct) {
+            string q = tools.DatabaseQuery.addHuman(c, fct);
             return Database.setData(q);
         }
 

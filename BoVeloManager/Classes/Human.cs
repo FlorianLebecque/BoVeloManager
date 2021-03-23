@@ -15,6 +15,8 @@ namespace BoVeloManager.Classes
         private string email;
         private string phone_num;
         private string name;
+        private string first_name;
+        private string last_name;
         private DateTime insc_date;
 
         public Human(int id_, string first_name_, string last_name_, string etp_name_, string etp_adress_, string email_, string phone_num_, DateTime insc_date_) {
@@ -26,6 +28,8 @@ namespace BoVeloManager.Classes
             insc_date = insc_date_;
             name = first_name_ + last_name_;
             id = id_;
+            first_name = first_name_;
+            last_name = last_name_;
         }
 
         public string getEtpName() {
@@ -43,13 +47,19 @@ namespace BoVeloManager.Classes
         public string getName() {
             return name;
         }
+        public string getFirstName() {
+            return first_name;
+        }
+        public string getLastName() {
+            return last_name;
+        }
         public int getId() {
             return id;
         }
         public DateTime getInscDate() {
             return insc_date;
         }
-        public void setEditClient(string entreprise_name, string entreprise_adress, string email_, string phone_num_) {
+        public void setEditHuman(string entreprise_name, string entreprise_adress, string email_, string phone_num_) {
 
             etp_name = entreprise_name;
             etp_adress = entreprise_adress;
