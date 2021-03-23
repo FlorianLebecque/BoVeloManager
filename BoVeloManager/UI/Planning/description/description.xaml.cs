@@ -45,7 +45,7 @@ namespace BoVeloManager.UI.Planning.description {
             dp_pld_date.SelectedDate = bk.getPlannedtDate();
             tb_price.Text = bk.GetDisplayInfo().price;
             cb_poste.SelectedIndex = bk.getPoste();
-            tb_cst_date.SelectedDate = bk.getConclassionDate();
+            tb_cst_date.SelectedDate = bk.getConstructionDate();
 
             List<KitTemplate.displayInfo> listKit = new List<KitTemplate.displayInfo>();
             foreach (KitTemplate kt in bk.getBikeTempl().getListKit()) {
@@ -93,7 +93,7 @@ namespace BoVeloManager.UI.Planning.description {
 
                 if ((cb_state.SelectedIndex == 2)&&(tools.UI.MessageBox.Show("This action is ireversible are you sure ?","Bike state",MessageBoxButton.YesNo) == MessageBoxResult.Yes)){
                     nextState = cb_state.SelectedIndex;
-                    bk.setConclassionDate(DateTime.Now);
+                    bk.getConstructionDate(DateTime.Now);
                 }
                 else if(cb_state.SelectedIndex != 2){
                     nextState = cb_state.SelectedIndex;
