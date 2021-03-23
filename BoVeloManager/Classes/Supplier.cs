@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes {
-    public class Client : Human {
-        public Client(int id_, string first_name_, string last_name_, string etp_name_, string etp_adress_, string email_, string phone_num_, DateTime insc_date_) : base(id_, first_name_, last_name_, etp_name_, etp_adress_, email_, phone_num_, insc_date_) {
+    class Supplier : Human {
+        public Supplier(int id_, string first_name_, string last_name_, string etp_name_, string etp_adress_, string email_, string phone_num_, DateTime insc_date_) : base(id_, first_name_, last_name_, etp_name_, etp_adress_, email_, phone_num_, insc_date_) {
         }
 
         public new displayInfo GetDisplayInfo() {
@@ -25,7 +25,7 @@ namespace BoVeloManager.Classes {
         }
 
         public new struct displayInfo {
-            public Client CurInstance { get; set; }
+            public Supplier CurInstance { get; set; }
             public string name { get; set; }
             public int id { get; set; }
             public string etp_name { get; set; }
