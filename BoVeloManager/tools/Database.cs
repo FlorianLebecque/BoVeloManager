@@ -274,7 +274,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string updateBike(Bike bk) {
-            return "UPDATE `bv_bike` SET `state`= "+ bk.getState().ToString() +" ,`planne_cDate`='"+ bk.getPlannedtDate().ToString("yyyy-MM-dd") +"' ,`poste`= "+bk.getPoste().ToString()+ ",`create_Date`='" + bk.getConclassionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
+            return "UPDATE `bv_bike` SET `state`= "+ bk.getState().ToString() +" ,`planne_cDate`='"+ bk.getPlannedtDate().ToString("yyyy-MM-dd") +"' ,`poste`= "+bk.getPoste().ToString()+ ",`create_Date`='" + bk.getConstructionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
         }
 
         public static string getTBike() {

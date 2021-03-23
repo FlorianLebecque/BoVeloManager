@@ -69,11 +69,11 @@ namespace BoVeloManager.Classes
             status = s;
         }
 
-        public void setConclassionDate(DateTime dt) {
+        public void getConstructionDate(DateTime dt) {
             ConstrucDate = dt;
         }
 
-        public DateTime getConclassionDate()
+        public DateTime getConstructionDate()
         {
             if(ConstrucDate != null){
                 return ConstrucDate;
@@ -116,7 +116,7 @@ namespace BoVeloManager.Classes
             temp.price = this.BikeTemplate.getPrice().ToString("c2");
             temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
             
-            DateTime dt = getConclassionDate();
+            DateTime dt = getConstructionDate();
 
             return temp;
         }

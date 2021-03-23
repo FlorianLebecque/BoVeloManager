@@ -72,7 +72,7 @@ namespace BoVeloManager.Classes
             return temp;
         }
 
-        public struct displayInfo {
+        public class displayInfo {
             public Human CurInstance { get; set; }
             public string name { get; set; }
             public int id { get; set; }
