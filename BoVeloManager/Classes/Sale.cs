@@ -99,7 +99,7 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
-        public struct displayInfo {
+        public class displayInfo {
             public Sale CurSale { get; set; }
             public Client client { get; set; }
             public User seller { get; set; }
@@ -119,7 +119,7 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
-        public struct descrInfo {
+        public class descrInfo {
             public Sale CurSale { get; set; }
             public List<TbikeInfo> TbikeInfoList;
             public float total_price { get; set; }

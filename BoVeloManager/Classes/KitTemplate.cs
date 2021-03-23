@@ -95,7 +95,7 @@ namespace BoVeloManager.Classes {
 
         }
 
-        public struct displayInfo {
+        public class displayInfo {
             public KitTemplate curKit;
             public int id { get; set; }
             public string name { get; set; }

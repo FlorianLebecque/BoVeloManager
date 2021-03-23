@@ -42,8 +42,8 @@ namespace BoVeloManager.UI.Planning
 
             foreach (KitTemplate kit in KitList)
             {
-                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
-                string kit_cat = kit_struct.category;
+                KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
+                string kit_cat = kit_class.category;
 
                 if (kit_cat == "Size")
                 {
@@ -143,16 +143,16 @@ namespace BoVeloManager.UI.Planning
 
             foreach (KitTemplate kit in KitList)
             {
-                KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
-                string kit_cat = kit_struct.category;
+                KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
+                string kit_cat = kit_class.category;
 
                 if (kit_cat == "Size")
                 {
-                    Size.Add(kit_struct.properties);
+                    Size.Add(kit_class.properties);
                 }
                 else if (kit_cat == "Color")
                 {
-                    Color.Add(kit_struct.name);
+                    Color.Add(kit_class.name);
                 }
  
             }

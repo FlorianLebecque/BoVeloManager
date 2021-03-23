@@ -75,7 +75,7 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
-        public struct displayInfo {
+        public class displayInfo {
             public CatalogBike CurCatBike { get; set; }
             public string name { get; set; }
             public string PriceMul { get; set; }

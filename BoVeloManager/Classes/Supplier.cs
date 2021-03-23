@@ -24,7 +24,7 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
-        public new struct displayInfo {
+        public new class displayInfo {
             public Supplier CurInstance { get; set; }
             public string name { get; set; }
             public int id { get; set; }

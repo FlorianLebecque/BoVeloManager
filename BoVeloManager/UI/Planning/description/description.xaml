@@ -90,7 +90,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" >Construction date :</Label>
+                    <Label Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Right" >Conclassion date :</Label>
                     <DatePicker  Name="tb_cst_date" VerticalAlignment="Center" Grid.Column="1" Padding="2" Margin="0,2,10,2" IsTodayHighlighted="True" IsEnabled="False"/>
 
                 </Grid>

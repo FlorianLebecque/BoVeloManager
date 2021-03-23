@@ -70,7 +70,7 @@ namespace BoVeloManager.Classes
             return dI;
         }
 
-        public struct displayInfo
+        public class displayInfo
         {
             public BikeTemplate BikeTemp;
             public List<KitTemplate> KitTemplList;

@@ -159,7 +159,7 @@ namespace BoVeloManager.UI.Planning {
             }
 
             bk.setState(State);
-            bk.setConstructionDate(DateTime.Now);
+            bk.setConclassionDate(DateTime.Now);
             tools.DatabaseClassInterface.updateBike(bk);
 
             init();

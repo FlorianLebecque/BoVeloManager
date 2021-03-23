@@ -95,14 +95,14 @@ namespace BoVeloManager.Catalogue {
 
                 foreach (KitTemplate kit in kitList)
                 {
-                    KitTemplate.displayInfo kit_struct = kit.GetDisplayInfo();
-                    if (kit_struct.category == "Color")
+                    KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
+                    if (kit_class.category == "Color")
                     {
-                        colorList_.Add(kit_struct.properties);
+                        colorList_.Add(kit_class.properties);
                     }
-                    else if (kit_struct.category == "Size")
+                    else if (kit_class.category == "Size")
                     {
-                        sizeList_.Add(kit_struct.properties);
+                        sizeList_.Add(kit_class.properties);
                     }
                 }
 

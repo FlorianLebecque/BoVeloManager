@@ -27,7 +27,7 @@ USE `sql2390507`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_cat_tKit`
+-- Table classure for table `bv_cat_tKit`
 --
 
 CREATE TABLE `bv_cat_tKit` (
@@ -46,7 +46,7 @@ INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_catalog`
+-- Table classure for table `bv_catalog`
 --
 
 CREATE TABLE `bv_catalog` (
@@ -66,7 +66,7 @@ INSERT INTO `bv_catalog` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_client`
+-- Table classure for table `bv_client`
 --
 
 CREATE TABLE `bv_client` (
@@ -90,7 +90,7 @@ INSERT INTO `bv_client` (`id`, `first_name`, `last_name`, `enterprise_name`, `en
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_sale`
+-- Table classure for table `bv_sale`
 --
 
 CREATE TABLE `bv_sale` (
@@ -111,7 +111,7 @@ INSERT INTO `bv_sale` (`id`, `id_client`, `id_seller`, `prevision_date`, `date`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_sale_bike`
+-- Table classure for table `bv_sale_bike`
 --
 
 CREATE TABLE `bv_sale_bike` (
@@ -131,7 +131,7 @@ INSERT INTO `bv_sale_bike` (`id_sale`, `id_tBike`, `qnt`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_tBike_tKit`
+-- Table classure for table `bv_tBike_tKit`
 --
 
 CREATE TABLE `bv_tBike_tKit` (
@@ -153,7 +153,7 @@ INSERT INTO `bv_tBike_tKit` (`id_tBike`, `id_tKit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_type_bike`
+-- Table classure for table `bv_type_bike`
 --
 
 CREATE TABLE `bv_type_bike` (
@@ -173,7 +173,7 @@ INSERT INTO `bv_type_bike` (`id`, `name`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_type_kit`
+-- Table classure for table `bv_type_kit`
 --
 
 CREATE TABLE `bv_type_kit` (
@@ -197,7 +197,7 @@ INSERT INTO `bv_type_kit` (`id`, `name`, `category`, `properties`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bv_user`
+-- Table classure for table `bv_user`
 --
 
 CREATE TABLE `bv_user` (
