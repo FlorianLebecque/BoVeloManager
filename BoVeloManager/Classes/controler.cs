@@ -16,6 +16,7 @@ namespace BoVeloManager.Classes
 
         private List<User> userList;
         private List<Client> clientList;
+        private List<Supplier> supplierList;
         private List<Bike> bikeList;
         private List<CatalogBike> CatalogBikeList;
         private List<BikeTemplate> bikeTemplateList;
@@ -27,6 +28,7 @@ namespace BoVeloManager.Classes
         private Controler() {
             LOAD_USERS();
             LOAD_CLIENTS();
+            LOAD_SUPPLIERS();
             LOAD_KITEMP();
             LOAD_CATALOG();
             LOAD_BIKETEMP();
@@ -50,6 +52,9 @@ namespace BoVeloManager.Classes
 
         public void LOAD_CLIENTS() {
             clientList = DatabaseClassInterface.getClients();
+        }
+        public void LOAD_SUPPLIERS() {
+            supplierList = DatabaseClassInterface.getSupplier();
         }
 
         public void LOAD_KITEMP() {
@@ -89,6 +94,7 @@ namespace BoVeloManager.Classes
                             break;
                         case "bv_human":
                             LOAD_CLIENTS();
+                            LOAD_SUPPLIERS();
                             break;
                         case "bv_sale":
                             LOAD_SALES();
@@ -193,15 +199,53 @@ namespace BoVeloManager.Classes
             return clientList.Select(x => x.getId()).Max();
         }
 
-        public void createClient(Client c) {
 
-            clientList.Add(c);
-            DatabaseClassInterface.addHuman(c);
-        }
 
         public List<Client> getClientList()
         {
             return clientList;
+        }
+
+        #endregion
+
+        #region Supplier
+
+        public List<Supplier.displayInfo> GetSupplierDisplayInfo() {
+            List<Supplier.displayInfo> temp = new List<Supplier.displayInfo>();
+
+            foreach (Supplier s in supplierList) {
+
+                temp.Add(s.GetDisplayInfo());
+            }
+            return temp;
+        }
+
+        public int getLastSupplierId() {
+            return supplierList.Select(x => x.getId()).Max();
+        }
+
+
+        public List<Supplier> getSupplierList() {
+            return supplierList;
+        }
+
+        #endregion
+
+        #region Human
+        public int getLastHumanId() {
+            return Math.Max(getLastSupplierId(), getLastClientId());
+        }
+        public void createHuman(Human c, int fct) {
+            switch (fct) {
+                case 0:
+                    clientList.Add(Converter.ToClient(c));
+                    break;
+                case 1:
+                    supplierList.Add(Converter.ToSupplier(c));
+                    break;
+            }
+
+            DatabaseClassInterface.addHuman(c, fct);
         }
 
         #endregion

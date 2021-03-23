@@ -197,6 +197,7 @@
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tools\Converter.cs" />
     <Compile Include="tools\date.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="tools\SVGRender.cs" />
@@ -245,11 +246,11 @@
     <Compile Include="UI\Planning\Planning.xaml.cs">
       <DependentUpon>Planning.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Sales\Client\AddClientWindow.xaml.cs">
-      <DependentUpon>AddClientWindow.xaml</DependentUpon>
+    <Compile Include="tools\UI\Human\AddHumanWindow.xaml.cs">
+      <DependentUpon>AddHumanWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Sales\Client\EditClientWindow.xaml.cs">
-      <DependentUpon>EditClientWindow.xaml</DependentUpon>
+    <Compile Include="tools\UI\Human\EditHumanWindow.xaml.cs">
+      <DependentUpon>EditHumanWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Sales\description\Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
@@ -352,11 +353,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Sales\Client\AddClientWindow.xaml">
+    <Page Include="tools\UI\Human\AddHumanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Sales\Client\EditClientWindow.xaml">
+    <Page Include="tools\UI\Human\EditHumanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

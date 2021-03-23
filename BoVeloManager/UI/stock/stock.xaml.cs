@@ -25,9 +25,6 @@ namespace BoVeloManager.stock {
         private stock() {
             InitializeComponent();
 
-            
-
-
         }
 
         public static stock Instance {

@@ -68,7 +68,7 @@ namespace BoVeloManager.Sales
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
         {
-            Client.AddClientWindow ACW = new Client.AddClientWindow();
+            Client.AddHumanWindow ACW = new Client.AddHumanWindow(0);
             ACW.ShowDialog();
 
             update_dg_clientList();
@@ -76,8 +76,8 @@ namespace BoVeloManager.Sales
 
         private void bt_editClient_Click(object sender, RoutedEventArgs e){
 
-            Classes.Client c = ((Classes.Client.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurInstance;
-            BoVeloManager.UI.Sales.Client.EditClientWindow ECW = new UI.Sales.Client.EditClientWindow(c);
+            Classes.Client c = (Classes.Client)((Classes.Client.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurInstance;
+            BoVeloManager.UI.Sales.Client.EditHumanWindow ECW = new UI.Sales.Client.EditHumanWindow(c);
             ECW.ShowDialog();
             update_dg_clientList();
 

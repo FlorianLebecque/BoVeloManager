@@ -17,8 +17,11 @@ namespace BoVeloManager.Sales.Client {
     /// <summary>
     /// Logique d'interaction pour AddClientWindow.xaml
     /// </summary>
-    public partial class AddClientWindow : Window {
-        public AddClientWindow() {
+    public partial class AddHumanWindow : Window {
+
+        private int fct;
+        public AddHumanWindow(int fct_) {
+            fct = fct_;
             InitializeComponent();
         }
 
@@ -40,7 +43,7 @@ namespace BoVeloManager.Sales.Client {
                         if ((entrepriseAdress.Length >= 4) && (entrepriseAdress != "")) {
                             if ((email.Length >= 4) && (email != "")) {
                                 if ((phoneNumber.Length >= 4) && (phoneNumber != "")) {
-                                    addClient(firstName, lastName, entrepriseName, entrepriseAdress, email, phoneNumber);
+                                    addHuman(firstName, lastName, entrepriseName, entrepriseAdress, email, phoneNumber);
                                     this.Close();
 
                                 } else {
@@ -84,12 +87,12 @@ namespace BoVeloManager.Sales.Client {
             }
         }
 
-        private void addClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num) {
+        private void addHuman(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num) {
+            int id = Controler.Instance.getLastHumanId() + 1;
+            Classes.Human c = new Classes.Human(id, first_name, last_name, entreprise_name, entreprise_adress, email, phone_num, DateTime.Now);
 
-            int id = Controler.Instance.getLastClientId()+1;
-            Classes.Client c = new Classes.Client(id,first_name,last_name,entreprise_name, entreprise_adress, email,phone_num,DateTime.Now);
 
-            Controler.Instance.createClient(c);
+            Controler.Instance.createHuman(c , fct);
         }
         private void BT_cancel_Click(object sender, RoutedEventArgs e) {
 

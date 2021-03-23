@@ -18,16 +18,15 @@ namespace BoVeloManager.UI.Sales.Client {
     /// <summary>
     /// Logique d'interaction pour EditClientWindow.xaml
     /// </summary>
-    public partial class EditClientWindow : Window {
-        private Classes.Client client;
-        public EditClientWindow(Classes.Client client_) {
+    public partial class EditHumanWindow : Window {
+        private Classes.Human human;
+        public EditHumanWindow(Classes.Human human_) {
             InitializeComponent();
-            client = client_;
-            tb_first_name.Text = client.getName();
-            tb_enterprise_name.Text = client.getEtpName();
-            tb_enterprise_adress.Text = client.getEtpAdress();
-            tb_email.Text = client.getEmail();
-            tb_phoneNum.Text = client.getPhoneNumb();
+            human = human_;
+            tb_enterprise_name.Text = human.getEtpName();
+            tb_enterprise_adress.Text = human.getEtpAdress();
+            tb_email.Text = human.getEmail();
+            tb_phoneNum.Text = human.getPhoneNumb();
         }
 
         private void BT_cancel_Click(object sender, RoutedEventArgs e) {
@@ -36,22 +35,20 @@ namespace BoVeloManager.UI.Sales.Client {
 
         private void BT_Update_Click(object sender, RoutedEventArgs e) {
 
-            string firstName = tb_first_name.Text;
-            string lastName = tb_last_name.Text;
             string entrepriseName = tb_enterprise_name.Text;
             string entrepriseAdress = tb_enterprise_adress.Text;
             string email = tb_email.Text;
             string phoneNumber = tb_phoneNum.Text;
 
 
-            editClient(firstName, lastName, entrepriseName, entrepriseAdress, email, phoneNumber);
+            editHuman(entrepriseName, entrepriseAdress, email, phoneNumber);
             this.Close();
 
         }
-        private void editClient(string first_name, string last_name, string entreprise_name, string entreprise_adress, string email, string phone_num) {
+        private void editHuman(string entreprise_name, string entreprise_adress, string email, string phone_num) {
 
-            client.setEditClient(entreprise_name, entreprise_adress, email, phone_num);
-            tools.DatabaseClassInterface.updateHuman(client);
+            human.setEditHuman(entreprise_name, entreprise_adress, email, phone_num);
+            tools.DatabaseClassInterface.updateHuman(human);
         }
     }
 }
