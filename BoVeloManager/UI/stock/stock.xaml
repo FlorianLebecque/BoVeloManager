@@ -25,7 +25,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
+                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12">Add</Button>
 
                     </StackPanel>
 
@@ -51,7 +51,7 @@
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click">
+                                        <Button Name="btnView" Margin="1" >
                                             <materialDesign:PackIcon Kind="Eye"/>
                                         </Button>
                                     </DataTemplate>
