@@ -19,7 +19,7 @@
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
 
-            <TabItem Header="Commande">
+            <TabItem Header="Commands">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
@@ -55,7 +55,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Founisseur">
+            <TabItem Header="Supplier">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />

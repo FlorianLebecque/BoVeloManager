@@ -87,7 +87,7 @@ namespace BoVeloManager.Classes
                         case "bv_catalog":
                             LOAD_CATALOG();
                             break;
-                        case "bv_client":
+                        case "bv_human":
                             LOAD_CLIENTS();
                             break;
                         case "bv_sale":
@@ -112,7 +112,6 @@ namespace BoVeloManager.Classes
         }
 
         #endregion 
-
 
         #region User
 
