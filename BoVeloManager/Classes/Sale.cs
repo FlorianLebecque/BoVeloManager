@@ -38,7 +38,7 @@ namespace BoVeloManager.Classes {
 
             foreach (Client c in clientList) {
                 if (c.getId() == id_client) {
-                    client = c.GetDisplayInfo().CurClient;
+                    client = c.GetDisplayInfo().CurInstance;
                 }
             }
         }

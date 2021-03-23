@@ -6,21 +6,29 @@ using System.Threading.Tasks;
 
 namespace BoVeloManager.Classes
 {
-    public class User : Human
+    public class User 
     {
-
+        private int id;
         private int grade;
         private string hashPass;
+        private string name;
 
-        public User(int id_, string name_, int grade_, string hashPass_) : base(id_,name_) {
+        public User(int id_, string name_, int grade_, string hashPass_)  {
             grade = grade_;
             hashPass = hashPass_;
+            id = id_;
+            name = name_;
         }
 
         public int getGrade(){
             return grade;
         }
-
+        public int getId() {
+            return id;
+        }
+        public string getName() {
+            return name;
+        }
         public string getHashPass() {
             return hashPass;
         }

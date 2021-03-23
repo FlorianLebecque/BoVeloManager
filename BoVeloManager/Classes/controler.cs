@@ -197,7 +197,7 @@ namespace BoVeloManager.Classes
         public void createClient(Client c) {
 
             clientList.Add(c);
-            DatabaseClassInterface.addClient(c);
+            DatabaseClassInterface.addHuman(c);
         }
 
         public List<Client> getClientList()
