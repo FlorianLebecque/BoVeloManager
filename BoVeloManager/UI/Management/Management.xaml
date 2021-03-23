@@ -12,7 +12,7 @@
 
     <Grid Background="White">
         
-        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0" SelectionChanged="TabablzControl_SelectionChanged">
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="3" SelectedIndex="0" SelectionChanged="TabablzControl_SelectionChanged">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
