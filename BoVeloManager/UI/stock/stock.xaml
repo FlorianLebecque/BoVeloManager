@@ -4,21 +4,65 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BoVeloManager.stock"
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="stock">
 
-    <Grid Background="White">
-        <TabControl x:Name="tab" Margin="10">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dg_grid" Margin="0,30,0,0"/>
+    <Grid>
+
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
+
+            <TabItem Header="Stock">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
+
+                    </StackPanel>
+
+                    <!--
+                    
+                                DEPLACER LA PARTIE KIT 
+                    
+                        On peut directement prendre la partie kit de management
+                        et la mettre ici.
+                    
+                        Il faut rajouter une columns qnt au kit_template dans la db
+                    
+                    -->
+
+                    <!-- Data Grid Sales  -->
+                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Kit" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Client" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Prevision date" Binding="{Binding Path='prevision_date'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Details">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click">
+                                            <materialDesign:PackIcon Kind="Eye"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
+        </dragablz:TabablzControl>
 
     </Grid>
 </Page>

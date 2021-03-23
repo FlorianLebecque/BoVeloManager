@@ -5,75 +5,90 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BoVeloManager.Commande"
       xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+      xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="commande" Background="White">
 
 
-    <Border Padding="10">
-        <StackPanel>
+    <Grid>
 
-            <!-- Title -->
-            <TextBlock Text="Bike Command" FontWeight="Bold" Margin="0 0 0 10" FontSize="15"/>
+        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
 
-            <!-- Collumn -->
-            <Grid>
+            <TabItem Header="Commande">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Column="0">
-                    <StackPanel>
-                        <!-- Characteristics Collumn -->
-                        <TextBlock Text="Caracteristics" FontWeight="Bold" Margin="0 0 0 10"/>
-
-                        <TextBlock Text="Bike types" Margin=" 0 0 0 10"/>
-
-                        <TextBlock Text="Bike Color" Margin=" 0 0 0 10"/>
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
 
                     </StackPanel>
-                </Grid>
 
-                <Grid Grid.Column="1">
-                    <StackPanel>
-                        
-                        <!-- Selection Collumn-->
-                        <TextBlock Text="Selection" FontWeight="Bold" Margin="0 0 0 10"/>
 
-                        <TextBlock Text="Bike types" Margin="0 0 0 10" />
-                        
-                        
-                        <!-- Color picker -->
-                        
-                        <Grid Name="MyGrid">
-                            <ComboBox Name="MyComboBox" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Width="200" Height="25">
-                                <ComboBox.ItemTemplate>
+                    <!-- Data Grid Sales  -->
+                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Client" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Prevision date" Binding="{Binding Path='prevision_date'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Details">
+                                <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Rectangle Width="20" Height="20">
-                                                <Rectangle.Fill>
-                                                    <SolidColorBrush Color="{Binding colors}"></SolidColorBrush>
-                                                </Rectangle.Fill>
-                                            </Rectangle>
-                                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}"></TextBlock>
-                                        </StackPanel>
+                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click">
+                                            <materialDesign:PackIcon Kind="Eye"/>
+                                        </Button>
                                     </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                        </Grid>
-                    </StackPanel>
-                </Grid>
-                
-                <!-- Resume collumn-->
-                
-                <Grid Grid.Column="2">
-                    <TextBlock Text="Resume" />
-                </Grid>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-            </Grid>
-        </StackPanel>
-    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Founisseur">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="bt_addClient" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addClient_Click">
+                            <materialDesign:PackIcon Kind="Add"/>
+                        </Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.5*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='insc_date'}" IsReadOnly="True" />
+                            <DataGridTemplateColumn Header="Edit">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnView" Margin="1" Click="bt_editClient_Click">
+                                            <materialDesign:PackIcon Kind="Edit"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </dragablz:TabablzControl>
+
+    </Grid>
 </Page>
