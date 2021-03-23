@@ -72,6 +72,45 @@ namespace BoVeloManager.Classes
             saleList = DatabaseClassInterface.getSales(bikeList, userList, clientList);
         }
 
+        public void resync(List<string> tableList) {
+                //we need to resync
+            if(tableList.Count > 0) {
+
+                foreach(string s in tableList) {
+                    switch (s) {
+                        case "bv_bike":
+                            LOAD_BIKES();
+                            break;
+                        case "bv_cat_tKit":
+                            LOAD_CATALOG();
+                            break;
+                        case "bv_catalog":
+                            LOAD_CATALOG();
+                            break;
+                        case "bv_client":
+                            LOAD_CLIENTS();
+                            break;
+                        case "bv_sale":
+                            LOAD_SALES();
+                            break;
+                        case "bv_tBike_tKit":
+                            LOAD_BIKETEMP();
+                            break;
+                        case "bv_type_bike":
+                            LOAD_BIKETEMP();
+                            break;
+                        case "bv_type_kit":
+                            LOAD_KITEMP();
+                            break;
+                        case "bv_user":
+                            LOAD_USERS();
+                            break;
+                    }
+                }
+            }
+
+        }
+
         #endregion 
 
 

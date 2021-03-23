@@ -118,5 +118,17 @@ namespace BoVeloManager.Properties {
                 this["MAX_DB_TRY"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SYNC_ENABLE {
+            get {
+                return ((bool)(this["SYNC_ENABLE"]));
+            }
+            set {
+                this["SYNC_ENABLE"] = value;
+            }
+        }
     }
 }
