@@ -13,16 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BoVeloManager.Commande
-{
+namespace BoVeloManager.UI.Commande {
     /// <summary>
-    /// Logique d'interaction pour Commande.xaml
+    /// Interaction logic for Command.xaml
     /// </summary>
     /// 
 
-    public partial class Commande : Page
-    {
-        
+    public partial class Command : Page {
+
+        private static Command instance = new Command();
+
+        public Command() {
+            InitializeComponent();
         }
-        
+
+        public static Command Instance {
+            get {
+                return instance;
+            }
+        }
+
+    }
+
+    
 }

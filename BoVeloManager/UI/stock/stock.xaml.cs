@@ -19,12 +19,22 @@ namespace BoVeloManager.stock {
     /// Interaction logic for stock.xaml
     /// </summary>
     public partial class stock : Page {
-        public stock() {
+
+        private static stock instance = new stock();
+
+        private stock() {
             InitializeComponent();
 
             
 
 
         }
+
+        public static stock Instance {
+            get {
+                return instance;
+            }
+        }
+
     }
 }

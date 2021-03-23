@@ -83,10 +83,10 @@ namespace BoVeloManager {
                     frame.Content = Catalogue.Catalog.Instance;
                     break;
                 case "Command":
-                    frame.Content = new Commande.Commande();
+                    frame.Content = UI.Commande.Command.Instance;
                     break;
                 case "Stock":
-                    frame.Content = new stock.stock();
+                    frame.Content = stock.stock.Instance;
                     break;
                 case "Planning":
                     frame.Content = UI.Planning.Planning.Instance;
