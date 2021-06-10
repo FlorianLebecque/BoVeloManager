@@ -130,5 +130,53 @@ namespace BoVeloManager.Properties {
                 this["SYNC_ENABLE"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nJWYJY1ijy")]
+        public string DBUser2 {
+            get {
+                return ((string)(this["DBUser2"]));
+            }
+            set {
+                this["DBUser2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7YOBrlj6DW")]
+        public string DBPass2 {
+            get {
+                return ((string)(this["DBPass2"]));
+            }
+            set {
+                this["DBPass2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DBProd {
+            get {
+                return ((bool)(this["DBProd"]));
+            }
+            set {
+                this["DBProd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nJWYJY1ijy")]
+        public string DBBase2 {
+            get {
+                return ((string)(this["DBBase2"]));
+            }
+            set {
+                this["DBBase2"] = value;
+            }
+        }
     }
 }

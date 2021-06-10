@@ -91,12 +91,23 @@ namespace BoVeloManager.tools {
         }
 
         private static void connectToDB() {
-            MySqlConnectionStringBuilder connBuilder = new MySqlConnectionStringBuilder {
-                { "Database", Properties.Settings.Default.DBBase },
-                { "Data Source", Properties.Settings.Default.DBHost },
-                { "User Id", Properties.Settings.Default.DBUser },
-                { "Password", Properties.Settings.Default.DBPass }
-            };
+            MySqlConnectionStringBuilder connBuilder;
+
+            if (Properties.Settings.Default.DBProd) {
+                connBuilder = new MySqlConnectionStringBuilder {
+                    { "Database", Properties.Settings.Default.DBBase },
+                    { "Data Source", Properties.Settings.Default.DBHost },
+                    { "User Id", Properties.Settings.Default.DBUser },
+                    { "Password", Properties.Settings.Default.DBPass }
+                };
+            } else {
+                connBuilder = new MySqlConnectionStringBuilder {
+                    { "Database", Properties.Settings.Default.DBBase2 },
+                    { "Data Source", Properties.Settings.Default.DBHost },
+                    { "User Id", Properties.Settings.Default.DBUser2 },
+                    { "Password", Properties.Settings.Default.DBPass2 }
+                };
+            }
 
             MSCon = new MySqlConnection(connBuilder.ConnectionString);
 
@@ -232,7 +243,7 @@ namespace BoVeloManager.tools {
 
 
         public static string getSales() {
-            return "SELECT `id` ,`id_client`, `id_seller`, `state`, `prevision_date`, `date` FROM `bv_sale`";
+            return "SELECT * FROM `bv_sale`";
         } 
 
         public static string updateKitTemplate(int id,string name,int cat,int price,string prop) {
@@ -390,7 +401,7 @@ namespace BoVeloManager.tools {
             List<Sale> temp = new List<Sale>();
             for (int i = 0; i < st.Rows.Count; i++) {
                 int id = Convert.ToInt32(st.Rows[i]["id"]);
-                int id_client = Convert.ToInt32(st.Rows[i]["id_client"]);
+                int id_client = Convert.ToInt32(st.Rows[i]["id_human"]);
                 int id_seller = Convert.ToInt32(st.Rows[i]["id_seller"]);
                 string state = (string)st.Rows[i]["state"];
                 DateTime prevision_date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
