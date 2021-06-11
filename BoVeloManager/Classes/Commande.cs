@@ -14,6 +14,9 @@ namespace BoVeloManager.Classes {
             Commande_ItemsList = Commande_itemList;
 
         }
+        public List<Commande_item> getCommandItemList() {
+            return Commande_ItemsList;
+        }
 
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
@@ -44,8 +47,8 @@ namespace BoVeloManager.Classes {
     }
 
     public class Commande_item {
-        KitTemplate kt;
-        int qnt;
+        public KitTemplate kt;
+        public int qnt;
 
         public Commande_item(KitTemplate kt_, int qnt_) {
             kt = kt_;

@@ -153,6 +153,11 @@ namespace BoVeloManager.tools {
             return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','Open','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
 
         }
+        public static string addCommandeItems(Commande_item ci, Commande cd) {
+
+            return "INSERT INTO `bv_sale_kit`(`id_sale`, `id_type_kit`, `qnt`) VALUES ('" + cd.getId() + "', '" + ci.kt.getId() + "','" + ci.qnt + "')";
+
+        }
 
         public static string getCommande() {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
