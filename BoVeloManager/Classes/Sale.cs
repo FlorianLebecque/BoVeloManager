@@ -12,13 +12,15 @@ namespace BoVeloManager.Classes {
 
         public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_,List<Bike> bikeList_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList) {
             
-            bikeList = new List<Bike>();
-
+            bikeList = bikeList_.Where(b => b.getSaleId() == id_).ToList();
+            /*
             foreach (Bike b in bikeList_) {
                 if (b.getSaleId() == id_) {
                     bikeList.Add(b);
                 }
             }
+            */
+            //bikeList = 
 
         }
 

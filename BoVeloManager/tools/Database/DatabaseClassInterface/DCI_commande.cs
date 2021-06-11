@@ -26,13 +26,25 @@ namespace BoVeloManager.tools {
                 DateTime prevision_date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
                 DateTime date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
 
+                List<Commande_item> ci_list = new List<Commande_item>();
 
+                //get commande items
                 string q = DatabaseQuery.getCommandeItems(id);
-                DataTable cmdit_dt = Database.
+                DataTable cmdit_dt = Database.getData(q);
+                for(int j = 0; i < cmdit_dt.Rows.Count; j++) {
+
+                    int id_kit = Convert.ToInt32(cmdit_dt.Rows[i]["id_type_kit"]);
+                    int qnt = Convert.ToInt32(cmdit_dt.Rows[i]["qnt"]);
+
+                    KitTemplate kt = kitTemplatesList.Where(x => x.getId() == id_kit).ToList()[0];
+
+                    Commande_item ci = new Commande_item(kt, qnt);
+
+                    ci_list.Add(ci);
+                }
 
 
-
-                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date,, userList, clientList));
+                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date, ci_list, userList, clientList));
             }
 
             return temp;
