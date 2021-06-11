@@ -65,6 +65,9 @@ namespace BoVeloManager.UI.Commande {
 
         }
 
+        private void bt_addCommand_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 
     
