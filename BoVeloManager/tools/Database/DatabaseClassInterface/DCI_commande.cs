@@ -26,6 +26,12 @@ namespace BoVeloManager.tools {
                 DateTime prevision_date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
                 DateTime date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
 
+
+                //recup kt et qnt -> id_commande
+
+
+
+
                 temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date, kitTemplatesList, userList, clientList));
             }
 

@@ -158,6 +158,10 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
         }
 
+        public static string getCommandeItems(int id) {
+            return "SELECT * FROM `bv_sale_kit` WHERE `id_sale` = " + id.ToString();
+        }
+
     }
 
 }
