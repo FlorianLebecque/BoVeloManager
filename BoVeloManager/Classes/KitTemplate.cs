@@ -93,6 +93,10 @@ namespace BoVeloManager.Classes {
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();
             temp.fancyName = getPropkitString();
+            temp.stock_qtt = this.stock_qtt;
+            temp.stock_location_x = this.stock_location_x;
+            temp.stock_location_y = this.stock_location_y;
+
 
             return temp;
 
@@ -107,6 +111,9 @@ namespace BoVeloManager.Classes {
             public int priceInt { get; set; }
             public string fancyName { get; set; }
             public string properties { get; set; }
+            public int stock_qtt { get; set; }
+            public int stock_location_x { get; set; }
+            public int stock_location_y { get; set; }
         }
 
     }
