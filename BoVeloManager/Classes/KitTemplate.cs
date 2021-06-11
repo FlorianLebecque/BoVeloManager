@@ -14,6 +14,8 @@ namespace BoVeloManager.Classes {
         private string properties;
 
 
+
+
         public KitTemplate(int id_,string name_,int cat_,int price_,string prop_) {
             id = id_;
             name = name_;
