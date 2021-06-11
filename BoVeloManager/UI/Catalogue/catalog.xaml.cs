@@ -29,7 +29,7 @@ namespace BoVeloManager.Catalogue {
         KitTemplate color;
 
         static Catalog instance = new Catalog();
-
+        
         private Catalog() {
             InitializeComponent();
             DisplayCatalogue();
@@ -146,10 +146,8 @@ namespace BoVeloManager.Catalogue {
 
         private void bt_confirmation_Click(object sender, RoutedEventArgs e)
         {
-
             Confirmation CW = new Confirmation();
             CW.Show();  
-
         }
 
         public class BikeCat

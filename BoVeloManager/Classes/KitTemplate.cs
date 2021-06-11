@@ -13,16 +13,19 @@ namespace BoVeloManager.Classes {
         private int price;
         private string properties;
 
+        private int bike_qtt;
+
         private int stock_qtt;
         private int stock_location_x;
         private int stock_location_y;
 
-        public KitTemplate(int id_,string name_,int cat_,int price_,string prop_) {
+        public KitTemplate(int id_,string name_,int cat_,int price_,string prop_, int bike_qtt_) {
             id = id_;
             name = name_;
             price = price_;
             cat = cat_;
             properties = prop_;
+            bike_qtt = bike_qtt_;
         }
 
         public string getName() {
@@ -43,6 +46,24 @@ namespace BoVeloManager.Classes {
 
         public int getCategory() {
             return cat;
+        }
+
+        public int getBikeQtt()
+        {
+            return bike_qtt;
+        }
+
+        public int getStockQtt()
+        {
+            return stock_qtt;
+        }
+
+        public Dictionary<string,int> getLocation()
+        {
+            Dictionary<string, int> location = new Dictionary<string, int>();
+            location.Add("X", stock_location_x);
+            location.Add("Y", stock_location_y);
+            return location;
         }
 
         public void setName(string n) {
@@ -107,6 +128,7 @@ namespace BoVeloManager.Classes {
             public int priceInt { get; set; }
             public string fancyName { get; set; }
             public string properties { get; set; }
+            public string bike_qtt { get; set; }
         }
 
     }
