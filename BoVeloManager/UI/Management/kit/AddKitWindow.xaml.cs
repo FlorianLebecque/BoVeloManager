@@ -33,8 +33,11 @@ namespace BoVeloManager.Management.kit
             int kitCat = kit_cat.SelectedIndex;
             int kitPrice = Convert.ToInt32(kit_price.Text);
             int id = Controler.Instance.getLastKitTemplateId() + 1;
+            int kitStockQtt = Convert.ToInt32(kit_stock_qtt.Text);
+            int kitLocationX = Convert.ToInt32(kit_stock_location_x.Text);
+            int kitLocationY = Convert.ToInt32(kit_stock_location_y.Text);
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, kitStockQtt, kitLocationX, kitLocationY);
             addKit(kt);
             this.Close();
 
