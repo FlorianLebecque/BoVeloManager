@@ -27,12 +27,12 @@ namespace BoVeloManager.tools {
                 DateTime date = DateTime.Today;//DateTime.Parse((string)dt.Rows[i]["date"]);
 
 
-                //recup kt et qnt -> id_commande
+                string q = DatabaseQuery.getCommandeItems(id);
+                DataTable cmdit_dt = Database.
 
 
 
-
-                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date, kitTemplatesList, userList, clientList));
+                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date,, userList, clientList));
             }
 
             return temp;
