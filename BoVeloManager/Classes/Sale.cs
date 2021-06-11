@@ -10,7 +10,7 @@ namespace BoVeloManager.Classes {
         
         private List<Bike> bikeList;        
 
-        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_,List<Bike> bikeList_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList) {
+        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_,List<Bike> bikeList_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList.Cast<Human>().ToList()) {
             
             bikeList = bikeList_.Where(b => b.getSaleId() == id_).ToList();
             /*
@@ -51,7 +51,7 @@ namespace BoVeloManager.Classes {
             temp.CurSale= this;
             temp.id = this.getId();
             temp.state = this.getState();
-            temp.client = this.getClient();
+            temp.client = (Client)this.getClient();
             temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("MM/dd/yyyy");
             temp.client_name = this.getClient().getName();

@@ -190,9 +190,10 @@
     <Compile Include="Classes\Commande.cs" />
     <Compile Include="Classes\Controler\Partial\BikeTemplate_controler.cs" />
     <Compile Include="Classes\Controler\Partial\Bike_controler.cs" />
-    <Compile Include="Classes\Controler\Partial\calendar_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Calendar_controler.cs" />
     <Compile Include="Classes\Controler\Partial\CatalogBike_controler.cs" />
     <Compile Include="Classes\Controler\Partial\Client_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Commande_controler.cs" />
     <Compile Include="Classes\Controler\Partial\Human_controler.cs" />
     <Compile Include="Classes\Controler\Partial\KitTemplate_controler.cs" />
     <Compile Include="Classes\Controler\Partial\Sale_controler.cs" />

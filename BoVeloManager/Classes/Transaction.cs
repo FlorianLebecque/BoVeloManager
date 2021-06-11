@@ -12,10 +12,10 @@ namespace BoVeloManager.Classes {
         protected DateTime prevision_date;
         protected string state;
         protected User seller;
-        protected Client client;
+        protected Human client;
 
 
-        public Transaction(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<User> userList, List<Client> clientList) {
+        public Transaction(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<User> userList, List<Human> clientList) {
 
             id = id_;
             state = state_;
@@ -28,9 +28,9 @@ namespace BoVeloManager.Classes {
                 }
             }
 
-            foreach (Client c in clientList) {
+            foreach (Human c in clientList) {
                 if (c.getId() == id_client) {
-                    client = (Client)c.GetDisplayInfo().CurInstance;
+                    client = (Human)c.GetDisplayInfo().CurInstance;
                 }
             }
 
@@ -44,7 +44,7 @@ namespace BoVeloManager.Classes {
             return state;
         }
 
-        public Client getClient() {
+        public Human getClient() {
             return client;
         }
 
