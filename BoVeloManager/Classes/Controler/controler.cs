@@ -79,7 +79,7 @@ namespace BoVeloManager.Classes
         }
 
         public void LOAD_COMMANDES() {
-            CommandeList = DatabaseClassInterface.getCommandes(kitTemplateList, userList, clientList);
+            CommandeList = DatabaseClassInterface.getCommandes(kitTemplateList, userList, supplierList);
         }
 
         public void resync(List<string> tableList) {

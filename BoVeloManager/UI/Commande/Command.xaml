@@ -31,13 +31,14 @@
 
 
                     <!-- Data Grid Sales  -->
-                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid Name="dg_CommandesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Supplier" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Prevision date" Binding="{Binding Path='prevision_date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Total" Binding="{Binding Path='total'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

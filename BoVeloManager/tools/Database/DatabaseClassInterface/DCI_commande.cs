@@ -10,7 +10,7 @@ namespace BoVeloManager.tools {
 
     partial class DatabaseClassInterface {
 
-        public static List<Commande> getCommandes(List<KitTemplate> kitTemplatesList, List<User> userList, List<Client> clientList) {
+        public static List<Commande> getCommandes(List<KitTemplate> kitTemplatesList, List<User> userList, List<Supplier> clientList) {
 
             //get the user query and data from the database
             string query = DatabaseQuery.getCommande();
