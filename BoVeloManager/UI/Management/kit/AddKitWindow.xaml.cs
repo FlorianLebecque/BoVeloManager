@@ -34,11 +34,8 @@ namespace BoVeloManager.Management.kit
             int kitPrice = Convert.ToInt32(kit_price.Text);
             int id = Controler.Instance.getLastKitTemplateId() + 1;
             int bike_qtt = 1;
-            int kitStockQtt = Convert.ToInt32(kit_stock_qtt.Text);
-            int kitLocationX = Convert.ToInt32(kit_stock_location_x.Text);
-            int kitLocationY = Convert.ToInt32(kit_stock_location_y.Text);
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, kitStockQtt, kitLocationX, kitLocationY, bike_qtt);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0, bike_qtt);
             addKit(kt);
             this.Close();    
         }
