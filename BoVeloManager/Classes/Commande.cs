@@ -11,6 +11,8 @@ namespace BoVeloManager.Classes {
 
         public Commande(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Commande_item> Commande_itemList, List<User> userList, List<Client> clientList) : base(id_, id_seller, id_client, state_, sale_date_, prevision_date_, userList, clientList) {
 
+            Commande_ItemsList = Commande_itemList;
+
         }
         public List<Commande_item> getCommandItemList() {
             return Commande_ItemsList;
