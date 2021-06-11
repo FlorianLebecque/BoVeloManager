@@ -17,12 +17,15 @@ namespace BoVeloManager.Classes {
         private int stock_location_x;
         private int stock_location_y;
 
-        public KitTemplate(int id_,string name_,int cat_,int price_,string prop_) {
+        public KitTemplate(int id_,string name_,int cat_,int price_,string prop_,int stock_qtt_, int stock_location_x_,int stock_location_y_) {
             id = id_;
             name = name_;
             price = price_;
             cat = cat_;
             properties = prop_;
+            stock_qtt = stock_qtt_;
+            stock_location_x = stock_location_x_;
+            stock_location_y = stock_location_y_;
         }
 
         public string getName() {

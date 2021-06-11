@@ -34,7 +34,7 @@ namespace BoVeloManager.Management.kit
             int kitPrice = Convert.ToInt32(kit_price.Text);
             int id = Controler.Instance.getLastKitTemplateId() + 1;
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0);
             addKit(kt);
             this.Close();
 
