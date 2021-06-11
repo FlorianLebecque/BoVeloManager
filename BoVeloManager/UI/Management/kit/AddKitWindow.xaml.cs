@@ -35,7 +35,7 @@ namespace BoVeloManager.Management.kit
             int id = Controler.Instance.getLastKitTemplateId() + 1;
             int bike_qtt = 1;
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, bike_qtt);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0, bike_qtt);
             addKit(kt);
             this.Close();    
         }

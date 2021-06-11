@@ -31,9 +31,13 @@ namespace BoVeloManager.tools {
                     prop = "";
                 }
 
-                int b_qtt = Convert.ToInt32(dt.Rows[i]["bike_qtt"]);
+                int stock_qtt = Convert.ToInt32(dt.Rows[i]["stock_qtt"]);
+                int stock_location_x = Convert.ToInt32(dt.Rows[i]["location_x"]);
+                int stock_location_y = Convert.ToInt32(dt.Rows[i]["location_y"]);
+                int bike_qtt = Convert.ToInt32(dt.Rows[i]["bike_qtt"]);
 
-                temp.Add(new KitTemplate(id, name, cat, p, prop, b_qtt));
+                temp.Add(new KitTemplate(id, name, cat, p, prop, stock_qtt, stock_location_x, stock_location_y, bike_qtt));
+                
             }
 
             return temp;
