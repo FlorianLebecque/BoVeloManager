@@ -123,7 +123,14 @@ namespace BoVeloManager.tools {
 
             for(int i = 0; i < dt.Rows.Count; i++) {
                 string[] temp = new string[2];
-                temp[0] = (string)dt.Rows[i]["Tables_in_"+Properties.Settings.Default.DBUser];
+                if (Properties.Settings.Default.DBProd)
+                {
+                    temp[0] = (string)dt.Rows[i]["Tables_in_" + Properties.Settings.Default.DBUser];
+                }
+                else
+                {
+                    temp[0] = (string)dt.Rows[i]["Tables_in_" + Properties.Settings.Default.DBUser2];
+                }
                 string q2 = DatabaseQuery.getCheckSum_tableQuery(temp[0]);
                 DataTable dt2 = getData(q2);
                 temp[1] = Convert.ToInt64(dt2.Rows[0]["Checksum"]).ToString();

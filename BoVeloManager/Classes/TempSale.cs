@@ -130,6 +130,14 @@ namespace BoVeloManager.Classes
                 basket.Add(tBike, qnt);
             }
         }
+        public bool isKitInStock()
+        {
+
+        }
+        public bool isAllKitInStock()
+        {
+
+        }
         public void saveSale()
         {
             saleID = Controler.Instance.getLastSaleId() + 1;
