@@ -231,6 +231,9 @@
     <Compile Include="UI\Commande\Command.xaml.cs">
       <DependentUpon>Command.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Commande\description\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
     </Compile>
@@ -323,6 +326,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Commande\Command.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Commande\description\Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
