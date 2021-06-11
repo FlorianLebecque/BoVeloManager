@@ -9,7 +9,7 @@
         Title="AddKitWindow" Height="266" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Top" Height="180">
                 <!-- Title -->
                 <TextBlock Margin="0 0 0 10" Text="Add New Kit " FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
                 <!-- Name -->
@@ -64,7 +64,11 @@
                         <ComboBoxItem Name="kit_ca1" Content="Color"/>
                         <ComboBoxItem Name="kit_ca2" Content="Other"/>
                     </ComboBox>
+                    
                 </Grid>
+                
+
+
             </StackPanel>
             <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>
