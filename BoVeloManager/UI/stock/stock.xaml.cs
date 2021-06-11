@@ -27,14 +27,35 @@ namespace BoVeloManager.stock {
 
         private stock() {
             InitializeComponent();
-
+            crtl = Controler.Instance;
             update_dg_kitTemplateList();
 
         }
 
         private void update_dg_kitTemplateList()
         {
-            dg_kitTemplateList.ItemsSource = crtl.getKitTemplateList();
+            List<KitTemplate> kitTemplateList = crtl.getKitTemplateList();
+
+            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+
+            foreach (KitTemplate kt in kitTemplateList)
+            {
+                temp.Add(kt.GetDisplayInfo());
+            }
+
+            dg_kitTemplateList.ItemsSource = temp;
+        }
+
+        private void bt_Order_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        public static stock Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
 
     }

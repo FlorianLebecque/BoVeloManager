@@ -46,8 +46,8 @@
                             <DataGridTemplateColumn Header="Order">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" >
-                                            <materialDesign:PackIcon Kind="Eye"/>
+                                        <Button Name="order" Margin="1" Click="bt_Order_Click">
+                                            <materialDesign:PackIcon Kind="Add"/>
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
