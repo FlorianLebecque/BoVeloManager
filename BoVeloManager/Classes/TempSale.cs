@@ -100,9 +100,10 @@ namespace BoVeloManager.Classes
             return false;
         }
 
-        // Verification existence BikeTemplate dans le panier (basket)
+        
         private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
         {
+            // Verification existence BikeTemplate dans le panier (basket)
             if (basket.ContainsKey(tBike))
             {
                 //Console.WriteLine("basket contains this bike template");
@@ -110,16 +111,17 @@ namespace BoVeloManager.Classes
                 int qnt_ = default;
                 BikeTemplate tBike_ = default;
 
+                // parcours du panier pour trouver le tBike correspondant
                 foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
                 {                    
                     if (kvp.Key == tBike)
                     {
-                        //Console.WriteLine("bike template founded");
                         qnt_ = kvp.Value;
                         tBike_ = kvp.Key;                                                
                     }
                 }
 
+                // update quantity
                 basket.Remove(tBike);
                 basket.Add(tBike_, qnt_ + qnt);
             }
