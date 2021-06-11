@@ -13,6 +13,8 @@ namespace BoVeloManager.Classes {
         private int price;
         private string properties;
 
+        private int stock_qtt;
+        private int stock_location;
 
         public KitTemplate(int id_,string name_,int cat_,int price_,string prop_) {
             id = id_;
