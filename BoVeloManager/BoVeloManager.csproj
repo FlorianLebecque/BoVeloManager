@@ -187,6 +187,7 @@
     <Compile Include="Classes\BikeTemplate.cs" />
     <Compile Include="Classes\CatalogBike.cs" />
     <Compile Include="Classes\Client.cs" />
+    <Compile Include="Classes\Commande.cs" />
     <Compile Include="Classes\Controler\Partial\BikeTemplate_controler.cs" />
     <Compile Include="Classes\Controler\Partial\Bike_controler.cs" />
     <Compile Include="Classes\Controler\Partial\calendar_controler.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Classes\KitTemplate.cs" />
     <Compile Include="Classes\Supplier.cs" />
     <Compile Include="Classes\TempSale.cs" />
+    <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
@@ -212,6 +214,7 @@
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_biketemplate.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_catalogbike.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_client.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_commande.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_kitamplate.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_sales.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_user.cs" />

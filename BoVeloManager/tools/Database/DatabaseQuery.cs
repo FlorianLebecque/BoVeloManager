@@ -107,7 +107,7 @@ namespace BoVeloManager.tools {
 
 
         public static string getSales() {
-            return "SELECT * FROM `bv_sale`";
+            return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
         }
 
         public static string updateKitTemplate(int id, string name, int cat, int price, string prop) {
@@ -146,6 +146,16 @@ namespace BoVeloManager.tools {
 
         public static string getTBike() {
             return "SELECT * FROM `bv_type_bike`";
+        }
+
+        public static string addCommande(Commande cd) {
+
+            return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','Open','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
+
+        }
+
+        public static string getCommande() {
+            return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
         }
 
     }
