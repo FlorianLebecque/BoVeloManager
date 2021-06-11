@@ -187,6 +187,16 @@
     <Compile Include="Classes\BikeTemplate.cs" />
     <Compile Include="Classes\CatalogBike.cs" />
     <Compile Include="Classes\Client.cs" />
+    <Compile Include="Classes\Controler\BikeTemplate_controler.cs" />
+    <Compile Include="Classes\Controler\Bike_controler.cs" />
+    <Compile Include="Classes\Controler\calendar_controler.cs" />
+    <Compile Include="Classes\Controler\CatalogBike_controler.cs" />
+    <Compile Include="Classes\Controler\Client_controler.cs" />
+    <Compile Include="Classes\Controler\Human_controler.cs" />
+    <Compile Include="Classes\Controler\KitTemplate_controler.cs" />
+    <Compile Include="Classes\Controler\Sale_controler.cs" />
+    <Compile Include="Classes\Controler\Supplier_controler.cs" />
+    <Compile Include="Classes\Controler\User_controler.cs" />
     <Compile Include="Classes\Human.cs" />
     <Compile Include="Classes\Controler.cs" />
     <Compile Include="Classes\Sale.cs" />
@@ -198,6 +208,14 @@
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="tools\Converter.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_bike.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_biketemplate.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_catalogbike.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_client.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_kitamplate.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_sales.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_user.cs" />
+    <Compile Include="tools\Database\DatabaseQuery.cs" />
     <Compile Include="tools\date.cs" />
     <Compile Include="tools\ExportPdf.cs" />
     <Compile Include="tools\SVGRender.cs" />
@@ -261,7 +279,7 @@
     <Compile Include="UI\stock\stock.xaml.cs">
       <DependentUpon>stock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tools\Database.cs" />
+    <Compile Include="tools\Database\Database.cs" />
     <Compile Include="tools\md5.cs" />
     <Page Include="loadingScreen.xaml">
       <SubType>Designer</SubType>
