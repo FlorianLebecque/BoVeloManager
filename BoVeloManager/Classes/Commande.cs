@@ -18,6 +18,14 @@ namespace BoVeloManager.Classes {
             return Commande_ItemsList;
         }
 
+        public int getPrice() {
+            int total = 0;
+            foreach(Commande_item ci in Commande_ItemsList) {
+                total += ci.qnt * ci.kt.getPrice();
+            }
+            return total;
+        }
+
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 
@@ -29,7 +37,7 @@ namespace BoVeloManager.Classes {
             temp.sale_date = this.getSaleDate().ToString("MM/dd/yyyy");
             temp.client_name = this.getClient().getName();
             temp.prevision_date = this.getPreSaleDate().ToString("MM/dd/yyyy");
-
+            temp.total = ((float)this.getPrice()/100).ToString("c2");
             return temp;
         }
 
@@ -42,6 +50,7 @@ namespace BoVeloManager.Classes {
             public string state { get; set; }
             public string sale_date { get; set; }
             public string prevision_date { get; set; }
+            public string total { get; set; }
         }
 
     }

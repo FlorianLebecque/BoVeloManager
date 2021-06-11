@@ -31,10 +31,10 @@ namespace BoVeloManager.tools {
                 //get commande items
                 string q = DatabaseQuery.getCommandeItems(id);
                 DataTable cmdit_dt = Database.getData(q);
-                for(int j = 0; i < cmdit_dt.Rows.Count; j++) {
+                for(int j = 0; j < cmdit_dt.Rows.Count; j++) {
 
-                    int id_kit = Convert.ToInt32(cmdit_dt.Rows[i]["id_type_kit"]);
-                    int qnt = Convert.ToInt32(cmdit_dt.Rows[i]["qnt"]);
+                    int id_kit = Convert.ToInt32(cmdit_dt.Rows[j]["id_type_kit"]);
+                    int qnt = Convert.ToInt32(cmdit_dt.Rows[j]["qnt"]);
 
                     KitTemplate kt = kitTemplatesList.Where(x => x.getId() == id_kit).ToList()[0];
 

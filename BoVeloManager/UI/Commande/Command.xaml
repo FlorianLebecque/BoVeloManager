@@ -42,7 +42,7 @@
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" >
+                                        <Button Name="btnView" Margin="1" Click="btnView_Click" >
                                             <materialDesign:PackIcon Kind="Eye"/>
                                         </Button>
                                     </DataTemplate>

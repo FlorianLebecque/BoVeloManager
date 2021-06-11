@@ -20,69 +20,49 @@ namespace BoVeloManager.UI.Commande.description {
     /// Logique d'interaction pour Description.xaml
     /// </summary>
     public partial class Description : Window {
-        private Sale sale;
-        public Description(Sale sale_) {
-            sale = sale_;
+        private Classes.Commande cmd;
+
+        List<Commande_DisplayItem> cdi_list = new List<Commande_DisplayItem>();
+
+        public Description(Classes.Commande commande_) {
+            cmd = commande_;
 
             InitializeComponent();
-            DisplayDescription(sale);
-            DisplayTBikes(sale);
+            DisplayDescription();
+            DisplayKits();
         }
 
-        public void DisplayDescription(Sale sale) {
+        public void DisplayDescription() {
 
             // Description Infos 
-            seller.Text = sale.getSeller().getName();
-            user.Text = sale.getClient().getName();
-            enterprise.Text = sale.getClient().getEtpName();
-            sale_date.Text = sale.GetSaleDisplayInfo().sale_date;
-            status.Text = sale.GetSaleDisplayInfo().state;
+            seller.Text = cmd.getSeller().getName();
+            user.Text = cmd.getClient().getName();
+            enterprise.Text = cmd.getClient().getEtpName();
+            sale_date.Text = cmd.GetDisplayInfo().sale_date;
+            status.Text = cmd.GetDisplayInfo().state;
         }
 
-        public void DisplayTBikes(Sale sale) {
-            //Create new bike list 
-            List<BikeItem> bikesListItems = new List<BikeItem>();
+        
 
-            var TbikeDesc = sale.GetSaleDescrInfo();
-            foreach (Sale.TbikeInfo tBike in TbikeDesc.TbikeInfoList) {
-
-                //Quantity of the tBike
-                float qnt = (float)tBike.qnt;
-                string bike_name = tBike.CurTempl.getName();
-                List<KitTemplate> kitList = tBike.CurTempl.getListKit();
-
-                // all tBike tKits
-                DisplayKits(kitList);
-
-                string string_kits_ = tBike.CurTempl.getPropkitString();
-                float Tbike_price = tBike.CurTempl.getPrice();
-
-                string qnt_name_ = qnt.ToString() + "x " + bike_name;
-                string price_ = (Tbike_price * qnt).ToString("c2");
-                bikesListItems.Add(new BikeItem() { qnt_name = qnt_name_, string_kits = string_kits_, price = price_ });
+        public void DisplayKits() {
+            foreach (Commande_item Ci in cmd.getCommandItemList()) {
+                cdi_list.Add(new Commande_DisplayItem(Ci.kt.getName().ToString(), Ci.qnt.ToString(), (Ci.kt.getPrice() * Ci.qnt).ToString()));
             }
+            kitList.ItemsSource = cdi_list;
 
-            kitList.ItemsSource = bikesListItems;
-            total.Text = (sale.getTotalPrice()).ToString("c2");
         }
 
-        public void DisplayKits(List<KitTemplate> kitList) {
-            foreach (KitTemplate kit in kitList) {
-                var kitDisp = kit.GetDisplayInfo();
-                string kit_name = kitDisp.name;
-                string kit_prop = kitDisp.properties;
-            }
-        }
-
-        private class BikeItem {
-            public string qnt_name { get; set; }
-            public string string_kits { get; set; }
+        private class Commande_DisplayItem {
+            public string KitName { get; set; }
+            public string qnt { get; set; }
             public string price { get; set; }
 
-        }
+            public Commande_DisplayItem(string kitname_,string qnt_,string price_) {
+                KitName = kitname_;
+                qnt = qnt_;
+                price = price_ + "€";
+            }
 
-        private void BT_export_Click(object sender, RoutedEventArgs e) {
-            ExportPdf.ManipulatePdf(sale);
         }
 
         private void BT_close_Click(object sender, RoutedEventArgs e) {
