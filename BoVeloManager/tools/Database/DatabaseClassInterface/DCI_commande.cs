@@ -32,7 +32,7 @@ namespace BoVeloManager.tools {
 
 
 
-                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date,, userList, clientList));
+                temp.Add(new Commande(id, id_seller, id_client, state, date, prevision_date, userList, clientList));
             }
 
             return temp;
@@ -40,9 +40,21 @@ namespace BoVeloManager.tools {
 
         public static int addCommande(Commande cd) {
             string q = tools.DatabaseQuery.addCommande(cd);
-            return Database.setData(q);
-        }
 
+            if (Database.setData(q) != 1) {
+                return -1;
+            } else {
+                foreach (Commande_item ci in cd.getCommandItemList()) {
+
+                    string qi = tools.DatabaseQuery.addCommandeItems(ci,cd);
+                    if (Database.setData(qi) != 1) {
+                        return -1;
+                    }
+                }
+                
+            }
+            return 1;
+        }
 
     }
 }
