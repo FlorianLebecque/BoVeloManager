@@ -27,12 +27,14 @@ namespace BoVeloManager.Sales
         private static Sales instance = new Sales();
 
         Controler crtl;
+        Brush tb_searchBackGround;
 
         private Sales()
         {
             InitializeComponent();
 
             crtl = Controler.Instance;
+            tb_searchBackGround = tb_search.Background;
 
             update_dg_salesList();
             update_dg_clientList();
@@ -78,12 +80,6 @@ namespace BoVeloManager.Sales
         private void update_dg_clientList() {
             dg_clientList.ItemsSource = null;
             dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
-            
-
-
-
-
-
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
@@ -112,31 +108,23 @@ namespace BoVeloManager.Sales
 
         private void tb_search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tb_search.Text.Contains("Research")) 
-            {
-                //update_dg_salesList(); 
-            }
-            else 
-            {
-                update_dg_salesList_search(tb_search.Text); 
-            }
-        }
-       
-        private void tb_search_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (tb_search.Text.Contains("Research") )
-            {
-                tb_search.Text = "";
-            }
-        }
+            
 
-        private void tb_search_MouseLeave(object sender, MouseEventArgs e)
-        {
             if (tb_search.Text == "")
             {
-                tb_search.Text = " Research        &#128270;";
-               
+                // Use the brush 'tb_searchBackGround' to paint the button's background.
+                tb_search.Background = tb_searchBackGround;
+                update_dg_salesList();
             }
+            else
+            {
+                tb_search.Background = null;
+                update_dg_salesList_search(tb_search.Text);
+            }
+
+
         }
+       
+        
     }
 }
