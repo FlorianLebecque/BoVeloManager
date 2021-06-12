@@ -6,64 +6,25 @@ using System.Threading.Tasks;
 using BoVeloManager.Classes;
 
 namespace BoVeloManager.Classes {
-    public class Sale {
-
-        private readonly int id;
-        private DateTime sale_date;
-        private DateTime prevision_date;
-        private string state;
-        private User seller;
-        private Client client;
+    public class Sale : Transaction {
+        
         private List<Bike> bikeList;        
 
-        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Bike> bikeList_, List<User> userList, List<Client> clientList) {
-            id = id_;
-            state = state_;
-            sale_date = sale_date_;
-            prevision_date = prevision_date_;
-
-            bikeList = new List<Bike>();
-
+        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_,List<Bike> bikeList_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList.Cast<Human>().ToList()) {
+            
+            bikeList = bikeList_.Where(b => b.getSaleId() == id_).ToList();
+            /*
             foreach (Bike b in bikeList_) {
                 if (b.getSaleId() == id_) {
                     bikeList.Add(b);
                 }
             }
+            */
+            //bikeList = 
 
-            foreach (User u in userList) {
-                if (u.getId() == id_seller) {
-                    seller = u.GetDisplayInfo().CurUser;
-                }
-            }
-
-            foreach (Client c in clientList) {
-                if (c.getId() == id_client) {
-                    client = (Client)c.GetDisplayInfo().CurInstance;
-                }
-            }
         }
 
-        public int getId() {
-            return id;
-        }
-
-        public string getState() {
-            return state;
-        }
-
-        public Client getClient() {
-            return client;
-        }
-
-        public User getSeller() {
-            return seller;
-        }
-
-        public DateTime getSaleDate() {
-            return sale_date;
-        }
-
-        public DateTime getPreSaleDate() {
+        public new DateTime getPreSaleDate() {
 
             if (bikeList.Count > 0) {
                 List<DateTime> PreList = new List<DateTime>();
@@ -90,7 +51,7 @@ namespace BoVeloManager.Classes {
             temp.CurSale= this;
             temp.id = this.getId();
             temp.state = this.getState();
-            temp.client = this.getClient();
+            temp.client = (Client)this.getClient();
             temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("MM/dd/yyyy");
             temp.client_name = this.getClient().getName();

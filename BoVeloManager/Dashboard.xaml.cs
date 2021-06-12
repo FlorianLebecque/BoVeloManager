@@ -22,6 +22,7 @@ namespace BoVeloManager {
         public Controler crtl;
 
         bool isOpen = false;
+        string old_select = "Catalog";
 
         public Dashboard() {
             InitializeComponent();
@@ -74,31 +75,36 @@ namespace BoVeloManager {
             ButtonCloseMenu.Visibility = Visibility.Hidden;
             lb_user.Visibility = Visibility.Hidden;
 
-            //clear the content
-            frame.Content = null;
-            frame.NavigationService.RemoveBackEntry();
+            string selected = ((ListViewItem)((ListView)sender).SelectedItem).Tag.ToString();
 
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Tag.ToString()) {
-                case "Catalog":
-                    frame.Content = Catalogue.Catalog.Instance;
-                    break;
-                case "Command":
-                    frame.Content = UI.Commande.Command.Instance;
-                    break;
-                case "Stock":
-                    frame.Content = stock.stock.Instance;
-                    break;
-                case "Planning":
-                    frame.Content = UI.Planning.Planning.Instance;
-                    break;
-                case "Management":
-                    frame.Content = Management.Management.Instance;
-                    break;
-                case "Sales":
-                    frame.Content = Sales.Sales.Instance;
-                    break;
+            if (old_select != selected) {
+                old_select = selected;
+                //clear the content
+                frame.Content = null;
+                frame.NavigationService.RemoveBackEntry();
 
+                switch (selected) {
+                    case "Catalog":
+                        frame.Content = Catalogue.Catalog.Instance;
+                        break;
+                    case "Command":
+                        frame.Content = UI.Commande.Command.Instance;
+                        break;
+                    case "Stock":
+                        frame.Content = stock.stock.Instance;
+                        break;
+                    case "Planning":
+                        frame.Content = UI.Planning.Planning.Instance;
+                        break;
+                    case "Management":
+                        frame.Content = Management.Management.Instance;
+                        break;
+                    case "Sales":
+                        frame.Content = Sales.Sales.Instance;
+                        break;
+                }
             }
+
         }
 
         private void lb_user_MouseDown(object sender, MouseButtonEventArgs e)

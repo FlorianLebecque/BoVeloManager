@@ -17,6 +17,7 @@ namespace BoVeloManager.Classes
             catalogBike = catalogBike_;
             id = Id;
             KitTemplList = new List<KitTemplate>();
+
         }
 
         public string getName(){
