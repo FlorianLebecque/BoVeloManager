@@ -26,7 +26,7 @@ namespace BoVeloManager.Classes
             email = email_;
             phone_num = phone_num_;
             insc_date = insc_date_;
-            name = first_name_ + last_name_;
+            name = first_name_ + " " + last_name_;
             id = id_;
             first_name = first_name_;
             last_name = last_name_;

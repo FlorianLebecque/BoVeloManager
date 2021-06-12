@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Edit kit window" Height="271" Width="394" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Edit kit window" Height="300" Width="394" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0" Margin="0 0 0 0">
 
         <DockPanel Margin="0,0,0,0">
@@ -16,7 +16,7 @@
             <!--Log In-->
             <StackPanel DockPanel.Dock="Top">
 
-
+                <!-- Name -->
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -25,7 +25,7 @@
                     <Label x:Name="lb_editName" Grid.Column="0">Edit name:</Label>
                     <TextBox x:Name="tb_editName" Padding="2" Grid.Column="1"></TextBox>
                 </Grid>
-
+                <!-- Prix -->
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -34,7 +34,7 @@
                     <Label x:Name="lb_editPrice" Grid.Column="0" >Edit prices :</Label>
                     <TextBox x:Name="tb_editPrice" Padding="2"  Grid.Column="1"></TextBox>
                 </Grid>
-                
+                <!-- Propreties -->
                 <Grid  Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -43,7 +43,16 @@
                     <Label x:Name="lb_editProperties" Grid.Column="0" >Edit properties :</Label>
                     <TextBox x:Name="tb_editProperties" Padding="2"  Grid.Column="1"></TextBox>
                 </Grid>
-
+                <!-- Propreties -->
+                <Grid  Margin="5 10 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lb_editBikeQtt" Grid.Column="0" >Edit Bike Quantity :</Label>
+                    <TextBox x:Name="tb_editBikeQtt" Padding="2"  Grid.Column="1"></TextBox>
+                </Grid>
+                <!-- category -->
                 <Grid Margin="5 10 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -53,6 +62,7 @@
                     <ComboBox Grid.Column="1"  Name="kit_cat" SelectedIndex="0">
                         <ComboBoxItem Name="kit_ca0" Content="Size"/>
                         <ComboBoxItem Name="kit_ca1" Content="Color"/>
+                        <ComboBoxItem Name="kit_ca2" Content="Other"/>
                     </ComboBox>
                 </Grid>
 

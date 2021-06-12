@@ -61,7 +61,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string addHuman(Human c, int fct) {
-            return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getName() + "',' ','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + fct.ToString() + ")";
+            return "INSERT INTO `bv_human`(`id`,`first_name`, `last_name`, `enterprise_name`, `enterprise_adress`, `email`, `phone_num`,`date`,`fct`) VALUES (" + c.getId() + ",'" + c.getFirstName() + "','" + c.getLastName() + "','" + c.getEtpName() + "','" + c.getEtpAdress() + "','" + c.getEmail() + "','" + c.getPhoneNumb() + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + fct.ToString() + ")";
         }
 
 
@@ -110,6 +110,7 @@ namespace BoVeloManager.tools {
 
         public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int bike_qtt) {
             return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "' WHERE `id`=" + id;
+
         }
 
         public static string addSale(Sale s) {
