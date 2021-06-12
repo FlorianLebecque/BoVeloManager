@@ -17,6 +17,7 @@
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
 
+            <!-- Command -->
             <TabItem Header="Commands">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -55,7 +56,7 @@
 
                 </Grid>
             </TabItem>
-
+            <!-- Supplier -->
             <TabItem Header="Supplier">
                 <Grid>
                     <Grid.RowDefinitions>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BoVeloManager.Classes;
+using System.Text.RegularExpressions;
 
 namespace BoVeloManager.Sales.Client {
     /// <summary>
@@ -47,22 +48,22 @@ namespace BoVeloManager.Sales.Client {
                                     this.Close();
 
                                 } else {
-                                    err = 1;
+                                    err = 6;
                                 }
                             } else {
-                                err = 2;
+                                err = 5;
                             }
                         } else {
-                            err = 3;
+                            err = 4;
                         }
                     } else {
-                        err = 4;
+                        err = 3;
                     }
                 } else {
-                    err = 5;
+                    err = 2;
                 }
             } else {
-                err = 6;
+                err = 1;
             }
             lb_error.Visibility = Visibility.Visible;
             switch (err) {
@@ -101,6 +102,12 @@ namespace BoVeloManager.Sales.Client {
 
         private void BT_cancel_Click_1(object sender, RoutedEventArgs e) {
             this.Close();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
