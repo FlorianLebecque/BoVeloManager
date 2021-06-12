@@ -40,6 +40,13 @@ namespace BoVeloManager.stock {
 
             foreach (KitTemplate kt in kitTemplateList)
             {
+                if(kt.getStockLocationX() == 0 || kt.getStockLocationY() == 0)
+                {
+                    int[] locations = crtl.getNewLocation();
+                    int stockLocactionX = locations[0];
+                    int stockLocactionY = locations[1];
+                    kt.setLocations(stockLocactionX, stockLocactionY);
+                }
                 temp.Add(kt.GetDisplayInfo());
             }
 

@@ -108,8 +108,8 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
         }
 
-        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int bike_qtt) {
-            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "' WHERE `id`=" + id;
+        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int locX, int locY, int bike_qtt) {
+            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "',`location_x`='" + locX.ToString() + "',`location_y`='" + locY.ToString() + "' WHERE `id`=" + id;
 
         }
 
