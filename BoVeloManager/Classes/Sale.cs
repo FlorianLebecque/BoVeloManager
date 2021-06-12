@@ -93,7 +93,12 @@ namespace BoVeloManager.Classes {
             temp.client = this.getClient();
             temp.seller = this.getSeller();
             temp.sale_date = this.getSaleDate().ToString("MM/dd/yyyy");
-            temp.client_name = this.getClient().getName();
+            if (this.getClient() != null)
+            {
+                temp.client_name = this.getClient().getName();
+            }
+            else { temp.client_name = "?"; }
+            
             temp.prevision_date = this.getPreSaleDate().ToString("MM/dd/yyyy");
 
             return temp;

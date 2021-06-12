@@ -42,6 +42,17 @@ namespace BoVeloManager.Sales
         }
 
 
+       
+
+
+
+        public static Sales Instance {
+            get {
+                return instance;
+            }
+        }
+
+
         private void update_dg_salesList_test()
         {
             dg_salesList_test.ItemsSource = crtl.GetSaleDisplayInfo();
@@ -55,19 +66,17 @@ namespace BoVeloManager.Sales
         }
 
 
-
-        public static Sales Instance {
-            get {
-                return instance;
-            }
-        }
-
-
         private void update_dg_salesList()
         {
             dg_salesList.ItemsSource = crtl.GetSaleDisplayInfo();
         }
         
+        private void update_dg_salesList_search(string t)
+        {
+            dg_salesList.ItemsSource = crtl.GetSaleDisplayInfo_search(t);
+            
+        }
+
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
         {
             Sale s = ((Sale.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurSale;
@@ -119,6 +128,12 @@ namespace BoVeloManager.Sales
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
             update_dg_salesList_test();
+        }
+
+        private void tb_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            update_dg_salesList_search(tb_search.Text);
+            //update_dg_salesList();
         }
     }
 }
