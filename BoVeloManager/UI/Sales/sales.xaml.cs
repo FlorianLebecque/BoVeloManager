@@ -37,7 +37,6 @@ namespace BoVeloManager.Sales
             update_dg_salesList();
             update_dg_clientList();
 
-            update_dg_salesList_test();
 
         }
 
@@ -53,17 +52,6 @@ namespace BoVeloManager.Sales
         }
 
 
-        private void update_dg_salesList_test()
-        {
-            dg_salesList_test.ItemsSource = crtl.GetSaleDisplayInfo();
-
-        }
-
-        private void update_dg_salesList_test_bis(string t)
-        {
-            dg_salesList_test.ItemsSource = crtl.GetSaleDisplayInfo_byClient(t);
-
-        }
 
 
         private void update_dg_salesList()
@@ -120,20 +108,11 @@ namespace BoVeloManager.Sales
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            update_dg_salesList_test_bis(tb_searchClient.Text);
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-            update_dg_salesList_test();
-        }
+        
 
         private void tb_search_TextChanged(object sender, TextChangedEventArgs e)
         {
             update_dg_salesList_search(tb_search.Text);
-            //update_dg_salesList();
         }
     }
 }

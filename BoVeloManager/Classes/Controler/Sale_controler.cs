@@ -19,28 +19,7 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
-        public List<Sale.displayInfo> GetSaleDisplayInfo_byClient(string Client_)
-        {
-            if (Client_ == "") { return GetSaleDisplayInfo(); }
-            else
-            {
-                List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
-
-                foreach (Sale s in saleList)
-                {
-                
-
-                    if (s.getClient().getFirstName() == Client_ || s.getClient().getLastName() == Client_ || s.getClient().getName() == Client_)
-                    {
-                        temp.Add(s.GetSaleDisplayInfo());
-                    }
-                
-                
-                }
-                return temp;
-            }
-            
-        }
+       
 
         //this function displays the sales according to a search string
         public List<Sale.displayInfo> GetSaleDisplayInfo_search(string str)
