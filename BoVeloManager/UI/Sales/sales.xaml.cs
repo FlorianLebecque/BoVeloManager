@@ -37,7 +37,24 @@ namespace BoVeloManager.Sales
             update_dg_salesList();
             update_dg_clientList();
 
+            update_dg_salesList_test();
+
         }
+
+
+        private void update_dg_salesList_test()
+        {
+            dg_salesList_test.ItemsSource = crtl.GetSaleDisplayInfo();
+
+        }
+
+        private void update_dg_salesList_test_bis(string t)
+        {
+            dg_salesList_test.ItemsSource = crtl.GetSaleDisplayInfo_byClient(t);
+
+        }
+
+
 
         public static Sales Instance {
             get {
@@ -64,6 +81,12 @@ namespace BoVeloManager.Sales
         private void update_dg_clientList() {
             dg_clientList.ItemsSource = null;
             dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
+            
+
+
+
+
+
         }
 
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
@@ -86,6 +109,16 @@ namespace BoVeloManager.Sales
         private void bt_addSale_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            update_dg_salesList_test_bis(tb_searchClient.Text);
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            update_dg_salesList_test();
         }
     }
 }
