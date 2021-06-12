@@ -31,7 +31,7 @@ namespace BoVeloManager.UI.Commande {
 
             InitializeComponent();
             update_dg_supplierList();
-
+            update_dg_CommandeList();
         }
 
         public static Command Instance {
@@ -44,6 +44,11 @@ namespace BoVeloManager.UI.Commande {
             
             dg_supplierList.ItemsSource = null;
             dg_supplierList.ItemsSource = crtl.GetSupplierDisplayInfo();
+        }
+
+        private void update_dg_CommandeList() {
+            dg_CommandesList.ItemsSource = null;
+            dg_CommandesList.ItemsSource = crtl.GetCommandeDisplayInfo();
         }
 
         private void bt_addSupplier_Click(object sender, RoutedEventArgs e) {
@@ -65,6 +70,15 @@ namespace BoVeloManager.UI.Commande {
 
         }
 
+        private void btnView_Click(object sender, RoutedEventArgs e) {
+            Classes.Commande cmd = ((Classes.Commande.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCmd;
+
+            description.Description dsc = new description.Description(cmd);
+            dsc.Show();
+        }
+        private void bt_addCommand_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 
     

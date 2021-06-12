@@ -22,6 +22,7 @@ namespace BoVeloManager.Classes
         private List<BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
+        private List<Commande> CommandeList;
         public TempSale tempSale;
 
 
@@ -34,6 +35,7 @@ namespace BoVeloManager.Classes
             LOAD_BIKETEMP();
             LOAD_BIKES();
             LOAD_SALES();
+            LOAD_COMMANDES();
             
             tempSale = new TempSale();
         }
@@ -74,6 +76,10 @@ namespace BoVeloManager.Classes
 
         public void LOAD_SALES() {
             saleList = DatabaseClassInterface.getSales(bikeList, userList, clientList);
+        }
+
+        public void LOAD_COMMANDES() {
+            CommandeList = DatabaseClassInterface.getCommandes(kitTemplateList, userList, supplierList);
         }
 
         public void resync(List<string> tableList) {
