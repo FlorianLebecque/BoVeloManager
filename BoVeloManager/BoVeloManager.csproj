@@ -187,22 +187,25 @@
     <Compile Include="Classes\BikeTemplate.cs" />
     <Compile Include="Classes\CatalogBike.cs" />
     <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\Controler\BikeTemplate_controler.cs" />
-    <Compile Include="Classes\Controler\Bike_controler.cs" />
-    <Compile Include="Classes\Controler\calendar_controler.cs" />
-    <Compile Include="Classes\Controler\CatalogBike_controler.cs" />
-    <Compile Include="Classes\Controler\Client_controler.cs" />
-    <Compile Include="Classes\Controler\Human_controler.cs" />
-    <Compile Include="Classes\Controler\KitTemplate_controler.cs" />
-    <Compile Include="Classes\Controler\Sale_controler.cs" />
-    <Compile Include="Classes\Controler\Supplier_controler.cs" />
-    <Compile Include="Classes\Controler\User_controler.cs" />
+    <Compile Include="Classes\Commande.cs" />
+    <Compile Include="Classes\Controler\Partial\BikeTemplate_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Bike_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Calendar_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\CatalogBike_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Client_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Commande_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Human_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\KitTemplate_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Sale_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\Supplier_controler.cs" />
+    <Compile Include="Classes\Controler\Partial\User_controler.cs" />
     <Compile Include="Classes\Human.cs" />
-    <Compile Include="Classes\Controler.cs" />
+    <Compile Include="Classes\Controler\Controler.cs" />
     <Compile Include="Classes\Sale.cs" />
     <Compile Include="Classes\KitTemplate.cs" />
     <Compile Include="Classes\Supplier.cs" />
     <Compile Include="Classes\TempSale.cs" />
+    <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
@@ -212,6 +215,7 @@
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_biketemplate.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_catalogbike.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_client.cs" />
+    <Compile Include="tools\Database\DatabaseClassInterface\DCI_commande.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_kitamplate.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_sales.cs" />
     <Compile Include="tools\Database\DatabaseClassInterface\DCI_user.cs" />
@@ -227,6 +231,12 @@
     </Compile>
     <Compile Include="UI\Commande\Command.xaml.cs">
       <DependentUpon>Command.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Commande\description\AddCommand.xaml.cs">
+      <DependentUpon>AddCommand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Commande\description\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs">
       <DependentUpon>AddIBikeCatalogWindow.xaml</DependentUpon>
@@ -320,6 +330,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Commande\Command.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Commande\description\AddCommand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Commande\description\Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

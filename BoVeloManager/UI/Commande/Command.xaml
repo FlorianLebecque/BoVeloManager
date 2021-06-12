@@ -17,6 +17,7 @@
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
 
+            <!-- Command -->
             <TabItem Header="Commands">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -25,23 +26,26 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12">Add</Button>
-
+                        <Button Visibility="Visible" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addCommand_Click">
+                            <materialDesign:PackIcon Kind="Add"/>
+                        </Button>
+                       
                     </StackPanel>
 
 
                     <!-- Data Grid Sales  -->
-                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid Name="dg_CommandesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Supplier" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Prevision date" Binding="{Binding Path='prevision_date'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Total" Binding="{Binding Path='total'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Details">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Name="btnView" Margin="1" >
+                                        <Button Name="btnView" Margin="1" Click="btnView_Click" >
                                             <materialDesign:PackIcon Kind="Eye"/>
                                         </Button>
                                     </DataTemplate>
@@ -52,7 +56,7 @@
 
                 </Grid>
             </TabItem>
-
+            <!-- Supplier -->
             <TabItem Header="Supplier">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -70,6 +74,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Enterprise" Binding="{Binding Path='etp_name'}" IsReadOnly="True"/>
                             <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='insc_date'}" IsReadOnly="True" />

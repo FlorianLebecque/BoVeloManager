@@ -100,9 +100,10 @@ namespace BoVeloManager.Classes
             return false;
         }
 
-        // Verification existence BikeTemplate dans le panier (basket)
+        
         private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
         {
+            // Verification existence BikeTemplate dans le panier (basket)
             if (basket.ContainsKey(tBike))
             {
                 //Console.WriteLine("basket contains this bike template");
@@ -110,16 +111,18 @@ namespace BoVeloManager.Classes
                 int qnt_ = default;
                 BikeTemplate tBike_ = default;
 
+                // parcours du panier pour trouver le tBike correspondant
                 foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
                 {                    
                     if (kvp.Key == tBike)
                     {
-                        //Console.WriteLine("bike template founded");
                         qnt_ = kvp.Value;
                         tBike_ = kvp.Key;                                                
                     }
                 }
 
+                // update quantity
+                basket.Remove(tBike);
                 basket.Remove(tBike);
                 basket.Add(tBike_, qnt_ + qnt);
             }
@@ -128,6 +131,56 @@ namespace BoVeloManager.Classes
                 basket.Add(tBike, qnt);
             }
         }
+        private Dictionary<KitTemplate, int> getAllKit()
+        {
+            Dictionary<KitTemplate, int> AllKitTemplate = new Dictionary<KitTemplate, int>();       // tous les nombres de kit dans la commande
+
+            foreach (KeyValuePair<BikeTemplate, int> item in basket)
+            {
+                int nbr_bike = item.Value;
+                foreach (KitTemplate tK in item.Key.getListKit())
+                {
+                    if (AllKitTemplate.ContainsKey(tK))
+                    {
+                        AllKitTemplate[tK] += nbr_bike * tK.getBikeQtt();
+                    }
+                    else
+                    {
+                        AllKitTemplate.Add(tK, nbr_bike * tK.getBikeQtt());
+                    }
+                }
+            }
+            return AllKitTemplate;
+        }
+        // Verification si tous les kits sont disponnibles
+        private bool isKitAvailable()
+        {
+            foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
+            {
+                if (kvp.Value >= kvp.Key.getStockQtt())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool RemoveStockKit()
+        {
+            if (isKitAvailable())
+            {
+                foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
+                {
+                    int new_stock = kvp.Key.getStockQtt() - kvp.Value * kvp.Key.getBikeQtt();
+                    kvp.Key.setStockQtt(new_stock);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         public void saveSale()
         {
             saleID = Controler.Instance.getLastSaleId() + 1;

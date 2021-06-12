@@ -133,6 +133,7 @@
                             <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='category'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Properties" Binding="{Binding Path='properties'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Bike Quantity" Binding="{Binding Path='bike_qtt'}" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Edit">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
