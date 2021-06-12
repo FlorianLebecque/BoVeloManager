@@ -108,8 +108,8 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
         }
 
-        public static string updateKitTemplate(int id, string name, int cat, int price, string prop) {
-            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "' WHERE `id`=" + id;
+        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int bike_qtt) {
+            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "' WHERE `id`=" + id;
         }
 
         public static string addSale(Sale s) {
@@ -148,7 +148,7 @@ namespace BoVeloManager.tools {
 
         public static string addCommande(Commande cd) {
 
-            return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','Open','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
+            return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','" + cd.getState() + "','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
 
         }
         public static string addCommandeItems(Commande_item ci, Commande cd) {
@@ -160,6 +160,11 @@ namespace BoVeloManager.tools {
         public static string getCommande() {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
         }
+
+        public static string updateCommande(Commande c) {
+            return "UPDATE `bv_sale` SET `state` = '" + c.getState() + "' , `prevision_date` = '" + c.getPreSaleDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + c.getId().ToString();
+        }
+
 
         public static string getCommandeItems(int id) {
             return "SELECT * FROM `bv_sale_kit` WHERE `id_sale` = " + id.ToString();

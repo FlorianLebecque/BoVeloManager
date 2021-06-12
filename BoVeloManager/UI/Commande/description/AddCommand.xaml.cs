@@ -144,7 +144,7 @@ namespace BoVeloManager.UI.Commande.description {
             Supplier sup = findSupplier(cb_supplier.SelectedItem.ToString());
             User user = Controler.Instance.getCurrentUser();
 
-            Classes.Commande cmd = new Classes.Commande(id, user.getId(), sup.getId(), "Ordered", Today, DateTime.MinValue, Commande_itemList, Controler.Instance.getUserList(), Controler.Instance.getSupplierList());
+            Classes.Commande cmd = new Classes.Commande(id, user.getId(), sup.getId(), "Open", Today, DateTime.MinValue, Commande_itemList, Controler.Instance.getUserList(), Controler.Instance.getSupplierList());
 
                 Controler.Instance.Addcommande(cmd);
             this.Close();
