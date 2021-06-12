@@ -123,6 +123,7 @@ namespace BoVeloManager.Classes
 
                 // update quantity
                 basket.Remove(tBike);
+                basket.Remove(tBike);
                 basket.Add(tBike_, qnt_ + qnt);
             }
             else

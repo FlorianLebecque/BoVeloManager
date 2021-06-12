@@ -108,8 +108,8 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale`";
         }
 
-        public static string updateKitTemplate(int id, string name, int cat, int price, string prop) {
-            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "' WHERE `id`=" + id;
+        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int bikeQtt) {
+            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`bike_qtt`='" + bikeQtt + "' WHERE `id`=" + id ;
         }
 
         public static string addSale(Sale s) {

@@ -60,6 +60,10 @@ namespace BoVeloManager.Classes {
         {
             return stock_qtt;
         }
+        public void setBikeQtt(int new_bike_qtt)
+        {
+            bike_qtt = new_bike_qtt;
+        }
         public void setStockQtt(int new_stock)
         {
             stock_qtt = new_stock;
@@ -123,7 +127,7 @@ namespace BoVeloManager.Classes {
             temp.stock_qtt = this.stock_qtt;
             temp.stock_location_x = this.stock_location_x;
             temp.stock_location_y = this.stock_location_y;
-
+            temp.bike_qtt = this.getBikeQtt().ToString();
 
             return temp;
 
