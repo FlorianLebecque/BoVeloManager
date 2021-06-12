@@ -24,7 +24,7 @@ namespace BoVeloManager.Classes {
         //this function displays the sales according to a search string
         public List<Sale.displayInfo> GetSaleDisplayInfo_search(string str)
         {
-            if (str == "" || str.Contains("Research")) 
+            if (str == "") 
             {
                 return GetSaleDisplayInfo(); 
             }

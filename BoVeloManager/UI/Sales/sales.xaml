@@ -31,7 +31,11 @@
 
                     
                     <!-- Data Grid Sales  -->
-                    <TextBox Name="tb_search" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text=" Research        &#128270;" VerticalAlignment="Center" Width="100" TextChanged="tb_search_TextChanged" MouseEnter="tb_search_MouseEnter" MouseLeave="tb_search_MouseLeave"/>
+                    <TextBox Name="tb_search" Margin="15,0,0,0" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240" TextChanged="tb_search_TextChanged"> <!--MouseEnter="tb_search_MouseEnter" MouseLeave="tb_search_MouseLeave"> -->
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="TextBoxBackground.jpg" AlignmentX="Center" AlignmentY ="Center" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         
                         <DataGrid.Columns>
