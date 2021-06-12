@@ -24,6 +24,14 @@ namespace BoVeloManager.Management.kit
         public AddKitWindow()
         {
             InitializeComponent();
+
+            foreach (KitCategory i in Enum.GetValues(typeof(KitCategory))) {
+                ComboBoxItem cbi = new ComboBoxItem();
+                cbi.Content = tools.Converter.GetCatName(i);
+                cbi.Tag = i;
+                kit_cat.Items.Add(cbi);
+            }
+
         }
         private void BTADD_kit(object sender, RoutedEventArgs e)
         {
@@ -36,7 +44,7 @@ namespace BoVeloManager.Management.kit
             int id = Controler.Instance.getLastKitTemplateId() + 1;
             int bike_qtt = Convert.ToInt32(kit_bike_qtt.Text);
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0, bike_qtt);
+            KitTemplate kt = new KitTemplate(id, kitName, (KitCategory)kitCat, kitPrice ,kitProp, 0, 0, 0, bike_qtt);
             addKit(kt);
             this.Close();
         }

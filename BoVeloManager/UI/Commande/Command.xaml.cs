@@ -30,6 +30,10 @@ namespace BoVeloManager.UI.Commande {
             crtl = Controler.Instance;
 
             InitializeComponent();
+            init();
+        }
+
+        public void init() {
             update_dg_supplierList();
             update_dg_CommandeList();
         }

@@ -10,8 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using BoVeloManager.Classes;
-
+using BoVeloManager.tools;
 
 namespace BoVeloManager {
     /// <summary>
@@ -33,6 +34,8 @@ namespace BoVeloManager {
 
         }
 
+
+
         private void init() {
             if (crtl.getCurrentUser().getName() != "God") {
                 ManagementBtn.Visibility = Visibility.Hidden;
@@ -43,6 +46,22 @@ namespace BoVeloManager {
 
             //status bar log
             lb_user.Text = crtl.getCurrentUser().getName();
+
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = TimeSpan.FromSeconds(30);
+            dispatcherTimer.Start();
+
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e) {
+            if (Controler.Instance.resync(Database.checkTable())) {
+                Catalogue.Catalog.Instance.init();
+                UI.Commande.Command.Instance.init();
+                UI.Planning.Planning.Instance.init();
+                Management.Management.Instance.init();
+                Sales.Sales.Instance.init();
+            }
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e) {

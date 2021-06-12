@@ -36,7 +36,7 @@ namespace BoVeloManager.tools {
                 int stock_location_y = Convert.ToInt32(dt.Rows[i]["location_y"]);
                 int bike_qtt = Convert.ToInt32(dt.Rows[i]["bike_qtt"]);
 
-                temp.Add(new KitTemplate(id, name, cat, p, prop, stock_qtt, stock_location_x, stock_location_y, bike_qtt));
+                temp.Add(new KitTemplate(id, name, (KitCategory)cat, p, prop, stock_qtt, stock_location_x, stock_location_y, bike_qtt));
                 
             }
 
@@ -44,12 +44,12 @@ namespace BoVeloManager.tools {
         }
 
         public static int addKitTemplate(KitTemplate kt) {
-            string q = DatabaseQuery.addKit(kt.getId(), kt.getName(), kt.getProperties(), kt.getPrice(), kt.getCategory());
+            string q = DatabaseQuery.addKit(kt.getId(), kt.getName(), kt.getProperties(), kt.getPrice(), (int)kt.getCategory());
             return Database.setData(q);
         }
 
         public static int updateKitTemplate(KitTemplate kt) {
-            string q = DatabaseQuery.updateKitTemplate(kt.getId(), kt.getName(), kt.getCategory(), kt.getPrice(), kt.getProperties(), kt.getStockQtt(), kt.getBikeQtt());
+            string q = DatabaseQuery.updateKitTemplate(kt.getId(), kt.getName(), (int)kt.getCategory(), kt.getPrice(), kt.getProperties(), kt.getStockQtt(), kt.getBikeQtt());
 
             return Database.setData(q);
         }

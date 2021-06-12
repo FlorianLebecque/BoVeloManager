@@ -207,6 +207,7 @@
     <Compile Include="Classes\TempSale.cs" />
     <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Enum\Category.cs" />
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
@@ -458,7 +459,7 @@
   <ItemGroup>
     <Resource Include="UI\Sales\TextBoxBackground.jpg" />
     <None Include="Untitled.svg" />
-    <Resource Include="UI\Catalogue\Confirmation\Bike0.jpg" />
+    <Resource Include="UI\Catalogue\Bike0.jpg" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
     <Resource Include="UI\Catalogue\Bike2.jpg" />

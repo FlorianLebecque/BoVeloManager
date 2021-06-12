@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoVeloManager.tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace BoVeloManager.Classes {
 
         private readonly int id;
         private string name;
-        private int cat;
+        private KitCategory cat;
         private int price;
         private string properties;
 
@@ -20,7 +21,7 @@ namespace BoVeloManager.Classes {
         private int stock_location_x;
         private int stock_location_y;
 
-        public KitTemplate(int id_,string name_,int cat_,int price_,string prop_, int stock_qtt_, int stock_location_x_, int stock_location_y_, int bike_qtt_) {
+        public KitTemplate(int id_,string name_,KitCategory cat_,int price_,string prop_, int stock_qtt_, int stock_location_x_, int stock_location_y_, int bike_qtt_) {
             id = id_;
             name = name_;
             price = price_;
@@ -48,7 +49,7 @@ namespace BoVeloManager.Classes {
             return properties;
         }
 
-        public int getCategory() {
+        public KitCategory getCategory() {
             return cat;
         }
 
@@ -91,18 +92,22 @@ namespace BoVeloManager.Classes {
 
         public void setName(string n) {
             name = n;
+            DatabaseClassInterface.updateKitTemplate(this);
         }
 
         public void setPrice(int p) {
            price = p;
+           DatabaseClassInterface.updateKitTemplate(this);
         }
 
         public void setProperties(string p) {
             properties = p;
+            DatabaseClassInterface.updateKitTemplate(this);
         }
 
-        public void setCategory(int c) {
+        public void setCategory(KitCategory c) {
             cat = c;
+            DatabaseClassInterface.updateKitTemplate(this);
         }
 
         public string getPropkitString() {
@@ -120,19 +125,7 @@ namespace BoVeloManager.Classes {
             temp.curKit = this;
             temp.id = this.getId();
             temp.name = this.getName();
-
-            switch (cat) {
-                case 0:
-                    temp.category = "Size";
-                    break;
-                case 1:
-                    temp.category = "Color";
-                    break;
-                default:
-                    temp.category = "Unkown";
-                    break;
-            }
-
+            temp.category = tools.Converter.GetCatName(cat);
             temp.price = (((float)this.getPrice())/100).ToString("c2");
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();

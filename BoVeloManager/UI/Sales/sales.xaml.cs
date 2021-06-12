@@ -36,10 +36,13 @@ namespace BoVeloManager.Sales
             crtl = Controler.Instance;
             tb_searchBackGround = tb_search.Background;
 
+
+            init();
+        }
+
+        public void init() {
             update_dg_salesList();
             update_dg_clientList();
-
-
         }
 
 
