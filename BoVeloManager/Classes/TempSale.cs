@@ -130,23 +130,56 @@ namespace BoVeloManager.Classes
                 basket.Add(tBike, qnt);
             }
         }
-        public bool isKitInStock()
+        private Dictionary<KitTemplate, int> getAllKit()
         {
-            // Verification si tous les kits sont disponnibles
-
-            // Liste de tous les Kits
-
-            Dictionary<KitTemplate, int> AllKitTemplate = new Dictionary<KitTemplate, int>();
+            Dictionary<KitTemplate, int> AllKitTemplate = new Dictionary<KitTemplate, int>();       // tous les nombres de kit dans la commande
 
             foreach (KeyValuePair<BikeTemplate, int> item in basket)
             {
-                foreach (KeyValuePair<KitTemplate, int> kvp in AllKitTemplate)
+                int nbr_bike = item.Value;
+                foreach (KitTemplate tK in item.Key.getListKit())
                 {
-
+                    if (AllKitTemplate.ContainsKey(tK))
+                    {
+                        AllKitTemplate[tK] += nbr_bike * tK.getBikeQtt();
+                    }
+                    else
+                    {
+                        AllKitTemplate.Add(tK, nbr_bike * tK.getBikeQtt());
+                    }
                 }
             }
-            return false;
+            return AllKitTemplate;
         }
+        // Verification si tous les kits sont disponnibles
+        private bool isKitAvailable()
+        {
+            foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
+            {
+                if (kvp.Value >= kvp.Key.getStockQtt())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool RemoveStockKit()
+        {
+            if (isKitAvailable())
+            {
+                foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
+                {
+                    int new_stock = kvp.Key.getStockQtt() - kvp.Value * kvp.Key.getBikeQtt();
+                    kvp.Key.setStockQtt(new_stock);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         public void saveSale()
         {
             saleID = Controler.Instance.getLastSaleId() + 1;

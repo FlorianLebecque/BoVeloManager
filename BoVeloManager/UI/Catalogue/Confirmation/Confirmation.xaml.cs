@@ -104,7 +104,15 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
 
         private void bt_save_Click(object sender, RoutedEventArgs e)
         {
-            Controler.Instance.tempSale.saveSale();
+            if (Controler.Instance.tempSale.RemoveStockKit())
+            {
+                Controler.Instance.tempSale.saveSale();
+            }
+            else
+            {
+                // boite de dialogue : Il manque du matériel !! SHIT SHIT SHIT
+                tools.UI.MessageBox.Show("Stock is missing", "Alert");
+            }
             this.Close();
         }
         private void bt_close_Click(object sender, RoutedEventArgs e)

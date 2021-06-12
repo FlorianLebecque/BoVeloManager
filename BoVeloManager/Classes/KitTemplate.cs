@@ -60,7 +60,10 @@ namespace BoVeloManager.Classes {
         {
             return stock_qtt;
         }
-
+        public void setStockQtt(int new_stock)
+        {
+            stock_qtt = new_stock;
+        }
         public Dictionary<string,int> getLocation()
         {
             Dictionary<string, int> location = new Dictionary<string, int>();
