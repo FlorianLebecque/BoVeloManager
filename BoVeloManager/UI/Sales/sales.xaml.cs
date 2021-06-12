@@ -112,7 +112,31 @@ namespace BoVeloManager.Sales
 
         private void tb_search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            update_dg_salesList_search(tb_search.Text);
+            if (tb_search.Text.Contains("Research")) 
+            {
+                //update_dg_salesList(); 
+            }
+            else 
+            {
+                update_dg_salesList_search(tb_search.Text); 
+            }
+        }
+       
+        private void tb_search_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (tb_search.Text.Contains("Research") )
+            {
+                tb_search.Text = "";
+            }
+        }
+
+        private void tb_search_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (tb_search.Text == "")
+            {
+                tb_search.Text = " Research        &#128270;";
+               
+            }
         }
     }
 }
