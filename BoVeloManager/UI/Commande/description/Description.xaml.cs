@@ -40,6 +40,7 @@ namespace BoVeloManager.UI.Commande.description {
             enterprise.Text = cmd.getClient().getEtpName();
             sale_date.Text = cmd.GetDisplayInfo().sale_date;
             status.Text = cmd.GetDisplayInfo().state;
+            total.Text = cmd.GetDisplayInfo().total;
         }
 
         
