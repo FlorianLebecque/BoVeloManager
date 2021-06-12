@@ -66,6 +66,19 @@ namespace BoVeloManager.Sales
             dg_salesList.ItemsSource = crtl.GetSaleDisplayInfo_search(t);
             
         }
+        
+        private void update_dg_clientList() 
+        {
+            dg_clientList.ItemsSource = null;
+            dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
+        }
+
+        private void update_dg_clientList_search(string t)
+        {
+            dg_clientList.ItemsSource = crtl.GetClientDisplayInfo_search(t);
+        }
+
+
 
         private void bt_showDescription_Click(object sender, RoutedEventArgs e)
         {
@@ -77,11 +90,7 @@ namespace BoVeloManager.Sales
         }
 
 
-        private void update_dg_clientList() {
-            dg_clientList.ItemsSource = null;
-            dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
-        }
-
+        
         private void bt_addClient_Click(object sender, RoutedEventArgs e)
         {
             Client.AddHumanWindow ACW = new Client.AddHumanWindow(0);
@@ -124,7 +133,21 @@ namespace BoVeloManager.Sales
 
 
         }
-       
-        
+
+        private void tb_searchClient_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tb_searchClient.Text == "")
+            {
+                // Use the brush 'tb_searchBackGround' to paint the button's background.
+                tb_searchClient.Background = tb_searchBackGround;
+                update_dg_clientList();
+            }
+            else
+            {
+                tb_searchClient.Background = null;
+                update_dg_clientList_search(tb_searchClient.Text);
+            }
+
+        }
     }
 }
