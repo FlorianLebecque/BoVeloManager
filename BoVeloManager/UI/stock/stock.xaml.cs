@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BoVeloManager.Classes;
 
 namespace BoVeloManager.stock {
     /// <summary>
@@ -22,13 +23,37 @@ namespace BoVeloManager.stock {
 
         private static stock instance = new stock();
 
+        Controler crtl;
+
         private stock() {
             InitializeComponent();
+            crtl = Controler.Instance;
+            update_dg_kitTemplateList();
 
         }
 
-        public static stock Instance {
-            get {
+        private void update_dg_kitTemplateList()
+        {
+            List<KitTemplate> kitTemplateList = crtl.getKitTemplateList();
+
+            List<KitTemplate.displayInfo> temp = new List<KitTemplate.displayInfo>();
+
+            foreach (KitTemplate kt in kitTemplateList)
+            {
+                temp.Add(kt.GetDisplayInfo());
+            }
+
+            dg_kitTemplateList.ItemsSource = temp;
+        }
+
+        private void bt_Order_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        public static stock Instance
+        {
+            get
+            {
                 return instance;
             }
         }

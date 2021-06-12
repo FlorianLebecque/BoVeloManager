@@ -40,13 +40,14 @@ namespace BoVeloManager.UI.Commande.description {
             enterprise.Text = cmd.getClient().getEtpName();
             sale_date.Text = cmd.GetDisplayInfo().sale_date;
             status.Text = cmd.GetDisplayInfo().state;
+            total.Text = cmd.GetDisplayInfo().total;
         }
 
         
 
         public void DisplayKits() {
             foreach (Commande_item Ci in cmd.getCommandItemList()) {
-                cdi_list.Add(new Commande_DisplayItem(Ci.kt.getName().ToString(), Ci.qnt.ToString(), (Ci.kt.getPrice() * Ci.qnt).ToString()));
+                cdi_list.Add(new Commande_DisplayItem(Ci.kt.getName().ToString(), Ci.qnt.ToString(), ((float)(Ci.kt.getPrice() * Ci.qnt) / 100).ToString("c2")));
             }
             kitList.ItemsSource = cdi_list;
 
@@ -60,7 +61,7 @@ namespace BoVeloManager.UI.Commande.description {
             public Commande_DisplayItem(string kitname_,string qnt_,string price_) {
                 KitName = kitname_;
                 qnt = qnt_;
-                price = price_ + "€";
+                price = price_;
             }
 
         }
@@ -69,5 +70,8 @@ namespace BoVeloManager.UI.Commande.description {
             this.Close();
         }
 
+        private void bt_changeState_Click(object sender, RoutedEventArgs e) {
+            //Change state
+        }
     }
 }

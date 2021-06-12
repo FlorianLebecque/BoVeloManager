@@ -26,6 +26,12 @@ namespace BoVeloManager.Classes {
             return total;
         }
 
+        public void ValidateState() {
+            //pass commande from Open to Delivered
+            //Add every qnt to corresponding kit
+        }
+
+
         public displayInfo GetDisplayInfo() {
             displayInfo temp = new displayInfo();
 

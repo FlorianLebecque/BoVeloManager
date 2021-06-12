@@ -29,7 +29,7 @@ namespace BoVeloManager.Catalogue {
         KitTemplate color;
 
         static Catalog instance = new Catalog();
-
+        
         private Catalog() {
             InitializeComponent();
             DisplayCatalogue();
@@ -93,6 +93,7 @@ namespace BoVeloManager.Catalogue {
                 List<string> sizeList_ = new List<string>();
                 List<string> colorList_ = new List<string>();
 
+                /*
                 foreach (KitTemplate kit in kitList)
                 {
                     KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
@@ -105,6 +106,14 @@ namespace BoVeloManager.Catalogue {
                         sizeList_.Add(kit_class.properties);
                     }
                 }
+                */
+
+                sizeList_.Add("26\"");
+                sizeList_.Add("32\"");
+
+                colorList_.Add("Red");
+                colorList_.Add("Blue");
+                colorList_.Add("Green");
 
                 string pic_ = temp.pic;
 
@@ -146,10 +155,8 @@ namespace BoVeloManager.Catalogue {
 
         private void bt_confirmation_Click(object sender, RoutedEventArgs e)
         {
-
             Confirmation CW = new Confirmation();
             CW.Show();  
-
         }
 
         public class BikeCat
