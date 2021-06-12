@@ -42,7 +42,7 @@ namespace BoVeloManager.UI.Planning {
             }
         }
 
-        private void init() {
+        public void init() {
             lb_nbrWeek.Text = "Week : " + nbrWeek.ToString();
 
 

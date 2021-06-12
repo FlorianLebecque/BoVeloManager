@@ -81,7 +81,7 @@ namespace BoVeloManager.Classes
             CommandeList = DatabaseClassInterface.getCommandes(kitTemplateList, userList, supplierList);
         }
 
-        public void resync(List<string> tableList) {
+        public bool resync(List<string> tableList) {
                 //we need to resync
             if(tableList.Count > 0) {
 
@@ -118,6 +118,8 @@ namespace BoVeloManager.Classes
                     }
                 }
             }
+
+            return tableList.Count > 0;
 
         }
 

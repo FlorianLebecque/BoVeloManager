@@ -25,10 +25,20 @@ namespace BoVeloManager.Classes {
         }
 
         public int getLastSaleId() {
-            if (saleList.Count > 0) {
-                return saleList.Select(x => x.getId()).Max();
+            int maxs = 0;
+            int maxc = 0;
+
+            if (CommandeList.Count > 0) {
+                maxc = CommandeList.Select(x => x.getId()).Max();
             }
-            return 0;
+            if (saleList.Count > 0) {
+                maxs = saleList.Select(x => x.getId()).Max();
+            }
+            if (maxc > maxs) {
+                return maxc;
+            } else {
+                return maxs;
+            }
         }
 
         public Sale getSale_byId(int id) {

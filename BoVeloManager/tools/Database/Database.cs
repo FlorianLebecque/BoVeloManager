@@ -115,7 +115,7 @@ namespace BoVeloManager.tools {
             MSCon.Open();
         }
             
-        private static List<string> checkTable() {
+        public static List<string> checkTable() {
             string q = DatabaseQuery.getTable();
             DataTable dt = getData(q);
 

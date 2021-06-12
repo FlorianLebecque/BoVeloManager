@@ -458,7 +458,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Untitled.svg" />
-    <Resource Include="UI\Catalogue\Confirmation\Bike0.jpg" />
+    <Resource Include="UI\Catalogue\Bike0.jpg" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />
     <Resource Include="UI\Catalogue\Bike3.jpg" />
     <Resource Include="UI\Catalogue\Bike2.jpg" />

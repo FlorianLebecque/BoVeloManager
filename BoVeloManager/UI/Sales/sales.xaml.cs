@@ -34,9 +34,13 @@ namespace BoVeloManager.Sales
 
             crtl = Controler.Instance;
 
+
+            init();
+        }
+
+        public void init() {
             update_dg_salesList();
             update_dg_clientList();
-
         }
 
         public static Sales Instance {

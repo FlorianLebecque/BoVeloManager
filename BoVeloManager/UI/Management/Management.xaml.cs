@@ -24,11 +24,15 @@ namespace BoVeloManager.Management {
 
         private static Management instance = new Management();
         
-        bool init = false;
+        bool initi = false;
 
         private Management() {
             InitializeComponent();
-            init = true;
+            init();
+        }
+
+        public void init() {
+            initi = true;
 
             update_dg_userList();
             update_dg_itemList();
@@ -105,7 +109,7 @@ namespace BoVeloManager.Management {
 
         private void cb_sortUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             //ICollectionView cv = CollectionViewSource.GetDefaultView(dg_userList.ItemsSource);
-            if (init) {
+            if (initi) {
                 update_dg_userList();
             }
         }
@@ -211,6 +215,7 @@ namespace BoVeloManager.Management {
 
             //update the kits datagrid
             update_dg_itemList();
+            Catalogue.Catalog.Instance.init();
 
         }
 

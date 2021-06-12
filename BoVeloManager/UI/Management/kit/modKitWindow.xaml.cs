@@ -38,7 +38,7 @@ namespace BoVeloManager.Management.kit
             tb_editName.Text = kt.getName();
             tb_editProperties.Text = kt.getProperties();
             tb_editPrice.Text = kt.getPrice().ToString();
-            kit_cat.SelectedIndex = kt.getCategory();
+            kit_cat.SelectedIndex = (int)kt.getCategory();
             tb_editBikeQtt.Text = kt.getBikeQtt().ToString();
         }
 
@@ -47,7 +47,7 @@ namespace BoVeloManager.Management.kit
             kt.setName(tb_editName.Text);
             kt.setProperties(tb_editProperties.Text);
             kt.setPrice(Convert.ToInt32(tb_editPrice.Text));
-            kt.setCategory(kit_cat.SelectedIndex);
+            kt.setCategory((KitCategory)kit_cat.SelectedIndex);
             kt.setBikeQtt(Convert.ToInt32(tb_editBikeQtt.Text));
 
             this.Close();

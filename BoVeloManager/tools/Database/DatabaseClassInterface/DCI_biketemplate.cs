@@ -12,7 +12,13 @@ namespace BoVeloManager.tools {
 
         public static int addBikeTemplate(BikeTemplate t) {
             string q = tools.DatabaseQuery.addBikeTemplate(t);
-            return Database.setData(q);
+            Database.setData(q);
+
+            foreach(KitTemplate kt in t.getListKit()) {
+                link_kit_to_tbike(t, kt);
+            }
+
+            return 0;
         }
 
         public static int link_kit_to_tbike(BikeTemplate bt, KitTemplate kt) {

@@ -32,6 +32,10 @@ namespace BoVeloManager.Catalogue {
         
         private Catalog() {
             InitializeComponent();
+            init();
+        }
+
+        public void init() {
             DisplayCatalogue();
         }
 
@@ -61,7 +65,7 @@ namespace BoVeloManager.Catalogue {
                 List<string> colorList = new List<string>();
 
                 // Pour chaque kittemplate de categorie 0
-                foreach(KitTemplate kt in temp.kitTemplates.Where(x => x.getCategory() == 0).ToList()) {
+                foreach(KitTemplate kt in temp.kitTemplates.Where(x => x.getCategory() == KitCategory.frame).ToList()) {
                     string[] prop = kt.getProperties().Split('|');
                     if (!sizeList.Contains(prop[0])) {
                         sizeList.Add(prop[0]);
@@ -71,8 +75,9 @@ namespace BoVeloManager.Catalogue {
                     } 
                     
                 }
-
-                BikeCatList.Add(new BikeBasket(temp.name,sizeList,colorList,temp.CurCatBike));
+                BikeBasket bb = new BikeBasket(temp.name, sizeList, colorList, temp.CurCatBike);
+                bb.pic = temp.pic;
+                BikeCatList.Add(bb);
                 
             }
 

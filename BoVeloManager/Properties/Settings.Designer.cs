@@ -121,7 +121,7 @@ namespace BoVeloManager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool SYNC_ENABLE {
             get {
                 return ((bool)(this["SYNC_ENABLE"]));
