@@ -25,7 +25,6 @@ namespace BoVeloManager.Classes
         private List<Commande> CommandeList;
         public TempSale tempSale;
 
-
         private Controler() {
             LOAD_USERS();
             LOAD_CLIENTS();

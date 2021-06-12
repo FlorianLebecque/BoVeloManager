@@ -8,14 +8,11 @@ namespace BoVeloManager.Classes
 {
     // Rassemble tous les composants nécaissaires a l'encodage de la vente
     public class TempSale
-    {       
-        private Dictionary<BikeTemplate, int> basket = new Dictionary<BikeTemplate, int>();
+    {
+        #region old
+       // private Dictionary<BikeTemplate, int> basket = new Dictionary<BikeTemplate, int>();
 
         private Client client;
-        private User seller;
-
-        DateTime sale_date;
-        DateTime prevision_date;
 
         int saleID;
 
@@ -23,121 +20,54 @@ namespace BoVeloManager.Classes
         private BikeTemplate tempBikeTemplate;
         private List<BikeTemplate> newBikeTemplates;
 
-        public TempSale() 
-        {
+        #endregion
+
+        public Dictionary<string, BikeBasket> Basket = new Dictionary<string, BikeBasket>();
+
+        public TempSale() {
             bikeList = new List<Bike>();
             newBikeTemplates = new List<BikeTemplate>();
         }
 
-        public void setSeller()
-        {
-            seller = Controler.Instance.getCurrentUser();
+        public void setBikeBasket(BikeBasket bc) {
+
+            string key = bc.name + bc.size + bc.color;
+
+            if (Basket.ContainsKey(key)) {
+                Basket[key] = bc;
+            } else {
+                Basket.Add(key, bc);
+            }
         }
-        public void setClient(Client c)
-        {
+
+        public void removeBikeBasket(BikeBasket b) {
+            string key = b.name + b.size + b.color;
+            if (Basket.ContainsValue(b)) {
+                Basket.Remove(key);
+            }
+        }
+
+        public void setClient(Client c) {
             client = c;
         }
 
-        public Dictionary<BikeTemplate, int> getBasket()
-        {
-            return basket;
+        public List<Bike> GenBikeList() {
+            List<Bike> temp = new List<Bike>();
+
+
+
+
+            return temp;
         }
 
-        public void addItems(CatalogBike catBike, KitTemplate size, KitTemplate color, int qnt) 
-        {
-            BikeTemplate tBike;
-            if (existBikeTemplate(catBike, size, color, Controler.Instance.GetBikeTemplateList()))
-            {
-                tBike = tempBikeTemplate;
-            }
-            else
-            {
-                int tBike_id = Controler.Instance.getLastBikeTemplateId() + 1;
-                tBike = new BikeTemplate(tBike_id, catBike);
-                tBike.linkKitTemplate(size);
-                tBike.linkKitTemplate(color);
-                // add new bike template to controller list and newBikeTemplates to update db
-                Controler.Instance.GetBikeTemplateList().Add(tBike);
-                newBikeTemplates.Add(tBike);
-            }
-
-            addBikeTemplateToBasket(qnt, tBike);
-
-            #region affichage console
-            foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
-            {
-                //Console.WriteLine("------------");
-                //Console.WriteLine("Name : " + kvp.Key.getName());
-                foreach (KitTemplate kit in kvp.Key.getListKit())
-                {
-                    //Console.WriteLine("kit : " + kit.getName());
-                }
-                //Console.WriteLine("Quantity : " + kvp.Value);                
-            }
-            #endregion
-        }
-
-        // Verification existence BikeTemplate dans la db
-        private bool existBikeTemplate(CatalogBike catBike, KitTemplate size, KitTemplate color, List<BikeTemplate> tBike_list)
-        {
-            List<KitTemplate> listKit = new List<KitTemplate>();
-            listKit.Add(size);
-            listKit.Add(color);
-
-            foreach (BikeTemplate bikeTemplate in tBike_list)
-            {
-                //x.All(y.Contains)
-                //if (bikeTemplate.getCat().getName() == catBike.getName() && bikeTemplate.getListKit() == listKit)
-
-                if (bikeTemplate.getCat().getName() == catBike.getName() && bikeTemplate.getListKit().All(listKit.Contains) && listKit.All(bikeTemplate.getListKit().Contains))
-                {
-                    //Console.WriteLine("le bike template ajouté existe dans la base de donnée");
-                    tempBikeTemplate = bikeTemplate;
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        
-        private void addBikeTemplateToBasket(int qnt, BikeTemplate tBike)
-        {
-            // Verification existence BikeTemplate dans le panier (basket)
-            if (basket.ContainsKey(tBike))
-            {
-                //Console.WriteLine("basket contains this bike template");
-
-                int qnt_ = default;
-                BikeTemplate tBike_ = default;
-
-                // parcours du panier pour trouver le tBike correspondant
-                foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
-                {                    
-                    if (kvp.Key == tBike)
-                    {
-                        qnt_ = kvp.Value;
-                        tBike_ = kvp.Key;                                                
-                    }
-                }
-
-                // update quantity
-                basket.Remove(tBike);
-                basket.Add(tBike_, qnt_ + qnt);
-            }
-            else
-            {
-                basket.Add(tBike, qnt);
-            }
-        }
         private Dictionary<KitTemplate, int> getAllKit()
         {
             Dictionary<KitTemplate, int> AllKitTemplate = new Dictionary<KitTemplate, int>();       // tous les nombres de kit dans la commande
 
-            foreach (KeyValuePair<BikeTemplate, int> item in basket)
+            foreach (BikeBasket bb in Basket.Values)
             {
-                int nbr_bike = item.Value;
-                foreach (KitTemplate tK in item.Key.getListKit())
+                int nbr_bike = bb.qnt;
+                foreach (KitTemplate tK in bb.CreateBikeTemplate().getListKit())
                 {
                     if (AllKitTemplate.ContainsKey(tK))
                     {
@@ -163,6 +93,7 @@ namespace BoVeloManager.Classes
             }
             return true;
         }
+       
         public bool RemoveStockKit()
         {
             if (isKitAvailable())
@@ -183,11 +114,12 @@ namespace BoVeloManager.Classes
         public void saveSale()
         {
             saleID = Controler.Instance.getLastSaleId() + 1;
-            setSeller();
-            int sellerID = seller.getId();
+           
+            int sellerID = Controler.Instance.getCurrentUser().getId();
             int clientID = client.getId();
+
             DateTime sale_date = DateTime.Now;
-            DateTime prevision_date = getNextPrevisionDate();
+            DateTime prevision_date = getNextPrevisionDate();   //date de début de constrution
 
             List<User> userList = Controler.Instance.getUserList();
             List<Client> clientList = Controler.Instance.getClientList();
@@ -196,48 +128,33 @@ namespace BoVeloManager.Classes
             Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, bikeList, userList, clientList);
             Controler.Instance.createSale(sale);
 
-            updateTBikeInDB();
-            bikeList = addBasketToSale_and_DB(basket);
 
-            drainTempSale();
-        }
-        
-        private List<Bike> addBasketToSale_and_DB(Dictionary<BikeTemplate, int> basket)
-        {
-            List<Bike> temp = new List<Bike>();
+            foreach(BikeBasket b in Basket.Values) {
+                BikeTemplate bt = b.CreateBikeTemplate();
+                int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
+                bt.setId(id_bt);
 
-            foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
-            {
-                for (int i = 0 ; i < kvp.Value ; i++)
-                {
+                Controler.Instance.createBikeTemplate(bt);
+
+                for (int i = 0; i < b.qnt; i++) {
                     int bikeID = Controler.Instance.getLastBikeId() + 1;
 
                     DateTime constr_date = getConstrDate();
-                    DateTime planned_date = getNextPrevisionDate();                    
-                   
-                    int poste = Controler.Instance.getAvailablePoste();                    
+                    DateTime planned_date = getNextPrevisionDate();
 
-                    Bike b = new Bike(bikeID, 0, saleID, poste, kvp.Key, planned_date, constr_date);
+                    int poste = Controler.Instance.getAvailablePoste();
 
-                    Controler.Instance.createBike(b);
-                    temp.Add(b);
+                    Bike tempB = new Bike(bikeID, 0, saleID, poste, bt, planned_date, constr_date);
+                    Controler.Instance.createBike(tempB);
                 }
+
+
             }
 
-            return temp;
-        }
-        public void updateTBikeInDB()
-        {
-            foreach (BikeTemplate tbike in newBikeTemplates)
-            {
-                Controler.Instance.createBikeTemplate(tbike);
-                foreach (KitTemplate tKit in tbike.getListKit())
-                {
-                    Controler.Instance.link_kit_to_tbike(tbike, tKit);
-                }
-            }
+            drainTempSale();
         }
 
+            //get the first available date
         private DateTime getNextPrevisionDate()
         {
             return Controler.Instance.getFirstAvailableDay();
@@ -250,8 +167,70 @@ namespace BoVeloManager.Classes
 
         public void drainTempSale()
         {
-            Controler.Instance.tempSale = new TempSale();
+            //Controler.Instance.tempSale = new TempSale();
         }
 
     }
+
+    public class BikeBasket {
+        public string pic { get; set; }
+        public string name { get; set; }
+        public List<string> sizeList { get; set; }
+        public List<string> colorList { get; set; }
+        public string size { get; set; }
+        public string color { get; set; }
+        public int qnt { get; set; } = 1;
+        public CatalogBike curbike { get; set; }
+        public int price {
+            get { return this.CreateBikeTemplate().getPrice() * qnt; }
+        }
+        public string pricestr {
+            get { return ((float)price / 100).ToString("c2"); }
+        }
+        public string displayName {
+            get { return name + " " + size + " " + color; }
+        }
+
+        public BikeBasket(string name_, List<string> sizes, List<string> colors, CatalogBike cb) {
+            name = name_;
+            sizeList = sizes;
+            colorList = colors;
+            curbike = cb;
+        }
+
+        public BikeTemplate CreateBikeTemplate() {
+            BikeTemplate bt = new BikeTemplate(-1, curbike);
+
+            //pour chaque category de kit
+            foreach (KitCategory i in Enum.GetValues(typeof(KitCategory))) {
+                List<KitTemplate> kt_list = curbike.getKitTemplateList().Where(x => x.getCategory() == i).ToList();  //list des kits correspondant à la cat
+
+                //si il y a que un kit -> on l'ajoute
+                if (kt_list.Count == 1) {
+                    bt.linkKitTemplate(kt_list[0]);
+                } else if (kt_list.Count > 1) {   //si plusieur -> ajoute le kit qui correspond au couleur et en taille              
+                    foreach (KitTemplate kt in kt_list) {
+
+                        string[] props = kt.getProperties().Split('|');
+                        if (props.Count() == 2) {
+                            if ((props[0] == size) && (props[1] == color)) {
+                                bt.linkKitTemplate(kt);
+                            }
+                        } else {
+                            if ((props[0] == color) || (props[0] == size)) {
+                                bt.linkKitTemplate(kt);
+                            }
+                        }
+                    }
+
+
+                }
+
+            }
+
+            return bt;
+        }
+
+    }
+
 }

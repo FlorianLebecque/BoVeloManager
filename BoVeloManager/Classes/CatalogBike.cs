@@ -38,8 +38,8 @@ namespace BoVeloManager.Classes {
         public float getPriceMul() {
             return PriceMul;
         }
-        public float getPriceMulDiv() {
-            return (float)PriceMul/100;
+        public int getPriceMulDiv() {
+            return PriceMul;
         }
 
         public void setPriceMul(int p) {

@@ -62,42 +62,18 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
 
         #region display details
 
-        Dictionary<BikeTemplate, int> basket = Controler.Instance.tempSale.getBasket();
-        float tot;
+        Dictionary<string, BikeBasket> Basket = Controler.Instance.tempSale.Basket;
+        int tot  = 0;
 
-        private void displayDetails()
-        {
-            // list of BikeItem for display
-            List<BikeItem> bil = new List<BikeItem>();
-            // get total price
-            
+        private void displayDetails() {
+            bikesList.ItemsSource = null;
+            bikesList.ItemsSource = Basket.Values;
 
-            foreach (KeyValuePair<BikeTemplate, int> kvp in basket)
-            {
-                // create BikeItem 
-                BikeTemplate tBike_ = kvp.Key;
-                int qnt = kvp.Value;
-
-                string qnt_name_ = qnt.ToString() + "x " + tBike_.getName();
-                string string_kits_ = tBike_.getPropkitString();
-                float p = tBike_.getPrice() * qnt ;
-                string price_ = (tBike_.getPrice()*qnt).ToString("c2");
-                tot += p;
-
-                bil.Add(new BikeItem() { tbike = tBike_ ,qnt_name = qnt_name_, string_kits = string_kits_, price = price_ });
+            foreach(BikeBasket bc in Basket.Values) {
+                tot += bc.price;
             }
 
-            bikesList.ItemsSource = bil;
-
-            total.Text = tot.ToString("c2");
-        }
-
-        private class BikeItem
-        {
-            public BikeTemplate tbike { get; set; }
-            public string qnt_name { get; set; }
-            public string string_kits { get; set; }
-            public string price { get; set; }
+            total.Text = ((float)tot/100).ToString("c2");
         }
 
         #endregion
@@ -115,18 +91,16 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
             }
             this.Close();
         }
-        private void bt_close_Click(object sender, RoutedEventArgs e)
-        {
+
+        private void bt_close_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
 
-        private void bt_delete_Click(object sender, RoutedEventArgs e)
-        {
-            BikeItem b = ((BikeItem)((System.Windows.Controls.Button)e.Source).DataContext);
-            Controler.Instance.tempSale.getBasket().Remove(b.tbike);
+        private void bt_delete_Click(object sender, RoutedEventArgs e) {
+            BikeBasket b = ((BikeBasket)((System.Windows.Controls.Button)e.Source).DataContext);
+            Controler.Instance.tempSale.removeBikeBasket(b);
 
             tot = 0;
-
             displayDetails();
         }
 

@@ -207,6 +207,7 @@
     <Compile Include="Classes\TempSale.cs" />
     <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Enum\Category.cs" />
     <Compile Include="loadingScreen.xaml.cs">
       <DependentUpon>loadingScreen.xaml</DependentUpon>
     </Compile>
