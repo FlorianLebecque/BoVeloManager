@@ -77,7 +77,8 @@ namespace BoVeloManager.UI.Commande {
             dsc.Show();
         }
         private void bt_addCommand_Click(object sender, RoutedEventArgs e) {
-
+            description.AddCommand CA = new description.AddCommand();
+            CA.Show();
         }
     }
 

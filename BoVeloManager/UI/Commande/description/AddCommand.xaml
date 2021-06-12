@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.UI.Commande.description"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddCommand" Height="500" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="AddCommand" Height="571" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
@@ -24,14 +24,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Supplier :</Label>
-                    <Grid Grid.Column="1" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- <ComboBox Name="cb_client" Margin="5 0 5 0" SelectedIndex="0"  SelectionChanged="cb_client_SelectionChanged" VerticalAlignment="Center" Grid.Column="0"/> -->
-                    </Grid>
+                    <ComboBox Name="cb_supplier" Margin="5 0 5 0" SelectedIndex="0" VerticalAlignment="Center" Grid.Column="1"/>
                 </Grid>
 
                 <!-- user info -->
@@ -42,7 +35,7 @@
 
                     </Grid.ColumnDefinitions>
                     <Label  Grid.Column="0" HorizontalAlignment="Right"  >User :</Label>
-                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
+                    <TextBlock Name="user" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
                 </Grid>
 
                 <!-- Date info -->
@@ -66,10 +59,36 @@
                     <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
 
+                <!-- Add kit selection -->
+                <Grid  Margin="5 0 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ComboBox Grid.Column="0" Name="cb_addkit" SelectedIndex="0" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3" />
+                    <Label Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center">Qnt :</Label>
+                    <TextBox Name="BikeQuantity" VerticalAlignment="Center" Grid.Column="2" Padding="2" PreviewTextInput="NumberValidationTextBox"/>
+                    <Button Margin="0 0 0 5" x:Name="bt_add"  VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold"  Width="46" HorizontalAlignment="Right" Grid.Column="3" Click="bt_add_Click" >
+                        <materialDesign:PackIcon Kind="Add"/>
+                    </Button>
+                </Grid>
+
+
+                <Grid  Margin="5 0 5 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                </Grid>
+
                 <!-- Command details -->
 
                 <Border BorderThickness="0,2" BorderBrush="DarkGray">
-                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="kitList" MaxHeight="240" Height="240" ScrollViewer.CanContentScroll="False">
+                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="kitList" MaxHeight="240" Height="240">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0 5 0 5">
@@ -80,23 +99,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Text="{Binding qnt_name}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding qnt}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
                                         <TextBlock Text="{Binding price}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
                                     </Grid>
 
-                                    <Grid Width="Auto"  HorizontalAlignment="Stretch">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <!-- -<TextBlock Margin="15 0 0 0" Text="{Binding string_kits}"  HorizontalAlignment="Left" TextAlignment="Left" Grid.Column="0"/>-->
-                                        <Button Name="bt_delete" HorizontalAlignment="Right" Grid.Column="1" Height="25" Width="25" Click="bt_delete_Click" Padding="0 0 0 0">
-                                            <materialDesign:PackIcon Kind="Delete" Height="15" Width="15" VerticalAlignment="Center" HorizontalAlignment="center"/>
-                                        </Button>
-                                    </Grid>
-
-
+                                    <TextBlock Margin="15 0 0 0" Text="{Binding KitName}"  HorizontalAlignment="Left" TextAlignment="Left" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
