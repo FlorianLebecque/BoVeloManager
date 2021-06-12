@@ -25,7 +25,7 @@ namespace BoVeloManager.Sales.Client {
             InitializeComponent();
         }
 
-        private void BT_Add_Click(object sender, RoutedEventArgs e) {
+        private void BT_Add_Human_Click(object sender, RoutedEventArgs e) {
 
             string firstName = tb_first_name.Text;
             string lastName = tb_last_name.Text;
