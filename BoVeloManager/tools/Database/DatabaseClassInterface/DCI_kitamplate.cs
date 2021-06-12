@@ -44,7 +44,7 @@ namespace BoVeloManager.tools {
         }
 
         public static int addKitTemplate(KitTemplate kt) {
-            string q = DatabaseQuery.addKit(kt.getId(), kt.getName(), kt.getProperties(), kt.getPrice(), (int)kt.getCategory());
+            string q = DatabaseQuery.addKit(kt.getId(), kt.getName(), kt.getProperties(), kt.getPrice(), (int)kt.getCategory(), kt.getStockQtt(), kt.getStockLocationX(), kt.getStockLocationY(), kt.getBikeQtt());
             return Database.setData(q);
         }
 

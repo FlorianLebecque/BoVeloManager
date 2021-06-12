@@ -92,8 +92,8 @@ namespace BoVeloManager.tools {
             return "SELECT K.id FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
-        public static string addKit(int id, string name, string prop, int price, int cat) {
-            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "')";
+        public static string addKit(int id, string name, string prop, int price, int cat, int stockQtt, int locX, int locY, int bikeQtt) {
+            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`,`stock_qtt`,`location_x`,`location_y`,`bike_qtt`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "','" + stockQtt.ToString() + "','" + locX.ToString() + "','" + locY.ToString() + "','" + bikeQtt.ToString() + "')";
         }
 
         public static string addCompatibleKit(int id_cat, int id_tKit) {
