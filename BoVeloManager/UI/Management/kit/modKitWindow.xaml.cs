@@ -38,19 +38,17 @@ namespace BoVeloManager.Management.kit
             tb_editName.Text = kt.getName();
             tb_editProperties.Text = kt.getProperties();
             tb_editPrice.Text = kt.getPrice().ToString();
-            kit_cat.SelectedIndex = (int)kt.getCategory();
-
-
+            kit_cat.SelectedIndex = kt.getCategory();
+            tb_editBikeQtt.Text = kt.getBikeQtt().ToString();
         }
-
-
 
         private void BT_update_Click(object sender, RoutedEventArgs e)
         {
             kt.setName(tb_editName.Text);
             kt.setProperties(tb_editProperties.Text);
             kt.setPrice(Convert.ToInt32(tb_editPrice.Text));
-            kt.setCategory((KitCategory)kit_cat.SelectedIndex);
+            kt.setCategory(kit_cat.SelectedIndex);
+            kt.setBikeQtt(Convert.ToInt32(tb_editBikeQtt.Text));
 
             this.Close();
         }

@@ -17,6 +17,7 @@
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
 
+            <!-- Command -->
             <TabItem Header="Commands">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -55,7 +56,7 @@
 
                 </Grid>
             </TabItem>
-
+            <!-- Supplier -->
             <TabItem Header="Supplier">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -73,6 +74,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Enterprise" Binding="{Binding Path='etp_name'}" IsReadOnly="True"/>
                             <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Path='email'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding Path='phone_num'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='insc_date'}" IsReadOnly="True" />
