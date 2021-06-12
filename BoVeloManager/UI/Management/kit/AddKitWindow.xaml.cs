@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BoVeloManager.Classes;
+using System.Text.RegularExpressions;
 
 namespace BoVeloManager.Management.kit
 {
@@ -33,12 +34,11 @@ namespace BoVeloManager.Management.kit
             int kitCat = kit_cat.SelectedIndex;
             int kitPrice = Convert.ToInt32(kit_price.Text);
             int id = Controler.Instance.getLastKitTemplateId() + 1;
+            int bike_qtt = Convert.ToInt32(kit_bike_qtt.Text);
 
-            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp);
+            KitTemplate kt = new KitTemplate(id, kitName, kitCat, kitPrice ,kitProp, 0, 0, 0, bike_qtt);
             addKit(kt);
             this.Close();
-
-    
         }
 
         private void addKit(KitTemplate kt)
@@ -53,7 +53,11 @@ namespace BoVeloManager.Management.kit
                 tools.UI.MessageBox.Show("An error has occured","Error");
             }
         }
-
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
         private void BTCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

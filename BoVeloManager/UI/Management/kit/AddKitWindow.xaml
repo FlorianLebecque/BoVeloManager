@@ -6,52 +6,69 @@
         xmlns:local="clr-namespace:BoVeloManager.Management.kit"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AddKitWindow" Height="236" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="AddKitWindow" Height="266" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border Padding="0 0 0 0">
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Top" Height="180">
                 <!-- Title -->
                 <TextBlock Margin="0 0 0 10" Text="Add New Kit " FontSize="22" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
                 <!-- Name -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Name :</Label>
                     <TextBox Margin="2" Name="kit_name"  Grid.Column="1"/>
                 </Grid>
+                <!-- Price -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Price :</Label>
-                    <TextBox Margin="2" Name="kit_price"  Grid.Column="1"/>
+                    <TextBox Margin="2" Name="kit_price"  Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
                  </Grid>
                 <!-- Properties -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Properties :</Label>
                     <TextBox Margin="2" Name="kit_prop"  Grid.Column="1"/>
                 </Grid>
+                <!-- Bike Qtt -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label  Grid.Column="0" HorizontalAlignment="Right" >Bike Quantity :</Label>
+                    <TextBox Margin="2" Name="kit_bike_qtt"  Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
+                </Grid>
+                <!-- Category -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label  Grid.Column="0" HorizontalAlignment="Right" >Category :</Label>
                     <ComboBox Grid.Column="1" Margin="2,2,0,2" Width="73" HorizontalAlignment="Left" Name="kit_cat" SelectedIndex="0">
                         <ComboBoxItem Name="kit_ca0" Content="Size"/>
                         <ComboBoxItem Name="kit_ca1" Content="Color"/>
+                        <ComboBoxItem Name="kit_ca2" Content="Other"/>
                     </ComboBox>
+                    
                 </Grid>
+                
+
+
             </StackPanel>
             <Grid DockPanel.Dock="Bottom" Margin="0 5 0 0">
                 <Grid.ColumnDefinitions>

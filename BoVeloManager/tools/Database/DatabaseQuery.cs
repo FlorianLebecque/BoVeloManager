@@ -104,8 +104,6 @@ namespace BoVeloManager.tools {
             return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = " + id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " + id_tKit.ToString();
         }
 
-
-
         public static string getSales() {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
         }

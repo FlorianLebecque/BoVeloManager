@@ -123,6 +123,7 @@ namespace BoVeloManager.tools {
 
             for(int i = 0; i < dt.Rows.Count; i++) {
                 string[] temp = new string[2];
+
                 if (Properties.Settings.Default.DBProd) {
                     temp[0] = (string)dt.Rows[i]["Tables_in_" + Properties.Settings.Default.DBUser];
                 } else {

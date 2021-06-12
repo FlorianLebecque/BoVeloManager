@@ -47,7 +47,6 @@ namespace BoVeloManager.Management.kit
         }
 
 
-
         private void BTCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
