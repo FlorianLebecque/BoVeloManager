@@ -31,7 +31,13 @@
 
                     
                     <!-- Data Grid Sales  -->
+                    <TextBox Name="tb_search" Margin="15,0,0,0" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240" TextChanged="tb_search_TextChanged"> <!--MouseEnter="tb_search_MouseEnter" MouseLeave="tb_search_MouseLeave"> -->
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="TextBoxBackground.jpg" AlignmentX="Center" AlignmentY ="Center" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
@@ -49,6 +55,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    
 
                 </Grid>
             </TabItem>
@@ -88,6 +95,10 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+
+
+
+            
         </dragablz:TabablzControl>
         
     </Grid>

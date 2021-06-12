@@ -19,6 +19,54 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
+       
+
+        //this function displays the sales according to a search string
+        public List<Sale.displayInfo> GetSaleDisplayInfo_search(string str)
+        {
+            if (str == "") 
+            {
+                return GetSaleDisplayInfo(); 
+            }
+            else
+            {
+                List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
+
+                foreach (Sale s in saleList)
+                {
+                    if (s.getClient() != null)
+                    {
+                        if (s.getClient().getFirstName().Contains(str) || s.getClient().getLastName().Contains(str) || s.getClient().getName().Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
+                        else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
+                        else if (s.getClient().getEmail().Contains(str) || s.getClient().getEtpName().Contains(str) || s.getClient().getEtpAdress().Contains(str) || s.getClient().getPhoneNumb().Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
+                    }
+                    else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                    {
+                        temp.Add(s.GetSaleDisplayInfo());
+                    }
+
+
+
+                }
+                return temp;
+            }
+
+        }
+
+
+
+
+
+
         public void createSale(Sale s) {
             saleList.Add(s);
             DatabaseClassInterface.addSale(s);

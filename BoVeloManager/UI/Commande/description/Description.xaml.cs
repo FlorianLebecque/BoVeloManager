@@ -41,6 +41,10 @@ namespace BoVeloManager.UI.Commande.description {
             sale_date.Text = cmd.GetDisplayInfo().sale_date;
             status.Text = cmd.GetDisplayInfo().state;
             total.Text = cmd.GetDisplayInfo().total;
+
+            if (cmd.getState() == "Delivered") {
+                bt_changeState.Visibility = Visibility.Hidden;
+            }
         }
 
         
@@ -71,7 +75,10 @@ namespace BoVeloManager.UI.Commande.description {
         }
 
         private void bt_changeState_Click(object sender, RoutedEventArgs e) {
-            //Change state
+            cmd.ValidateState();
+
+
+            this.Close();
         }
     }
 }

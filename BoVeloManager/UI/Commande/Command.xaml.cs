@@ -78,7 +78,8 @@ namespace BoVeloManager.UI.Commande {
             Classes.Commande cmd = ((Classes.Commande.displayInfo)((System.Windows.Controls.Button)e.Source).DataContext).CurCmd;
 
             description.Description dsc = new description.Description(cmd);
-            dsc.Show();
+            dsc.ShowDialog();
+            update_dg_CommandeList();
         }
         private void bt_addCommand_Click(object sender, RoutedEventArgs e) {
             description.AddCommand CA = new description.AddCommand();

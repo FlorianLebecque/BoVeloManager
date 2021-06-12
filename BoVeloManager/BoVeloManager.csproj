@@ -457,6 +457,7 @@
     <Folder Include="public\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="UI\Sales\TextBoxBackground.jpg" />
     <None Include="Untitled.svg" />
     <Resource Include="UI\Catalogue\Bike0.jpg" />
     <Resource Include="UI\Catalogue\Bike1.jpg" />

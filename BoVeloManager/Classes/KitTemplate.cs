@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoVeloManager.tools;
 
 namespace BoVeloManager.Classes {
     public class KitTemplate {
@@ -79,6 +80,7 @@ namespace BoVeloManager.Classes {
         public void setStockQtt(int new_stock)
         {
             stock_qtt = new_stock;
+            DatabaseClassInterface.updateKitTemplate(this);
         }
         public Dictionary<string,int> getLocation()
         {
