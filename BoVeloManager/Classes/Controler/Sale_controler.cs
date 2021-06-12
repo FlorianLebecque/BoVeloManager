@@ -28,10 +28,6 @@ namespace BoVeloManager.Classes {
 
                 foreach (Sale s in saleList)
                 {
-                    //private Client clt = s.getClient();
-
-                    Console.WriteLine(s.getClient().ToString());
-                    Console.WriteLine("////////////////////////////////////");
                 
 
                     if (s.getClient().getFirstName() == Client_ || s.getClient().getLastName() == Client_ || s.getClient().getName() == Client_)
@@ -46,8 +42,43 @@ namespace BoVeloManager.Classes {
             
         }
 
+        //this function displays the sales according to a search string
+        public List<Sale.displayInfo> GetSaleDisplayInfo_search(string str)
+        {
+            if (str == "") { return GetSaleDisplayInfo(); }
+            else
+            {
+                List<Sale.displayInfo> temp = new List<Sale.displayInfo>();
 
-       
+                foreach (Sale s in saleList)
+                {
+                    if (s.getClient() != null)
+                    {
+                        if (s.getClient().getFirstName().Contains(str) || s.getClient().getLastName().Contains(str) || s.getClient().getName().Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
+                        else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
+                    }
+                    else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                    {
+                        temp.Add(s.GetSaleDisplayInfo());
+                    }
+
+
+
+                }
+                return temp;
+            }
+
+        }
+
+
+
+
 
 
         public void createSale(Sale s) {

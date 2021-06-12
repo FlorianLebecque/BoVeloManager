@@ -31,7 +31,7 @@
 
                     
                     <!-- Data Grid Sales  -->
-                 
+                    <TextBox Name="tb_search" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220" TextChanged="tb_search_TextChanged"/>
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         
                         <DataGrid.Columns>
@@ -108,7 +108,7 @@
 
 
                     <!-- Data Grid Sales  -->
-                    <TextBox Name="tb_searchClient" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Search client" VerticalAlignment="Top" Width="220"/>
+                    <TextBox Name="tb_searchClient" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
                     <Button Click="Button_Click" Height="23" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left">Test1</Button>
                     <Button Click="Button_Click2" Height="23" Width="120">Test2</Button>
                     
