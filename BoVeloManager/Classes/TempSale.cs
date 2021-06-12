@@ -132,11 +132,20 @@ namespace BoVeloManager.Classes
         }
         public bool isKitInStock()
         {
+            // Verification si tous les kits sont disponnibles
 
-        }
-        public bool isAllKitInStock()
-        {
+            // Liste de tous les Kits
 
+            Dictionary<KitTemplate, int> AllKitTemplate = new Dictionary<KitTemplate, int>();
+
+            foreach (KeyValuePair<BikeTemplate, int> item in basket)
+            {
+                foreach (KeyValuePair<KitTemplate, int> kvp in AllKitTemplate)
+                {
+
+                }
+            }
+            return false;
         }
         public void saveSale()
         {
