@@ -117,6 +117,19 @@ namespace BoVeloManager.Classes {
                 return  "● " + this.getName() + " [" + this.getProperties() + "]";
             }
         }
+        public string getStockName()
+        {
+            string[] prop = getProperties().Split('|');
+            switch (prop.Length)
+            {
+                case 1 :
+                    return getName() + " " + prop[0];
+                case 2 :
+                    return getName() + " " + prop[0] + " " + prop[1];
+                default :
+                    return getName();
+            }
+        }
 
         public displayInfo GetDisplayInfo() {
 
@@ -130,13 +143,28 @@ namespace BoVeloManager.Classes {
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();
             temp.fancyName = getPropkitString();
+
+            string[] prop = getProperties().Split('|');
+            if (prop.Length == 1)
+            {
+                temp.StockName = getName() + " " + prop[0];
+            }
+            else if (prop.Length == 2)
+            {
+                temp.StockName = getName() + " " + prop[0] + " " + prop[1];
+            }
+            else
+            {
+                temp.StockName = getName();
+            }
+
+            temp.BikeQtt_Name = getBikeQtt() + " " + getName();
             temp.stock_qtt = this.getStockQtt().ToString();
             temp.stock_location_x = this.getStockLocationX().ToString();
             temp.stock_location_y = this.getStockLocationY().ToString();
             temp.bike_qtt = this.getBikeQtt().ToString();
 
             return temp;
-
         }
 
         public class displayInfo {
@@ -147,6 +175,8 @@ namespace BoVeloManager.Classes {
             public string price { get; set; }
             public int priceInt { get; set; }
             public string fancyName { get; set; }
+            public string StockName { get; set; }
+            public string BikeQtt_Name { get; set; }
             public string properties { get; set; }
             public string stock_qtt { get; set; }
             public string stock_location_x { get; set; }

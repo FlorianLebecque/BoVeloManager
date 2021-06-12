@@ -42,7 +42,7 @@
                     <DataGrid Name="dg_kitTemplateList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Kit" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Kit" Binding="{Binding Path='StockName'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Quantity" Binding="{Binding Path='stock_qtt'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Alley" Binding="{Binding Path='stock_location_x'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Crate" Binding="{Binding Path='stock_location_y'}" IsReadOnly="True" />
