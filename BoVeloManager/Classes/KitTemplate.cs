@@ -143,21 +143,7 @@ namespace BoVeloManager.Classes {
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();
             temp.fancyName = getPropkitString();
-
-            string[] prop = getProperties().Split('|');
-            if (prop.Length == 1)
-            {
-                temp.StockName = getName() + " " + prop[0];
-            }
-            else if (prop.Length == 2)
-            {
-                temp.StockName = getName() + " " + prop[0] + " " + prop[1];
-            }
-            else
-            {
-                temp.StockName = getName();
-            }
-
+            temp.StockName = getStockName();
             temp.BikeQtt_Name = getBikeQtt() + " " + getName();
             temp.stock_qtt = this.getStockQtt().ToString();
             temp.stock_location_x = this.getStockLocationX().ToString();
