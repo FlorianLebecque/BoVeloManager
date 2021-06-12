@@ -27,6 +27,8 @@ namespace BoVeloManager.Management.kit
         {
             InitializeComponent();
 
+            crtl = Controler.Instance;
+
             foreach (KitCategory i in Enum.GetValues(typeof(KitCategory))) {
                 ComboBoxItem cbi = new ComboBoxItem();
                 cbi.Content = tools.Converter.GetCatName(i);

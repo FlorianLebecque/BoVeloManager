@@ -43,8 +43,14 @@ namespace BoVeloManager.Classes {
 
             while (contains(locations))
             {
-                locations[0]++;
-                locations[1]++;
+                if (locations[1] < 10) {
+                    locations[1]++;
+                }
+                else
+                {
+                    locations[0]++;
+                    locations[1] = 1;
+                }
             }
 
             return locations;
