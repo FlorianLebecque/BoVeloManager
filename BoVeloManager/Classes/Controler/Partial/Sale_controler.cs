@@ -44,6 +44,10 @@ namespace BoVeloManager.Classes {
                         {
                             temp.Add(s.GetSaleDisplayInfo());
                         }
+                        else if (s.getClient().getEmail().Contains(str) || s.getClient().getEtpName().Contains(str) || s.getClient().getEtpAdress().Contains(str) || s.getClient().getPhoneNumb().Contains(str))
+                        {
+                            temp.Add(s.GetSaleDisplayInfo());
+                        }
                     }
                     else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
                     {
