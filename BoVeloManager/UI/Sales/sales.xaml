@@ -94,47 +94,7 @@
 
 
 
-            <TabItem Header="Vente_test">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <StackPanel  Grid.Row="0" Orientation="Horizontal">
-                        <Button Visibility="Hidden" x:Name="bt_addSale_test" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
-
-                    </StackPanel>
-
-
-                    <!-- Data Grid Sales  -->
-                    <TextBox Name="tb_searchClient" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="220"/>
-                    <Button Click="Button_Click" Height="23" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left">Test1</Button>
-                    <Button Click="Button_Click2" Height="23" Width="120">Test2</Button>
-                    
-                    <DataGrid Name="dg_salesList_test" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
-
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Path='sale_date'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Client" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="State" Binding="{Binding Path='state'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Prevision date" Binding="{Binding Path='prevision_date'}" IsReadOnly="True" />
-                            <DataGridTemplateColumn Header="Details">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Name="btnView" Margin="1" Click="bt_showDescription_Click">
-                                            <materialDesign:PackIcon Kind="Eye"/>
-                                        </Button>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-
-
-                </Grid>
-            </TabItem>
+            
         </dragablz:TabablzControl>
         
     </Grid>
