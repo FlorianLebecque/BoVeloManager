@@ -1,10 +1,11 @@
-﻿<Window x:Class="BoVeloManager.UI.Commande.description.Description"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BoVeloManager.UI.Commande.description"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:select="http://gu.se/Select" x:Class="BoVeloManager.UI.Commande.description.Description"
         mc:Ignorable="d"
         Title="Sale Description" Height="526" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
@@ -24,18 +25,18 @@
                         <ColumnDefinition Width="3*" />
 
                     </Grid.ColumnDefinitions>
-                    <Label  Grid.Column="0" HorizontalAlignment="Right"  >Seller :</Label>
-                    <TextBlock Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
+                    <Label  Grid.Column="0" HorizontalAlignment="Right"  Content="Seller :"  />
+                    <TextBlock x:Name="seller" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
                 </Grid>
-
+                
                 <!-- User info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Right" >User :</Label>
-                    <TextBlock Name="user" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" Content="User :" />
+                    <TextBlock x:Name="user" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1"/>
                 </Grid>
 
                 <!-- Date info -->
@@ -44,8 +45,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Date :</Label>
-                    <TextBlock Name="sale_date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" Content="Date :" />
+                    <TextBlock x:Name="sale_date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
 
                 <!-- Enterprise info -->
@@ -54,8 +55,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Entreprise :</Label>
-                    <TextBlock Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" Content="Entreprise :" />
+                    <TextBlock x:Name="enterprise" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
 
                 <!-- STATUS info -->
@@ -64,8 +65,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"  HorizontalAlignment="Right" >Status :</Label>
-                    <TextBlock Name="status" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
+                    <Label Grid.Column="0"  HorizontalAlignment="Right" Content="Status :" />
+                    <TextBlock x:Name="status" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
 
                 <Border BorderThickness="0,2" BorderBrush="DarkGray">
@@ -95,7 +96,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Margin="0 0 0 10" Text="Total :" FontSize="15" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
-                    <TextBlock Name="total" Grid.Column="1" Margin="0 0 10 10" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
+                    <TextBlock x:Name="total" Grid.Column="1" Margin="0 0 10 10" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Top" DockPanel.Dock="Top" Foreground="#FF444444"/>
                 </Grid>
             </StackPanel>
 
@@ -105,7 +106,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" >Hello</TextBlock>
+                <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" ><Run Text="Hello"/></TextBlock>
                 <Button Margin="0 0 5 5" x:Name="BT_close"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.Column="2" Click="BT_close_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
