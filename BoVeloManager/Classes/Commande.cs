@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoVeloManager.tools;
 
 namespace BoVeloManager.Classes {
     public class Commande : Transaction {
@@ -12,6 +13,7 @@ namespace BoVeloManager.Classes {
         public Commande(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<Commande_item> Commande_itemList, List<User> userList, List<Supplier> clientList) : base(id_, id_seller, id_client, state_, sale_date_, prevision_date_, userList, clientList.Cast<Human>().ToList()) {
 
             Commande_ItemsList = Commande_itemList;
+            state = state_;
 
         }
         public List<Commande_item> getCommandItemList() {
@@ -27,8 +29,13 @@ namespace BoVeloManager.Classes {
         }
 
         public void ValidateState() {
-            //pass commande from Open to Delivered
-            //Add every qnt to corresponding kit
+            this.state = "Delivered";
+            DatabaseClassInterface.updateCommande(this);
+
+            foreach (Commande_item ci in Commande_ItemsList) {
+                int qtt = ci.kt.getStockQtt();
+                ci.kt.setStockQtt(qtt + ci.qnt);
+            }
         }
 
 
