@@ -70,5 +70,8 @@ namespace BoVeloManager.UI.Commande.description {
             this.Close();
         }
 
+        private void bt_changeState_Click(object sender, RoutedEventArgs e) {
+            //Change state
+        }
     }
 }

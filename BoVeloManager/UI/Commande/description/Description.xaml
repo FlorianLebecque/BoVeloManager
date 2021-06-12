@@ -107,6 +107,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="lb_error" Margin="10 0 0 0" Grid.Column="0" HorizontalAlignment="Left" Foreground="#FFB20000" Visibility="Hidden" VerticalAlignment="Center" ><Run Text="Hello"/></TextBlock>
+                <Button x:Name="bt_changeState" Grid.Column="1" Margin="0 0 5 5" VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Click="bt_changeState_Click">
+                    <materialDesign:PackIcon Kind="PackageDown"/>
+                </Button>
                 <Button Margin="0 0 5 5" x:Name="BT_close"  VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold"  Width="100" HorizontalAlignment="Right" Grid.Column="2" Click="BT_close_Click">
                     <materialDesign:PackIcon Kind="Close"/>
                 </Button>
