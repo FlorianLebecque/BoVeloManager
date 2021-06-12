@@ -53,9 +53,6 @@ namespace BoVeloManager.Classes {
                     {
                         temp.Add(s.GetSaleDisplayInfo());
                     }
-
-
-
                 }
                 return temp;
             }

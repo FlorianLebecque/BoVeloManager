@@ -12,7 +12,7 @@
 
     <Grid>
 
-        <dragablz:TabablzControl  Background="White" FixedHeaderCount="2" SelectedIndex="0">
+        <dragablz:TabablzControl Name="drg" Background="White" FixedHeaderCount="2" SelectedIndex="0">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController/>
             </dragablz:TabablzControl.InterTabController>
@@ -72,6 +72,13 @@
                             <materialDesign:PackIcon Kind="Add"/>
                         </Button>
                     </StackPanel>
+
+                    <TextBox Name="tb_searchClient" Margin="0,0,20,0" HorizontalAlignment="Right" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240" TextChanged="tb_searchClient_TextChanged">
+                        <!--MouseEnter="tb_search_MouseEnter" MouseLeave="tb_search_MouseLeave"> -->
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="TextBoxBackground.jpg" AlignmentX="Center" AlignmentY ="Center" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
 
                     <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
                         <DataGrid.Columns>
