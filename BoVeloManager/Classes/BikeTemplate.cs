@@ -21,6 +21,13 @@ namespace BoVeloManager.Classes
             KitTemplList = new List<KitTemplate>();
         }
 
+        public string Key {
+            get {
+                KitTemplate kt_fram = KitTemplList.Where(x => x.getCategory() == KitCategory.frame).ToList()[0];
+                return getName() + kt_fram.getProperties();
+            }
+        }
+
         public string getName(){
             return catalogBike.getName();
         }
@@ -39,8 +46,7 @@ namespace BoVeloManager.Classes
             return price;
         }
 
-        public string Color
-        {
+        public string Color {
             get { return color; }
             set { color = value; }
         }

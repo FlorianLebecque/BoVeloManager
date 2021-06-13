@@ -58,9 +58,12 @@ namespace BoVeloManager.UI.Planning
             BikeBasket bb = new BikeBasket(b_name, b_color, b_size, cb,qnt);
 
             BikeTemplate bt = bb.CreateBikeTemplate();
-            int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
-            bt.setId(id_bt);
-            Controler.Instance.createBikeTemplate(bt);
+            if(bt.getId() == -1) {
+                int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
+                bt.setId(id_bt);
+                Controler.Instance.createBikeTemplate(bt);
+            }
+            
 
             for (int i = 0; i < bb.qnt; i++) {
                 int bikeID = Controler.Instance.getLastBikeId() + 1;

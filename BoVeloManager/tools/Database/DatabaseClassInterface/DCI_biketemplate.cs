@@ -26,10 +26,10 @@ namespace BoVeloManager.tools {
             return Database.setData(q);
         }
 
-        public static List<BikeTemplate> getBikeTemplates(List<CatalogBike> cbList, List<KitTemplate> ktList) {
+        public static Dictionary<string,BikeTemplate> getBikeTemplates(List<CatalogBike> cbList, List<KitTemplate> ktList) {
             string query = DatabaseQuery.getTBike();
             DataTable dt = tools.Database.getData(query);
-            List<BikeTemplate> Btemp = new List<BikeTemplate>();
+            Dictionary<string, BikeTemplate> Btemp = new Dictionary<string, BikeTemplate>();
             for (int i = 0; i < dt.Rows.Count; i++) {
                 int id = Convert.ToInt32(dt.Rows[i]["id"]);
                 int id_cat = Convert.ToInt32(dt.Rows[i]["id_cat"]);
@@ -53,28 +53,14 @@ namespace BoVeloManager.tools {
 
                         }
 
-
-                        Btemp.Add(bt);
+                        if (!Btemp.ContainsKey(bt.Key)) {
+                            Btemp.Add(bt.Key, bt);
+                        }
                     }
                 }
-
-
             }
 
-            return Btemp;
-            //SELECT* FROM `bv_tBike_tKit` WHERE 1
+            return Btemp; 
         }
-        //public static int addBikeTemplate(BikeTemplate kt)
-        //{
-        //string q = DatabaseQuery.addBikeTemplate(kt.getId(), kt.getName(), kt.getPriceMul());
-        //return Database.setData(q);
-        //}
-
-        //public static int updateBikeTemplate(BikeTemplate kt)
-        //{
-        //string q = DatabaseQuery.updateBikeTemplate(kt.getId(), kt.getName(),kt.getPriceMul());
-        //return Database.setData(q);
-        //}
-
     }
 }

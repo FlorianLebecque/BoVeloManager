@@ -12,20 +12,19 @@ namespace BoVeloManager.Classes {
         public void createBikeTemplate(BikeTemplate t) {
             DatabaseClassInterface.addBikeTemplate(t);
 
+            if (!bikeTemplateList.ContainsKey(t.Key)) {
+                bikeTemplateList.Add(t.Key, t);
+            }
 
-            bikeTemplateList.Add(t);
+            
         }
 
         public void link_kit_to_tbike(BikeTemplate bt, KitTemplate kt) {
             DatabaseClassInterface.link_kit_to_tbike(bt, kt);
         }
 
-        public List<BikeTemplate> GetBikeTemplateList() {
-            return bikeTemplateList;
-        }
-
         public BikeTemplate getBikeTemplateById(int id_tBike) {
-            foreach (BikeTemplate bt in bikeTemplateList) {
+            foreach (BikeTemplate bt in bikeTemplateList.Values) {
 
                 if (bt.getId() == id_tBike) {
                     return bt;
@@ -37,12 +36,12 @@ namespace BoVeloManager.Classes {
 
         public int getLastBikeTemplateId() {
             if (bikeTemplateList.Count > 0) {
-                return bikeTemplateList.Select(x => x.getId()).Max();
+                return bikeTemplateList.Values.Select(x => x.getId()).Max();
             }
             return 0;
         }
 
-        public List<BikeTemplate> getBikeTemplateList() {
+        public Dictionary<string, BikeTemplate> getBikeTemplateList() {
             return bikeTemplateList;
         }
 

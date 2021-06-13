@@ -132,10 +132,11 @@ namespace BoVeloManager.Classes
 
             foreach(BikeBasket b in Basket.Values) {
                 BikeTemplate bt = b.CreateBikeTemplate();
-                int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
-                bt.setId(id_bt);
-
-                Controler.Instance.createBikeTemplate(bt);
+                if(bt.getId() == -1) {
+                    int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
+                    bt.setId(id_bt);
+                    Controler.Instance.createBikeTemplate(bt);
+                }
 
                 for (int i = 0; i < b.qnt; i++) {
                     int bikeID = Controler.Instance.getLastBikeId() + 1;
@@ -247,6 +248,10 @@ namespace BoVeloManager.Classes
 
                 }
 
+            }
+
+            if (Controler.Instance.getBikeTemplateList().ContainsKey(bt.Key)) {
+                return Controler.Instance.getBikeTemplateList()[bt.Key];
             }
 
             return bt;

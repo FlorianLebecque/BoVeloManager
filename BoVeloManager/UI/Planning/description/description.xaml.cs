@@ -40,7 +40,7 @@ namespace BoVeloManager.UI.Planning.description {
                 cb_poste.IsEnabled = false;
             }
 
-            tb_name.Text = bk.getBikeTempl().getName() + bk.getBikeTempl().get;
+            tb_name.Text = bk.getBikeTempl().getName() + bk.getBikeTempl();
             cb_state.SelectedIndex = state;
             dp_pld_date.SelectedDate = bk.getPlannedtDate();
             tb_price.Text = bk.GetDisplayInfo().price;
