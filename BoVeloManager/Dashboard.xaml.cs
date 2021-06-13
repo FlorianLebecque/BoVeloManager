@@ -60,6 +60,7 @@ namespace BoVeloManager {
                 UI.Commande.Command.Instance.init();
                 UI.Planning.Planning.Instance.init();
                 Management.Management.Instance.init();
+                stock.stock.Instance.init();
                 Sales.Sales.Instance.init();
             }
         }
