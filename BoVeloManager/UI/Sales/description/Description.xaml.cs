@@ -38,7 +38,9 @@ namespace BoVeloManager.Sales.description
             client.Text = sale.getClient().getName();
             enterprise.Text = sale.getClient().getEtpName();
             sale_date.Text = sale.GetSaleDisplayInfo().sale_date;
+            statusbikes.Text = sale.GetSaleDisplayInfo().bikesStatus;
             status.Text = sale.GetSaleDisplayInfo().state;
+            
         }
 
         public void DisplayTBikes(Sale sale) {
