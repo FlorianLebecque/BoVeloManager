@@ -76,8 +76,12 @@ namespace BoVeloManager.Classes {
 
             DatabaseClassInterface.updateBike(b);
 
+            if(b.getSaleId() != -1) {
                 //update the sale status if every bike is build
-            getSale_byId(b.getSaleId()).updateStatus();
+                getSale_byId(b.getSaleId()).updateStatus();
+            }
+
+            
             
 
             //check other bike

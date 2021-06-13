@@ -60,6 +60,22 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Bike">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <DataGrid ScrollViewer.CanContentScroll="False" Name="dg_bikeList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Bike" Binding="{Binding Path='name'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Quantity" Binding="{Binding Path='qnt'}" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
         </dragablz:TabablzControl>
 
     </Grid>

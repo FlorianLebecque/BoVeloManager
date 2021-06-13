@@ -33,6 +33,33 @@ namespace BoVeloManager.stock {
 
         public void init() {
             update_dg_kitTemplateList();
+            update_dg_bikeList();
+        }
+
+        private void update_dg_bikeList() {
+            List<Bike> bList = Controler.Instance.getBikesList().Where(b => ((b.getSaleId() == -1 )&&( b.getState() == 2 ))).ToList();
+            Dictionary<string, disp> BikeStock = new Dictionary<string, disp>();
+
+            foreach(Bike b in bList) {
+
+                if (BikeStock.ContainsKey(b.getBikeTempl().Key)) {
+                    BikeStock[b.getBikeTempl().Key].qnt++;
+                } else {
+                    disp bikedisplay = new disp();
+                    bikedisplay.name = b.getBikeTempl().getDisplayInfo().fullname;
+                    bikedisplay.qnt = 1;
+                    BikeStock.Add(b.getBikeTempl().Key, bikedisplay);
+                }
+
+            }
+
+            dg_bikeList.ItemsSource = null;
+            dg_bikeList.ItemsSource = BikeStock.Values;
+        }
+
+        class disp {
+            public string name { get; set; }
+            public int qnt { get; set; }
         }
 
         private void update_dg_kitTemplateList()
