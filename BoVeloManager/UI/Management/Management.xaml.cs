@@ -36,9 +36,6 @@ namespace BoVeloManager.Management {
 
             update_dg_userList();
             update_dg_itemList();
-
-            set_cbtype3_content();
-            cb_type3.SelectedIndex = 0;
             update_dg_kitList();
         }
 
@@ -154,22 +151,10 @@ namespace BoVeloManager.Management {
             update_dg_kitList();
         }
 
-
-        private void set_cbtype3_content() {
-            //set the datatable cb_t as the item sources for the combobox content
-            string q_cb = tools.DatabaseQuery.getCatalogBike();
-            DataTable cb_t = tools.Database.getData(q_cb);
-            cb_type3.ItemsSource = cb_t.DefaultView;
-            //Add 'show all' row to cb_t
-            DataRow newRow = cb_t.NewRow();
-            cb_t.Rows.InsertAt(newRow, 0);
-            cb_t.Rows[0]["name"] = "Show all";
-        }
-
-
         private void update_dg_kitList() {
             dg_tKitList.ItemsSource = null;
             dg_tKitList.ItemsSource = Controler.Instance.getKitTemplateDisplayInfo();
+
         }
 
 

@@ -115,15 +115,6 @@
                             <materialDesign:PackIcon Kind="Add"/>
                         </Button>
 
-                        <ComboBox x:Name="cb_type3" SelectedIndex="0" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" SelectionChanged="cb_type3_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Margin="10 0 0 0" Text="{Binding Path=name}" ></TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
-
                     </StackPanel>
 
                     <DataGrid Name="dg_tKitList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
