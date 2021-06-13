@@ -34,6 +34,15 @@ namespace BoVeloManager.Classes {
 
         }
 
+        public void addbike(Bike b) {
+            bikeList.Add(b);
+        }
+
+        public void setPrevSaleDate(DateTime t) {
+            prevision_date = t;
+            DatabaseClassInterface.updateSale(this);
+        }
+
         public new DateTime getPreSaleDate() {
 
             if (bikeList.Count > 0) {
