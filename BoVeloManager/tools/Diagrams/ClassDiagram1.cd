@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="CLASSES">
+    <Position X="1.459" Y="0.955" Height="0.313" Width="0.88" />
+  </Comment>
+  <Comment CommentText="TOOLS">
+    <Position X="1.509" Y="8.948" Height="0.349" Width="0.755" />
+  </Comment>
+  <Comment CommentText="USER INTERFACE">
+    <Position X="9.775" Y="2.312" Height="0.349" Width="1.611" />
+  </Comment>
+  <Comment CommentText="">
+    <Position X="8.877" Y="3.108" Height="9.404" Width="0.7" />
+  </Comment>
+  <Comment CommentText="">
+    <Position X="0.655" Y="1.464" Height="7.072" Width="0.7" />
+  </Comment>
+  <Comment CommentText="">
+    <Position X="0.65" Y="9.511" Height="3.009" Width="0.7" />
+  </Comment>
+  <Class Name="BoVeloManager.Dashboard" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAIAABIgAAAAACAAgAE=</HashCode>
+      <FileName>Dashboard.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.loadingScreen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>loadingScreen.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.LoginWindows" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAYAAAAAAAACAAAAAACAAAAAAAAQAAAEAA=</HashCode>
+      <FileName>LoginWindows.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Classes.Bike" Collapsed="true">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ygQABAAAAAEYAQAAAAAAABAABAAAEAAAAACAAAAAggQ=</HashCode>
+      <FileName>Classes\Bike.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.BikeTemplate" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAQABAAQAAAAAACAAABAEAAAAAAoAAAAEAAQABgA=</HashCode>
+      <FileName>Classes\BikeTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.CatalogBike" Collapsed="true">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggAAAAAQAgAAQYAAAAAAIAAgAAEAAhAAAAEAAQAAkA=</HashCode>
+      <FileName>Classes\CatalogBike.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Client" Collapsed="true">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Commande" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIQAAAAAAABAAAAASAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Commande.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Commande_item" Collapsed="true">
+    <Position X="3.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Commande.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Controler" Collapsed="true">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QVAACyaQwIAOAhYAHAA4JCFyCoxABKLiQBgNjEABoEo=</HashCode>
+      <FileName>Classes\Controler\Controler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Human" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEAAAAAAAAAQggQAAAAIAIAACEEAAAAAIEAEBIwgA=</HashCode>
+      <FileName>Classes\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.KitTemplate" Collapsed="true">
+    <Position X="1.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIBBgAAAAuIAYAACAAAARAkACAEAIBAAIAEAAgABgA=</HashCode>
+      <FileName>Classes\KitTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Sale" Collapsed="true">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCBAAAAAAAAAACAAAAAAAAAAAAAAAAAAAEwgAAAAgAI=</HashCode>
+      <FileName>Classes\Sale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Supplier" Collapsed="true">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.TempSale" Collapsed="true">
+    <Position X="1.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQBIIEAAAAgAAAAAwAIgAIAQQAQAAAAAgAFCAAAAA=</HashCode>
+      <FileName>Classes\TempSale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.BikeBasket" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhEAAAABAAQAIAAIAAQAAAAAAEAICAAAAAAAAAAEA=</HashCode>
+      <FileName>Classes\TempSale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.Transaction" Collapsed="true">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QsBIIAEAAAAAAAAAAAAAAAAAAAAAAAAkAAAABAAAAgA=</HashCode>
+      <FileName>Classes\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Classes.User" Collapsed="true">
+    <Position X="1.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAQAAABAAAAoQAAAAAAAAAAAAAEAAAAAQAECAAAAgA=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.Converter" Collapsed="true">
+    <Position X="1.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAEAAA=</HashCode>
+      <FileName>tools\Converter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.Database" Collapsed="true">
+    <Position X="3.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEQAABIAAAAAAAAAAAAAAAAAAAAACCAAAAAAEAAAAA=</HashCode>
+      <FileName>tools\Database\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.DatabaseClassInterface" Collapsed="true">
+    <Position X="5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AoAAACAEAQwARAAABAAAAIEgAAwAACAABCAEIIBAoMA=</HashCode>
+      <FileName>tools\Database\DatabaseClassInterface\DCI_bike.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.DatabaseQuery" Collapsed="true">
+    <Position X="1.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAEACBGIAYARgAABACAAIEAAAABACAABEAQIABAKMA=</HashCode>
+      <FileName>tools\Database\DatabaseQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.date" Collapsed="true">
+    <Position X="1.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tools\date.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.tools.ExportPdf" Collapsed="true">
+    <Position X="1.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tools\ExportPdf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoVeloManager.Sales.Client.AddHumanWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAAAAEAAAAAAAAAAEAAAAAAAAAAEAAAEAAAAA=</HashCode>
+      <FileName>tools\UI\Human\AddHumanWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Sales.Client.EditHumanWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAACAAAAAAAAAAAAAAAQAAAAAAEAAAAA=</HashCode>
+      <FileName>tools\UI\Human\EditHumanWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.tools.UI.MessageBox" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAIAAAEAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tools\UI\MessageBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Catalogue.Catalog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAIAAAAAAAAIAAAAEAAABAAAKAQAAKAAAAAAA=</HashCode>
+      <FileName>UI\Catalogue\catalog.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Catalogue.Confirmation.Confirmation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAkAA0AAAAAAAAAgAAQAAAAAAAAAYAAAQAAA=</HashCode>
+      <FileName>UI\Catalogue\Confirmation\Confirmation.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Commande.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAYAAAAAAAAAACBAAAAAAAABAAQIgQAAAQAAAAAA=</HashCode>
+      <FileName>UI\Commande\Command.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Commande.description.AddCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAggAAcAUAAAAAAAEAAQCAAEAAAEAQQAAAAAA=</HashCode>
+      <FileName>UI\Commande\description\AddCommand.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Commande.description.Description" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAIAQAAAAAAAAAAACAAAAAAEAAAAAIAAA=</HashCode>
+      <FileName>UI\Commande\description\Description.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.item.AddItemWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>UI\Management\bikeCatalog\AddIBikeCatalogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.item.modItemWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAACAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Management\bikeCatalog\modBikeCatalogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.item.modCompatibleItemWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECABAAACAAAAAACAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Management\bikeCatalog\modCompatibleBikeCatalogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.kit.AddKitWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAgAAAAAAAAEAAAAAAAAgAAAAAAAQAAA=</HashCode>
+      <FileName>UI\Management\kit\AddKitWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.kit.modCompatibleKitWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Management\kit\modCompatibleKitWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.kit.modKitWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Management\kit\modKitWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.Management" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAgAAgBAAQAAAAAAAAAIBAAQ7AVAAAAxAEAAA=</HashCode>
+      <FileName>UI\Management\Management.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.AddUserWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAACAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Management\user\AddUserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Management.user.modUserWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAAAAAAAAAAAAAAAAAAEAAIAAAAEAA=</HashCode>
+      <FileName>UI\Management\user\modUserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Planning.AddBike" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAgAAAQBAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Planning\AddBike.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Planning.Planning" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIAAgAAgAAAAAACAAAAAABACAIgUAAAAAABAAA=</HashCode>
+      <FileName>UI\Planning\Planning.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.UI.Planning.description.description" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAACAAAAAABAAAIAAAAAACAIAAEAAAAABCAA=</HashCode>
+      <FileName>UI\Planning\description\description.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Sales.description.Description" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEACAIAAABAAAAAAgAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>UI\Sales\description\Description.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.Sales.Sales" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAIIAAAAAAAKAAABCAAImYAgQAAAAAAA=</HashCode>
+      <FileName>UI\Sales\sales.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BoVeloManager.stock.stock" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAABAAAIgQAAAAAAAAAg=</HashCode>
+      <FileName>UI\stock\stock.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.061" Collapsed="true" />
+  </Class>
+  <Enum Name="BoVeloManager.Classes.KitCategory" Collapsed="true">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABgQAAAAAIAAAMAAQAAAAAAAIACQIEAQEAEQUAAAQ=</HashCode>
+      <FileName>Enum\Category.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
