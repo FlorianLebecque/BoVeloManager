@@ -55,7 +55,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AgAAAQABAAQAAAAAACAAABAEAAAAAAoAAAAEAAQABgA=</HashCode>
+      <HashCode>AgAAAQABAAQAgAQAAKAAABAEAAAAAAqAAAAEgAQABgA=</HashCode>
       <FileName>Classes\BikeTemplate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -90,7 +90,7 @@
   <Class Name="BoVeloManager.Classes.Controler" Collapsed="true">
     <Position X="7" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QVAACyaQwIAOAhYAHAA4JCFyCoxABKLiQBgNjEABoEo=</HashCode>
+      <HashCode>QVAACyaQwIAOAhYAHAA4JCFyCgxABKLiQBgNjEABoEo=</HashCode>
       <FileName>Classes\Controler\Controler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -104,7 +104,7 @@
   <Class Name="BoVeloManager.Classes.KitTemplate" Collapsed="true">
     <Position X="1.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgIBBgAAAAuIAYAACAAAARAkACAEAIBAAIAEAAgABgA=</HashCode>
+      <HashCode>AgIBBgAAAAuIAYAACAAAARAEACgEAIBAAIAEAAgABgA=</HashCode>
       <FileName>Classes\KitTemplate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -371,7 +371,7 @@
   <Class Name="BoVeloManager.stock.stock" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="9.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAABAAAIgQAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAABAAAQAAAAAAAAAAAABAAAIgQAAAAAAAAAg=</HashCode>
       <FileName>UI\stock\stock.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="1.061" Collapsed="true" />
