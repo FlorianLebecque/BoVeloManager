@@ -28,6 +28,7 @@ namespace BoVeloManager.Sales
 
         Controler crtl;
         Brush tb_searchBackGround;
+        Brush tb_searchBackGround_bis;
 
         private Sales()
         {
@@ -35,7 +36,7 @@ namespace BoVeloManager.Sales
 
             crtl = Controler.Instance;
             tb_searchBackGround = tb_search.Background;
-
+            tb_searchBackGround_bis = tb_search_bis.Background;
 
             init();
         }
@@ -130,7 +131,8 @@ namespace BoVeloManager.Sales
             }
             else
             {
-                tb_search.Background = null;
+                //tb_search.Background = null;
+                tb_search.Background = tb_searchBackGround_bis;
                 update_dg_salesList_search(tb_search.Text);
             }
 
@@ -147,7 +149,8 @@ namespace BoVeloManager.Sales
             }
             else
             {
-                tb_searchClient.Background = null;
+                //tb_searchClient.Background = null;
+                tb_searchClient.Background = tb_searchBackGround_bis;
                 update_dg_clientList_search(tb_searchClient.Text);
             }
 

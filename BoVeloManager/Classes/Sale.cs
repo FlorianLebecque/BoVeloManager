@@ -38,7 +38,7 @@ namespace BoVeloManager.Classes {
         }
 
         public void addbike(Bike b) {
-            bikeList.Add(b);
+            //bikeList.Add(b);
         }
 
         public void setPrevSaleDate(DateTime t) {

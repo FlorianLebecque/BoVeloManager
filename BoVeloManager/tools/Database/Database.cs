@@ -37,7 +37,7 @@ namespace BoVeloManager.tools {
 
             }
 
-            throw new Exception("Can't get data from database, code 1");
+            throw new Exception("Can't get data from database, code 1 \n"+query);
         }
 
         public static int setData(string query) {
@@ -70,7 +70,7 @@ namespace BoVeloManager.tools {
                 }
             }
 
-            throw new Exception("Can't set data to database, code 2");
+            throw new Exception("Can't set data to database, code 2 \n"+query);
 
         }
 

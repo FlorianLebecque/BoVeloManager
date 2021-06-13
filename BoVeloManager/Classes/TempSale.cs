@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoVeloManager.tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -138,18 +139,33 @@ namespace BoVeloManager.Classes
                     Controler.Instance.createBikeTemplate(bt);
                 }
 
+
+
                 for (int i = 0; i < b.qnt; i++) {
                     int bikeID = Controler.Instance.getLastBikeId() + 1;
 
-                    DateTime constr_date = getConstrDate();
-                    DateTime planned_date = getNextPrevisionDate();
+                    //check if we have a bike in stock
+                    List<Bike> BikeStock = Controler.Instance.getBikesList().Where(x => ((x.getSaleId() == -1) && (x.getState() == 2) && (x.getBikeTempl().Key == bt.Key))).ToList(); // list of bike witch correspond to the requested bike
 
-                    int poste = Controler.Instance.getAvailablePoste();
+                    if (BikeStock.Count > 0) {
+                        Bike temp_bikeStock = BikeStock.First();
+                        temp_bikeStock.setSaleId(saleID);
+                        sale.addbike(temp_bikeStock);
+                        DatabaseClassInterface.updateBike(temp_bikeStock);
 
-                    Bike tempB = new Bike(bikeID, 0, saleID, poste, bt, planned_date, constr_date);
+                    } else {
+                        // if not create a new one
+                        DateTime constr_date = getConstrDate();
+                        DateTime planned_date = getNextPrevisionDate();
 
-                    sale.addbike(tempB);
-                    Controler.Instance.createBike(tempB);
+                        int poste = Controler.Instance.getAvailablePoste();
+                        Bike tempB = new Bike(bikeID, 0, saleID, poste, bt, planned_date, constr_date);
+
+                        sale.addbike(tempB);
+                        Controler.Instance.createBike(tempB);
+                    }
+
+                    
                 }
 
             }

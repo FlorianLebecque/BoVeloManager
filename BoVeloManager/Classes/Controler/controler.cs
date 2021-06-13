@@ -45,7 +45,6 @@ namespace BoVeloManager.Classes
             }
         }
 
-
         public void LOAD_USERS() {
             userList = DatabaseClassInterface.getUsers();
         }

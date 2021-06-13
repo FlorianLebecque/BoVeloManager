@@ -26,16 +26,21 @@
 
                     <StackPanel  Grid.Row="0" Orientation="Horizontal">
                         <Button Visibility="Hidden" x:Name="bt_addSale" Width="72" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,12" Click="bt_addSale_Click">Add</Button>
-                    
+                        <TextBox Name="tb_search_bis" Margin="0,0,20,0" HorizontalAlignment="Center" Height="0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="0">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="TextBoxBackground_bis.jpg" AlignmentX="Right" AlignmentY ="Center" Stretch="Uniform"/>
+                            </TextBox.Background>
+                        </TextBox>
                     </StackPanel>
 
                     
                     <!-- Data Grid Sales  -->
-                    <TextBox Name="tb_search" Margin="0,0,20,0" HorizontalAlignment="Right" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240" TextChanged="tb_search_TextChanged"> 
+                    <TextBox Name="tb_search" Margin="0,0,20,0" HorizontalAlignment="Right" Height="34" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240" TextChanged="tb_search_TextChanged">
                         <TextBox.Background>
-                            <ImageBrush ImageSource="TextBoxBackground.jpg" AlignmentX="Center" AlignmentY ="Center" Stretch="Uniform"/>
+                            <ImageBrush ImageSource="TextBoxBackground.jpg" AlignmentX="Right" AlignmentY ="Center" Stretch="Uniform"/>
                         </TextBox.Background>
                     </TextBox>
+
                     <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         
                         <DataGrid.Columns>

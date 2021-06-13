@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.Sales.description"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Sale Description" Height="526" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Sale Description" Height="541" Width="353" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
@@ -66,7 +66,7 @@
                     <Label Grid.Column="0"  HorizontalAlignment="Right" >Status :</Label>
                     <TextBlock Name="status" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Padding="2"/>
                 </Grid>
-                
+
                 <!-- STATUS info -->
                 <Grid  Margin="5 0 5 0">
                     <Grid.ColumnDefinitions>

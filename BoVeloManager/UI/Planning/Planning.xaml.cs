@@ -107,8 +107,6 @@ namespace BoVeloManager.UI.Planning {
                 g_fri.Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFFFFFFF"));
             }
 
-            
-
             lv_monday.ItemsSource = bk_dpiList_Mon;
             lv_tuesday.ItemsSource = bk_dpiList_Tue;
             lv_wednesday.ItemsSource = bk_dpiList_Wed;

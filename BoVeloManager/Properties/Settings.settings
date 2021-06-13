@@ -44,5 +44,8 @@
     <Setting Name="DBBase2" Type="System.String" Scope="User">
       <Value Profile="(Default)">nJWYJY1ijy</Value>
     </Setting>
+    <Setting Name="Cmd_delay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
