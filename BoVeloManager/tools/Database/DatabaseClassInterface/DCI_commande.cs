@@ -68,7 +68,7 @@ namespace BoVeloManager.tools {
             return 1;
         }
         public static int updateCommande(Commande c) {
-            string q = DatabaseQuery.updateCommande(c);
+            string q = DatabaseQuery.updateTransaction(c);
             return Database.setData(q);
         }
 

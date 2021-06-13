@@ -76,7 +76,7 @@ namespace BoVeloManager.UI.Commande.description {
 
         private void bt_changeState_Click(object sender, RoutedEventArgs e) {
             cmd.ValidateState();
-
+            stock.stock.Instance.init();
 
             this.Close();
         }

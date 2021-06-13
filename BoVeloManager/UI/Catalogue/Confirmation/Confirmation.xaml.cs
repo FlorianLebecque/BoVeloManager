@@ -83,6 +83,8 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
             if (Controler.Instance.tempSale.RemoveStockKit())
             {
                 Controler.Instance.tempSale.saveSale();
+                BoVeloManager.Sales.Sales.Instance.init();
+                stock.stock.Instance.init();
             }
             else
             {

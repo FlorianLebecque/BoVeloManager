@@ -155,11 +155,17 @@ namespace BoVeloManager.Classes
                     int poste = Controler.Instance.getAvailablePoste();
 
                     Bike tempB = new Bike(bikeID, 0, saleID, poste, bt, planned_date, constr_date);
+
+                    sale.addbike(tempB);
                     Controler.Instance.createBike(tempB);
                 }
 
 
             }
+
+            Bike bk = sale.getBikeList().Last();
+            sale.setPrevSaleDate(bk.getPlannedtDate());
+
 
             drainTempSale();
         }

@@ -153,14 +153,13 @@ namespace BoVeloManager.UI.Planning {
 
             }else if (State == 1 && (tools.UI.MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
                 State += 1;
-
+                BoVeloManager.Sales.Sales.Instance.init();  //update sale display
             } else if (State == 2) {
                 tools.UI.MessageBox.Show("Bike already done", "Bike status");
             }
 
-            bk.setState(State);
-            bk.getConstructionDate(DateTime.Now);
-            tools.DatabaseClassInterface.updateBike(bk);
+            Controler.Instance.updateBikeStatus(bk, State);
+
 
             init();
 

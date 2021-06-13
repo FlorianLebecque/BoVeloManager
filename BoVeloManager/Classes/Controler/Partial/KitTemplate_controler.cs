@@ -36,5 +36,41 @@ namespace BoVeloManager.Classes {
             return kitTemplateList;
         }
 
+        public int[] getNewLocation()
+        {
+
+            int[] locations = { 1, 1};
+
+            while (contains(locations))
+            {
+                if (locations[1] < 10) {
+                    locations[1]++;
+                }
+                else
+                {
+                    locations[0]++;
+                    locations[1] = 1;
+                }
+            }
+
+            return locations;
+        }
+
+        private bool contains(int[] locations)
+        {
+
+            List<KitTemplate> kitTemplateList = getKitTemplateList();
+
+            foreach (KitTemplate kt in kitTemplateList)
+            {
+                if(kt.getStockLocationX()==locations[0] && kt.getStockLocationY() == locations[1])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }

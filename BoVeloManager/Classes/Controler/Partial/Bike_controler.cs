@@ -70,5 +70,20 @@ namespace BoVeloManager.Classes {
             return temp;
         }
 
+        public void updateBikeStatus(Bike b,int status) {
+            b.setState(status);
+            b.getConstructionDate(DateTime.Now);
+
+            DatabaseClassInterface.updateBike(b);
+
+                //update the sale status if every bike is build
+            getSale_byId(b.getSaleId()).updateStatus();
+            
+
+            //check other bike
+
+        }
+
+
     }
 }

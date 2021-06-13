@@ -92,8 +92,8 @@ namespace BoVeloManager.tools {
             return "SELECT K.id FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
-        public static string addKit(int id, string name, string prop, int price, int cat) {
-            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "')";
+        public static string addKit(int id, string name, string prop, int price, int cat, int stockQtt, int locX, int locY, int bikeQtt) {
+            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`,`stock_qtt`,`location_x`,`location_y`,`bike_qtt`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "','" + stockQtt.ToString() + "','" + locX.ToString() + "','" + locY.ToString() + "','" + bikeQtt.ToString() + "')";
         }
 
         public static string addCompatibleKit(int id_cat, int id_tKit) {
@@ -108,8 +108,8 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
         }
 
-        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int bike_qtt) {
-            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "' WHERE `id`=" + id;
+        public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int locX, int locY, int bike_qtt) {
+            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "',`location_x`='" + locX.ToString() + "',`location_y`='" + locY.ToString() + "' WHERE `id`=" + id;
 
         }
 
@@ -162,7 +162,7 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
         }
 
-        public static string updateCommande(Commande c) {
+        public static string updateTransaction(Transaction c) {
             return "UPDATE `bv_sale` SET `state` = '" + c.getState() + "' , `prevision_date` = '" + c.getPreSaleDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + c.getId().ToString();
         }
 

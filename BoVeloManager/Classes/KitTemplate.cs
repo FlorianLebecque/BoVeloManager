@@ -82,6 +82,14 @@ namespace BoVeloManager.Classes {
             stock_qtt = new_stock;
             DatabaseClassInterface.updateKitTemplate(this);
         }
+
+        public void setLocations(int locX, int locY)
+        {
+            stock_location_x = locX;
+            stock_location_y = locY;
+            DatabaseClassInterface.updateKitTemplate(this);
+        }
+
         public Dictionary<string,int> getLocation()
         {
             Dictionary<string, int> location = new Dictionary<string, int>();

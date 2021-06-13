@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVeloManager.Classes;
+using BoVeloManager.tools;
 
 namespace BoVeloManager.Classes {
     public class Sale : Transaction {
@@ -14,6 +15,32 @@ namespace BoVeloManager.Classes {
             
             bikeList = bikeList_.Where(b => b.getSaleId() == id_).ToList();
 
+        }
+
+        public void updateStatus() {
+
+            bool result = true;
+            foreach(Bike b in bikeList) {
+                if(b.getState() != 2) {
+                    result = false;
+                    break;
+                }
+            }
+
+            if (result) {
+                state = "Completed";
+                DatabaseClassInterface.updateSale(this);
+            }
+
+        }
+
+        public void addbike(Bike b) {
+            bikeList.Add(b);
+        }
+
+        public void setPrevSaleDate(DateTime t) {
+            prevision_date = t;
+            DatabaseClassInterface.updateSale(this);
         }
 
         public new DateTime getPreSaleDate() {
