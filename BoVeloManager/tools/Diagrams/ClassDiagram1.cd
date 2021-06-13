@@ -18,6 +18,9 @@
   <Comment CommentText="">
     <Position X="0.65" Y="9.511" Height="3.009" Width="0.7" />
   </Comment>
+  <Comment CommentText="ENUM">
+    <Position X="6.489" Y="0.985" Height="0.313" Width="0.88" />
+  </Comment>
   <Class Name="BoVeloManager.Dashboard" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="9.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
@@ -55,7 +58,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AgAAAQABAAQAAAAAACAAABAEAAAAAAoAAAAEAAQABgA=</HashCode>
+      <HashCode>AgAAAQABAAQAgAQAAKAAABAEAAAAAAqAAAAEgAQABgA=</HashCode>
       <FileName>Classes\BikeTemplate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -75,6 +78,13 @@
   </Class>
   <Class Name="BoVeloManager.Classes.Commande" Collapsed="true">
     <Position X="3.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="BoVeloManager.Classes.Commande.displayInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\Commande.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIQAAAAAAABAAAAASAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Commande.cs</FileName>
@@ -88,9 +98,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BoVeloManager.Classes.Controler" Collapsed="true">
-    <Position X="7" Y="7.25" Width="1.5" />
+    <Position X="5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QVAACyaQwIAOAhYAHAA4JCFyCoxABKLiQBgNjEABoEo=</HashCode>
+      <HashCode>QVAACyaQwIAOAhYAHAA4JCFyCgxABKLiQBgNjEABoEo=</HashCode>
       <FileName>Classes\Controler\Controler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -104,7 +114,7 @@
   <Class Name="BoVeloManager.Classes.KitTemplate" Collapsed="true">
     <Position X="1.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgIBBgAAAAuIAYAACAAAARAkACAEAIBAAIAEAAgABgA=</HashCode>
+      <HashCode>AgIBBgAAAAuIAYAACAAAARAEACgEAIBAAIAEAAgABgA=</HashCode>
       <FileName>Classes\KitTemplate.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -377,7 +387,7 @@
     <Lollipop Position="1.061" Collapsed="true" />
   </Class>
   <Enum Name="BoVeloManager.Classes.KitCategory" Collapsed="true">
-    <Position X="6.5" Y="1.25" Width="1.5" />
+    <Position X="6.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQABgQAAAAAIAAAMAAQAAAAAAAIACQIEAQEAEQUAAAQ=</HashCode>
       <FileName>Enum\Category.cs</FileName>
