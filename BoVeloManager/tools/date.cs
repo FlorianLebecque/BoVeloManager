@@ -41,7 +41,12 @@ namespace BoVeloManager.tools
         }
 
         public static int getNBRWeek(DateTime dt) {
-            return (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
+            int nbr = (new GregorianCalendar(GregorianCalendarTypes.Localized).GetWeekOfYear(dt, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday));
+            if((dt.DayOfWeek == DayOfWeek.Saturday)||(dt.DayOfWeek == DayOfWeek.Sunday)){
+                nbr++;
+            }
+                
+                return nbr;
         }
 
     }
