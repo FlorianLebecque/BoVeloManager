@@ -32,8 +32,6 @@ namespace BoVeloManager.UI.Planning.description {
             
             int state = bk.getState();
 
-            
-
             if ((state == 2)&&(Controler.Instance.getCurrentUser().getName() != "God")) {
                 cb_state.IsEnabled = false;
                 dp_pld_date.IsEnabled = false;
@@ -90,21 +88,21 @@ namespace BoVeloManager.UI.Planning.description {
             if (has_init)
             {
                 int nextState = bk.getState();
+                if(nextState != 2) {
+                    if ((cb_state.SelectedIndex == 2) && (tools.UI.MessageBox.Show("This action is ireversible are you sure ?", "Bike state", MessageBoxButton.YesNo) == MessageBoxResult.Yes)) {
+                        nextState = cb_state.SelectedIndex;
+                    } else if (cb_state.SelectedIndex != 2) {
+                        nextState = cb_state.SelectedIndex;
+                    }
 
-                if ((cb_state.SelectedIndex == 2)&&(tools.UI.MessageBox.Show("This action is ireversible are you sure ?","Bike state",MessageBoxButton.YesNo) == MessageBoxResult.Yes)){
-                    nextState = cb_state.SelectedIndex;
+                    Controler.Instance.updateBikeStatus(bk, nextState);
+                    tb_cst_date.SelectedDate = bk.getConstructionDate();
+
+                    BoVeloManager.Sales.Sales.Instance.init();
+                    init();
                 }
-                else if(cb_state.SelectedIndex != 2){
-                    nextState = cb_state.SelectedIndex;
-                }
-
-                Controler.Instance.updateBikeStatus(bk, nextState);
-                tb_cst_date.SelectedDate = bk.getConstructionDate();
-
-                BoVeloManager.Sales.Sales.Instance.init();
-                init();
+                
             }
-            //J'ai pas fait le querry dans database mais jai mis le setState dans Bike, je sais pas si il est nécessaire de faire un setBikeState si il y a un updateBike qui traite le status?
 
         }
 

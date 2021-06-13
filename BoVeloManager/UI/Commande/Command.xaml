@@ -34,7 +34,7 @@
 
 
                     <!-- Data Grid Sales  -->
-                    <DataGrid Name="dg_CommandesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid ScrollViewer.CanContentScroll="False" Name="dg_CommandesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Supplier" Binding="{Binding Path='client_name'}" IsReadOnly="True" />
@@ -57,7 +57,7 @@
                 </Grid>
             </TabItem>
             <!-- Supplier -->
-            <TabItem Header="Supplier">
+            <TabItem Header="Suppliers">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
@@ -70,7 +70,7 @@
                         </Button>
                     </StackPanel>
 
-                    <DataGrid Name="dg_supplierList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
+                    <DataGrid ScrollViewer.CanContentScroll="False" Name="dg_supplierList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
