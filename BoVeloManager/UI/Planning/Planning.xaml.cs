@@ -160,6 +160,9 @@ namespace BoVeloManager.UI.Planning {
 
             Controler.Instance.updateBikeStatus(bk, State);
 
+            if((bk.getSaleId() == -1)&&(bk.getState() == 2)) {
+                stock.stock.Instance.init();
+            }
 
             init();
 

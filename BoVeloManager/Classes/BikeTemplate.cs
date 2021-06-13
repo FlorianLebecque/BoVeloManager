@@ -84,6 +84,7 @@ namespace BoVeloManager.Classes
             }
             return propKit;
         }
+
         
         public displayInfo getDisplayInfo()
         {
@@ -94,6 +95,7 @@ namespace BoVeloManager.Classes
             dI.name = getName();
             dI.BikeTemp = this;
             dI.propKit = getPropkitString();
+            dI.KitTemplList = KitTemplList;
             return dI;
         }
 
@@ -105,6 +107,10 @@ namespace BoVeloManager.Classes
             public string name { get; set; }
             public string price { get; set; }
             public string priceMul { get; set; }
+            public string fullname { get {
+                    KitTemplate kt_fram = KitTemplList.Where(x => x.getCategory() == KitCategory.frame).ToList()[0];
+                    return name + " " + kt_fram.getFullName();
+                } }
         }
         
     }
