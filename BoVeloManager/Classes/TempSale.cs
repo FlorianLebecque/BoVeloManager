@@ -135,6 +135,12 @@ namespace BoVeloManager.Classes
                 int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
                 bt.setId(id_bt);
 
+                //bt.Color = b.color;
+                //bt.Size  = b.size;
+                bt.Color = "**couleur**";
+                bt.Size = "**size**";
+
+
                 Controler.Instance.createBikeTemplate(bt);
 
                 for (int i = 0; i < b.qnt; i++) {
