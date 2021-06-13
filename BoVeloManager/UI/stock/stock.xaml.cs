@@ -58,6 +58,7 @@ namespace BoVeloManager.stock {
 
         private void bt_Order_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         public static stock Instance
@@ -67,6 +68,5 @@ namespace BoVeloManager.stock {
                 return instance;
             }
         }
-
     }
 }
