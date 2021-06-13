@@ -9,24 +9,24 @@ namespace BoVeloManager.Classes
     // Rassemble tous les composants nécaissaires a l'encodage de la vente
     public class TempSale
     {
-        #region old
-       // private Dictionary<BikeTemplate, int> basket = new Dictionary<BikeTemplate, int>();
-
         private Client client;
 
         int saleID;
 
         private List<Bike> bikeList;
         private BikeTemplate tempBikeTemplate;
-        private List<BikeTemplate> newBikeTemplates;
-
-        #endregion
+        private List<BikeTemplate> newBikeTemplates;        
 
         public Dictionary<string, BikeBasket> Basket = new Dictionary<string, BikeBasket>();
+        private Dictionary<KitTemplate, int> Missing_Kit;
 
         public TempSale() {
             bikeList = new List<Bike>();
             newBikeTemplates = new List<BikeTemplate>();
+        }
+        public Dictionary<KitTemplate, int> getMissingKits()
+        {
+            return Missing_Kit;
         }
 
         public void setBikeBasket(BikeBasket bc) {
@@ -75,16 +75,26 @@ namespace BoVeloManager.Classes
         // Verification si tous les kits sont disponnibles
         private bool isKitAvailable()
         {
+            Missing_Kit = new Dictionary<KitTemplate, int>();
+
             foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
             {
                 if (kvp.Value >= kvp.Key.getStockQtt())
                 {
-                    return false;
+                    int nbr_mk = kvp.Value - kvp.Key.getStockQtt();
+                    Missing_Kit.Add(kvp.Key, nbr_mk);
                 }
             }
-            return true;
+            if (Missing_Kit.Count() == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-       
+        
         public bool RemoveStockKit()
         {
             if (isKitAvailable())

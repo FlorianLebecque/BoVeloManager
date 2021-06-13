@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BoVeloManager.UI.Catalogue.Confirmation"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Confirmation" Height="500" Width="349" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Confirmation" Height="500" Width="370" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Border Padding="0 0 0 0">
 
@@ -75,17 +75,17 @@
 
                                     <Grid Width="Auto"  HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="0.5*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Text="{Binding displayName}" Margin="2" Grid.Column="0"  HorizontalAlignment="Left" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding qnt}" Grid.Column="1"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
-                                        <TextBlock Text="{Binding pricestr}" Grid.Column="2"  HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
-                                        <Button x:Name="bt_delete" Grid.Column="4" Width="30" Height="30" Click="bt_delete_Click">
-                                            <materialDesign:PackIcon Width="25" Height="25" Kind="Bin"></materialDesign:PackIcon>
+                                        <TextBlock Text="{Binding qnt}" Margin="2" Grid.Column="0" VerticalAlignment="Center"  HorizontalAlignment="Left" FontWeight="Bold" TextAlignment="Right"/>
+                                        <TextBlock Text="{Binding displayName}" Margin="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding pricestr}" Margin="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold" TextAlignment="Right"/>
+                                        <Button Grid.Column="4" Width="22" Height="22" Padding="0" Click="bt_delete_Click">
+                                            <materialDesign:PackIcon Kind="Bin" VerticalAlignment="Center" HorizontalAlignment="Left"></materialDesign:PackIcon>
                                         </Button>
                                     </Grid>
 

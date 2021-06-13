@@ -52,7 +52,20 @@ namespace BoVeloManager.Catalogue {
 
         private void Add_Bike_Click(object sender, RoutedEventArgs e){
             BikeBasket b = ((BikeBasket)((System.Windows.Controls.Button)e.Source).DataContext);
-            Controler.Instance.tempSale.setBikeBasket(b);
+            if (b.qnt == 1)
+            {
+                tools.UI.MessageBox.Show("Bike added to basket", "Bike Added");
+                Controler.Instance.tempSale.setBikeBasket(b);
+            }
+            else if (b.qnt == 0)
+            {
+                tools.UI.MessageBox.Show("Bike quantity is 0", "Error");
+            }
+            else
+            {
+                tools.UI.MessageBox.Show("Bikes added to basket", "Bikes Added");
+                Controler.Instance.tempSale.setBikeBasket(b);
+            }            
         }
 
         private void DisplayCatalogue(){
