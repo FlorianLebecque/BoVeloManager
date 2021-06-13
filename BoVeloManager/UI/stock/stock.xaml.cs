@@ -28,8 +28,11 @@ namespace BoVeloManager.stock {
         private stock() {
             InitializeComponent();
             crtl = Controler.Instance;
-            update_dg_kitTemplateList();
+            init();
+        }
 
+        public void init() {
+            update_dg_kitTemplateList();
         }
 
         private void update_dg_kitTemplateList()
