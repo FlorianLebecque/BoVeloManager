@@ -26,6 +26,7 @@ namespace BoVeloManager.Classes {
         //this function displays the sales according to a search string
         public List<Client.displayInfo> GetClientDisplayInfo_search(string str)
         {
+            str = str.ToUpper();
             if (str == "")
             {
                 return GetClientDisplayInfo();
@@ -36,11 +37,11 @@ namespace BoVeloManager.Classes {
 
                 foreach (Client s in clientList)
                 {
-                    if (s.getFirstName().Contains(str) || s.getLastName().Contains(str) || s.getName().Contains(str))
+                    if (s.getFirstName().ToUpper().Contains(str) || s.getLastName().ToUpper().Contains(str) || s.getName().ToUpper().Contains(str))
                     {
                         temp.Add(s.GetDisplayInfo());
                     }
-                    else if (s.getEmail().Contains(str) || s.getEtpName().Contains(str) || s.getEtpAdress().Contains(str) || s.getPhoneNumb().Contains(str) || s.getId().ToString().Contains(str))
+                    else if (s.getEmail().ToUpper().Contains(str) || s.getEtpName().ToUpper().Contains(str) || s.getEtpAdress().ToUpper().Contains(str) || s.getPhoneNumb().ToUpper().Contains(str) || s.getId().ToString().ToUpper().Contains(str))
                     {
                         temp.Add(s.GetDisplayInfo());
                     }
