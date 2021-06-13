@@ -34,9 +34,9 @@ namespace BoVeloManager.Classes
             string key = bc.name + bc.size + bc.color;
 
             if (Basket.ContainsKey(key)) {
-                Basket[key] = bc;
+                Basket[key] = new BikeBasket(bc);
             } else {
-                Basket.Add(key, bc);
+                Basket.Add(key, new BikeBasket(bc));
             }
         }
 
@@ -49,15 +49,6 @@ namespace BoVeloManager.Classes
 
         public void setClient(Client c) {
             client = c;
-        }
-
-        public List<Bike> GenBikeList() {
-            List<Bike> temp = new List<Bike>();
-
-
-
-
-            return temp;
         }
 
         private Dictionary<KitTemplate, int> getAllKit()
@@ -160,30 +151,25 @@ namespace BoVeloManager.Classes
                     Controler.Instance.createBike(tempB);
                 }
 
-
             }
 
             Bike bk = sale.getBikeList().Last();
             sale.setPrevSaleDate(bk.getPlannedtDate());
 
-
             drainTempSale();
         }
 
             //get the first available date
-        private DateTime getNextPrevisionDate()
-        {
+        public static DateTime getNextPrevisionDate() {
             return Controler.Instance.getFirstAvailableDay();
         }
 
-        private DateTime getConstrDate()
-        {
+        public static DateTime getConstrDate() {
             return DateTime.Now;
         }
 
-        public void drainTempSale()
-        {
-            //Controler.Instance.tempSale = new TempSale();
+        public void drainTempSale() {
+            Controler.Instance.tempSale = new TempSale();
         }
 
     }
@@ -212,6 +198,25 @@ namespace BoVeloManager.Classes
             sizeList = sizes;
             colorList = colors;
             curbike = cb;
+        }
+
+        public BikeBasket(string name_, string color_, string size_, CatalogBike cb,int qnt_) {
+            name = name_;
+            color = color_;
+            size = size_;
+            curbike = cb;
+            qnt = qnt_;
+        }
+
+        public BikeBasket(BikeBasket bk) {
+            pic  = bk.pic;
+            name = bk.name;
+            sizeList = bk.sizeList;
+            colorList = bk.colorList;
+            size = bk.size;
+            color = bk.color;
+            qnt = bk.qnt;
+            curbike = bk.curbike;
         }
 
         public BikeTemplate CreateBikeTemplate() {

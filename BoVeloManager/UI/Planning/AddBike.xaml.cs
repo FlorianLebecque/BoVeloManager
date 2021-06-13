@@ -20,166 +20,62 @@ namespace BoVeloManager.UI.Planning
     /// </summary>
     public partial class AddBike : Window
     {
-        public AddBike()
-        {
+        public AddBike() {
             InitializeComponent();
-            
-            BindComboBoxCat();
+            init();
         }
 
-        private void BTLogin_Click(object sender, RoutedEventArgs a)
-        {
-            int indexCatalog = BikeCatalog.SelectedIndex;
-            int indexSize = BikeSize.SelectedIndex;
-            int indexColor = BikeColor.SelectedIndex;
-            int Quantity = Convert.ToInt32(BikeQuantity.Text);
+        private void init() {
+            BikeCatalog.ItemsSource = Controler.Instance.getCatalogBikeDisplayInfo();
+            setCombobox(((CatalogBike.displayInfo)BikeCatalog.SelectedItem).CurCatBike);
+        }
 
-            List<BikeTemplate> BikeTemplateList = Controler.Instance.getBikeTemplateList();
-            List<KitTemplate> Size = new List<KitTemplate>();
-            List<KitTemplate> Color = new List<KitTemplate>();
+        private void setCombobox(CatalogBike cb) {
+            (BikeSize.ItemsSource, BikeColor.ItemsSource) = cb.getProperties();
 
-            List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
+        }
+        
 
-            foreach (KitTemplate kit in KitList)
-            {
-                KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
-                string kit_cat = kit_class.category;
-
-                if (kit_cat == "Size")
-                {
-                    Size.Add(kit);
-                }
-                else if (kit_cat == "Color")
-                {
-                    Color.Add(kit);
-                }
-
-            }
-            int done = 0;
-            foreach (BikeTemplate bt in BikeTemplateList)
-            {
-                    
-                    List<KitTemplate> x = new List<KitTemplate>() {Size[indexSize], Color[indexColor]};
-                    if(compare(bt.getListKit(),x) && done == 0)
-                    {
-                        for (int i = 0; i < Quantity; i++)
-                        {
-                            DateTime plan_day = Controler.Instance.getFirstAvailableDay();
-                            int poste = Controler.Instance.getAvailablePoste();
-
-                            Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, poste, bt, plan_day, DateTime.MinValue);/////////////////
-                            //Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, -1, 2, bt, DateTime.Now, DateTime.MinValue);
-                        addBike(b);
-                        }
-                    done = 1;
-                }
-            }
-            if (done == 0)
-            {
-                for (int i = 0; i < Quantity; i++)
-                {
-                    BikeTemplate newbt = new BikeTemplate(Controler.Instance.getLastBikeTemplate()+1, Controler.Instance.getCatalogBike()[indexCatalog]);
-                    newbt.linkKitTemplate(Size[indexSize]);
-                    newbt.linkKitTemplate(Color[indexColor]);
-                    Controler.Instance.createBikeTemplate(newbt);
-
-                    DateTime plan_day = Controler.Instance.getFirstAvailableDay();
-                    int poste = Controler.Instance.getAvailablePoste();
-
-                    Bike b = new Bike(Controler.Instance.getLastBike()+1, 0, -1, poste, Controler.Instance.getBikeTemplateById(newbt.getId()), plan_day, DateTime.MinValue);//////////
-                    //Bike b = new Bike(Controler.Instance.getLastBike() + 1, 0, -1, 2, Controler.Instance.getBikeTemplateById(newbt.getId()), DateTime.Now, DateTime.MinValue);
-                    addBike(b);
-                }
-            }
+        private void BTCancel_Click(object sender, RoutedEventArgs e) {
             this.Close();
 
+        }
+
+        private void BikeCatalog_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            setCombobox(((CatalogBike.displayInfo)BikeCatalog.SelectedItem).CurCatBike);
 
         }
 
-        private bool compare(List<KitTemplate> x, List<KitTemplate> y)
-        {
-            if ((x.Count() == y.Count()) && (x.Count()==2) &&(y.Count()==2))
-            {
-                if ((x[0].Equals(y[0]))&&(x[1].Equals(y[1])))
-                {
-                    return true;
-                }
-                if ((x[0].Equals(y[1])) && (x[1].Equals(y[0])))
-                {
-                    return true;
-                }
+        private void BT_Add_Click(object sender, RoutedEventArgs e) {
+
+            int qnt = Convert.ToInt32(BikeQuantity.Text);
+
+            string b_name   = ((CatalogBike.displayInfo)BikeCatalog.SelectedItem).name;
+            string b_color  = BikeColor.SelectedItem.ToString();
+            string b_size   = BikeSize.SelectedItem.ToString();
+            CatalogBike cb  = ((CatalogBike.displayInfo)BikeCatalog.SelectedItem).CurCatBike;
+
+            BikeBasket bb = new BikeBasket(b_name, b_color, b_size, cb,qnt);
+
+            BikeTemplate bt = bb.CreateBikeTemplate();
+            int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
+            bt.setId(id_bt);
+            Controler.Instance.createBikeTemplate(bt);
+
+            for (int i = 0; i < bb.qnt; i++) {
+                int bikeID = Controler.Instance.getLastBikeId() + 1;
+
+                DateTime constr_date = TempSale.getConstrDate();
+                DateTime planned_date = TempSale.getNextPrevisionDate();
+
+                int poste = Controler.Instance.getAvailablePoste();
+
+                Bike tempB = new Bike(bikeID, 0, -1, poste, bt, planned_date, constr_date);
+
+                Controler.Instance.createBike(tempB);
             }
-            return false;
-        }
 
-        private void addBike(Bike bike)
-        {
-            try
-            {
-                Controler.Instance.createBike(bike);
-            }
-            catch
-            {
-                MessageBox.Show("An error has occured");
-            }
-        }
-
-
-
-        private void BTCancel_Click(object sender, RoutedEventArgs e)
-        {
             this.Close();
-        }
-
-        private void BindComboBox()
-        {
-            int indexCatalog = BikeCatalog.SelectedIndex;
-            int idCatalogue = Controler.Instance.getCatalogBike()[indexCatalog].getId();
-            List<string> Size = new List<string>();
-            List<string> Color = new List<string>();
-
-            //List<KitTemplate> KitList = Controler.Instance.getKitTemplateList();
-            List<KitTemplate> KitList = Controler.Instance.getCatalogBike()[indexCatalog].getKitTemplateList();
-
-            foreach (KitTemplate kit in KitList)
-            {
-                KitTemplate.displayInfo kit_class = kit.GetDisplayInfo();
-                string kit_cat = kit_class.category;
-
-                if (kit_cat == "Size")
-                {
-                    Size.Add(kit_class.properties);
-                }
-                else if (kit_cat == "Color")
-                {
-                    Color.Add(kit_class.name);
-                }
- 
-            }
-
-            BikeSize.ItemsSource = Size;
-            BikeColor.ItemsSource = Color;
-
-        }
-
-        private void BindComboBoxCat()
-        {
-            List<string> Cat = new List<string>();
-
-            List<CatalogBike> CatList = Controler.Instance.getCatalogBike();
-
-            foreach (CatalogBike c in CatList)
-            {
-                Cat.Add(c.getName());
-            }
-
-            BikeCatalog.ItemsSource = Cat;
-
-        }
-
-        private void BikeCatalog_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            BindComboBox();
         }
     }
 }

@@ -38,6 +38,7 @@ namespace BoVeloManager.Classes {
         public float getPriceMul() {
             return PriceMul;
         }
+
         public int getPriceMulDiv() {
             return PriceMul;
         }
@@ -55,6 +56,26 @@ namespace BoVeloManager.Classes {
             kitTemplateList.Remove(kt);
             
         }
+
+        public (List<string>,List<string>) getProperties() {
+            List<string> sizeList = new List<string>();
+            List<string> colorList = new List<string>();
+
+            // Pour chaque kittemplate de categorie 0
+            foreach (KitTemplate kt in kitTemplateList.Where(x => x.getCategory() == KitCategory.frame).ToList()) {
+                string[] prop = kt.getProperties().Split('|');
+                if (!sizeList.Contains(prop[0])) {
+                    sizeList.Add(prop[0]);
+                }
+                if (!colorList.Contains(prop[1])) {
+                    colorList.Add(prop[1]);
+                }
+
+            }
+
+            return (sizeList, colorList);
+        }
+
 
         public List<KitTemplate> getKitTemplateList() {
             return kitTemplateList;

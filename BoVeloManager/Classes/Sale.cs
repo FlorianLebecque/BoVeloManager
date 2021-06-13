@@ -93,6 +93,33 @@ namespace BoVeloManager.Classes {
             public string state { get; set; }
             public string sale_date { get; set; }
             public string prevision_date { get; set; }
+            public string bikesStatus {
+                get {
+                    int nbrBikes = CurSale.getBikeList().Count();
+                    int count_w = 0;
+                    int count_p = 0;
+                    int count_d = 0;
+                    foreach(Bike b in CurSale.getBikeList()) {
+                        switch (b.getState()) {
+                            case 0:
+                                count_w++;
+                                break;
+                            case 1:
+                                count_p++;
+                                break;
+                            case 2:
+                                count_d++;
+                                break;
+                        }
+                    }
+                    
+                    if(nbrBikes == count_d) {
+                        CurSale.updateStatus();
+                    }
+
+                    return count_w.ToString() + " - " + count_p.ToString() + " - " + count_d.ToString() + " /" + nbrBikes.ToString();
+                }
+            }
         }
         
         public descrInfo GetSaleDescrInfo() {
