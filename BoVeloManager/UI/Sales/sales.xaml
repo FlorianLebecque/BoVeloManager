@@ -41,7 +41,7 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    <DataGrid Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
+                    <DataGrid ScrollViewer.CanContentScroll="False" Name="dg_salesList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="5">
                         
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
@@ -84,7 +84,7 @@
                         </TextBox.Background>
                     </TextBox>
 
-                    <DataGrid Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
+                    <DataGrid ScrollViewer.CanContentScroll="False" Name="dg_clientList" Margin="0,0,0,0" Grid.Row="1" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" FrozenColumnCount="9">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.5*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />

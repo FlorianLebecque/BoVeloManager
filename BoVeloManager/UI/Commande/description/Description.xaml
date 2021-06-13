@@ -70,7 +70,7 @@
                 </Grid>
 
                 <Border BorderThickness="0,2" BorderBrush="DarkGray">
-                    <ListBox HorizontalContentAlignment="Stretch" Margin="5" x:Name="kitList" MaxHeight="240" Height="240">
+                    <ListBox ScrollViewer.CanContentScroll="False" HorizontalContentAlignment="Stretch" Margin="5" x:Name="kitList" MaxHeight="240" Height="240">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0">
