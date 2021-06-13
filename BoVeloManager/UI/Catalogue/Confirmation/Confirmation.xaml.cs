@@ -86,8 +86,15 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
             }
             else
             {
+                Dictionary<KitTemplate, int> MissingKits = Controler.Instance.tempSale.getMissingKits();
                 // boite de dialogue : Il manque du matériel !! SHIT SHIT SHIT
-                tools.UI.MessageBox.Show("Stock is missing", "Alert");
+                string alert = "Missing Kits : \n";
+                foreach (KeyValuePair<KitTemplate, int> kvp in MissingKits)
+                {
+                    string L0 = kvp.Value.ToString() + " " + kvp.Key.getStockName() + "\n";
+                    alert += L0;
+                }
+                tools.UI.MessageBox.Show(alert, "Alert");
             }
             this.Close();
         }
