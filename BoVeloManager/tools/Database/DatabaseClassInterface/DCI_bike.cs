@@ -15,7 +15,7 @@ namespace BoVeloManager.tools {
             return Database.setData(q);
         }
 
-        public static List<Bike> getBikes(List<BikeTemplate> btList) {
+        public static List<Bike> getBikes(Dictionary<string, BikeTemplate> btList) {
             string query = DatabaseQuery.getBike();
             DataTable dt = tools.Database.getData(query);
 
@@ -43,7 +43,7 @@ namespace BoVeloManager.tools {
                     Constr_date = DateTime.MinValue;
                 }
 
-                foreach (BikeTemplate bt in btList) {
+                foreach (BikeTemplate bt in btList.Values) {
                     if (bt.getId() == id_tBike) {
                         temp.Add(new Bike(id, state, id_sale, poste, bt, planned_date, Constr_date));
                     }

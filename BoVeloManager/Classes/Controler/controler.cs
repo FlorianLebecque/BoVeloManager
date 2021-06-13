@@ -19,7 +19,7 @@ namespace BoVeloManager.Classes
         private List<Supplier> supplierList;
         private List<Bike> bikeList;
         private List<CatalogBike> CatalogBikeList;
-        private List<BikeTemplate> bikeTemplateList;
+        private Dictionary<string,BikeTemplate> bikeTemplateList;
         private List<Sale> saleList;
         private List<KitTemplate> kitTemplateList;
         private List<Commande> CommandeList;

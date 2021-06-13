@@ -23,7 +23,13 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0">Catalog :</Label>
-                    <ComboBox Grid.Column="1" Name="BikeCatalog" Margin="5,5,5,5" SelectedIndex="0" Foreground="Black" Grid.ColumnSpan="2" SelectionChanged="BikeCatalog_SelectionChanged"/>
+                    <ComboBox Grid.Column="1" Name="BikeCatalog" Margin="5,5,5,5" SelectedIndex="0" Foreground="Black" Grid.ColumnSpan="2" SelectionChanged="BikeCatalog_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
                 <!-- Size -->
                 <Grid Margin="5 10 5 0">
@@ -63,7 +69,7 @@
                 <Button x:Name="BT_cancel" Margin="5 5 5 5" Grid.Column="1" Width="60" VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTCancel_Click" HorizontalAlignment="Left">
                     <materialDesign:PackIcon Kind="Cancel"/>
                 </Button>
-                <Button x:Name="BT_Add"    Margin="5 5 5 5" Grid.Column="1" Width="60" VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" Click="BTLogin_Click" HorizontalAlignment="Right">
+                <Button x:Name="BT_Add"    Margin="5 5 5 5" Grid.Column="1" Width="60" VerticalAlignment="Bottom" FontSize="16" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Click="BT_Add_Click">
                     <materialDesign:PackIcon Kind="Add"/>
                 </Button>
             </Grid>

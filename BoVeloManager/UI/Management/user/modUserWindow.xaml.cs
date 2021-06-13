@@ -91,8 +91,6 @@ namespace BoVeloManager.Management.user {
 
             if(res == 1) {
                 tools.UI.MessageBox.Show("User updated","Action confirmation");
-            } else {
-                tools.UI.MessageBox.Show("Something wrong happend","Error");
             }
 
             this.Close();

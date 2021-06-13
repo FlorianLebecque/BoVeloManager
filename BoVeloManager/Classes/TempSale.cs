@@ -126,16 +126,17 @@ namespace BoVeloManager.Classes
             List<Client> clientList = Controler.Instance.getClientList();
 
 
-            Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, bikeList, userList, clientList);
+            Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, userList, clientList);
             Controler.Instance.createSale(sale);
 
 
             foreach(BikeBasket b in Basket.Values) {
                 BikeTemplate bt = b.CreateBikeTemplate();
-                int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
-                bt.setId(id_bt);
-
-                Controler.Instance.createBikeTemplate(bt);
+                if(bt.getId() == -1) {
+                    int id_bt = Controler.Instance.getLastBikeTemplateId() + 1;
+                    bt.setId(id_bt);
+                    Controler.Instance.createBikeTemplate(bt);
+                }
 
                 for (int i = 0; i < b.qnt; i++) {
                     int bikeID = Controler.Instance.getLastBikeId() + 1;
@@ -160,11 +161,11 @@ namespace BoVeloManager.Classes
         }
 
             //get the first available date
-        private DateTime getNextPrevisionDate() {
+        public static DateTime getNextPrevisionDate() {
             return Controler.Instance.getFirstAvailableDay();
         }
 
-        private DateTime getConstrDate() {
+        public static DateTime getConstrDate() {
             return DateTime.Now;
         }
 
@@ -198,6 +199,14 @@ namespace BoVeloManager.Classes
             sizeList = sizes;
             colorList = colors;
             curbike = cb;
+        }
+
+        public BikeBasket(string name_, string color_, string size_, CatalogBike cb,int qnt_) {
+            name = name_;
+            color = color_;
+            size = size_;
+            curbike = cb;
+            qnt = qnt_;
         }
 
         public BikeBasket(BikeBasket bk) {
@@ -239,6 +248,10 @@ namespace BoVeloManager.Classes
 
                 }
 
+            }
+
+            if (Controler.Instance.getBikeTemplateList().ContainsKey(bt.Key)) {
+                return Controler.Instance.getBikeTemplateList()[bt.Key];
             }
 
             return bt;

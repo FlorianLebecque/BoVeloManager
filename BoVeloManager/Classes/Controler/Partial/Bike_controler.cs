@@ -49,7 +49,7 @@ namespace BoVeloManager.Classes {
 
         public int getLastBikeTemplate() {
             if (bikeTemplateList.Count > 0) {
-                return bikeTemplateList.Select(x => x.getId()).Max();
+                return bikeTemplateList.Values.Select(x => x.getId()).Max();
             }
             return 0;
         }

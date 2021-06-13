@@ -125,7 +125,7 @@ namespace BoVeloManager.Classes {
                 return  "● " + this.getName() + " [" + this.getProperties() + "]";
             }
         }
-        public string getStockName()
+        public string getFullName()
         {
             string[] prop = getProperties().Split('|');
             switch (prop.Length)
@@ -151,8 +151,8 @@ namespace BoVeloManager.Classes {
             temp.priceInt = getPrice();
             temp.properties = this.getProperties();
             temp.fancyName = getPropkitString();
-            temp.StockName = getStockName();
-            temp.BikeQtt_Name = getBikeQtt() + " " + getName();
+            temp.FullName = getFullName();
+            temp.BikeQtt_Name = getBikeQtt() + " " + getFullName();
             temp.stock_qtt = this.getStockQtt().ToString();
             temp.stock_location_x = this.getStockLocationX().ToString();
             temp.stock_location_y = this.getStockLocationY().ToString();
@@ -169,7 +169,7 @@ namespace BoVeloManager.Classes {
             public string price { get; set; }
             public int priceInt { get; set; }
             public string fancyName { get; set; }
-            public string StockName { get; set; }
+            public string FullName { get; set; }
             public string BikeQtt_Name { get; set; }
             public string properties { get; set; }
             public string stock_qtt { get; set; }

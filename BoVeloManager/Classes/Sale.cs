@@ -9,16 +9,19 @@ using BoVeloManager.tools;
 namespace BoVeloManager.Classes {
     public class Sale : Transaction {
         
-        private List<Bike> bikeList;
+        private List<Bike> bikeList {
+            get {
+                return Controler.Instance.getBikesList().Where(x => x.getSaleId() == id).ToList();
+            }
+        }
 
-        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_,List<Bike> bikeList_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList.Cast<Human>().ToList()) {
-            
-            bikeList = bikeList_.Where(b => b.getSaleId() == id_).ToList();
+        public Sale(int id_, int id_seller, int id_client, string state_, DateTime sale_date_, DateTime prevision_date_, List<User> userList, List<Client> clientList) : base(id_,id_seller,id_client,state_,sale_date_,prevision_date_,userList,clientList.Cast<Human>().ToList()) {
 
         }
 
         public void updateStatus() {
 
+            
             bool result = true;
             foreach(Bike b in bikeList) {
                 if(b.getState() != 2) {
