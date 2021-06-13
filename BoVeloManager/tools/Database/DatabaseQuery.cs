@@ -162,7 +162,7 @@ namespace BoVeloManager.tools {
             return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
         }
 
-        public static string updateCommande(Commande c) {
+        public static string updateTransaction(Transaction c) {
             return "UPDATE `bv_sale` SET `state` = '" + c.getState() + "' , `prevision_date` = '" + c.getPreSaleDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + c.getId().ToString();
         }
 

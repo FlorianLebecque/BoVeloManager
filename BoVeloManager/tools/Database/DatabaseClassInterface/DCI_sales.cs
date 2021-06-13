@@ -32,6 +32,11 @@ namespace BoVeloManager.tools {
             return temp;
         }
 
+        public static int updateSale(Sale s) {
+            string q = DatabaseQuery.updateTransaction(s);
+            return Database.setData(q);
+        }
+
         public static int addSale(Sale s) {
             string q = tools.DatabaseQuery.addSale(s);
             return Database.setData(q);

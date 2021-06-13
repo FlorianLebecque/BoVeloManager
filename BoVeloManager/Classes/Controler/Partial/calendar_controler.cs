@@ -20,6 +20,11 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime a(DateTime fda) {
+
+            if ((fda.DayOfWeek == DayOfWeek.Saturday) || (fda.DayOfWeek == DayOfWeek.Sunday)) {
+                return a(NextDay(fda));
+            }
+
             if (numbOfBike(fda, 0) < Properties.Settings.Default.MAX_BIKE_PER_DAY) {
                 poste = 0;
                 return fda;

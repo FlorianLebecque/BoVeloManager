@@ -59,11 +59,6 @@ namespace BoVeloManager.Classes {
 
         }
 
-
-
-
-
-
         public void createSale(Sale s) {
             saleList.Add(s);
             DatabaseClassInterface.addSale(s);
@@ -87,10 +82,11 @@ namespace BoVeloManager.Classes {
         }
 
         public Sale getSale_byId(int id) {
-            foreach (Sale s in saleList) {
-                if (s.getId() == id) {
-                    return s;
-                }
+
+            List<Sale> result = saleList.Where(x => x.getId() == id).ToList();
+
+            if(result.Count == 1) {
+                return result[0];
             }
 
             throw new Exception("No sale found with Id : " + id.ToString());

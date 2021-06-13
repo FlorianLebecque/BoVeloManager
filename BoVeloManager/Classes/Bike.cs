@@ -9,7 +9,6 @@ namespace BoVeloManager.Classes
 {
     public class Bike
     {
- 
         private int id_sale;
         private int id;
         private int status;
@@ -65,8 +64,7 @@ namespace BoVeloManager.Classes
             Poste = p;
         }
 
-        public void setState(int s)
-        {
+        public void setState(int s) {
             status = s;
         }
 
