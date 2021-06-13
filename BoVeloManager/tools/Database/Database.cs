@@ -56,7 +56,7 @@ namespace BoVeloManager.tools {
                     int nbr = cmd.ExecuteNonQuery();
 
                     if (Properties.Settings.Default.SYNC_ENABLE) {
-                        Controler.Instance.resync(checkTable());
+                        //Controler.Instance.resync(checkTable());
                     }       
 
                     return nbr;
