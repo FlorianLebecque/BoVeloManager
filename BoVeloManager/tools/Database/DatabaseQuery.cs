@@ -81,45 +81,45 @@ namespace BoVeloManager.tools {
 
 
         public static string getKits() {
-            return "SELECT * FROM `bv_type_kit`";
+            return "SELECT * FROM `bv_kit`";
         }
 
         public static string getKit_by_catalogBikeId(int id_cat) {
-            return "SELECT `id_tKit` FROM `bv_cat_tKit` WHERE `id_cat` = " + id_cat.ToString();
+            return "SELECT `id_tKit` FROM `bv_catalogkit` WHERE `id_cat` = " + id_cat.ToString();
         }
 
         public static string getKitId_byTBike(int id_tBike) {
-            return "SELECT K.id FROM `bv_tBike_tKit` AS B INNER JOIN `bv_type_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
+            return "SELECT K.id FROM `bv_templatebikekit` AS B INNER JOIN `bv_kit` AS K ON B.id_tKit = K.id WHERE B.id_tBike =" + id_tBike.ToString();
         }
 
         public static string addKit(int id, string name, string prop, int price, int cat, int stockQtt, int locX, int locY, int bikeQtt) {
-            return "INSERT INTO `bv_type_kit`(`id`,`name`, `properties`,`price`, `category`,`stock_qtt`,`location_x`,`location_y`,`bike_qtt`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "','" + stockQtt.ToString() + "','" + locX.ToString() + "','" + locY.ToString() + "','" + bikeQtt.ToString() + "')";
+            return "INSERT INTO `bv_kit`(`id`,`name`, `properties`,`price`, `category`,`stock_qtt`,`location_x`,`location_y`,`bike_qtt`) VALUES ('" + id.ToString() + "','" + name + "','" + prop + "','" + price.ToString() + "','" + cat.ToString() + "','" + stockQtt.ToString() + "','" + locX.ToString() + "','" + locY.ToString() + "','" + bikeQtt.ToString() + "')";
         }
 
         public static string addCompatibleKit(int id_cat, int id_tKit) {
-            return "INSERT INTO `bv_cat_tKit` (`id_cat`, `id_tKit`) VALUES('" + id_cat + "', '" + id_tKit + "')";
+            return "INSERT INTO `bv_catalogkit` (`id_cat`, `id_tKit`) VALUES('" + id_cat + "', '" + id_tKit + "')";
         }
 
         public static string delCompatibleKit(int id_cat, int id_tKit) {
-            return "DELETE FROM `bv_cat_tKit` WHERE `bv_cat_tKit`.`id_cat` = " + id_cat.ToString() + " AND `bv_cat_tKit`.`id_tKit` = " + id_tKit.ToString();
+            return "DELETE FROM `bv_catalogkit` WHERE `bv_catalogkit`.`id_cat` = " + id_cat.ToString() + " AND `bv_catalogkit`.`id_tKit` = " + id_tKit.ToString();
         }
 
         public static string getSales() {
-            return "SELECT * FROM `bv_sale` WHERE `fct` = 0";
+            return "SELECT * FROM `bv_transaction` WHERE `fct` = 0";
         }
 
         public static string updateKitTemplate(int id, string name, int cat, int price, string prop, int stock_qtt, int locX, int locY, int bike_qtt) {
-            return "UPDATE `bv_type_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "',`location_x`='" + locX.ToString() + "',`location_y`='" + locY.ToString() + "' WHERE `id`=" + id;
+            return "UPDATE `bv_kit` SET `name`= '" + name + "',`category`='" + cat.ToString() + "',`Price`='" + price.ToString() + "',`properties`='" + prop + "',`stock_qtt`='" + stock_qtt.ToString() + "',`bike_qtt`='" + bike_qtt.ToString() + "',`location_x`='" + locX.ToString() + "',`location_y`='" + locY.ToString() + "' WHERE `id`=" + id;
 
         }
 
         public static string addSale(Sale s) {
-            return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getId() + "', '" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
+            return "INSERT INTO `bv_transaction`(`id`, `id_human`, `id_seller`,`state`, `prevision_date`, `date`) VALUES ('" + s.getId() + "', '" + s.getClient().getId() + "','" + s.getSeller().getId() + "','Open','" + s.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + s.getSaleDate().ToString("yyyy-MM-dd") + "')";
         }
 
 
         public static string addBikeTemplate(BikeTemplate t) {
-            return "INSERT INTO `bv_type_bike` (`id`, `id_cat`) VALUES (" + t.getId() + ", " + t.getCat().getId() + ")";
+            return "INSERT INTO `bv_templatebike` (`id`, `id_cat`) VALUES (" + t.getId() + ", " + t.getCat().getId() + ")";
         }
 
         public static string addBike(Bike b) {
@@ -132,7 +132,7 @@ namespace BoVeloManager.tools {
         }
 
         public static string link_kit_to_tbike(BikeTemplate bt, KitTemplate kt) {
-            return "INSERT INTO `bv_tBike_tKit` (`id_tBike`, `id_tKit`) VALUES (" + bt.getId() + ", " + kt.getId() + ")";
+            return "INSERT INTO `bv_templatebikekit` (`id_tBike`, `id_tKit`) VALUES (" + bt.getId() + ", " + kt.getId() + ")";
         }
 
         public static string getBike() {
@@ -149,31 +149,31 @@ namespace BoVeloManager.tools {
         }
 
         public static string getTBike() {
-            return "SELECT * FROM `bv_type_bike`";
+            return "SELECT * FROM `bv_templatebike`";
         }
 
         public static string addCommande(Commande cd) {
 
-            return "INSERT INTO `bv_sale`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','" + cd.getState() + "','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
+            return "INSERT INTO `bv_transaction`(`id`, `id_human`, `id_seller`, `state`, `prevision_date`, `date`, `fct`) VALUES ('" + cd.getId() + "', '" + cd.getClient().getId() + "','" + cd.getSeller().getId() + "','" + cd.getState() + "','" + cd.getPreSaleDate().ToString("yyyy-MM-dd") + "','" + cd.getSaleDate().ToString("yyyy-MM-dd") + "',1)";
 
         }
         public static string addCommandeItems(Commande_item ci, Commande cd) {
 
-            return "INSERT INTO `bv_sale_kit`(`id_sale`, `id_type_kit`, `qnt`) VALUES ('" + cd.getId() + "', '" + ci.kt.getId() + "','" + ci.qnt + "')";
+            return "INSERT INTO `bv_transaction_kit`(`id_sale`, `id_type_kit`, `qnt`) VALUES ('" + cd.getId() + "', '" + ci.kt.getId() + "','" + ci.qnt + "')";
 
         }
 
         public static string getCommande() {
-            return "SELECT * FROM `bv_sale` WHERE `fct` = 1";
+            return "SELECT * FROM `bv_transaction` WHERE `fct` = 1";
         }
 
         public static string updateTransaction(Transaction c) {
-            return "UPDATE `bv_sale` SET `state` = '" + c.getState() + "' , `prevision_date` = '" + c.getPreSaleDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + c.getId().ToString();
+            return "UPDATE `bv_transaction` SET `state` = '" + c.getState() + "' , `prevision_date` = '" + c.getPreSaleDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + c.getId().ToString();
         }
 
 
         public static string getCommandeItems(int id) {
-            return "SELECT * FROM `bv_sale_kit` WHERE `id_sale` = " + id.ToString();
+            return "SELECT * FROM `bv_transaction_kit` WHERE `id_sale` = " + id.ToString();
         }
 
     }

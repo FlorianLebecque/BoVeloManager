@@ -178,5 +178,17 @@ namespace BoVeloManager.Properties {
                 this["DBBase2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int Cmd_delay {
+            get {
+                return ((int)(this["Cmd_delay"]));
+            }
+            set {
+                this["Cmd_delay"] = value;
+            }
+        }
     }
 }
