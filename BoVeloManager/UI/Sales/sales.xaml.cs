@@ -72,7 +72,7 @@ namespace BoVeloManager.Sales
         
         private void update_dg_clientList() 
         {
-            dg_clientList.ItemsSource = null;
+            //dg_clientList.ItemsSource = null;
             dg_clientList.ItemsSource = crtl.GetClientDisplayInfo();
         }
 
