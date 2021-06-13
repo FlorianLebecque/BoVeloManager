@@ -12,6 +12,8 @@ namespace BoVeloManager.Classes
         private readonly CatalogBike catalogBike;
         private int id;
         private List<KitTemplate> KitTemplList;
+        private string color;
+        private string size;
 
         public BikeTemplate(int Id, CatalogBike catalogBike_){
             catalogBike = catalogBike_;
@@ -35,6 +37,25 @@ namespace BoVeloManager.Classes
             
             price = price * (1 + getCat().getPriceMulDiv());
             return price;
+        }
+        public string getBikeColor()
+        {
+            return color;
+        }
+        public string getBikeSize()
+        {
+            return size;
+        }
+
+        public string Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        public string Size
+        {
+            get { return size; }
+            set { size = value; }
         }
 
         public List<KitTemplate> getListKit() {

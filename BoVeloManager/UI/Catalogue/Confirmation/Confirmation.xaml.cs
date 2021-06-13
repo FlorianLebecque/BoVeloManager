@@ -93,7 +93,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
                 string alert = "Missing Kits : \n";
                 foreach (KeyValuePair<KitTemplate, int> kvp in MissingKits)
                 {
-                    string L0 = kvp.Value.ToString() + " " + kvp.Key.getStockName() + "\n";
+                    string L0 = kvp.Value.ToString() + " " + kvp.Key.getFullName() + "\n";
                     alert += L0;
                 }
                 tools.UI.MessageBox.Show(alert, "Alert");
