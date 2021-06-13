@@ -57,7 +57,7 @@
                 </Grid>
             </TabItem>
             <!-- Supplier -->
-            <TabItem Header="Supplier">
+            <TabItem Header="Suppliers">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />

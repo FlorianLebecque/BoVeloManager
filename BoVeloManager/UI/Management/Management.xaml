@@ -56,7 +56,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Catalog">
+            <TabItem Header="Catalog bikes">
 
                 <Grid>
                     <Grid.RowDefinitions>

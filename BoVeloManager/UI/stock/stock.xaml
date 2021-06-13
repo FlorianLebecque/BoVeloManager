@@ -60,7 +60,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Bike">
+            <TabItem Header="Bikes">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
