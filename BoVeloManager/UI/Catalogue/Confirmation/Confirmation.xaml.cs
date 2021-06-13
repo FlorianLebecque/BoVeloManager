@@ -84,6 +84,7 @@ namespace BoVeloManager.UI.Catalogue.Confirmation
             {
                 Controler.Instance.tempSale.saveSale();
                 BoVeloManager.Sales.Sales.Instance.init();
+                stock.stock.Instance.init();
             }
             else
             {
