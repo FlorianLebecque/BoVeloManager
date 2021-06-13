@@ -24,6 +24,7 @@ namespace BoVeloManager.Classes {
         //this function displays the sales according to a search string
         public List<Sale.displayInfo> GetSaleDisplayInfo_search(string str)
         {
+            str = str.ToUpper();
             if (str == "") 
             {
                 return GetSaleDisplayInfo(); 
@@ -36,20 +37,20 @@ namespace BoVeloManager.Classes {
                 {
                     if (s.getClient() != null)
                     {
-                        if (s.getClient().getFirstName().Contains(str) || s.getClient().getLastName().Contains(str) || s.getClient().getName().Contains(str))
+                        if (s.getClient().getFirstName().ToUpper().Contains(str) || s.getClient().getLastName().ToUpper().Contains(str) || s.getClient().getName().ToUpper().Contains(str))
                         {
                             temp.Add(s.GetSaleDisplayInfo());
                         }
-                        else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                        else if (s.getId().ToString().ToUpper().Contains(str) || s.getState().ToString().ToUpper().Contains(str) || s.getSeller().getName().ToUpper().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").ToUpper().Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").ToUpper().Contains(str))
                         {
                             temp.Add(s.GetSaleDisplayInfo());
                         }
-                        else if (s.getClient().getEmail().Contains(str) || s.getClient().getEtpName().Contains(str) || s.getClient().getEtpAdress().Contains(str) || s.getClient().getPhoneNumb().Contains(str))
+                        else if (s.getClient().getEmail().ToUpper().Contains(str) || s.getClient().getEtpName().ToUpper().Contains(str) || s.getClient().getEtpAdress().ToUpper().Contains(str) || s.getClient().getPhoneNumb().ToUpper().Contains(str))
                         {
                             temp.Add(s.GetSaleDisplayInfo());
                         }
                     }
-                    else if (s.getId().ToString().Contains(str) || s.getState().ToString().Contains(str) || s.getSeller().getName().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").Contains(str))
+                    else if (s.getId().ToString().ToUpper().Contains(str) || s.getState().ToString().ToUpper().Contains(str) || s.getSeller().getName().ToUpper().Contains(str) || s.getSaleDate().ToString("MM/dd/yyyy").ToUpper().Contains(str) || s.getPreSaleDate().ToString("MM/dd/yyyy").ToUpper().Contains(str))
                     {
                         temp.Add(s.GetSaleDisplayInfo());
                     }
