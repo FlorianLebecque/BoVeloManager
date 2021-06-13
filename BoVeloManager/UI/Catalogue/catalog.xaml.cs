@@ -74,20 +74,11 @@ namespace BoVeloManager.Catalogue {
 
             foreach (CatalogBike.displayInfo temp in catalogBikesDisplayInfoList){                
 
-                List<string> sizeList = new List<string>();
-                List<string> colorList = new List<string>();
+                List<string> sizeList;
+                List<string> colorList;
 
-                // Pour chaque kittemplate de categorie 0
-                foreach(KitTemplate kt in temp.kitTemplates.Where(x => x.getCategory() == KitCategory.frame).ToList()) {
-                    string[] prop = kt.getProperties().Split('|');
-                    if (!sizeList.Contains(prop[0])) {
-                        sizeList.Add(prop[0]);
-                    }
-                    if (!colorList.Contains(prop[1])) {
-                        colorList.Add(prop[1]);
-                    } 
-                    
-                }
+                (sizeList, colorList) = temp.CurCatBike.getProperties();
+
                 BikeBasket bb = new BikeBasket(temp.name, sizeList, colorList, temp.CurCatBike);
                 bb.pic = temp.pic;
                 BikeCatList.Add(bb);

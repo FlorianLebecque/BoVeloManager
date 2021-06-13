@@ -160,11 +160,11 @@ namespace BoVeloManager.Classes
         }
 
             //get the first available date
-        private DateTime getNextPrevisionDate() {
+        public static DateTime getNextPrevisionDate() {
             return Controler.Instance.getFirstAvailableDay();
         }
 
-        private DateTime getConstrDate() {
+        public static DateTime getConstrDate() {
             return DateTime.Now;
         }
 
@@ -198,6 +198,14 @@ namespace BoVeloManager.Classes
             sizeList = sizes;
             colorList = colors;
             curbike = cb;
+        }
+
+        public BikeBasket(string name_, string color_, string size_, CatalogBike cb,int qnt_) {
+            name = name_;
+            color = color_;
+            size = size_;
+            curbike = cb;
+            qnt = qnt_;
         }
 
         public BikeBasket(BikeBasket bk) {
