@@ -80,7 +80,7 @@ namespace BoVeloManager.Classes
 
             foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
             {
-                if (kvp.Value >= kvp.Key.getStockQtt())
+                if (kvp.Value > kvp.Key.getStockQtt())
                 {
                     int nbr_mk = kvp.Value - kvp.Key.getStockQtt();
                     Missing_Kit.Add(kvp.Key, nbr_mk);

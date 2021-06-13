@@ -42,7 +42,7 @@ namespace BoVeloManager.Classes
                 price += kit.getPrice();
             }
             
-            price = price * (1 + getCat().getPriceMulDiv());
+            price = price + (price * getCat().getPriceMulDiv())/100;
             return price;
         }
 

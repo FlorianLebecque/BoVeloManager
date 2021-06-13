@@ -116,7 +116,7 @@ namespace BoVeloManager.Classes
             temp.priceMul = BikeTemplate.getCat().getPriceMulDiv();
             temp.id_sale = this.getSaleId();
             temp.PlannedDate = this.getPlannedtDate().ToString("dd/MM/yyyy");
-            temp.price = this.BikeTemplate.getPrice().ToString("c2");
+            temp.price = ((float)BikeTemplate.getPrice()/100).ToString("c2");
             temp.title = "#" + getId().ToString() + " - " + BikeTemplate.getName();
             
             DateTime dt = getConstructionDate();
