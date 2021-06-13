@@ -140,7 +140,12 @@ namespace BoVeloManager.tools {
         }
 
         public static string updateBike(Bike bk) {
-            return "UPDATE `bv_bike` SET `state`= " + bk.getState().ToString() + " ,`planne_cDate`='" + bk.getPlannedtDate().ToString("yyyy-MM-dd") + "' ,`poste`= " + bk.getPoste().ToString() + ",`create_Date`='" + bk.getConstructionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
+            if(bk.getSaleId() != -1) {
+                return "UPDATE `bv_bike` SET `state`= " + bk.getState().ToString() + ",`id_sale` = "+ bk.getSaleId() +" ,`planne_cDate`='" + bk.getPlannedtDate().ToString("yyyy-MM-dd") + "' ,`poste`= " + bk.getPoste().ToString() + ",`create_Date`='" + bk.getConstructionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
+            } else {
+                return "UPDATE `bv_bike` SET `state`= " + bk.getState().ToString() + " ,`planne_cDate`='" + bk.getPlannedtDate().ToString("yyyy-MM-dd") + "' ,`poste`= " + bk.getPoste().ToString() + ",`create_Date`='" + bk.getConstructionDate().ToString("yyyy-MM-dd") + "' WHERE `id` = " + bk.getId();
+            }
+            
         }
 
         public static string getTBike() {

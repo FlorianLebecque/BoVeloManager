@@ -36,6 +36,10 @@ namespace BoVeloManager.Classes
             return id_sale;
         }
 
+        public void setSaleId(int id) {
+            id_sale = id;
+        }
+
         public float getPrice() {
             return this.BikeTemplate.getPrice();
         }
