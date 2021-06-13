@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BoVeloManager.Classes;
+using BoVeloManager.UI.Commande.description;
 
 namespace BoVeloManager.stock {
     /// <summary>
@@ -83,9 +84,9 @@ namespace BoVeloManager.stock {
             dg_kitTemplateList.ItemsSource = temp;
         }
 
-        private void bt_Order_Click(object sender, RoutedEventArgs e)
-        {
-
+        private void bt_Order_Click(object sender, RoutedEventArgs e) {
+            AddCommand CA = new AddCommand();
+            CA.ShowDialog();
         }
 
         public static stock Instance
