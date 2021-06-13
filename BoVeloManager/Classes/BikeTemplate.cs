@@ -38,20 +38,13 @@ namespace BoVeloManager.Classes
             price = price * (1 + getCat().getPriceMulDiv());
             return price;
         }
-        public string getBikeColor()
-        {
-            return color;
-        }
-        public string getBikeSize()
-        {
-            return size;
-        }
 
         public string Color
         {
             get { return color; }
             set { color = value; }
         }
+
         public string Size
         {
             get { return size; }
