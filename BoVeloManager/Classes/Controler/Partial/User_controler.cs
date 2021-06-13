@@ -17,13 +17,20 @@ namespace BoVeloManager.Classes {
                     case 0:
                         temp.Add(u.GetDisplayInfo());
                         break;
-                    default:
-
-                        int grade = 2 - filter;
-                        if (u.getGrade() == grade) {
+                    case 1:
+                        if (u.getGrade() == 2) {
                             temp.Add(u.GetDisplayInfo());
                         }
-
+                        break;
+                    case 2:
+                        if (u.getGrade() == 1) {
+                            temp.Add(u.GetDisplayInfo());
+                        }
+                        break;
+                    case 3:
+                        if (u.getGrade() == 0) {
+                            temp.Add(u.GetDisplayInfo());
+                        }
                         break;
                 }
 
