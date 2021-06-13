@@ -57,7 +57,7 @@ namespace BoVeloManager.Classes {
         }
 
         public DateTime getPreSaleDate() {
-            return DateTime.MinValue;    
+            return prevision_date;    
         }
 
     }
