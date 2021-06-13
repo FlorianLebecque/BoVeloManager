@@ -31,7 +31,7 @@ namespace BoVeloManager.tools {
         }
 
         public static int updateUser(User moduser) {
-            string q = DatabaseQuery.setUserGrade(moduser.getId(), moduser.getGrade()) + "\n";
+            string q = DatabaseQuery.setUserGrade(moduser.getId(), moduser.getGrade()) + ";";
             q += DatabaseQuery.setUserPass(moduser.getId(), moduser.getHashPass());
 
             return Database.setData(q);

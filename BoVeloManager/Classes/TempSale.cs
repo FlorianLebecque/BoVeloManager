@@ -126,7 +126,7 @@ namespace BoVeloManager.Classes
             List<Client> clientList = Controler.Instance.getClientList();
 
 
-            Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, bikeList, userList, clientList);
+            Sale sale = new Sale(saleID, sellerID, clientID, "Open", sale_date, prevision_date, userList, clientList);
             Controler.Instance.createSale(sale);
 
 
