@@ -93,15 +93,15 @@ namespace BoVeloManager.UI.Planning.description {
 
                 if ((cb_state.SelectedIndex == 2)&&(tools.UI.MessageBox.Show("This action is ireversible are you sure ?","Bike state",MessageBoxButton.YesNo) == MessageBoxResult.Yes)){
                     nextState = cb_state.SelectedIndex;
-                    bk.getConstructionDate(DateTime.Now);
                 }
                 else if(cb_state.SelectedIndex != 2){
                     nextState = cb_state.SelectedIndex;
                 }
 
-                bk.setState(nextState);
-                
-                tools.DatabaseClassInterface.updateBike(bk);
+                Controler.Instance.updateBikeStatus(bk, nextState);
+                tb_cst_date.SelectedDate = bk.getConstructionDate();
+
+                BoVeloManager.Sales.Sales.Instance.init();
                 init();
             }
             //J'ai pas fait le querry dans database mais jai mis le setState dans Bike, je sais pas si il est nécessaire de faire un setBikeState si il y a un updateBike qui traite le status?
