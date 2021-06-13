@@ -25,6 +25,7 @@ namespace BoVeloManager.Classes
             bikeList = new List<Bike>();
             newBikeTemplates = new List<BikeTemplate>();
         }
+
         public Dictionary<KitTemplate, int> getMissingKits()
         {
             return Missing_Kit;

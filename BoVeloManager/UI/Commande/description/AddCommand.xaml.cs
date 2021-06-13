@@ -146,7 +146,7 @@ namespace BoVeloManager.UI.Commande.description {
 
             Classes.Commande cmd = new Classes.Commande(id, user.getId(), sup.getId(), "Open", Today, DateTime.Now.AddDays(Properties.Settings.Default.Cmd_delay), Commande_itemList, Controler.Instance.getUserList(), Controler.Instance.getSupplierList());
 
-                Controler.Instance.Addcommande(cmd);
+            Controler.Instance.Addcommande(cmd);
             this.Close();
         }
         private void bt_delete_Click(object sender, RoutedEventArgs e) {
