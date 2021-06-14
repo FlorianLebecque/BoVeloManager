@@ -134,7 +134,7 @@ namespace BoVeloManager.tools {
 
                 Cell cell4 = new Cell(1, 1)
                    .SetTextAlignment(TextAlignment.RIGHT)
-                   .Add(new Paragraph((tBike.CurTempl.getPrice()* tBike.qnt).ToString("c2")));
+                   .Add(new Paragraph(((tBike.CurTempl.getPrice()* tBike.qnt)/100).ToString("c2")));
 
                 cells.Add(cell1);
                 cells.Add(cell2);
@@ -150,7 +150,7 @@ namespace BoVeloManager.tools {
             Cell cell_total = new Cell(1, 2)
                .SetBackgroundColor(ColorConstants.GRAY)
                .SetTextAlignment(TextAlignment.RIGHT)
-               .Add(new Paragraph(sale.getTotalPrice().ToString("c2")).SetFontColor(ColorConstants.WHITE));
+               .Add(new Paragraph((sale.getTotalPrice()/100).ToString("c2")).SetFontColor(ColorConstants.WHITE));
 
             Cell cell_total_text_tva = new Cell(1, 2)
                 .SetBackgroundColor(ColorConstants.WHITE)
@@ -160,7 +160,7 @@ namespace BoVeloManager.tools {
             Cell cell_total_tva = new Cell(1, 2)
                 .SetBackgroundColor(ColorConstants.GRAY)
                 .SetTextAlignment(TextAlignment.RIGHT)
-                .Add(new Paragraph((sale.getTotalPrice()*1.21).ToString("c2")).SetFontColor(ColorConstants.WHITE));
+                .Add(new Paragraph(((sale.getTotalPrice()*1.21)/100).ToString("c2")).SetFontColor(ColorConstants.WHITE));
 
             table.AddCell(cell_qnt);
             table.AddCell(cell_name);
