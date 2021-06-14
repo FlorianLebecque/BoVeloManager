@@ -101,6 +101,7 @@ namespace BoVeloManager.Classes
                             break;
                         case "bv_transaction":
                             LOAD_SALES();
+                            LOAD_COMMANDES();
                             break;
                         case "bv_biketemplate":
                             LOAD_BIKETEMP();

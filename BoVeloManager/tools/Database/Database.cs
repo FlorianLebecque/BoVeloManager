@@ -46,9 +46,7 @@ namespace BoVeloManager.tools {
             int nbrTry = 0;
 
             while (nbrTry < Properties.Settings.Default.MAX_DB_TRY) {
-                try {
-
-                    
+                try {  
 
                     MySqlCommand cmd = MSCon.CreateCommand();
                     cmd.CommandText = query;
