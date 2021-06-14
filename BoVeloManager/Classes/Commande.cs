@@ -47,9 +47,9 @@ namespace BoVeloManager.Classes {
             temp.state = this.getState();
             temp.client = (Supplier)this.getClient();
             temp.seller = this.getSeller();
-            temp.sale_date = this.getSaleDate().ToString("MM/dd/yyyy");
+            temp.sale_date = this.getSaleDate().ToString("dd/MM/yyyy");
             temp.client_name = this.getClient().getName();
-            temp.prevision_date = this.getPreSaleDate().ToString("MM/dd/yyyy");
+            temp.prevision_date = this.getPreSaleDate().ToString("dd/MM/yyyy");
             temp.total = ((float)this.getPrice()/100).ToString("c2");
             return temp;
         }

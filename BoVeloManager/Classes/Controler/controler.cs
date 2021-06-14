@@ -89,7 +89,7 @@ namespace BoVeloManager.Classes
                         case "bv_bike":
                             LOAD_BIKES();
                             break;
-                        case "bv_cat_tKit":
+                        case "bv_catalogkit":
                             LOAD_CATALOG();
                             break;
                         case "bv_catalog":
@@ -99,16 +99,16 @@ namespace BoVeloManager.Classes
                             LOAD_CLIENTS();
                             LOAD_SUPPLIERS();
                             break;
-                        case "bv_sale":
+                        case "bv_transaction":
                             LOAD_SALES();
                             break;
-                        case "bv_tBike_tKit":
+                        case "bv_biketemplate":
                             LOAD_BIKETEMP();
                             break;
-                        case "bv_type_bike":
+                        case "bv_biketemplatekit":
                             LOAD_BIKETEMP();
                             break;
-                        case "bv_type_kit":
+                        case "bv_kit":
                             LOAD_KITEMP();
                             break;
                         case "bv_user":

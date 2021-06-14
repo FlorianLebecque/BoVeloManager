@@ -53,7 +53,12 @@ namespace BoVeloManager.Classes {
 
 
         public int getLastClientId() {
-            return clientList.Select(x => x.getId()).Max();
+            if(clientList.Count > 0) {
+                return clientList.Select(x => x.getId()).Max();
+            } else {
+                return 0;
+            }
+            
         }
 
         public List<Client> getClientList() {

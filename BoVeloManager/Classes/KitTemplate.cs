@@ -153,10 +153,10 @@ namespace BoVeloManager.Classes {
             temp.fancyName = getPropkitString();
             temp.FullName = getFullName();
             temp.BikeQtt_Name = getBikeQtt() + " " + getFullName();
-            temp.stock_qtt = this.getStockQtt().ToString();
+            temp.stock_qtt = this.getStockQtt();
             temp.stock_location_x = this.getStockLocationX().ToString();
             temp.stock_location_y = this.getStockLocationY().ToString();
-            temp.bike_qtt = this.getBikeQtt().ToString();
+            temp.bike_qtt = this.getBikeQtt();
 
             return temp;
         }
@@ -172,10 +172,10 @@ namespace BoVeloManager.Classes {
             public string FullName { get; set; }
             public string BikeQtt_Name { get; set; }
             public string properties { get; set; }
-            public string stock_qtt { get; set; }
+            public int stock_qtt { get; set; }
             public string stock_location_x { get; set; }
             public string stock_location_y { get; set; }
-            public string bike_qtt { get; set; }
+            public int bike_qtt { get; set; }
         }
 
     }

@@ -103,7 +103,7 @@ namespace BoVeloManager.Classes
             {
                 foreach (KeyValuePair<KitTemplate, int> kvp in getAllKit())
                 {
-                    int new_stock = kvp.Key.getStockQtt() - kvp.Value * kvp.Key.getBikeQtt();
+                    int new_stock = kvp.Key.getStockQtt() - kvp.Value ;
                     kvp.Key.setStockQtt(new_stock);
                 }
                 return true;

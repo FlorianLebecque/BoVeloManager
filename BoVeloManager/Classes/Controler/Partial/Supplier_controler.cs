@@ -19,7 +19,12 @@ namespace BoVeloManager.Classes {
         }
 
         public int getLastSupplierId() {
-            return supplierList.Select(x => x.getId()).Max();
+            if(supplierList.Count > 0) {
+                return supplierList.Select(x => x.getId()).Max();
+            } else {
+                return 0;
+            }
+            
         }
 
 

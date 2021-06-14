@@ -43,9 +43,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0.4*" CanUserResize="False"  Header="Id" Binding="{Binding Path='id'}" IsReadOnly="True" />
                             <DataGridTextColumn Width="*" Header="Kit" Binding="{Binding Path='FullName'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Quantity" Binding="{Binding Path='stock_qtt'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Alley" Binding="{Binding Path='stock_location_x'}" IsReadOnly="True" />
-                            <DataGridTextColumn Width="*" Header="Crate" Binding="{Binding Path='stock_location_y'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="*" Header="Category" Binding="{Binding Path='category'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="0.5*" Header="Quantity" Binding="{Binding Path='stock_qtt'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="0.5*" Header="Alley" Binding="{Binding Path='stock_location_x'}" IsReadOnly="True" />
+                            <DataGridTextColumn Width="0.5*" Header="Crate" Binding="{Binding Path='stock_location_y'}" IsReadOnly="True" />
                             <DataGridTemplateColumn Header="Order">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
